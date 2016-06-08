@@ -105,10 +105,10 @@
 
         <script>
           var btn = document.getElementById("start");
-         
+          var canvas = document.getElementById('canvas');
+          canvas.style.visibility: 'hidden';
           btn.onclick = function() {
-            var canvas = document.getElementById('canvas');
-            canvas.style.display = 'none';
+            canvas.style.visibility: 'visible';
             var ctx = canvas.getContext("2d");
             var radius = canvas.height / 2;
             ctx.translate(radius, radius);
