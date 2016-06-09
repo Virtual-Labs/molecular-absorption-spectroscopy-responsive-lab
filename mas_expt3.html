@@ -9,136 +9,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="coolclock.js"></script> <script type="text/javascript" src="moreskins.js"></script>
-    <style>
-
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
-
-
-.pie {
-  width: 250px;
-  height: 250px;
-  display: block;
-  position: relative;
-  border-radius: 50%;
-  background-color: #00b5e8;
-  border: 2px solid #00b5e8;
-  float: left;
-  margin: 2em;
-}
-.pie .block {
-  position: absolute;
-  background: #fff;
-  width: 230px;
-  height: 230px;
-  display: block;
-  border-radius: 50%;
-  top: 10px;
-  left: 10px;
-}
-
-#time {
-  font-size: 3em;
-  position: absolute;
-  top: 35%;
-  left: 43%;
-  color: #999999;
-}
-
-.degree {
-  /*90 + ( 360 * .1 )*/
-  background-image: linear-gradient(90deg, transparent 50%, white 50%), linear-gradient(90deg, white 50%, transparent 50%);
-}
-
-
-
+<style type="text/css">
 </style>
-
-</head>
-<body>
-  <div class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h1><center>Effect of Sample Path Length</center></h1>
-      </div>
-      
-      <div id="services" class="container-fluid text-center">
-        <br>
-        <div class="row slideanim">
-          <div class="col-sm-3">
-            <input type="image" onclick="flask()" src="images/interface.png" name="flask" id="flask" />
-            <h4>Conical Flask</h4>
-          </div>
-          <div class="col-sm-3">
-            <span ><button onclick="clock()"><img src="images/interface-1.png"></button></span>
-            <h4>Pipette</h4>
-          </div>
-          <div class="col-sm-3">
-            <span><button onclick="clock()"><img src="images/chemistry-lab-instruments.png"></button></span>
-            <h4>Beaker</h4>
-          </div>
-          <div class="col-sm-3">
-            <span ><button onclick="clock()"><img src="images/test-tube-for-science-education.png"></button></span>
-            <h4>Cuvette</h4>
-          </div>
-        </div>
-      </div>
-      <br><br><br>
-      <div id="services" class="container-fluid text-center">
-        <br>
-        <div class="row slideanim">
-          <div class="col-sm-4">
-            <img class="img-responsive" src="images/v-7503.png"> 
-            <button type="button" id="start" class="btn btn-info btn-xm"  data-toggle="modal" data-target="#myModal">start</button>
-            <div class="modal fade" id="myModal">
-              <div class="pie degree">
-                <span class="block"></span>
-                <span id="time">0</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <img class="img-responsive" src="images/computer.png" >
-          </div>
-        </div>
-      </div>
-      <div class="well" style="background-color:black;"></div>
+<body> 
+  <div class= "row">
+    <h3><center>Effect of Sample Path Length</center></h3>
+    <br><br>
+  </div>
+  <div class="row">
+    <div class="col-sm-6"></div>
+    <div class="col-sm-6">
+      <img class="img-responsive" src="images/169.png">
+      <img class="img-responsive" style = "position: absolute; left :2%; top: 84%;" src="images/500.png">
     </div>
   </div>
-  <script type="text/javascript">
-    function flask(){
-      var img = document.createElement("img");
-      img.src = src;
-      img.width = width;
-      img.height = height;
-      img.alt = alt;
-      document.body.appendChild(img);
-    }
-  </script>
-  <script>
+  <div class="row"><br><br><br>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-10">
+      <img class="img-responsive" src="images/96.png">
+      <img class="img-responsive" style = "position: absolute; left :37%; top: 25%;" src="images/145.png" >
+      <img class="img-responsive" style = "position: absolute; left :38%; top: 40%;" src="images/165.png" >
+      <img class="img-responsive" style = "position: absolute; left :38%; top: 0%;" src="images/152.png" >
+      <img class="img-responsive" style = "position: absolute; left :43.5%; top: 30.5%;" src="images/149.png" >
+      <img class="img-responsive" style = "position: absolute; left :38.5%; top: 2%;" src="images/167.png" >
 
-    var totaltime = 30;
+    </div>
 
-    function update(percent) {
-        var deg;
-        if (percent < (totaltime / 2)) {
-            deg = 90 + (360 * percent / totaltime);
-            $('.pie').css('background-image',
-                'linear-gradient(' + deg + 'deg, transparent 50%, white 50%),linear-gradient(90deg, white 50%, transparent 50%)'
-            );
-        } else if (percent >= (totaltime / 2)) {
-            deg = -90 + (360 * percent / totaltime);
-            $('.pie').css('background-image',
-                'linear-gradient(' + deg + 'deg, transparent 50%, #00b5e8 50%),linear-gradient(90deg, white 50%, transparent 50%)'
-            );
-        }
-    }
-    var count = parseInt($('#time').text());
-    myCounter = setInterval(function () {
-        count += 1;
-        $('#time').html(count);
-        update(count);
-        if (count == totaltime) clearInterval(myCounter);
-    }, 1000);
-  </script>
 </body>
 </html>
