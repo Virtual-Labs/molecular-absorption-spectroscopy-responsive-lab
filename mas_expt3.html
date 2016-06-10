@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>mas_1</title>
+    <title>mas_3</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -10,6 +10,15 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="coolclock.js"></script> <script type="text/javascript" src="moreskins.js"></script>
 <style type="text/css">
+.invisible {
+
+            background-color: Transparent;
+            background-repeat:no-repeat;
+            border: dotted;
+            cursor:pointer;
+            overflow: hidden;
+
+        }
 </style>
 <body> 
   <div class= "row">
@@ -19,21 +28,36 @@
   <div class="row">
     <div class="col-sm-6"></div>
     <div class="col-sm-6">
-      <img class="img-responsive" src="images/169.png">
-      <img class="img-responsive" style = "position: absolute; left :2%; top: 84%;" src="images/500.png">
+      <img class="img-responsive" src="images/shelf.png">
     </div>
   </div>
-  <div class="row"><br><br><br>
-    <div class="col-sm-2"></div>
-    <div class="col-sm-10">
-      <img class="img-responsive" src="images/96.png">
-      <img class="img-responsive" style = "position: absolute; left :37%; top: 25%;" src="images/145.png" >
-      <img class="img-responsive" style = "position: absolute; left :38%; top: 40%;" src="images/165.png" >
-      <img class="img-responsive" style = "position: absolute; left :38%; top: 0%;" src="images/152.png" >
-      <img class="img-responsive" style = "position: absolute; left :43.5%; top: 30.5%;" src="images/149.png" >
-      <img class="img-responsive" style = "position: absolute; left :38.5%; top: 2%;" src="images/167.png" >
-
+  <div class="row"><br><br>
+    <div class="col-sm-12">
+      <br><br>
+      <center><img class="img-responsive"  id = "img1" src="images/table_with_spec.png"></center>
+      <img class="img-responsive" style = "position:absolute; left:48%; top:13%; max-width:50%; max-height:50%;" src="images/computer.png">
+      <button style = "background-color: Transparent; background-repeat:no-repeat;border:none;cursor:pointer;overflow: hidden;position:absolute; left:22%; top:48%; " onclick="changeImage()"><img src="images/button.png"></button>
     </div>
+  </div>
+<script>
+var images = [];
+var x = 0;
+images[0] = "images/spec_on_redLight.png";
+images[1] = "images/spec_on_no_redLight.png";
+function changeImage() {
+    var img = document.getElementById('img1');
+    img.src = images[x];
+    x++;
+
+    if(x >= images.length){
+        x = 0;
+    } 
+
+
+    setTimeout("changeImage()", 250);
+}
+
+</script>
 
 </body>
 </html>
