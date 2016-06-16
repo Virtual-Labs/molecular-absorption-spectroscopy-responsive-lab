@@ -11,7 +11,6 @@
     <script type="text/javascript" src="coolclock.js"></script> <script type="text/javascript" src="moreskins.js"></script>
     <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="fabric.js-1.6.2/dist/fabric.js"></script>
     <script src="jQueryRotate.js"></script>
 <style type="text/css">
 
@@ -26,7 +25,7 @@
     <div class="col-sm-6"></div>
     <div class="col-sm-6">
       <img class="img-responsive" id = "img2" src="images/shelf.png">
-      <img id="img3" class="img-fluid" style="position:absolute;z-index:999; width:8%; left:8%; top:25%; cursor:pointer;" onclick="removeFlask();" src="images/vertical_button.png">
+      <img id="img3" class="img-fluid" style="position:absolute;z-index:999; width:8%; left:10%; top:25%; cursor:pointer;" onclick="removeFlask();" src="images/vertical_button.png">
       <img id="img4" class="img-fluid" style="position:absolute;z-index:999; width:8%; left:32%; top:25%;  cursor:pointer;" onclick="removePipette();" src="images/vertical_button.png">
       <img id="img5" class="img-fluid" style="position:absolute;z-index:999; width:10%; left:50%; top:25%; cursor:pointer;" onclick="removeBeaker();" src="images/vertical_button.png">
       <img id="img6" class="img-fluid" style="position:absolute;z-index:999; width:10%; left:60%; top:25%; cursor:pointer;" onclick="removeCuvette1();" src="images/vertical_button.png">
@@ -51,12 +50,13 @@
 <script>
 var images = [];
 var x = 0;
+var y = 0;
 var pos;
 var posi;
 var elem;
 var img;
 var mql;
-var id;
+var id,id1;
 var count=0;
 images[0] = "images/spec_on_redLight.png";
 images[1] = "images/spec_on_no_redLight.png";
@@ -165,7 +165,7 @@ function moveFlask() {
     else{ 
        id = setInterval(frame, 5);
        function frame() {
-       if (posi == 280) {
+       if (posi == 235) {
          clearInterval(id);
        } else {
          pos-=0.5; 
@@ -176,9 +176,78 @@ function moveFlask() {
        }
      }
   }
+    
+  id1 = setInterval(changeFlask,50);
   document.getElementById("demo").innerHTML = "Step-No 5: Click on the micropipette to collect appropriate quantity of solution from the beaker";
+  setTimeout("moveFlask1()",750);
+}
+function moveFlask1() {
+    elem = document.getElementById("img3");
+    pos = 200;
+    posi = 235; 
+    elem.style.width = "7%"
+    elem.src= "images/227.png";
+    mql = window.matchMedia("all and (max-width: 400px)");
+    if(mql.matches){
+      
+    }
+    else{ 
+    	var id2 = setInterval(frame, 10);
+       function frame() {
+       if (posi == 200) {
+         clearInterval(id2);
+       } else {
+         pos+=3; 
+         posi--;
+         elem.style.top = pos + 'px'; 
+         elem.style.left = posi + 'px'; 
+   }
+ }
+}
 }
 
+function changeFlask(){
+	var img = document.getElementById("img3");
+	var img1 = document.getElementById("img5");
+	var flask =[];
+	flask[0] = "images/flask1.png";
+	flask[1] = "images/flask2.png";
+	flask[2] = "images/flask3.png";
+	flask[3] = "images/flask4.png";
+	flask[4] = "images/flask5.png";
+	flask[5] = "images/flask6.png";
+	flask[6] = "images/flask7.png";
+	flask[7] = "images/flask8.png";
+	flask[8] = "images/flask9.png";
+	flask[9] = "images/flask10.png";
+	flask[10] = "images/flask11.png";
+	flask[11] = "images/flask12.png";
+	flask[12] = "images/flask13.png";
+	flask[13] = "images/flask14.png";
+    if(y < flask.length){
+	img.src = flask[y];
+
+    }
+    y++;
+    if (y == 3){
+    	img.style.width = '9%';
+    }
+    if (y == 4){
+    	img.style.width = '12%';
+    }
+    if (y == 9){
+    	img.style.width = '14%';
+    	img1.src = "images/beaker0.png";
+    }
+    if(y >= flask.length){
+		img1.src = "images/beaker1.png";
+        
+    }
+    if(y>=15){
+       clearInterval(id1);
+    }
+
+}
 function showClock(){
   var context=document.getElementById('clockScreen');
   var hand =document.getElementById('clockHand');
