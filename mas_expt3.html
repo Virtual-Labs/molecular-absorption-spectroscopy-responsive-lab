@@ -31,16 +31,19 @@
       <img id="img6" class="img-fluid" style="position:absolute;z-index:999; width:4%; left:64%; top:47%; cursor:pointer;" onclick="removeCuvette1();" src="images/vertical_button.png">
       <img id="img7" class="img-fluid" style="position:absolute;z-index:999; width:4%; left:70%; top:47%; cursor:pointer;" onclick="removeCuvette2();" src="images/vertical_button.png">
       <img id="img8" class="img-fluid" style="position:absolute;z-index:999; width:4%; left:75%; top:47%;cursor:pointer;" onclick="removeCuvette3();" src="images/vertical_button.png">
-      
+
       
     </div>
   </div>
   <div class="row"><br>
     <div class="col-sm-12">
       <br><br>
-      <center><img class="img-responsive"  id = "img1" src="images/table_with_spec.png"></center>
+      <center><img  class="img-responsive"  id = "img1" src="images/table_with_spec.png"></center>
       <img class="img-responsive" style = "position:absolute; left:48%; top:13%; max-width:50%; max-height:50%;" src="images/computer.png">
-      <div id = "demo" style="position:absolute;top:75%;left:27%;max-width:50%;color:yellow"></div>
+      <img id="img9" class="img-fluid" style="position:absolute; width:4%; left:38%; top:28%;cursor:pointer;" onclick="spectrophotometer();" src="images/vertical_button.png">
+      <img id="img10" class="img-fluid" style="position:absolute;z-index:999; width:1.5%; left:75%; top:47%;cursor:pointer;" src="images/vertical_button.png">
+      
+      <div id = "demo" style="position:absolute;top:70%;left:27%;max-width:50%;color:yellow"></div>
       <button id="cache" style = "background-color: Transparent; background-repeat:no-repeat;border:none;cursor:pointer;overflow: hidden;position:absolute; left:22%; top:48%; " onclick = "turnOn();showClock()"><img src="images/button.png"></button>
       
     </div>
@@ -54,15 +57,16 @@ var y = 0;
 var pos;
 var posi;
 var elem;
-var img;
+var img,img1;
 var mql;
 var id,id1;
 var count=0;
+var c =0;
 images[0] = "images/spec_on_redLight.png";
 images[1] = "images/spec_on_no_redLight.png";
 document.getElementById("demo").innerHTML = "Step-No 1: Turn on the instrument clicking on the power button and wait for 30 min for initialization of the instrument.";
 function turnOn() {
-    var img = document.getElementById('img1');
+    img = document.getElementById('img1');
     
     img.src = images[x];
     x++;
@@ -81,9 +85,9 @@ function removeFlask() {
     elem = document.getElementById("img3"); 
     pos = 0;
     posi = 0;
-    var mql = window.matchMedia("all and (max-width: 400px)");
+    mql = window.matchMedia("all and (max-width: 400px)");
     if(mql.matches){
-      var id = setInterval(frame, 5);
+      id = setInterval(frame, 5);
       function frame() {
        if (pos == 200) {
          clearInterval(id);
@@ -97,7 +101,7 @@ function removeFlask() {
        } 
     }
     else{ 
-      var id = setInterval(frame, 5);
+       id = setInterval(frame, 5);
        function frame() {
        if (pos == 305) {
          clearInterval(id);
@@ -155,7 +159,6 @@ function removeBeaker() {
   document.getElementById("demo").innerHTML = "Step-No 3: Click on the Conical flask to take it to experiment table";
 }
 function removePipette() {
-    alert(count); 
   if ( count == 1){
     img = document.getElementById('img2');
     img.src = "images/shelf_without_beaker_flask_pipette.png";
@@ -196,20 +199,20 @@ function removePipette() {
     count += 1;
   }
   else if(count==2){
-    document.getElementById("img4").onclick = fillPipette();
-    document.getElementById("demo").innerHTML = "Step-No 6: Take cuvette by clicking on it";
+     fillPipette();
+     document.getElementById("demo").innerHTML = "Step-No 6: Take cuvette by clicking on it";
+     count += 1;
   }
   else if(count==3){
-    alert("hello"); 
-    // document.getElementById("img4").onclick = movePipette();
-    // document.getElementById("demo").innerHTML = "Step-No 8: ";
+    movePipette();
+    document.getElementById("demo").innerHTML = "Step-No 8:Click on the spectrophotometer lid to open it ";
+    count +=1;
   }
 }
 function movePipette(){
-  alert("hello");
    elem = document.getElementById("img4"); 
-    pos = 200;
-    posi = 200;
+    pos = 280;
+    posi = 280;
     mql = window.matchMedia("all and (max-width: 400px)");
     if(mql.matches){
       
@@ -217,23 +220,28 @@ function movePipette(){
     else{ 
       id = setInterval(frame, 5);
       function frame() {
-      if (posi == 235) {
+      if (posi == 250) {
         clearInterval(id);
       } else {
-        pos-=0.5; 
-        posi++;
+        pos--; 
+        posi--;
         elem.style.top = pos + 'px'; 
         elem.style.left = posi + 'px'; 
 
       }
     }
   }
+  setTimeout(function() {
+    img = document.getElementById("img6");
+    img.src = "images/cuvette_filled.png";
+  }, 1000);
+  
 }
 
 function removeCuvette1(){
   img = document.getElementById('img2');
 
-    if ( count == 2){
+    if ( count == 3){
       img.src = "images/shelf_without_cuvette.png";
       $('#img6').attr('src', 'images/176.png'); 
       elem = document.getElementById("img6"); 
@@ -270,25 +278,68 @@ function removeCuvette1(){
        }
       }
       document.getElementById("demo").innerHTML = "Step-No 7: Pour the solution from the micropipette into the cuvette by clicking on the cuvette(In actual measurements the cuvette is filled to two-third of its volume";
-      count++;
     }
-}
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
+    else if(count == 4){
+      elem = document.getElementById("img6"); 
+      pos = 320;
+      posi = 290;
+      id = setInterval(frame, 5);
+        function frame() {
+         if (pos == 212 ) {
+           clearInterval(id);
+         } else {
+           pos-=0.5; 
+           posi-=2;
+           elem.style.top = pos + 'px'; 
+           elem.style.left = posi + 'px'; 
+
+         }
+        }
+       setTimeout("moveDown()",2000);
+      }
   }
+function moveDown(){
+  pos = 212;
+  id1 = setInterval(frame, 5);
+         function frame() {
+         if (pos == 295 ) {
+           clearInterval(id1);
+         } else {
+           pos+=1; 
+           elem.style.top = pos + 'px'; 
+         }
+        }
+  setTimeout("extraCuvette()",1200);
 }
+function extraCuvette(){
+    $('#img10').attr('src', 'images/cuvette_filled_water.png'); 
+    var elem1 = document.getElementById("img10"); 
+    pos = 10;
+    var id2 = setInterval(frame, 5);
+       function frame() {
+       if (pos == 110) {
+         clearInterval(id2);
+       } else {
+         pos++; 
+         elem1.style.top = pos + 'px'; 
+         elem1.style.left = "510px"; 
 
+       }
+     }
+     setTimeout(function(){
+    images[0] = "images/spec_open_cuvette.png";
+    images[1] = "images/spec_open_cuvette.png";
+    $('#img10').attr('src', 'images/vertical_button.png'); 
+    $('#img6').attr('src', 'images/vertical_button.png'); 
+     },1000);
 
+}
 function fillPipette() {
-  var img = document.getElementById("img5");
+  img = document.getElementById("img5");
   img.src = "images/beaker1.png";
-  sleep(1000);
-  img.src = "images/beaker3.png";
-
+  setTimeout(function() {
+    img.src = "images/beaker3.png";
+  }, 1000);
 }
 function moveFlask() {
     elem = document.getElementById("img3"); 
@@ -328,7 +379,7 @@ function moveFlask1() {
       
     }
     else{ 
-    	var id2 = setInterval(frame, 10);
+    	 id2 = setInterval(frame, 10);
        function frame() {
        if (posi == 200) {
          clearInterval(id2);
@@ -337,14 +388,28 @@ function moveFlask1() {
          posi--;
          elem.style.top = pos + 'px'; 
          elem.style.left = posi + 'px'; 
-   }
- }
+      } 
+    }
+  }
 }
+function spectrophotometer(){
+
+  if (c == 0){
+  images[0] = "images/spec_open.png";
+  images[1] = "images/spec_open.png";
+  document.getElementById("demo").innerHTML = "Step-No 9: Click on the cuvette to palce it in the sample holder. One has to use water as the sample bank or reference in this measurement. Here a double beam spectrophotometer is shown.In this case one can place the sample in the sample holder(often the front one) and sample bank or reference in the reference holder(often the back one simultaneously.";
+    c++;
+}
+else if(c == 1){
+  images[0] = "images/spec_on_redLight.png";
+  images[1] = "images/spec_on_no_redLight.png";
+  document.getElementById("demo").innerHTML = "Step-No 10: Run the wavelength scan by clicking on the computer monitorand then on the scan button and observe the wavelength scan";
 }
 
+}
 function changeFlask(){
-	var img = document.getElementById("img3");
-	var img1 = document.getElementById("img5");
+  img = document.getElementById("img3");
+  img1 = document.getElementById("img5");
 	var flask =[];
 	flask[0] = "images/flask1.png";
 	flask[1] = "images/flask2.png";
