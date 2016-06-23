@@ -92,7 +92,7 @@
     <h3><center>Effect of Sample Path Length</center></h3>
     <center><button onclick="reload()">Reset Experiment</button></center>
     <br>
-  </div>
+  </div>c
   <div class="row">
     <div class="col-sm-6">
       <button id="manual_button" style = "background-color: Transparent; border : none; position:absolute; left:20%;"><img src="images/manual_button.png"></button>
@@ -124,16 +124,17 @@
         </div>
 
       </div>
-      <button id="data_button" style = "background-color: Transparent; border : none; position:absolute;bottom:0%; left:20%;"><img src="images/data_button.png"></button>
+      <button id="data_button" onclick= "function() { alert('hi'); }"  style = "background-color: Transparent; border : none; position:absolute;bottom:0%; left:20%;"><img src="images/data_button.png" ></button>
+
     </div>
     <div class="col-sm-6">
       <img class="img-responsive" id = "img2" src="images/shelf.png">
       <img id="img3" class="img-fluid" style="position:absolute;z-index:999; width:8%; left:10%; top:25%; cursor:pointer;" onclick="removeFlask();" src="images/vertical_button.png">
       <img id="img4" class="img-fluid" style="position:absolute;z-index:999; width:7%; left:32%; top:25%;  cursor:pointer;" onclick="removePipette();" src="images/vertical_button.png">
       <img id="img5" class="img-fluid" style="position:absolute;z-index:800; width:10%; left:50%; top:25%; cursor:pointer;" onclick="removeBeaker();" src="images/vertical_button.png">
-      <img id="img6" class="img-fluid" style="position:absolute;z-index:999; width:4%; left:64%; top:47%; cursor:pointer;" onclick="removeCuvette();" src="images/vertical_button.png">
-      <img id="img7" class="img-fluid" style="position:absolute;z-index:999; width:4%; left:70%; top:47%; cursor:pointer;" onclick="removeCuvette();" src="images/vertical_button.png">
-      <img id="img8" class="img-fluid" style="position:absolute;z-index:999; width:4%; left:75%; top:47%;cursor:pointer;" onclick="removeCuvette();" src="images/vertical_button.png">
+      <img id="img6" class="img-fluid" style="position:absolute;z-index:999; width:4%; left:64%; top:47%; cursor:pointer;" onclick="removeCuvette(this);" src="images/vertical_button.png">
+      <img id="img7" class="img-fluid" style="position:absolute;z-index:999; width:4%; left:70%; top:47%; cursor:pointer;" onclick="removeCuvette(this);" src="images/vertical_button.png">
+      <img id="img8" class="img-fluid" style="position:absolute;z-index:999; width:4%; left:75%; top:47%;cursor:pointer;" onclick="removeCuvette(this);" src="images/vertical_button.png">
       
 
       
@@ -157,9 +158,14 @@
   <img class="img-responsive" id="clockHand" style = "position:absolute;top:38%;left:51%; visibility:hidden" src="images/hand.png">
   <img class="img-responsive" id="scan" style = "position:absolute;z-index:1000; width:100%;height:100%;top:0%;left:0%; visibility:hidden" src="images/483.png">
   <video id="Video1" style = "position:absolute;z-index:1100;top:20%;left:20%;visibility : hidden;" ><source src="images/10mm_scan.mp4" type="video/mp4"></video>
+  <video id="Video2" style = "position:absolute;z-index:1100;top:20%;left:20%;visibility : hidden;" ><source src="images/5mm_scan.mp4" type="video/mp4"></video>
+  <video id="Video3" style = "position:absolute;z-index:1100;top:20%;left:20%;visibility : hidden;" ><source src="images/1mm_scan.mp4" type="video/mp4"></video>
   <img id="img12" class="img-fluid" style="position:absolute; z-index:1200; width:5%; left:74%; top:67%;cursor:pointer;" onclick="disposeGraph();" src="images/vertical_button.png">
 
 <script>
+document.getElementById("data_button").addEventListener("click", function() {
+    popitup("slideshow.html");
+}, false);
 var images = [];
 var x = 0;
 var y = 0;
@@ -171,6 +177,7 @@ var mql;
 var id,id1;
 var count=0;
 var c =0;
+var cuv;
 images[0] = "images/spec_on_redLight.png";
 images[1] = "images/spec_on_no_redLight.png";
 document.getElementById("demo").innerHTML = "Step-No 1: Turn on the instrument clicking on the power button and wait for 30 min for initialization of the instrument.";
@@ -198,7 +205,11 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-
+function popitup(url) {
+  newwindow=window.open(url,'name','height=300,width=250',"_parent");
+  if (window.focus) {newwindow.focus()}
+  return false;
+}
 function reload(){
   location.reload();
 }
@@ -373,56 +384,68 @@ function movePipette(){
     }
   }
   setTimeout(function() {
-    img = document.getElementById("img6");
+    if(cuv==1){
+      img = document.getElementById("img6");
+    }
+    if(cuv==2){
+      img = document.getElementById("img7");
+    }
+    if(cuv==3){
+      img = document.getElementById("img8");
+    }
     img.src = "images/cuvette_filled.png";
   }, 1000);
   
 }
 
-function removeCuvette(){
-
+function removeCuvette(event){
     if ( count == 6){
       img = document.getElementById('img2');
-      img.src = "images/shelf_without_cuvette.png";
-      $('#img6').attr('src', 'images/176.png'); 
-      elem = document.getElementById("img6"); 
+      if(event.id=="img6"){
+        img.src = "images/shelf_without_cuvette.png";
+        $('#img6').attr('src', 'images/176.png'); 
+        elem = document.getElementById("img6"); 
+        cuv = 1;
+      } 
+      if(event.id=="img7"){
+        img.src = "images/shelf_without_cuvette2.png";
+        $('#img7').attr('src', 'images/176.png'); 
+        elem = document.getElementById("img7"); 
+        cuv = 2;
+      } 
+      if(event.id=="img8"){
+        img.src = "images/shelf_without_cuvette3.png";
+        $('#img8').attr('src', 'images/176.png'); 
+        elem = document.getElementById("img8"); 
+        cuv = 3;
+      } 
       elem.style.width = "2.5%";
       pos = 10;
       posi = 400;
-      mql = window.matchMedia("all and (max-width: 400px)");
-      if(mql.matches){
-        id = setInterval(frame, 5);
-        function frame() {
-         if (pos == 180) {
-           clearInterval(id);
+      id = setInterval(frame, 5);
+      function frame() {
+        if (pos == 340) {
+          clearInterval(id);
         } else {
-           pos++; 
-           posi += 1.3;
-           elem.style.top = pos + 'px'; 
-           elem.style.left = posi + 'px'; 
-
-          }
-         } 
-      }
-      else{ 
-         id = setInterval(frame, 5);
-         function frame() {
-         if (pos == 340) {
-           clearInterval(id);
-         } else {
-           pos++; 
-           posi-=0.4;
-           elem.style.top = pos + 'px'; 
-           elem.style.left = posi + 'px'; 
-
+          pos++; 
+          posi-=0.4;
+          elem.style.top = pos + 'px'; 
+          elem.style.left = posi + 'px'; 
          }
        }
-      }
       document.getElementById("demo").innerHTML = "Step-No 7: Pour the solution from the micropipette into the cuvette by clicking on the cuvette(In actual measurements the cuvette is filled to two-third of its volume";
       count++;
     }
     else if(count == 9){
-      elem = document.getElementById("img6"); 
+      if(event.id=="img6"){
+        elem = document.getElementById("img6");
+      } 
+      if(event.id=="img7"){
+        elem = document.getElementById("img7");
+      } 
+      if(event.id=="img8"){
+        elem = document.getElementById("img8");
+      } 
       pos = 320;
       posi = 290;
       id = setInterval(frame, 5);
@@ -474,6 +497,9 @@ function extraCuvette(){
     images[1] = "images/spec_open_cuvette.png";
     $('#img10').attr('src', 'images/vertical_button.png'); 
     $('#img6').attr('src', 'images/vertical_button.png'); 
+    $('#img7').attr('src', 'images/vertical_button.png'); 
+    $('#img8').attr('src', 'images/vertical_button.png'); 
+
      },800);
 
 }
@@ -601,10 +627,10 @@ function changeFlask(){
     }
     if (y == 25){
       img.style.width = '14%';
-    	img1.src = "images/beaker1.png";
+    	img1.src = "images/beaker2.png";
     }
-    if(y >= flask.length){
-		img1.src = "images/beaker2.png";
+    if(y == 30){
+		//img1.src = "images/beaker2.png";
     clearInterval(id1);
         
     }
@@ -612,17 +638,27 @@ function changeFlask(){
 }
 function scan(){
   if(count==11){
-  var vid = document.getElementById("Video1");
-  var context=document.getElementById('scan');
-  context.style.visibility='visible';
-  vid.style.visibility='visible';
-  vid.play(); 
-  count++;
-}
+    if(cuv==1){
+      var vid = document.getElementById("Video1");
+    }
+    else if(cuv==2){
+      var vid = document.getElementById("Video2");
+    }
+    else if(cuv==3){
+      var vid = document.getElementById("Video3");
+    }
+    var context=document.getElementById('scan');
+    context.style.visibility='visible';
+    vid.style.visibility='visible';
+    vid.play(); 
+    count++;
+  }
 }
 function disposeGraph(){
   if(count==12){
     document.getElementById('Video1').style.visibility='hidden';
+    document.getElementById('Video2').style.visibility='hidden';
+    document.getElementById('Video3').style.visibility='hidden';
     document.getElementById('scan').style.visibility='hidden';
   }
 
