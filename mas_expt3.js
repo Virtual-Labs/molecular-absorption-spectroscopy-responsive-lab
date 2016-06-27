@@ -66,28 +66,36 @@
 
     // When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is changed continuously  to give the blinking light effect. The two images that are swapped is stored in images[]
     function turnOn() {
+        // Get the image
         img = document.getElementById('table_with_spec');
+        // Change the source of the image 
         img.src = images[x];
+        //increment x;
         x++;
         if(x >= images.length){
             x = 0;
-        } 
+        }
+        // Call turnOn() method every 250ms 
         setTimeout("turnOn()", 250);
     }
 
     // This method displays a timer which runs for 30 seconds. There exists two images which are hidden initailly; when this method is called they are amde visible and the clock hand is made to rotate.  
     function showClock(){
         if(step_no==0){
+            // Get the images.
             var context=document.getElementById('clockScreen');
             var hand =document.getElementById('clockHand');
+            // Make the visiblility of the obtained images visible
             context.style.visibility='visible';
             hand.style.visibility="visible";
+            // Rotate 'clockHand' using jQueryRotate.js
             var angle = 0;
             setInterval(function(){
                 angle+=3;
                 $('#clockHand').rotate(angle);
             },170);
             step_no++;
+            //After 10 secs dispose clock
             setTimeout("disposeClock()",10000);
         }
     }
