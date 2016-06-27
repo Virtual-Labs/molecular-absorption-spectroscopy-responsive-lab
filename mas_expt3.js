@@ -47,16 +47,20 @@
             }
         }
     }
-    // When user clicks on the Data button it redirects him to the page containg slideshow of three graphs obtained from three different sample lengths
+    // When user clicks on the Data button it redirects him to the page containing slideshow of three graphs obtained from three different sample lengths
     function popitup(url) {
+        // Opens a new browser window called newwindow. url specifies the URL of the page to open.
         newwindow=window.open(url,'name','height=300,width=250',"_parent");
+        // Sets focus to the new window if the focus is on the previous page.
         if (window.focus) {
             newwindow.focus()
         }
         return false;
-        }
+    }
+
     // When the user clicks on reset experiment this method is called
     function reload(){
+        // Reloads the current document.
         location.reload();
     }
 
