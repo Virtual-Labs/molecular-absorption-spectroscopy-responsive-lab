@@ -232,9 +232,11 @@
 
     // This method helps in moving back the empty flask back to the table
     function moveFlaskBack() {
+        // Get image
         elem = document.getElementById("flask");
         initial_top = 200;
         initial_left = 235; 
+        // Move it back to the table
         elem.style.width = "8%"
         elem.src= "images/69.png"; 
         id2 = setInterval(frame, 10);
@@ -253,10 +255,14 @@
     // When this method is called the tansparent image button on the shelf beaker is replaced with an image of the beaker and is moved down and the shelf image is changed to an image with no beaker.
     function beaker() {
       if(step_no==1){
+        // Get image
         img = document.getElementById('shelf');
+        // Change the image of the shelf to an image without beaker.
         img.src = "images/shelf_without_beaker.png";
+        // Change the trasparent button over beaker to an image of the beaker
         $('#beaker').attr('src', 'images/beaker.png'); 
         elem = document.getElementById("beaker"); 
+        // Move the beaker.
         initial_top = 0;
         initial_left = 318;
            id = setInterval(frame, 5);
@@ -279,10 +285,14 @@
     // When this method is called for the third time movePipette() method is called.
     function pipette() {
         if ( step_no == 4){
+            // Get image
             img = document.getElementById('shelf');
+            // Change the image of the shelf to an image without pipette.
             img.src = "images/shelf_without_beaker_flask_pipette.png";
+            // Change the trasparent button over pipette to an image of the pipette
             $('#pipette').attr('src', 'images/pipette.png'); 
             elem = document.getElementById("pipette"); 
+            // Move the pipette.
             initial_top = 0;
             initial_left = 200;
             id = setInterval(frame, 5);
