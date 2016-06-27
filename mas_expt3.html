@@ -19,8 +19,9 @@
     <script src="jQueryRotate.js"></script>
     <script type="text/javascript" src="mas_expt3.js"></script>
 
+
 </head>
-<body style="width: 1080px; height: 720px; margin: 0 auto;" onload="initial_function()"> 
+<body style="width: 1080px; height: 720px; margin: 0 auto; overflow: hidden;" onload="initial_function()"> 
     <!-- Body is divided into three rows -->
     <div class= "row">
         <!-- First row consists of title of the experiment and the reset button -->
@@ -111,11 +112,11 @@
         </div>
     </div>
     <!-- Image of the face of the clock which is displayed on switching on the spectrophotometer -->
-    <img class="img-responsive" id="clockScreen" style = "position:absolute; width:100%;height:100%;top:0%;left:0%; visibility:hidden" src="images/clock.png">
+    <img id="clockScreen" style = "position:absolute; top:10%; visibility:hidden" src="images/clock.png">
     <!-- Image of the hand of the clock -->
-    <img class="img-responsive" id="clockHand" style = "position:absolute;top:38%;left:51%; visibility:hidden" src="images/hand.png">
+    <img  id="clockHand" style = "position:absolute; top:43%;left:50.75%; visibility:hidden" src="images/hand.png">
     <!-- Image of the greyed background displayed as a background while scanning the sample -->
-    <img class="img-responsive" id="scan" style = "position:absolute;z-index:1000; width:100%;height:100%;top:0%;left:0%; visibility:hidden" src="images/483.png">
+    <img class="img-fluid" id="scan" style = "position:absolute;z-index:1000; width:100%;height:100%;top:0%;left:0%; visibility:hidden" src="images/483.png">
     <!-- Video that plots a graph for 10 mm sample -->
     <video id="10mm_graph" style = "position:absolute;z-index:1100;top:20%;left:20%;visibility : hidden;" ><source src="videos/10mm_scan.mp4" type="video/mp4"></video>
     <!-- Video that plots a graph for 5 mm sample -->
