@@ -66,7 +66,7 @@
 
     // When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is changed continuously  to give the blinking light effect. The two images that are swapped is stored in images[]
     function turnOn() {
-        img = document.getElementById('img1');
+        img = document.getElementById('table_with_spec');
         img.src = images[x];
         x++;
         if(x >= images.length){
