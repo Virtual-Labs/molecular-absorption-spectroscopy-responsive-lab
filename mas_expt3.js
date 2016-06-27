@@ -12,38 +12,40 @@
     images[0] = "images/spec_on_redLight.png";
     images[1] = "images/spec_on_no_redLight.png";
 
-    document.getElementById("data_button").addEventListener("click", function() {
-        popitup("slideshow.html");
-    }, false);
+    function initial_function(){
 
-    // Intial intrsuction to be followed
-    document.getElementById("demo").innerHTML = "Step-No 1: Turn on the instrument clicking on the power button and wait for 30 min for initialization of the instrument.";
+        document.getElementById("data_button").addEventListener("click", function() {
+            popitup("slideshow.html");
+        }, false);
 
-    var modal = document.getElementById('manual');
+        // Intial intrsuction to be followed
+        document.getElementById("demo").innerHTML = "Step-No 1: Turn on the instrument clicking on the power button and wait for 30 min for initialization of the instrument.";
 
-    // Get the button that opens the manual modal
-    var btn = document.getElementById("manual_button");
+        var modal = document.getElementById('manual');
 
-    // Get the <span> element that closes the manual modal
-    var span = document.getElementsByClassName("close")[0];
+        // Get the button that opens the manual modal
+        var btn = document.getElementById("manual_button");
 
-    // When the user clicks the button, open the manual modal 
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
+        // Get the <span> element that closes the manual modal
+        var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
+        // When the user clicks the button, open the manual modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
             modal.style.display = "none";
         }
-    }
 
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
     // When user clicks on the Data button it redirects him to the page containg slideshow of three graphs obtained from three different sample lengths
     function popitup(url) {
         newwindow=window.open(url,'name','height=300,width=250',"_parent");
@@ -51,8 +53,7 @@
             newwindow.focus()
         }
         return false;
-    }
-
+        }
     // When the user clicks on reset experiment this method is called
     function reload(){
         location.reload();
