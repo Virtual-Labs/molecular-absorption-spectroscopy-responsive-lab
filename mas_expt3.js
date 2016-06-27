@@ -5,7 +5,6 @@
     var initial_left;
     var elem;
     var img,img1;
-    var mql;
     var id,id1;
     var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
     var cuv;// indicates which cuvette
@@ -339,9 +338,11 @@
     
     // This method moves the filled pipette to the cuvette and replaces that cuvette image to a filled cuvette image
     function movePipette(){
+        // Get images
         elem = document.getElementById("pipette"); 
         initial_top = 290;
         initial_left = 280;
+        // Make the pipette move from the beaker to cuvette
         id = setInterval(frame, 5);
            function frame() {
                 if (initial_left == 253) {
@@ -363,6 +364,7 @@
             if(cuv==3){
                 img = document.getElementById("cuvette3");
             }
+            // Change the cuvette image to filled cuvette image
             img.src = "images/cuvette_filled.png";
         }, 1000);
     }
@@ -371,7 +373,9 @@
     // When this method is called for the second time the cuvette is moved upto the spectrophotometer.
     function cuvette(event){
         if ( step_no == 6){
+            // get the image of the shelf
             img = document.getElementById('shelf');
+            // Depending on the cuvette choosen change the shelf image, reaplce the transparent image with cuvette image and set 'cuv' value to access it later
             if(event.id=="cuvette1"){
                 img.src = "images/shelf_without_cuvette.png";
                 $('#cuvette1').attr('src', 'images/176.png'); 
@@ -390,6 +394,7 @@
                 elem = document.getElementById("cuvette3"); 
                 cuv = 3;
             } 
+            // Move the cuvette from the shelf to the table
             elem.style.width = "2.5%";
             initial_top = 10;
             initial_left = 400;
@@ -405,10 +410,12 @@
                  
                 }
            }
+            // Change the next instruction to be followed.
             document.getElementById("demo").innerHTML = "Step-No 7: Pour the solution from the micropipette into the cuvette by clicking on the cuvette(In actual measurements the cuvette is filled to two-third of its volume";
             step_no++;
         }
         else if(step_no == 9){
+            // Depending on the cuvette choosen get images accordingly.
             if(event.id=="cuvette1"){
                 elem = document.getElementById("cuvette1");
             } 
@@ -418,6 +425,7 @@
             if(event.id=="cuvette3"){
                 elem = document.getElementById("cuvette3");
             } 
+            // Move the cuvette from the table to the socket in the spectrophotmeter.
             initial_top = 320;
             initial_left = 290;
             id = setInterval(frame, 5);
@@ -431,6 +439,7 @@
                     elem.style.left = initial_left + 'px'; 
                 }
             }
+            // After 1200ms call moveDown() method.
             setTimeout("moveDown()",1200);
             step_no++;
         }
@@ -453,6 +462,7 @@
 
     // This method is used to move the reference cuvette into the spectrophptometer. 
     function extraCuvette(){
+        // Get the transparent image and replace it with a reference cuvette image and move it down into the spectrophotometer.
         $('#ref_cuvette').attr('src', 'images/cuvette_filled_water.png'); 
         var elem1 = document.getElementById("ref_cuvette"); 
         initial_top = 10;
@@ -467,6 +477,7 @@
 
            }
          }
+        // After 800ms make the sample cuvette and the referance cuvette hidden and replace the spectrophotometer with an image that has cuvette within them. 
         setTimeout(function(){
             images[0] = "images/spec_open_cuvette.png";
             images[1] = "images/spec_open_cuvette.png";
@@ -484,12 +495,14 @@
     function spectrophotometer(){
 
         if (step_no == 8){
+            // Replace the spectrophotometer images with the open spectrophotometer images
             images[0] = "images/spec_open.png";
             images[1] = "images/spec_open.png";
-            document.getElementById("demo").innerHTML = "Step-No 9: Click on the cuvette to palce it in the sample holder. One has to use water as the sample bank or reference in this measurement. Here a double beam spectrophotometer is shown.In this case one can place the sample in the sample holder(often the front one) and sample bank or reference in the reference holder(often the back one simultaneously.";
+            document.getElementById("demo").innerHTML = "Step-No 9: Click on the cuvette to place it in the sample holder. One has to use water as the sample bank or reference in this measurement. Here a double beam spectrophotometer is shown.In this case one can place the sample in the sample holder(often the front one) and sample bank or reference in the reference holder(often the back one simultaneously.";
             step_no++;
             }
         else if(step_no == 10){
+            // Replace the spectrophotometer images with the closed spectrophotmeter images.
             images[0] = "images/spec_on_redLight.png";
             images[1] = "images/spec_on_no_redLight.png";
             document.getElementById("demo").innerHTML = "Step-No 10: Run the wavelength scan by clicking on the computer monitor and then on the scan button and observe the wavelength scan";
@@ -501,6 +514,7 @@
     // This method is used to play a video which shows constructing graphs based on their sample path length. 
     function scan(){
         if(step_no==11){
+            // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
             if(cuv==1){
                 var vid = document.getElementById("10mm_graph");
             }
@@ -509,18 +523,22 @@
             }
             else if(cuv==3){
                 var vid = document.getElementById("1mm_graph");
-                                                                            }
+            }
+            // Get the scan image background.                                                               }
             var context=document.getElementById('scan');
+            // make the image and video obtained visible.
             context.style.visibility='visible';
             vid.style.visibility='visible';
+            //play the video.
             vid.play(); 
-         step_no++;
+            step_no++;
         }
     }
 
     // This method makes the graph hidden once the video is played nad close is pressed. 
     function disposeGraph(){
         if(step_no==12){
+            // After playing the graph plotting video close option is choosen, the background scan image and the video is mafde hidden.
             document.getElementById('10mm_graph').style.visibility='hidden';
             document.getElementById('5mm_graph').style.visibility='hidden';
             document.getElementById('1mm_graph').style.visibility='hidden';
