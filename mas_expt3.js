@@ -102,8 +102,10 @@
 
     // After 30 seconds of display of the timer the visibility of clock is changed back to hidden.
     function disposeClock(){
+        // Make the visiblility of the obtained images hidden.
         document.getElementById('clockScreen').style.visibility='hidden';
         document.getElementById('clockHand').style.visibility='hidden';
+        // Change to next intsruction to be followed.
         document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker";
     }
 
@@ -111,13 +113,16 @@
     // When this method is called for the second time the moveFlask() method is called.
     function flask() {
         if ( step_no == 2){
+            // Get images
             img = document.getElementById('shelf');
+            // Change the source of the image of the shelf to an image without beaker and flask
             img.src = "images/shelf_without_beaker_flask.png";
+            // Replace the transparent button with an image of flask.
             $('#flask').attr('src', 'images/flask.png'); 
             elem = document.getElementById("flask"); 
             initial_top= 0;
             initial_left = 0;
-            
+            // Move the flask image to desired position.
             id = setInterval(frame, 5);
             function frame() {
                 if (initial_top == 305) {
@@ -130,6 +135,7 @@
 
                 }
             } 
+            // Change to next intsruction to be followed.
             document.getElementById("demo").innerHTML = "Step-No 4: Click on the Conical flask to pour the solution into clean, dry beaker";
             step_no += 1;
         }
@@ -141,9 +147,11 @@
 
     // This method helps in moving the flask in upward direction and then calls changeFlask() and moveFlask1()
     function moveFlask() {
+        // Get image
         elem = document.getElementById("flask"); 
         initial_top = 200;
-        initial_left = 200; 
+        initial_left = 200;
+        // Move the flask image to desired location. 
         id = setInterval(frame, 5);
         function frame() {
            if (initial_left == 245) {
@@ -155,8 +163,11 @@
                 elem.style.left = initial_left + 'px'; 
             }
         }
+        // Call changeFlask() at a regular interval of 50 ms.
         id1 = setInterval(changeFlask,50);
+        // Change to next intsruction to be followed.
         document.getElementById("demo").innerHTML = "Step-No 5: Click on the micropipette to collect appropriate quantity of solution from the beaker";
+        // Call moveFlaskBack() to move it back to the table.
         setTimeout("moveFlaskBack()",1725);
     }
 
