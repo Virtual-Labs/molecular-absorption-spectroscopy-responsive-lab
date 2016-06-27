@@ -275,6 +275,7 @@
                     elem.style.left = initial_left + 'px'; 
                 }
             }
+            // Change to next intsruction to be followed.
             document.getElementById("demo").innerHTML = "Step-No 3: Click on the Conical flask to take it to experiment table";
             step_no++;
         }
@@ -307,18 +308,21 @@
                 }
             }
             $('#pipette').attr('src', 'images/pipette_inside.png'); 
+            // Change to next instruction to be followed. 
             document.getElementById("demo").innerHTML = "Step-No 5: Click on the micropipette to collect appropriate quantity of solution from the beaker";
             step_no += 1;
         }
 
         else if(step_no==5){
             fillPipette();
+            // Change to next instruction to be followed.
             document.getElementById("demo").innerHTML = "Step-No 6: Take cuvette by clicking on it";
             step_no += 1;
         }
 
         else if(step_no==7){
             movePipette();
+            // Change to next instruction to be followed.
             document.getElementById("demo").innerHTML = "Step-No 8:Click on the spectrophotometer lid to open it ";
             step_no +=1;
         }
