@@ -15,6 +15,8 @@ This repository contains the "Flash to Javascript Converion" sources for the Mol
 
 * On clicking these buttons replace the frame with a necessary frame and replace the button image with an appropriate one and provide desired animations to it.
 
+* For animations, checkout the sprite sheets and identify the necessary animations needed. Then convert the svg images of that sprite sheet to png images using online convertors available. Then change these images continously to obtain the required animations.
+
 * To plot the graph, since the data is not available, capture the screen of graph plotting from the flash experiment and play the video when 'scan' button is pressed.
 
 ##### Additional things used apart from pure JavaScript are
