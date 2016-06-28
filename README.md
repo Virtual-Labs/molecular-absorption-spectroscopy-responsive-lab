@@ -17,6 +17,6 @@ This repository contains the "Flash to Javascript Converion" sources for the Mol
 
 * To plot the graph, since the data is not available, capture the screen of graph plotting from the flash experiment and play the video when 'scan' button is pressed.
 
-#### Additional things used apart from pure JavaScript are
+##### Additional things used apart from pure JavaScript are
 * jQueryRotate.js for rotating certain images.
 
