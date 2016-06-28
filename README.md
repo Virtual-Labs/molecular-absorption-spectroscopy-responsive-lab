@@ -14,3 +14,9 @@ This repository contains the "Flash to Javascript Converion" sources for the Mol
 * Place transparent image buttons over the frames in the places which should be clickable.
 
 * On clicking these buttons replace the frame with a necessary frame and replace the button image with an appropriate one and provide desired animations to it.
+
+* To plot the graph, since the data is not available, capture the screen of graph plotting from the flash experiment and play the video when 'scan' button is pressed.
+
+#### Additional things used apart from pure JavaScript are
+* jQueryRotate.js for rotating certain images.
+
