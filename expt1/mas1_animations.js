@@ -9,9 +9,15 @@ function flask() {
             // Get images
             img = document.getElementById('shelf');
             // Change the source of the image of the shelf to an image without beaker and flask
-            img.src = "images/shelf_without_beaker_flask.png";
+            img.src = "images/shelf_without_flask_beaker.png";
             // Replace the transparent button with an image of flask.
-            $('#flask').attr('src', 'images/flask.png'); 
+            if(solution==1){
+            	$('#flask').attr('src', 'images/flask.png'); 
+            }
+            else{
+            	$('#flask').attr('src', 'images/flask0.png');
+            }
+            
             elem = document.getElementById("flask"); 
             initial_top= 0;
             initial_left = 0;
@@ -69,36 +75,71 @@ function flask() {
         img = document.getElementById("flask");
         img1 = document.getElementById("beaker");
         var flask =[];
-        flask[0] = "images/flask1.png";
-        flask[1] = "images/flask2.png";
-        flask[2] = "images/flask3.png";
-        flask[3] = "images/flask4.png";
-        flask[4] = "images/flask5.png";
-        flask[5] = "images/flask6.png";
-        flask[6] = "images/flask7.png";
-        flask[7] = "images/flask8.png";
-        flask[8] = "images/flask9.png";
-        flask[9] = "images/flask10.png";
-        flask[10] = "images/flask11.png";
-        flask[11] = "images/flask12.png";
-        flask[12] = "images/flask13.png";
-        flask[13] = "images/flask14.png";
-        flask[14] = "images/flask15.png";
-        flask[15] = "images/flask16.png";
-        flask[16] = "images/flask17.png";
-        flask[17] = "images/flask18.png";
-        flask[18] = "images/flask19.png";
-        flask[19] = "images/flask20.png";
-        flask[20] = "images/flask21.png";
-        flask[21] = "images/flask22.png";
-        flask[22] = "images/flask22.png";
-        flask[23] = "images/flask22.png";
-        flask[24] = "images/flask22.png";
-        flask[25] = "images/flask23.png";
-        flask[26] = "images/flask24.png";
-        flask[27] = "images/flask25.png";
-        flask[28] = "images/flask26.png";
-        flask[29] = "images/flask26.png";
+        if(solution==1){
+        	flask[0] = "images/flask1.png";
+	        flask[1] = "images/flask2.png";
+	        flask[2] = "images/flask3.png";
+	        flask[3] = "images/flask4.png";
+	        flask[4] = "images/flask5.png";
+	        flask[5] = "images/flask6.png";
+	        flask[6] = "images/flask7.png";
+	        flask[7] = "images/flask8.png";
+	        flask[8] = "images/flask9.png";
+	        flask[9] = "images/flask10.png";
+	        flask[10] = "images/flask11.png";
+	        flask[11] = "images/flask12.png";
+	        flask[12] = "images/flask13.png";
+	        flask[13] = "images/flask14.png";
+	        flask[14] = "images/flask15.png";
+	        flask[15] = "images/flask16.png";
+	        flask[16] = "images/flask17.png";
+	        flask[17] = "images/flask18.png";
+	        flask[18] = "images/flask19.png";
+	        flask[19] = "images/flask20.png";
+	        flask[20] = "images/flask21.png";
+	        flask[21] = "images/flask22.png";
+	        flask[22] = "images/flask22.png";
+	        flask[23] = "images/flask22.png";
+	        flask[24] = "images/flask22.png";
+	        flask[25] = "images/flask23.png";
+	        flask[26] = "images/flask24.png";
+	        flask[27] = "images/flask25.png";
+	        flask[28] = "images/flask26.png";
+	        flask[29] = "images/flask26.png";
+        }
+        else if(solution==2){
+        	flask[0] = "images/flask01.png";
+	        flask[1] = "images/flask02.png";
+	        flask[2] = "images/flask03.png";
+	        flask[3] = "images/flask04.png";
+	        flask[4] = "images/flask05.png";
+	        flask[5] = "images/flask06.png";
+	        flask[6] = "images/flask07.png";
+	        flask[7] = "images/flask08.png";
+	        flask[8] = "images/flask09.png";
+	        flask[9] = "images/flask010.png";
+	        flask[10] = "images/flask011.png";
+	        flask[11] = "images/flask012.png";
+	        flask[12] = "images/flask013.png";
+	        flask[13] = "images/flask014.png";
+	        flask[14] = "images/flask015.png";
+	        flask[15] = "images/flask016.png";
+	        flask[16] = "images/flask017.png";
+	        flask[17] = "images/flask018.png";
+	        flask[18] = "images/flask019.png";
+	        flask[19] = "images/flask020.png";
+	        flask[20] = "images/flask021.png";
+	        flask[21] = "images/flask022.png";
+	        flask[22] = "images/flask022.png";
+	        flask[23] = "images/flask022.png";
+	        flask[24] = "images/flask022.png";
+	        flask[25] = "images/flask023.png";
+	        flask[26] = "images/flask024.png";
+	        flask[27] = "images/flask025.png";
+	        flask[28] = "images/flask026.png";
+	        flask[29] = "images/flask026.png";
+        }
+        
 
         if(y < flask.length){
             img.src = flask[y];
@@ -111,14 +152,31 @@ function flask() {
         }
         if (y == 16){
             img.style.width = '15%';
-            img1.src = "images/beaker0.png";
+            if(solution==1){
+            	img1.src = "images/beaker0.png";
+            }
+            else if(solution==2){
+            	img1.src = "images/beaker00.png";
+            }
+            
         }
         if (y == 25){
             img.style.width = '14%';
-            img1.src = "images/beaker2.png";
+            if(solution==1){
+            	img1.src = "images/beaker1.png";
+            }
+            else if(solution==2){
+            	img1.src = "images/beaker01.png";
+            }
+            
         }
         if(y == 30){
-            //img1.src = "images/beaker2.png";
+        	if(solution==1){
+            	img1.src = "images/beaker2.png";
+            }
+            else if(solution==2){
+            	img1.src = "images/beaker02.png";
+            }
             clearInterval(id1);
         }
     }
@@ -151,7 +209,13 @@ function flask() {
         // Get image
         img = document.getElementById('shelf');
         // Change the image of the shelf to an image without beaker.
-        img.src = "images/shelf_without_beaker.png";
+        if(solution==1){
+            img.src = "images/shelf_without_beaker.png";
+        }
+        if(solution==2){
+            img.src = "images/shelf_without_beaker2.png";
+        }
+        
         // Change the trasparent button over beaker to an image of the beaker
         $('#beaker').attr('src', 'images/beaker.png'); 
         elem = document.getElementById("beaker"); 
@@ -224,10 +288,16 @@ function flask() {
     // This method replaces the beaker image with less amount of solution.
     function fillPipette() {
         img = document.getElementById("beaker");
-        img.src = "images/beaker1.png";
+        if(solution==1){
+        	img.src = "images/beaker1.png";
+        }
+        else {
+        	img.src = "images/beaker01.png";
+        }
+        
         setTimeout(function() {
             img.src = "images/beaker3.png";
-        }, 1000);
+        }, 500);
     }
     
     // This method moves the filled pipette to the cuvette and replaces that cuvette image to a filled cuvette image
@@ -249,45 +319,28 @@ function flask() {
             }
         }
         setTimeout(function() {
-            if(cuv==1){
-                img = document.getElementById("cuvette1");
-            }
-            if(cuv==2){
-                img = document.getElementById("cuvette2");
-            }
-            if(cuv==3){
-                img = document.getElementById("cuvette3");
-            }
+            img = document.getElementById("cuvette");
             // Change the cuvette image to filled cuvette image
-            img.src = "images/cuvette_filled.png";
+            if(solution==1){
+        		img.src = "images/cuvette_filled.png";
+        	}
+        	else {
+        		img.src = "images/cuvette_filled0.png";
+        	}
+            
         }, 1000);
     }
 
     // When this method is called for the first time the tansparent image button on the shelf cuvette is replaced with an image of the cuvette and is moved down and the shelf image is changed to an image with no cuvette depending on the cuvette clicked.
     // When this method is called for the second time the cuvette is moved upto the spectrophotometer.
-    function cuvette(event){
+    function cuvette(){
         if ( step_no == 6){
-            // get the image of the shelf
+            // Get the image of the shelf
             img = document.getElementById('shelf');
-            // Depending on the cuvette choosen change the shelf image, reaplce the transparent image with cuvette image and set 'cuv' value to access it later
-            if(event.id=="cuvette1"){
-                img.src = "images/shelf_without_cuvette.png";
-                $('#cuvette1').attr('src', 'images/176.png'); 
-                elem = document.getElementById("cuvette1"); 
-                cuv = 1;
-            } 
-            if(event.id=="cuvette2"){
-                img.src = "images/shelf_without_cuvette2.png";
-                $('#cuvette2').attr('src', 'images/176.png'); 
-                elem = document.getElementById("cuvette2"); 
-                cuv = 2;
-            } 
-            if(event.id=="cuvette3"){
-                img.src = "images/shelf_without_cuvette3.png";
-                $('#cuvette3').attr('src', 'images/176.png'); 
-                elem = document.getElementById("cuvette3"); 
-                cuv = 3;
-            } 
+            // Change the image of the shelf and move the cuvette.
+            img.src = "images/only_shelf.png";
+            $('#cuvette').attr('src', 'images/332.png'); 
+            elem = document.getElementById("cuvette"); 
             // Move the cuvette from the shelf to the table
             elem.style.width = "2.5%";
             initial_top = 10;
@@ -310,15 +363,7 @@ function flask() {
         }
         else if(step_no == 9){
             // Depending on the cuvette choosen get images accordingly.
-            if(event.id=="cuvette1"){
-                elem = document.getElementById("cuvette1");
-            } 
-            if(event.id=="cuvette2"){
-                elem = document.getElementById("cuvette2");
-            } 
-            if(event.id=="cuvette3"){
-                elem = document.getElementById("cuvette3");
-            } 
+            elem = document.getElementById("cuvette");
             // Move the cuvette from the table to the socket in the spectrophotmeter.
             initial_top = 320;
             initial_left = 290;
@@ -376,9 +421,7 @@ function flask() {
             images[0] = "images/spec_open_cuvette.png";
             images[1] = "images/spec_open_cuvette.png";
             $('#ref_cuvette').attr('src', 'images/vertical_button.png'); 
-            $('#cuvette1').attr('src', 'images/vertical_button.png'); 
-            $('#cuvette2').attr('src', 'images/vertical_button.png'); 
-            $('#cuvette3').attr('src', 'images/vertical_button.png'); 
+            $('#cuvette').attr('src', 'images/vertical_button.png');  
 
         },800);
 

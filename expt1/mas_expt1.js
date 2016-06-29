@@ -10,7 +10,7 @@
     var img,img1;
     var id,id1;
     var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
-    var cuv;// indicates which cuvette
+    var solution;// indicates which cuvette
     images[0] = "images/spec_on_redLight.png";
     images[1] = "images/spec_on_no_redLight.png";
 
@@ -21,8 +21,21 @@
             popitup("slideshow.html");
         }, false);
 
+        $('#solution').change(function () {
+            var chosen_solution = $('#solution').val();
+                    
+            if(chosen_solution=='caffeine'){
+                solution = 2;
+                $('#shelf').attr('src','images/shelf_with_grey_solution.png'); 
+            }
+            else{
+                solution = 1;
+                $('#shelf').attr('src','images/shelf_with_orange_solution.png')
+            }
+            
+        });
         // Intial intrsuction to be followed
-        document.getElementById("demo").innerHTML = "Step-No 1: Turn on the instrument clicking on the power button and wait for 30 min for initialization of the instrument.";
+        document.getElementById("demo").innerHTML = "Step-No 1: Prepare following two solutions: a) 0.001M of potassium dichromate (K2Cr2O7) and b) 5mg/L caffeine in distilled water. Here the solutions are shown in two volumetric flasks. One can select a solution for measurement by clicking on desired solution from the dropdown menu. Turn on the instrument clicking n the power button and wait for 30 min for initialisationof the instrument.";
 
         var modal = document.getElementById('manual');
 
@@ -77,6 +90,7 @@
         if(x >= images.length){
             x = 0;
         }
+        $("#solution").prop("disabled", true);
         // Call turnOn() method every 250ms 
         setTimeout("turnOn()", 250);
     }
@@ -138,14 +152,11 @@
     function scan(){
         if(step_no==11){
             // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
-            if(cuv==1){
-                var vid = document.getElementById("10mm_graph");
+            if(solution==1){
+                var vid = document.getElementById("graph1");
             }
-            else if(cuv==2){
-                var vid = document.getElementById("5mm_graph");
-            }
-            else if(cuv==3){
-                var vid = document.getElementById("1mm_graph");
+            if(solution==2){
+                var vid = document.getElementById("graph2");
             }
             // Get the scan image background.                                                               }
             var context=document.getElementById('scan');
@@ -162,9 +173,8 @@
     function disposeGraph(){
         if(step_no==12){
             // After playing the graph plotting video close option is choosen, the background scan image and the video is mafde hidden.
-            document.getElementById('10mm_graph').style.visibility='hidden';
-            document.getElementById('5mm_graph').style.visibility='hidden';
-            document.getElementById('1mm_graph').style.visibility='hidden';
+            document.getElementById('graph1').style.visibility='hidden';
+            document.getElementById('graph2').style.visibility='hidden';
             document.getElementById('scan').style.visibility='hidden';
         }
 

@@ -80,6 +80,12 @@
         <div class="col-sm-6">
             <!-- This column conatins the shelf -->
             <img class="img-responsive" id = "shelf" src="images/shelf_with_orange_solution.png">
+            
+            <select id="solution" style="position:absolute;z-index:1099; left:8%; top:5%;">
+                <option value="k2cr2o7" selected>Potassium Dichromate</option>
+                <option value="caffeine">Caffeine</option>
+            </select>
+
             <!-- A transparent button is placed on top of every apparatus on the shelf. -->
             <img id="flask" class="img-fluid" style="position:absolute;z-index:999; width:8%; left:13%; top:29%; cursor:pointer;" onclick="flask();" src="images/vertical_button.png">
 
@@ -87,12 +93,8 @@
 
             <img id="beaker" class="img-fluid" style="position:absolute;z-index:800; width:10%; left:58%; top:25%;  cursor:pointer;" onclick="beaker();" src="images/vertical_button.png">
 
-            <img id="cuvette1" class="img-fluid" style="position:absolute;z-index:999; width:4%; left:75%; top:48%; cursor:pointer;" onclick="cuvette(this);" src="images/vertical_button.png">
+            <img id="cuvette" class="img-fluid" style="position:absolute;z-index:999; width:4%; left:80%; top:48%; cursor:pointer;" onclick="cuvette();" src="images/vertical_button.png">
 
-            <img id="cuvette2" class="img-fluid" style="position:absolute;z-index:999; width:4%; left:82%; top:48%; cursor:pointer;" onclick="cuvette(this);" src="images/vertical_button.png">
-
-            <img id="cuvette3" class="img-fluid" style="position:absolute;z-index:999; width:4%; left:88%; top:48%; cursor:pointer;" onclick="cuvette(this);" src="images/vertical_button.png">
-      
         </div>
     </div>
 
@@ -111,9 +113,9 @@
             <!-- reference cuvette -->
             <img id="ref_cuvette" class="img-fluid" style="position: absolute; z-index: 899; width: 1.5%; left: 75%; top: 47%; cursor: pointer;" src="images/vertical_button.png">
             <!-- text that shows the instructions to be followed next -->
-            <div id = "demo" style="position: absolute; top: 70%; left: 27%; max-width: 50%; color: yellow"></div>
+            <div id = "demo" style="position: absolute; top: 70%; left: 22%; max-width: 60%; color: yellow"></div>
             <!-- button to switch on and switch off the spectrophotometer -->
-            <button style = "background-color: Transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden; position: absolute; left: 17%; top: 48%;" onclick = "turnOn();showClock()"><img src="images/button.png"></button>
+            <button style = "background-color: Transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden; position: absolute; left: 17%; top: 48%;" onclick = "turnOn();showClock()"><img src="images/vertical_button.png"></button>
         </div>
     </div>
     <!-- Image of the face of the clock which is displayed on switching on the spectrophotometer -->
@@ -122,14 +124,12 @@
     <img  id="clockHand" style = "position:absolute; top:43%;left:50.75%; visibility:hidden" src="images/hand.png">
     <!-- Image of the greyed background displayed as a background while scanning the sample -->
     <img class="img-fluid" id="scan" style = "position:absolute;z-index:1000; width:100%;height:100%;top:0%;left:0%; visibility:hidden" src="images/483.png">
-    <!-- Video that plots a graph for 10 mm sample -->
-    <video id="10mm_graph" style = "position:absolute;z-index:1100;top:20%;left:20%;visibility : hidden;" ><source src="videos/10mm_scan.mp4" type="video/mp4"></video>
-    <!-- Video that plots a graph for 5 mm sample -->
-    <video id="5mm_graph" style = "position:absolute;z-index:1100;top:20%;left:20%;visibility : hidden;" ><source src="videos/5mm_scan.mp4" type="video/mp4"></video>
-    <!-- Video that plots a graph for 1 mm sample -->
-    <video id="1mm_graph" style = "position:absolute;z-index:1100;top:20%;left:20%;visibility : hidden;" ><source src="videos/1mm_scan.mp4" type="video/mp4"></video>
+    <!-- Video that plots a graph for type 1 sample -->
+    <video id="graph1" style = "position:absolute;z-index:1100;top:20%;left:20%;visibility : hidden;" ><source src="videos/graph1.mp4" type="video/mp4"></video>
+    <!-- Video that plots a graph for type 2 sample -->
+    <video id="graph2" style = "position:absolute;z-index:1100;top:20%;left:20%;visibility : hidden;" ><source src="videos/graph2.mp4" type="video/mp4"></video>
     <!-- Transparent image button to close the scanning page -->
-    <img class="img-fluid" style="position:absolute; z-index:1200; width:5%; left:74%; top:67%;cursor:pointer;" onclick="disposeGraph();" src="images/vertical_button.png">
+    <img class="img-fluid" style="position:absolute; z-index:1200; width:5%; left:78%; top:65%;cursor:pointer;" onclick="disposeGraph();" src="images/vertical_button.png">
 
 </body>
 </html>
