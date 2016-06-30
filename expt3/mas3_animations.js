@@ -272,19 +272,19 @@ function flask() {
             // Depending on the cuvette choosen change the shelf image, reaplce the transparent image with cuvette image and set 'cuv' value to access it later
             if(event.id=="cuvette1"){
                 img.src = "images/shelf_without_cuvette.png";
-                $('#cuvette1').attr('src', 'images/176.png'); 
+                $('#cuvette1').attr('src', 'images/335.png'); 
                 elem = document.getElementById("cuvette1"); 
                 cuv = 1;
             } 
             if(event.id=="cuvette2"){
                 img.src = "images/shelf_without_cuvette2.png";
-                $('#cuvette2').attr('src', 'images/176.png'); 
+                $('#cuvette2').attr('src', 'images/335.png'); 
                 elem = document.getElementById("cuvette2"); 
                 cuv = 2;
             } 
             if(event.id=="cuvette3"){
                 img.src = "images/shelf_without_cuvette3.png";
-                $('#cuvette3').attr('src', 'images/176.png'); 
+                $('#cuvette3').attr('src', 'images/335.png'); 
                 elem = document.getElementById("cuvette3"); 
                 cuv = 3;
             } 
