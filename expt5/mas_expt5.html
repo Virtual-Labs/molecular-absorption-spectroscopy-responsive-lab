@@ -33,7 +33,7 @@
 
     <div class="row">
         <!-- Second row consists of two columns with one column containing buttons ie manual and data and the other containing shelf with apparatus -->
-        <div class="col-sm-6">
+        <div class="col-sm-3">
             <!-- Manual button displays the set of instructions to be followed to perform experiment
             On clicking this button a box modal appears over the page n displays the instruction -->
             <button id="manual_button" style = "background-color: Transparent; border : none; position:absolute; left:25%;"><img src="images/manual_button.png"></button>
@@ -75,6 +75,14 @@
             <button id="data_button" style = "background-color: Transparent; border : none; position:absolute;bottom:0%; left:25%;"><img src="images/data_button.png" ></button>
             
         </div>
+         <div class="col-sm-3" > 
+            <div class="conc">
+               &nbsp; '   &emsp;&emsp;&emsp;&emsp;  '   &emsp;&emsp;&emsp;&nbsp;  '    &emsp;&emsp;&emsp;&nbsp;&nbsp;  '  &emsp;&emsp;&emsp;&emsp;  ' 
+               <input type="range" id="conc_scale" min="0.02" max="0.10" step="0.02"> 
+            <center><div id ="concentration" >0.06 mM</div></center>
+            </div>
+            <center>Concentration of 2-nitroaniline</center>
+        </div>
 
         <div class="col-sm-6">
             
@@ -90,14 +98,7 @@
             <img id="cuvette"  style="position:absolute;z-index:899; width:4%; left:80%; top:48%; cursor:pointer;" onclick="cuvette();" src="images/vertical_button.png">
       
         </div>
-    </div>
-    <div clss ="row">
-        <div class="col-sm-2"> </div>
-        <div class="col-sm-3" background="images/box.png"> 
-           Concentration of 2-nitroaniline in mM<input type="range" id="conc_scale" min="0.02" max="0.10" step="0.02">
-           &nbsp; '   &emsp;&emsp;&emsp;&emsp;  '   &emsp;&emsp;&emsp;&nbsp;  '    &emsp;&emsp;&emsp;&nbsp;&nbsp;  '  &emsp;&emsp;&emsp;&emsp;  ' 
-           0.02&emsp;&emsp;0.04&emsp;&emsp;0.06&emsp;&emsp;0.08&emsp;&nbsp;&nbsp;&emsp;0.10
-        </div>
+
     </div>
     <div class="row">
         <!-- Third row consists of table with various devices on it  -->

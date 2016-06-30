@@ -68,6 +68,7 @@
             if(chosen_conc=='0.10'){
                 solution = 5;
             }
+            document.getElementById("concentration").innerHTML =chosen_conc + " mM";
             
         });
     }
