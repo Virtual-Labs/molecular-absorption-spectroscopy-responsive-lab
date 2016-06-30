@@ -389,7 +389,7 @@ function flask() {
         initial_top = 212;
         id1 = setInterval(frame, 5);
         function frame() {
-            if (initial_top == 299 ) {
+            if (initial_top == 295 ) {
                 clearInterval(id1);
             } else {
                initial_top+=1; 
@@ -407,7 +407,7 @@ function flask() {
         initial_top = 10;
         var id2 = setInterval(frame, 5);
         function frame() {
-           if (initial_top == 95) {
+           if (initial_top == 98) {
              clearInterval(id2);
            } else {
                 initial_top++; 
