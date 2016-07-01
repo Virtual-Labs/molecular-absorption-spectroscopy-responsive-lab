@@ -80,6 +80,7 @@
             
         });
     }
+    
     // When user clicks on the Data button it redirects him to the page containing slideshow of three graphs obtained from three different sample lengths
     function popitup(url) {
         // Opens a new browser window called newwindow. url specifies the URL of the page to open.
