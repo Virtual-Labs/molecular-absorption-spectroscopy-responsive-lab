@@ -1,0 +1,135 @@
+<!-- Lab : Molecular absorption spectroscopy 
+     Experiment : Sample Path Length Dependence of Absorbance (Lambert Law) 
+     Author : Rama Shanbhag -->
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <title>mas_6</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="mas_expt6.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="coolclock.js"></script> <script type="text/javascript" src="moreskins.js"></script>
+    <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="jQueryRotate.js"></script>
+    <script type="text/javascript" src="mas_expt6.js"></script>
+    <script type="text/javascript" src="mas6_animations.js"></script>
+    
+</head>
+<body style="max-width: 1080px; max-height: 720px; min-width:1080px;margin: 0 auto; overflow: hidden;" onload="initial_function()"> 
+    <!-- Body is divided into three rows -->
+    <div class= "row">
+        <!-- First row consists of title of the experiment and the reset button -->
+        <h3><center>Verification of Beer-Lambert Law</center></h3><br>
+        <center><button onclick="reload()">Reset Experiment</button></center>
+        <br>
+    </div>
+
+
+    <div class="row">
+        <!-- Second row consists of two columns with one column containing buttons ie manual and data and the other containing shelf with apparatus -->
+        <div class="col-sm-3">
+            <!-- Manual button displays the set of instructions to be followed to perform experiment
+            On clicking this button a box modal appears over the page n displays the instruction -->
+            <button id="manual_button" style = "background-color: Transparent; border : none; position:absolute; left:25%;"><img src="images/manual_button.png"></button>
+
+            <div id="manual" style = "z-index:1000" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times</span>
+                        <h2>Manual</h2>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>1. Prepare a standard K2Cr2O7 solution of strength nearly 3×10-3M (for the experiments described here we have used a solution of strength=3.16×10-3M). This is used as stock solution.  </p>
+                        <p>2. Turn on the instrument clicking on the power button and wait for 30 min for initialization of the instrument.   </p>
+                        <p>3. Click and drag on the concentration bar to choose the appropriate concentration of the solution whose absorbance has to be measured. One should start with the lowest concentration solution first. Why?</p>
+                        <p>4. Click on the beaker to take a clean, dry beaker.  </p>
+                        <p>5. Click on the volumetric flask to pour the solution into the clean, dry beaker.   </p>
+                        <p>6. Click on the micropipette to collect appropriate quantity of solution from the beaker.  </p>
+                        <p>7. Take a cuvette (quartz cuvette with a given path length, say, 1 cm) by clicking on it.   </p>
+                        <p>8. Pour the solution from the micropipette into the cuvette by clicking on the micropipette. (In real measurements, the cuvette is filled to two-third of its volume.)   </p>
+                        <p>9. Click on the spectrophotometer lid to open it.   </p>
+                        <p>10. Click on the cuvette to place it in the sample holder. One has to use water as the sample blank or reference in an identical cuvette for this measurement. Here a double beam spectrophotometer is shown. In this case, one can place the sample in the sample holder (often the front one) and the sample bank or reference in the reference holder (often the back one) simultaneously.   </p>
+                        <p>11. Run the wavelength scan by clicking on the Computer monitor first and then on the Scan button there to observe the wavelength scan. </p>
+                        <p>12. Click on Reset button to start new measurement.  </p>
+                        <p>13. Select next higher concentration and repeat the measurement. Every time one should rinse the cuvette taking a small portion of the solution from the solution that will be measured next. Similarly, one can repeat it for all the concentrations one after another. </p>
+                        <p>14. Plot the absorbance of the sample at various wavelengths for different concentrations and determine the wavelength of maximum absorptions i.e., spectral peak-positions. </p>
+                        <p>15. Find out the wavelengths of maximum absorbance (λmax), the absorbance at λmax and at another wavelength (say, 335 nm) for all the concentrations of K2Cr2O7 and make a table containing these data.</p>
+                        <p>16. Plot absorbance vs. concentration. Connect the points first with line segments. Then attempt linear fits and calculate linear regressions. </p>
+                        <p>17. Verify the Beer-Lambert Law by observing whether absorbance and transmittance values have linear correlation with concentration or not. Discuss your results.</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <br><br><br><br>
+            <!-- Data button displays the graphs obtained on plotting absorbance against wavelength for different sample path lengths
+            On clicking this button a new page displaying the graphs for three different path length is opened  -->
+            <button id="data_button" style = "background-color: Transparent; border : none; position:absolute;bottom:0%; left:25%;"><img src="images/data_button.png" ></button>
+            
+        </div>
+         <div class="col-sm-3" > 
+            <div class="conc">
+            <br>
+               <input type="range" id="conc_scale" min="1" max="6" step="1"> 
+               <br>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            
+            <!-- This column conatins the shelf -->
+            <img class="img-responsive" id = "shelf" src="images/shelf_with_orange_solution.png">
+            <!-- A transparent button is placed on top of every apparatus on the shelf. -->
+            <img id="flask"  style="position:absolute;z-index:999; width:8%; left:13%; top:29%; cursor:pointer;" onclick="flask();" src="images/vertical_button.png">
+
+            <img id="pipette"  style="position:absolute;z-index:999; width:7%; left:36%; top:27%;  cursor:pointer;" onclick="pipette();" src="images/vertical_button.png">
+
+            <img id="beaker"  style="position:absolute;z-index:800; width:10%; left:58%; top:25%;  cursor:pointer;" onclick="beaker();" src="images/vertical_button.png">
+
+            <img id="cuvette"  style="position:absolute;z-index:899; width:4%; left:80%; top:48%; cursor:pointer;" onclick="cuvette();" src="images/vertical_button.png">
+      
+        </div>
+
+    </div>
+    <div class="row">
+    <br>
+        <!-- Third row consists of table with various devices on it  -->
+        <div class="col-sm-12">
+        <br><br>
+            <center><img  class="img-responsive"  id = "table_with_spec" src="images/table_with_spec.png"></center>
+
+            <img class="img-responsive" style = "position: absolute; left: 48%; top: 15%; max-width: 50%; max-height: 50%; " src="images/computer.png">
+            <!-- button to scan the sample on the computer-->
+            <img style="position: absolute; z-index: 999; width: 10%; left: 50%;top: 13%; cursor: pointer;" onclick="scan();" src="images/vertical_button.png">
+            <!-- button to open and close the spectrophotometer lid -->
+            <img  style="position: absolute; z-index: 999; width: 4%; left: 36%; top: 20%;  cursor: pointer;" onclick="spectrophotometer();" src="images/vertical_button.png">
+            <!-- reference cuvette -->
+            <img id="ref_cuvette" style="position: absolute; z-index: 899; width: 1.5%; left: 75%; top: 47%; cursor: pointer;" src="images/vertical_button.png">
+            <!-- text that shows the instructions to be followed next -->
+            <div id = "demo" style="position: absolute; top: 70%; left: 27%; max-width: 50%; color: yellow"></div>
+            <!-- button to switch on and switch off the spectrophotometer -->
+            <button style = "background-color: Transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden; position: absolute; left: 17%; top: 45%;" onclick = "turnOn();showClock()"><img src="images/vertical_button.png"></button>
+        </div>
+    </div>
+    <!-- Image of the face of the clock which is displayed on switching on the spectrophotometer -->
+    <img id="clockScreen" style = "position:absolute; top:10%; visibility:hidden" src="images/clock.png">
+    <!-- Image of the hand of the clock -->
+    <img  id="clockHand" style = "position:absolute; top:43%;left:50.75%; visibility:hidden" src="images/hand.png">
+    <!-- Image of the greyed background displayed as a background while scanning the sample -->
+    <img id="scan" style = "position:absolute;z-index:1000; width:100%;height:100%;top:0%;left:0%; visibility:hidden" src="images/483.png">
+    <!-- Video that plots a graph for 0.02 concentration sample -->
+    <video id="1conc" style = "position:absolute;z-index:1100;top:20%;left:20%;visibility : hidden;" ><source src="videos/graph1.mp4" type="video/mp4"></video>
+    <!-- Video that plots a graph for 0.04 concentration sample -->
+    <!-- Transparent image button to close the scanning page -->
+    <img  style="position:absolute; z-index:1200; width:5%; left:74%; top:67%;cursor:pointer;" onclick="disposeGraph();" src="images/vertical_button.png">
+
+</body>
+</html>
