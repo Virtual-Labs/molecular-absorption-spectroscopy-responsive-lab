@@ -167,7 +167,7 @@ function flask() {
             img.src = "images/shelf_without_beaker4.png";
         }
         if(solution==6){
-            img.src = "images/shelf_without_beaker5.png";
+            img.src = "images/shelf_without_beaker02.png";
         }
         // Change the trasparent button over beaker to an image of the beaker
         $('#beaker').attr('src', 'images/beaker.png'); 
@@ -269,7 +269,13 @@ function flask() {
         setTimeout(function() {
             img = document.getElementById("cuvette");
             // Change the cuvette image to filled cuvette image
-            img.src = "images/cuvette_filled.png";
+            if(solution == 6){
+                img.src = "images/cuvette_filled0.png";
+            }
+            else{
+                img.src = "images/cuvette_filled.png";
+            }
+            
         }, 1000);
     }
 

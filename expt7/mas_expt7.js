@@ -22,8 +22,8 @@
         }, false);
 
         // Intial intrsuction to be followed
-        document.getElementById('flask').style.filter='saturate(4)'
-        $('#shelf').attr('src', 'images/shelf_with_orange_solution3.png'); 
+        document.getElementById('flask').style.filter='saturate(2)'
+        $('#shelf').attr('src', 'images/shelf_with_orange_solution2.png'); 
         document.getElementById("demo").innerHTML = "Step-No 1:  Turn on the instument clicking in the power button and wait for 30 min for the initialisation of the instrument.";
         var modal = document.getElementById('manual');
 
@@ -51,33 +51,44 @@
         }
         $('#conc_scale').change(function () {
             var chosen_conc = document.getElementById("conc_scale").value; 
+            
             if(chosen_conc=='1'){
                 solution = 1;
                 document.getElementById('flask').style.filter='saturate(1)';
                 $('#shelf').attr('src', 'images/shelf_with_orange_solution.png'); 
                 
             }
-            if(chosen_conc=='2'){
+            else if(chosen_conc=='2'){
                 solution = 2;
                 document.getElementById('flask').style.filter='saturate(1.5)';
                 $('#shelf').attr('src', 'images/shelf_with_orange_solution1.png'); 
             }
-            if(chosen_conc=='3'){
+            else if(chosen_conc=='3'){
                 solution = 3;
                 document.getElementById('flask').style.filter='saturate(2)';
                 $('#shelf').attr('src', 'images/shelf_with_orange_solution2.png'); 
             }
-            if(chosen_conc=='4'){
+            else if(chosen_conc=='4'){
                 solution = 4;
                 document.getElementById('flask').style.filter='saturate(2.5)';
                 $('#shelf').attr('src', 'images/shelf_with_orange_solution3.png'); 
             }
-            if(chosen_conc=='5'){
+            else if(chosen_conc=='5'){
                 solution = 5;
-                document.getElementById('flask').style.filter='saturate(3)';
-                $('#shelf').attr('src', 'images/shelf_with_orange_solution4.png'); 
+                document.getElementById('flask').style.filter='saturate(3.5)';
+                $('#shelf').attr('src', 'images/shelf_with_orange_solution5.png'); 
             }
             
+        });
+        $('#solution').change(function () {
+            var chosen_type = document.getElementById("solution").value;
+            if(chosen_type == 'unknown'){
+                solution = 6;
+                document.getElementById('flask').style.filter='grayscale(100%)';
+                $('#shelf').attr('src', 'images/shelf_with_grey_solution.png');
+                document.getElementById('beaker').style.filter='grayscale(100%)';
+
+            }
         });
     }
     
@@ -121,6 +132,10 @@
             var context=document.getElementById('clockScreen');
             var hand =document.getElementById('clockHand');
             // Make the visiblility of the obtained images visible
+            if(solution==6){
+                document.getElementById("conc_scale").disabled = true;
+            }
+            document.getElementById("solution").disabled = true;
             context.style.visibility='visible';
             hand.style.visibility="visible";
             // Rotate 'clockHand' using jQueryRotate.js
