@@ -1,5 +1,12 @@
 # molecular-absorption-spectroscopy-responsive-lab
-This repository contains the "Flash to Javascript Converion" sources for the Molecular Absorption Spectroscopy Lab. 
+##### Terminology
+* SWF file format : SWF is a file extension for a Shockwave Flash file format created by Macromedia and now owned by Adobe. SWF stands for Small Web Format. It consists of video and vector based animations. These can be viewed on web browsers only using Flash plug in. It is derived from FLA file.
+
+* FLA file format : An FLA file is an editable video or animation project created with Adobe Flash. It is often saved as a .SWF file for use on the web.
+
+* Flash Decompilor : Flash Decompiler is a SWF to FLA converter, which will help you decompile Flash movies, convert SWF elements into multiple formats and edit SWF files (texts, hyperlinks and more) on the go without Adobe Flash installed. Moreover, you will be able to extract all elements from SWF files and save them to your hard drive in various formats. Flash Decompiler doesn't decompile Captivate projectors (EXE), projectors created outside of Adobe Flash.
+
+
 ##### Steps followed in the conversion of flash to JavaScript.
 * Get the .swf file of the flash experiment which needs to be converted to JavaScript.
 
