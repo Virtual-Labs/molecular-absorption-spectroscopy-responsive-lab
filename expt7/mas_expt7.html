@@ -37,10 +37,11 @@
                 On clicking this button a box modal appears over the page n displays the instruction -->
                 <button id="manual_button" style = "background-color: Transparent; border : none; position:absolute; left:70px;"><img src="images/manual_button.png"></button>
 
-                <div id="manual" style = "z-index:1000" class="modal">
+                <div id="manual" style = "z-index:1200" class="modal">
                     <!-- Modal content -->
                     <div class="modal-content">
                         <div class="modal-header">
+                            <!-- Consists of heading and close option-->
                             <span class="close">&times</span>
                             <h2>Manual</h2>
                         </div>
@@ -112,7 +113,7 @@
                 <!-- button to open and close the spectrophotometer lid -->
                 <img  style="position: absolute; z-index: 999; width: 4%; left: 36%; top: 20%;  cursor: pointer;" onclick="spectrophotometer();" src="images/vertical_button.png">
                 <!-- reference cuvette -->
-                <img id="ref_cuvette" style="position: absolute; z-index: 899; width: 1.5%; left: 75%; top: 47%; cursor: pointer;" src="images/vertical_button.png">
+                <img id="ref_cuvette" style="position: absolute; z-index: 898; width: 1.5%; left: 37%; top: 20%; cursor: pointer;" src="images/vertical_button.png">
                 <!-- text that shows the instructions to be followed next -->
                 <div id = "demo" style="position: absolute; top: 70%; left: 27%; max-width: 50%; color: yellow"></div>
                 <!-- button to switch on and switch off the spectrophotometer -->
@@ -125,11 +126,10 @@
         <!-- Image of the hand of the clock -->
         <img  id="clockHand" style = "position:absolute; top:305px; z-index:1102; left:50.55%; visibility:hidden" src="images/hand.png">
         <!-- Image of the grayed background displayed as a background while scanning the sample -->
-        <img id="scan" style = "position:absolute;z-index:1000; width:100%;height:100%;top:0%;left:0%; visibility:hidden" src="images/483.png">
+        <img id="scan" style = "position:absolute;z-index:1100;top:65px; visibility:hidden" src="images/483.png">
         <!-- Video that plots a graph for 0.02 concentration sample -->
-        <video id="1conc" style = "position:absolute;z-index:1100;top:20%;left:20%;visibility : hidden;" ><source src="videos/graph1.mp4" type="video/mp4"></video>
+        <video id="plot_graph" style = "position:absolute;z-index:1200;top:200px; left:20%; visibility:hidden;" ><source src="videos/graph1.mp4" type="video/mp4"></video>
         <!-- Transparent image button to close the scanning page -->
-        <img  style="position:absolute; z-index:1200; width:5%; left:74%; top:67%;cursor:pointer;" onclick="disposeGraph();" src="images/vertical_button.png">
-
+        <img  style="position:absolute; z-index:1200; left:74%; top:510px; cursor:pointer;" onclick="disposeGraph();" src="images/vertical_button.png">
     </body>
 </html>

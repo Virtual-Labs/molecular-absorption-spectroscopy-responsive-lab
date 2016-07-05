@@ -6,6 +6,7 @@
     images[1] = "images/spec_on_no_redLight.png";
     var x = 0;
     var y = 0;
+    // Variables necessary to obtain motion of all the images
     var initial_top;
     var initial_left;
     var final_top;
@@ -14,27 +15,21 @@
     var elem;
     var img,img1;
     var id,id1;
-    var type_of_movement;
+    var type_of_movement;// Indicates upward or downward motion
     var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
     var solution=3;// Indicates type of solution being used.
     
 
     // This method is called when the page is loaded. It helps in providing basic functionality to two buttons manual and data and also sets the first set of instructions.
     function initial_function(){
-        function autoResizeDiv()
-        {
-            document.getElementById('main').style.height = '715px';
-        }
-        window.onresize = autoResizeDiv;
-        autoResizeDiv();
 
         document.getElementById("data_button").addEventListener("click", function() {
             popitup("slideshow.html");
         }, false);
-
-        // Intial instruction to be followed
         document.getElementById('flask').style.filter='saturate(2)'
+        // Intial instruction to be followed
         document.getElementById("demo").innerHTML = "Step-No 1:  Prepare a standard K2Cr2O7 solution of strength nearly 3x10^-3 M in 0.01 N H2SO4(For the experiments described here we have used a solution of strength 3.16x10^-3 M. This is used as stock solution.) Switch on the computer and the instrument powers; wait for 30 min for warm up of the machine";
+        
         var modal = document.getElementById('manual');
         // Get the button that opens the manual modal
         var btn = document.getElementById("manual_button");
@@ -178,7 +173,7 @@
     }
 
     
-    
+    // This function is called when spectrometer lid is clicked.
     // First time its called to open the spectrophotometer
     // Second time its called to close the spectrophotometer
     function spectrophotometer(){
@@ -204,7 +199,7 @@
     function scan(){
         if(step_no==11){
             // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
-            var vid = document.getElementById("1conc");
+            var vid = document.getElementById("plot_graph");
             // Get the scan image background.                                                               }
             var context=document.getElementById('scan');
             // make the image and video obtained visible.
@@ -216,11 +211,11 @@
         }
     }
 
-    // This method makes the graph hidden once the video is played and close is pressed. 
+    // This method makes the graph hidden once the video is played and close is clicked. 
     function disposeGraph(){
         if(step_no==12){
             // After playing the graph plotting video close option is choosen, the background scan image and the video is mafde hidden.
-            document.getElementById('1conc').style.visibility='hidden';
+            document.getElementById('plot_graph').style.visibility='hidden';
             document.getElementById('scan').style.visibility='hidden';
         }
 
