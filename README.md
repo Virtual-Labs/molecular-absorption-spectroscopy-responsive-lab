@@ -1,5 +1,9 @@
 # molecular-absorption-spectroscopy-responsive-lab
-Conversion of flash to JavaScript.
+##### Problem statement
+Conversion of experiments in molecular absorption spectroscopy responsive lab from flash to JavaScript.
+
+##### Different methods explored
+
 
 ##### Terminology
 
@@ -15,7 +19,7 @@ Conversion of flash to JavaScript.
 
 
 
-##### Steps followed in the conversion of flash to JavaScript.
+##### Steps followed in the conversion.
 
 * Get the .SWF files of the flash experiment which needs to be converted to JavaScript from github.
 
@@ -26,27 +30,26 @@ Conversion of flash to JavaScript.
 
 * Combine these images using photoshop or any other photo editors available. Make sure all images are in PNG format.
 
-* Position all the these images in their appropriate positions in HTML and CSS code.
+* Position all these images in their appropriate positions in HTML and CSS code.
 
 * Define functions for each of the apparatus which redirect to other functions according to the need of the experiment.
 
 * Define one common function for upward and downward movement of any image which takes in final position initial position and the element to be moved. This function will work only for linear motions along straight line since position of the image is being changed every moment.
 
-* For other kind of animations like pouring liquid from one apparatus to other, checkout the sprite sheets obtained after extraction of SWF files and identify the animations needed. Convert the svg images of that sprite sheet to png images using online convertors available. Then change these images continously to obtain the required animations.
+* For other kind of animations like pouring liquid from one apparatus to other, checkout the [sprite sheets](http://kwiksher.com/tutorials_kwik/tutorial-sprites/) obtained after extraction of SWF files and identify the animations needed. Convert the svg images of that sprite sheet to png images using [online convertors](http://image.online-convert.com/convert-to-png) available. Then change these images continously to obtain the required animations.
 
 * After every step performed change the instruction which will explain what has to be done next.
 
-* To plot the graph, since the data is not available, capture the screen of graph plotting from the flash experiment and play the video when 'scan' button is pressed.
+* To plot the graph, since the data is not available, capture the screen of graph plotting from the flash experiment and play the video when 'scan' button is pressed. To capture only a part of the screen [QuickTime](http://quicktime.en.softonic.com/) can be used. If data is available then JavaScript frameworks like [Chart.js](http://www.chartjs.org/) can be used.
 
 * Take screenshot of all graphs in a particular experiment. Then slideshow these images in a new window when Data button is clicked.
 
 ##### Additional scripts necessary are
 
-* jQuery for HTML document traversal and manipulation, event handling, animation, and Ajax.
+* [jQuery](https://jquery.com/) for HTML document traversal and manipulation, event handling, animation, and Ajax.
 
-* Bootstrap to make front-end web development faster and easier. It helps in divinding web page into various rows and columns.
+* [Bootstrap](http://getbootstrap.com/) to make front-end web development faster and easier. It helps in dividing web page into various rows and columns.
 
 * jQueryRotate.js for rotating certain images.
 
-[Sites Using React](https://github.com/facebook/react/wiki/Sites-Using-React)
 
