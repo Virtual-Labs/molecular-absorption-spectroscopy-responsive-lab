@@ -44,7 +44,7 @@ Conversion of experiments in molecular absorption spectroscopy responsive lab fr
 
 * Take screenshot of all graphs in a particular experiment. Then slideshow these images in a new window when Data button is clicked.
 
-##### Additional scripts necessary are
+##### Additional scripts necessary 
 
 * [jQuery](https://jquery.com/) for HTML document traversal and manipulation, event handling, animation, and Ajax.
 
