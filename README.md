@@ -19,7 +19,8 @@ Conversion of flash to JavaScript.
 
 * Get the .SWF files of the flash experiment which needs to be converted to JavaScript from github.
 
-* Using JPEXS free Flash Decompiler extract all the components of the experiment.
+* Using [JPEXS free Flash Decompiler](https://www.free-decompiler.com/flash/download/) extract all the components of the experiment.
+
 
 * Identify the components which together form images required.
 
