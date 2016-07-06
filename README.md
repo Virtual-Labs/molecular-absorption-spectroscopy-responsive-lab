@@ -6,7 +6,7 @@ Conversion of experiments in molecular absorption spectroscopy responsive lab fr
 
 * Conversion using pure JavaScript animations in the desired sequence.
 
-* Using certain libraries and framework which make the conversion easier.
+* Using certain libraries and framework which would make the conversion easier.
 
 * Using [Google web Designer](https://www.google.com/webdesigner/) for creating interactive HTML5-based designs and motion graphics that can run on any device. 
 
