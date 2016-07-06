@@ -4,6 +4,14 @@ Conversion of experiments in molecular absorption spectroscopy responsive lab fr
 
 ##### Different methods explored
 
+* Conversion using pure JavaScript animations in the desired sequence.
+
+* Using certain libraries and framework which make the conversion easier.
+
+* Using [Google web Designer](https://www.google.com/webdesigner/) for creating interactive HTML5-based designs and motion graphics that can run on any device. 
+
+* Using [Adobe Wallaby](https://blogs.adobe.com/labs/archives/2011/03/convert-flash-to-html-files-with-wallaby-on-labs-now.html) for the conversion.
+
 
 ##### Terminology
 
