@@ -47,3 +47,5 @@ Conversion of flash to JavaScript.
 
 * jQueryRotate.js for rotating certain images.
 
+[Sites Using React](https://github.com/facebook/react/wiki/Sites-Using-React)
+
