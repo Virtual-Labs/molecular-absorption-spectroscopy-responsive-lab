@@ -1,18 +1,24 @@
     // This file contains all general functions used in the experiment
 
 
-    var images = [];
+    var images = [];// Two images that are alternated in ordered to get the blinking effect of the spectrophotometer
+    images[0] = "images/spec_on_redLight.png";
+    images[1] = "images/spec_on_no_redLight.png";
     var x = 0;
     var y = 0;
+    // Variables necessary to obtain motion of all the images
     var initial_top;
     var initial_left;
+    var final_top;
+    var final_left;
+    var step;
     var elem;
     var img,img1;
     var id,id1;
+    var type_of_movement;// Indicates upward or downward motion
     var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
-    var solution=1;// indicates which cuvette
-    images[0] = "images/spec_on_redLight.png";
-    images[1] = "images/spec_on_no_redLight.png";
+    var solution=1;// Indicates type of solution being used.
+    
 
     // This method is called when the page is loaded. It helps in providing basic functionality to two buttons manual and data and also sets the first set of instructions
     function initial_function(){
@@ -20,17 +26,21 @@
         document.getElementById("data_button").addEventListener("click", function() {
             popitup("slideshow.html");
         }, false);
-
+        // Method is called when the solution is changed. Here the change in solution is marked by chamging the grayscale of flask and beaker.
         $('#solution').change(function () {
             var chosen_solution = $('#solution').val();
                     
             if(chosen_solution=='caffeine'){
                 solution = 2;
-                $('#shelf').attr('src','images/shelf_with_grey_solution.png'); 
+                document.getElementById('flask').style.filter='grayscale(100%)';
+                document.getElementById('beaker').style.filter='grayscale(100%)';
+
             }
             else{
                 solution = 1;
-                $('#shelf').attr('src','images/shelf_with_orange_solution.png')
+                document.getElementById('flask').style.filter='grayscale(0%)';
+                document.getElementById('beaker').style.filter='grayscale(0%)';
+
             }
             
         });
