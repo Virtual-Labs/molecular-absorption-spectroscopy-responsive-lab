@@ -3,7 +3,7 @@
 Conversion of experiments in molecular absorption spectroscopy responsive lab from flash to JavaScript.
 
 #### Introduction
-The most interactive multimedia on the Web, which is in use is Flash. Flash offers the webmaster a single platform to create content that will be seen by the majority of Web site users, and that everyone who sees Flash will be able to interact with it in exactly the same way. However, there are some arguments against Flash, and many webmasters choose to use Flash in only limited pockets within their site. Hence creating similar experiences in JavaScript, we can avoid many of the problems inherent in Flash.
+The most interactive multimedia on the Web, which is in use is [Flash](#glossary). Flash offers the webmaster a single platform to create content that will be seen by the majority of Web site users, and that everyone who sees Flash will be able to interact with it in exactly the same way. However, there are some arguments against Flash, and many webmasters choose to use Flash in only limited pockets within their site. Hence creating similar experiences in JavaScript, we can avoid many of the problems inherent in Flash.
 
 #### Motivation
 ###### Problems with Flash
@@ -89,7 +89,7 @@ The continuing absence of an easy conversion process from Flash to HTML5 and inc
 
 #### Glossary
 
-* Flash : Adobe Flash (formerly called Macromedia Flash and Shockwave Flash) is a multimedia software platform used for production of animations, browser games, rich Internet applications, desktop applications, mobile applications and mobile games.
+* Flash : [Adobe Flash](http://www.adobe.com/products/flashplayer.html) (formerly called Macromedia Flash and Shockwave Flash) is a multimedia software platform used for production of animations, browser games, rich Internet applications, desktop applications, mobile applications and mobile games.
 
 * SWF file format : SWF is a file extension for a Shockwave Flash file format created by Macromedia and now owned by Adobe. SWF stands for Small Web Format. It consists of video and vector based animations. These can be viewed on web browsers only using Flash plug in. It is derived from FLA file.
 
