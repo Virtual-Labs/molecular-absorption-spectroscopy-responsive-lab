@@ -41,22 +41,10 @@ Another advantage of JavaScript is that the code to make an animation flutter ac
 
 The continuing absence of an easy conversion process from Flash to HTML5 and increased complexity in making further editing inhibits the development of HTML5 version using various tools mentioned above. Pure HTML5 / JavaScript is easier to understand, decompile and re-use.
 
-##### Terminology
-
-* Flash : Adobe Flash (formerly called Macromedia Flash and Shockwave Flash) is a multimedia software platform used for production of animations, browser games, rich Internet applications, desktop applications, mobile applications and mobile games.
-
-* SWF file format : SWF is a file extension for a Shockwave Flash file format created by Macromedia and now owned by Adobe. SWF stands for Small Web Format. It consists of video and vector based animations. These can be viewed on web browsers only using Flash plug in. It is derived from FLA file.
-
-* FLA file format : An FLA file is an editable video or animation project created with Adobe Flash. It is often saved as a .SWF file for use on the web.
-
-* Flash Decompilor : Flash Decompiler is a SWF to FLA converter, which will help you decompile Flash movies, convert SWF elements into multiple formats and edit SWF files (texts, hyperlinks and more) on the go without Adobe Flash installed. Moreover, you will be able to extract all elements from SWF files and save them to your hard drive in various formats. Flash Decompiler doesn't decompile Captivate projectors (EXE), projectors created outside of Adobe Flash.
-
-* SVG file format : Scalable Vector Graphics (SVG) is an XML-based vector image format for two-dimensional graphics with support for interactivity and animation. 
-
 
 ##### Steps followed in the conversion.
 
-* Get the .SWF files of the flash experiment which needs to be converted to JavaScript from github.
+* Get the [.SWF files](#Glossary) of the flash experiment which needs to be converted to JavaScript from github.
 
 * Using [JPEXS free Flash Decompiler](https://www.free-decompiler.com/flash/download/) extract all the components of the experiment.
 
@@ -98,6 +86,18 @@ The continuing absence of an easy conversion process from Flash to HTML5 and inc
 #### References
 * [http://www.w3schools.com/](http://www.w3schools.com/) for basic HTML CSS and JavaScript.
 * [http://stackoverflow.com/](http://stackoverflow.com/) for certain difficulties faced during the development.
+
+#### Glossary
+
+* Flash : Adobe Flash (formerly called Macromedia Flash and Shockwave Flash) is a multimedia software platform used for production of animations, browser games, rich Internet applications, desktop applications, mobile applications and mobile games.
+
+* SWF file format : SWF is a file extension for a Shockwave Flash file format created by Macromedia and now owned by Adobe. SWF stands for Small Web Format. It consists of video and vector based animations. These can be viewed on web browsers only using Flash plug in. It is derived from FLA file.
+
+* FLA file format : An FLA file is an editable video or animation project created with Adobe Flash. It is often saved as a .SWF file for use on the web.
+
+* Flash Decompilor : Flash Decompiler is a SWF to FLA converter, which will help you decompile Flash movies, convert SWF elements into multiple formats and edit SWF files (texts, hyperlinks and more) on the go without Adobe Flash installed. Moreover, you will be able to extract all elements from SWF files and save them to your hard drive in various formats. Flash Decompiler doesn't decompile Captivate projectors (EXE), projectors created outside of Adobe Flash.
+
+* SVG file format : Scalable Vector Graphics (SVG) is an XML-based vector image format for two-dimensional graphics with support for interactivity and animation. 
 
 
 #### Conclusion
