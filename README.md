@@ -18,7 +18,7 @@ Conversion of experiments in molecular absorption spectroscopy responsive lab fr
 
 ##### Method adopted
 
-The continuing absence of an easy conversion process from Flash to HTML5 inhibits the development of HTML5 version using various tools mentioned above as they do not satisfy all the desired properties hence making further editing more complex. Pure HTML5 / JavaScript is easier to understand, decompile and re-use.
+The continuing absence of an easy conversion process from Flash to HTML5 and increased complexity in making further editing inhibits the development of HTML5 version using various tools mentioned above. Pure HTML5 / JavaScript is easier to understand, decompile and re-use.
 
 ##### Terminology
 
