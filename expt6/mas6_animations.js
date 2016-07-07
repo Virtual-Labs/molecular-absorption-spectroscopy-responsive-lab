@@ -2,34 +2,77 @@
 // This file contains all the functions used in animation of the images in the experiment
 
 
-// When this method is called for the first time the tansparent image button on the shelf flask is replaced with an image of the flask and is moved down and the shlef image is changed to an image with no flask.
-// When this method is called for the second time the moveFlask() method is called.   
-function flask() {
-        if ( step_no == 2){
-            // Get images
-            img = document.getElementById('shelf');
-            // Change the source of the image of the shelf to an image without beaker and flask
-            img.src = "images/shelf_without_beaker_flask.png";
-            // Replace the transparent button with an image of flask.
-            $('#flask').attr('src', 'images/flask.png'); 
-            elem = document.getElementById("flask"); 
-            initial_top= 0;
-            initial_left = 0;
-            // Move the flask image to desired position.
-            id = setInterval(frame, 5);
-            function frame() {
-                if (initial_top == 305) {
+    // This function is a general method used to move images from initial position to final position.
+    function moveImage(){
+        id = setInterval(frame, 5);
+        function frame() {
+            if(type_of_movement == 0){
+                if (initial_top > final_top) {
                     clearInterval(id);
-                } else {
-                    initial_top++; 
-                    initial_left+=0.8;
+                 } else {
+                    initial_top+=step_top; 
+                    initial_left+=step_left;
                     elem.style.top = initial_top + 'px'; 
                     elem.style.left = initial_left + 'px'; 
 
                 }
-            } 
+            }
+            else if(type_of_movement == 1){
+                if (initial_top < final_top) {
+                    clearInterval(id);
+                 } else {
+                    initial_top+=step_top; 
+                    initial_left+=step_left;
+                    elem.style.top = initial_top + 'px'; 
+                    elem.style.left = initial_left + 'px'; 
+
+                }
+            }
+        } 
+    }
+
+    // This is the function called when beaker is clicked. 
+    // It moves the beaker from the shelf to the table.
+    function beaker() {
+        if(step_no==1){
+            // Get image
+            elem = document.getElementById("beaker"); 
+            //Detect thecurrent position of the flask.
+            initial_top = Math.round($('#beaker').position().top);
+            initial_left = Math.round($('#beaker').position().left);
+            // Initialise all the values for the motion of the images.
+            final_top = 305;
+            step_top = 1;
+            step_left = 0;
+            type_of_movement = 0;
+            // Move the beaker image to desired position.
+            moveImage();
             // Change to next intsruction to be followed.
-            document.getElementById("demo").innerHTML = "Step-No 4: Click on the 2-nitroaniline flask to pour the solution into clean, dry beaker";
+            document.getElementById("conc_scale").disabled = true;
+            document.getElementById("demo").innerHTML = "Step-No 3: Click on the conical flask to take it to experiment table";
+            step_no++;
+        }
+    }
+
+    // This is the function called when flask is clicked.
+    // When this function is called for the first time the flask moves from shelf to table.
+    // When this function is called for the second time the moveFlask() method is called.   
+    function flask() {
+        if ( step_no == 2){
+            // Get image
+            elem = document.getElementById("flask");
+            // Detect the current position of the flask. 
+            initial_top = Math.round($('#flask').position().top);
+            initial_left = Math.round($('#flask').position().left);
+            // Initialise all the values for the motion of the images.
+            final_top = 305;
+            step_top = 1;
+            step_left = 0.5;
+            type_of_movement = 0;
+            // Move the flask image to desired position.
+            moveImage();
+            // Change to next intsruction to be followed.
+            document.getElementById("demo").innerHTML = "Step-No 4: Click on the conical flask to pour the solution into clean, dry beaker";
             step_no += 1;
         }
         else if(step_no==3){
@@ -38,28 +81,22 @@ function flask() {
         }
     }
 
-    // This method helps in moving the flask in upward direction and then calls changeFlask() and moveFlask1()
+    // This method moves the flask upwards and then calls changeFlask() and moveFlaskback() 
     function moveFlask() {
         // Get image
-        elem = document.getElementById("flask"); 
-        initial_top = 200;
-        initial_left = 200;
+        elem = document.getElementById("flask");
+        // Detect the current position of the flask. 
+        initial_top = Math.round($('#flask').position().top);
+        initial_left = Math.round($('#flask').position().left);
+        // Initialise all the values for the motion of the images.
+        final_top = 250;
+        step_top = -0.75;
+        step_left = 0.5;
+        type_of_movement = 1;
         // Move the flask image to desired location. 
-        id = setInterval(frame, 5);
-        function frame() {
-           if (initial_left == 245) {
-                clearInterval(id);
-            } else {
-                initial_top-=0.01; 
-                initial_left++;
-                elem.style.top = initial_top + 'px'; 
-                elem.style.left = initial_left + 'px'; 
-            }
-        }
+        moveImage();
         // Call changeFlask() at a regular interval of 50 ms.
         id1 = setInterval(changeFlask,50);
-        // Change to next intsruction to be followed.
-        document.getElementById("demo").innerHTML = "Step-No 5: Click on the micropipette to collect appropriate quantity of solution from the beaker";
         // Call moveFlaskBack() to move it back to the table.
         setTimeout("moveFlaskBack()",1725);
     }
@@ -118,7 +155,6 @@ function flask() {
             img1.src = "images/beaker2.png";
         }
         if(y == 30){
-            //img1.src = "images/beaker2.png";
             clearInterval(id1);
         }
     }
@@ -127,98 +163,39 @@ function flask() {
     function moveFlaskBack() {
         // Get image
         elem = document.getElementById("flask");
-        initial_top = 200;
-        initial_left = 235; 
+        // Detect the current position of the flask.
+        initial_top = Math.round($('#flask').position().top);
+        initial_left = Math.round($('#flask').position().left);
+        //Initialise all the values for the motion of the images.
+        final_top = 305;
+        step_top = 1;
+        step_left = -1;
+        type_of_movement = 0;
         // Move it back to the table
         elem.style.width = "8%"
+        // Change the image to an empty flask image
         elem.src= "images/69.png"; 
-        id2 = setInterval(frame, 10);
-           function frame() {
-           if (initial_left == 200) {
-                clearInterval(id2);
-           } else {
-                initial_top+=3; 
-                initial_left--;
-                elem.style.top = initial_top + 'px'; 
-                elem.style.left = initial_left + 'px'; 
-            } 
-        }
+        moveImage();
     }
 
-    // When this method is called the tansparent image button on the shelf beaker is replaced with an image of the beaker and is moved down and the shelf image is changed to an image with no beaker.
-    function beaker() {
-      if(step_no==1){
-        // Get image
-        img = document.getElementById('shelf');
-        // Change the image of the shelf to an image without beaker.
-        if(solution==1){
-            img.src = "images/shelf_without_beaker.png";
-        }
-        if(solution==2){
-            img.src = "images/shelf_without_beaker1.png";
-        }
-        if(solution==3){
-            img.src = "images/shelf_without_beaker2.png";
-        }
-        if(solution==4){
-            img.src = "images/shelf_without_beaker3.png";
-        }
-        if(solution==5){
-            img.src = "images/shelf_without_beaker4.png";
-        }
-        if(solution==6){
-            img.src = "images/shelf_without_beaker5.png";
-        }
-        // Change the trasparent button over beaker to an image of the beaker
-        $('#beaker').attr('src', 'images/beaker.png'); 
-        elem = document.getElementById("beaker"); 
-        // Move the beaker.
-        initial_top = 0;
-        initial_left = 318;
-           id = setInterval(frame, 5);
-           function frame() {
-                if (initial_top == 305) {
-                    clearInterval(id);
-                } else {
-                    initial_top++; 
-                    elem.style.top = initial_top + 'px'; 
-                    elem.style.left = initial_left + 'px'; 
-                }
-            }
-            // Change to next intsruction to be followed.
-            document.getElementById("conc_scale").disabled = true;
-            document.getElementById("demo").innerHTML = "Step-No 3: Click on the 2-nitroaniline flask to take it to experiment table";
-            step_no++;
-        }
-    }
-
-    // When this method is called for the first time the tansparent image button on the shelf pipette is replaced with an image of the pipette and is moved down and the shelf image is changed to an image with no pipette.
-    // When this method is called for the first time fillPipette() method is called.
-    // When this method is called for the third time movePipette() method is called.
+    
+    // This function is called when pipette is clicked.
+    // When this function is called for the first time fillPipette() method is called.
+    // When this function is called for the third time movePipette() method is called.
     function pipette() {
         if ( step_no == 4){
             // Get image
-            img = document.getElementById('shelf');
-            // Change the image of the shelf to an image without pipette.
-            img.src = "images/shelf_without_beaker_flask_pipette.png";
-            // Change the trasparent button over pipette to an image of the pipette
-            $('#pipette').attr('src', 'images/pipette.png'); 
             elem = document.getElementById("pipette"); 
-            // Move the pipette.
-            initial_top = 0;
-            initial_left = 200;
-            id = setInterval(frame, 5);
-            function frame() {
-                if (initial_top == 280) {
-                    clearInterval(id);
-                } else {
-                    initial_top++; 
-                    initial_left+=0.5;
-                    elem.style.top = initial_top + 'px'; 
-                    elem.style.left = initial_left + 'px'; 
-                }
-            }
-            $('#pipette').attr('src', 'images/pipette_inside.png'); 
+            // Detect the current position of the flask.
+            initial_top = Math.round($('#pipette').position().top);
+            initial_left = Math.round($('#pipette').position().left);
+            // Initialise all the values for the motion of the images.
+            final_top = 280;
+            step_top = 1;
+            step_left = 0.5;
+            type_of_movement = 0;
+            // Move it to the table
+            moveImage();
             // Change to next instruction to be followed. 
             document.getElementById("demo").innerHTML = "Step-No 5: Click on the micropipette to collect appropriate quantity of solution from the beaker";
             step_no += 1;
@@ -244,6 +221,7 @@ function flask() {
         img = document.getElementById("beaker");
         img.src = "images/beaker1.png";
         setTimeout(function() {
+            img = document.getElementById("beaker");
             img.src = "images/beaker3.png";
         }, 1000);
     }
@@ -251,119 +229,105 @@ function flask() {
     // This method moves the filled pipette to the cuvette and replaces that cuvette image to a filled cuvette image
     function movePipette(){
         // Get images
-        elem = document.getElementById("pipette"); 
-        initial_top = 290;
-        initial_left = 280;
-        // Make the pipette move from the beaker to cuvette
-        id = setInterval(frame, 5);
-           function frame() {
-                if (initial_left == 253) {
-                    clearInterval(id);
-            } else {
-                initial_top--; 
-                initial_left--;
-                elem.style.top = initial_top + 'px'; 
-                elem.style.left = initial_left + 'px'; 
-            }
-        }
+        elem = document.getElementById("pipette");
+        // Detect the current position of the flask.
+        initial_top = Math.round($('#pipette').position().top);
+        initial_left = Math.round($('#pipette').position().left);
+        // Initialise all the values for the motion of the images.
+        final_top = 255;
+        step_top = -1;
+        step_left = -2;
+        type_of_movement = 1;
+        // Move it to the cuvette
+        moveImage();
         setTimeout(function() {
             img = document.getElementById("cuvette");
             // Change the cuvette image to filled cuvette image
             img.src = "images/cuvette_filled.png";
+            
         }, 1000);
     }
 
+    // This function is called cuvette is clicked.
     // When this method is called for the first time the tansparent image button on the shelf cuvette is replaced with an image of the cuvette and is moved down and the shelf image is changed to an image with no cuvette depending on the cuvette clicked.
     // When this method is called for the second time the cuvette is moved upto the spectrophotometer.
     function cuvette(){
         if ( step_no == 6){
             // get the image of the shelf
-            img = document.getElementById('shelf');
-            // Depending on the cuvette choosen change the shelf image, reaplce the transparent image with cuvette image and set 'cuv' value to access it later
-            img.src = "images/only_shelf.png";
-            $('#cuvette').attr('src', 'images/332.png'); 
             elem = document.getElementById("cuvette"); 
             // Move the cuvette from the shelf to the table
             elem.style.width = "2.5%";
-            initial_top = 10;
-            initial_left = 400;
-            id = setInterval(frame, 5);
-            function frame() {
-                if (initial_top == 340) {
-                    clearInterval(id);
-            } else {
-                initial_top++; 
-                initial_left-=0.4;
-                elem.style.top = initial_top + 'px'; 
-                elem.style.left = initial_left + 'px'; 
-                 
-                }
-           }
+            // Detect the current position of the flask.
+            initial_top = Math.round($('#cuvette').position().top);
+            initial_left = Math.round($('#cuvette').position().left);
+            // Initialise all the values for the motion of the images.
+            final_top = 340;
+            step_top = 1;
+            step_left = -0.6;
+            type_of_movement = 0;
+            // Move it to the table.
+            moveImage();
             // Change the next instruction to be followed.
-            document.getElementById("demo").innerHTML = "Step-No 7: Pour the solution from the micropipette into the cuvette by clicking on the cuvette(In actual measurements the cuvette is filled to two-third of its volume";
+            document.getElementById("demo").innerHTML = "Step-No 7: Pour the solution from the micropipette into the cuvette by clicking on the cuvette(In actual measurements the cuvette is filled to two-third of its volume)";
             step_no++;
         }
         else if(step_no == 9){
             // Depending on the cuvette choosen get images accordingly.
             elem = document.getElementById("cuvette"); 
             // Move the cuvette from the table to the socket in the spectrophotmeter.
-            initial_top = 320;
-            initial_left = 290;
-            id = setInterval(frame, 5);
-            function frame() {
-                if (initial_top == 212 ) {
-                    clearInterval(id);
-                } else {
-                    initial_top-=0.5; 
-                    initial_left-=2;
-                    elem.style.top = initial_top + 'px'; 
-                    elem.style.left = initial_left + 'px'; 
-                }
-            }
+            // Detect the current position of the flask.
+            initial_top = Math.round($('#cuvette').position().top);
+            initial_left = Math.round($('#cuvette').position().left);
+            // Initialise all the values for the motion of the images.
+            final_top = 221;
+            step_top = -0.5;
+            step_left = -1.75;
+            type_of_movement = 1;
+            // Move it to a position over the spectrophotometer.
+            moveImage();
             // After 1200ms call moveDown() method.
-            setTimeout("moveDown()",1200);
+            setTimeout("moveDown()",1500);
             step_no++;
         }
     }
 
     // This method is used to move the cuvette downwards into the spectrophotometer.
     function moveDown(){
-        initial_top = 212;
-        id1 = setInterval(frame, 5);
-        function frame() {
-            if (initial_top == 290) {
-                clearInterval(id1);
-            } else {
-               initial_top+=1; 
-               elem.style.top = initial_top + 'px'; 
-            }
-        }
-      setTimeout("extraCuvette()",1000);
+        // Detect the current position of the flask.
+        initial_top = Math.round($('#cuvette').position().top);
+        initial_left = Math.round($('#cuvette').position().left);
+        // Initialise all the values for the motion of the images.
+        final_top = 290;
+        step_top = 1;
+        step_left = 0;
+        type_of_movement = 0;
+        // Move it into the spectrophotometer.
+        moveImage();
+        // Call extraCuvette() method which moves the reference cuvette into the spectrophotometer.
+        setTimeout("extraCuvette()",1000);
     }
 
     // This method is used to move the reference cuvette into the spectrophptometer. 
     function extraCuvette(){
         // Get the transparent image and replace it with a reference cuvette image and move it down into the spectrophotometer.
         $('#ref_cuvette').attr('src', 'images/cuvette_filled_water.png'); 
-        var elem1 = document.getElementById("ref_cuvette"); 
-        initial_top = 10;
-        var id2 = setInterval(frame, 5);
-        function frame() {
-           if (initial_top == 95) {
-             clearInterval(id2);
-           } else {
-                initial_top++; 
-                elem1.style.top = initial_top + 'px'; 
-                elem1.style.left = "414px"; 
-
-           }
-         }
+        elem = document.getElementById("ref_cuvette"); 
+        // Detect the current position of the flask.
+        initial_top = Math.round($('#ref_cuvette').position().top);
+        initial_left = Math.round($('#ref_cuvette').position().left);
+        // Initialise all the values for the motion of the images.
+        final_top = 102;
+        step_top = 1;
+        step_left = 0;
+        type_of_movement = 0;
+        // Move it into the spectrophotometer.
+        moveImage();
         // After 800ms make the sample cuvette and the referance cuvette hidden and replace the spectrophotometer with an image that has cuvette within them. 
         setTimeout(function(){
             images[0] = "images/spec_open_cuvette.png";
             images[1] = "images/spec_open_cuvette.png";
             $('#ref_cuvette').attr('src', 'images/vertical_button.png'); 
             $('#cuvette').attr('src', 'images/vertical_button.png'); 
-        },800);
+        },1000);
 
     }

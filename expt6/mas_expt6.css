@@ -14,6 +14,13 @@
         animation-name: fadeIn;
         animation-duration: 0.4s
     }
+    html {
+      min-width: 100%;
+      min-height: 100%;
+      background-position: top center;
+      width: 1080px;
+      max-height: 715px;
+    }
 
     /* Modal Content */
     .modal-content {
@@ -95,6 +102,8 @@
     }
     .conc{
         background:url("images/scale.png");
-        width:100%;
-        height:100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-repeat: no-repeat;
     }

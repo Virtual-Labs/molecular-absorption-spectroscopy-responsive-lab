@@ -1,32 +1,36 @@
-    // This file contains all general functions used in the experiment
+    // This file contains all general functions used of the experiment
 
 
-    var images = [];
+    var images = [];// Two images that are alternated in ordered to get the blinking effect of the spectrophotometer
+    images[0] = "images/spec_on_redLight.png";
+    images[1] = "images/spec_on_no_redLight.png";
     var x = 0;
     var y = 0;
+    // Variables necessary to obtain motion of all the images
     var initial_top;
     var initial_left;
+    var final_top;
+    var final_left;
+    var step;
     var elem;
     var img,img1;
     var id,id1;
+    var type_of_movement;// Indicates upward or downward motion
     var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
-    var solution=4;// indicates which cuvette
-    images[0] = "images/spec_on_redLight.png";
-    images[1] = "images/spec_on_no_redLight.png";
+    var solution=3;// Indicates type of solution being used.
+    
 
-    // This method is called when the page is loaded. It helps in providing basic functionality to two buttons manual and data and also sets the first set of instructions
+    // This method is called when the page is loaded. It helps in providing basic functionality to two buttons manual and data and also sets the first set of instructions.
     function initial_function(){
 
         document.getElementById("data_button").addEventListener("click", function() {
             popitup("slideshow.html");
         }, false);
-
-        // Intial intrsuction to be followed
-        document.getElementById('flask').style.filter='saturate(4)'
-        $('#shelf').attr('src', 'images/shelf_with_orange_solution3.png'); 
-        document.getElementById("demo").innerHTML = "Step-No 1:  Turn on the instument clicking in the power button and wait for 30 min for the initialisation of the instrument.";
+        document.getElementById('flask').style.filter='saturate(2)'
+        // Intial instruction to be followed
+        document.getElementById("demo").innerHTML = "Step-No 1:  Turn on the instrument clicking on the power button and wait for 30 mins for initialization of the instrument.";
+        
         var modal = document.getElementById('manual');
-
         // Get the button that opens the manual modal
         var btn = document.getElementById("manual_button");
 
@@ -49,43 +53,51 @@
                 modal.style.display = "none";
             }
         }
+        // Method is called when the concentration of the solution is changed. This method is called in order to change the color of the solution accordingly by cahnging the saturation of the flask and and mark the selected solution.
         $('#conc_scale').change(function () {
             var chosen_conc = document.getElementById("conc_scale").value; 
+            
             if(chosen_conc=='1'){
                 solution = 1;
-                document.getElementById('flask').style.filter='saturate(1)';
-                $('#shelf').attr('src', 'images/shelf_with_orange_solution.png'); 
+                document.getElementById('flask').style.filter='saturate(0.75)';
+                document.getElementById('beaker').style.filter='saturate(0.75)';
                 
             }
-            if(chosen_conc=='2'){
+            else if(chosen_conc=='2'){
                 solution = 2;
-                document.getElementById('flask').style.filter='saturate(1.5)';
-                $('#shelf').attr('src', 'images/shelf_with_orange_solution1.png'); 
+                document.getElementById('flask').style.filter='saturate(1)';
+                document.getElementById('beaker').style.filter='saturate(1)';
+                
             }
-            if(chosen_conc=='3'){
+            else if(chosen_conc=='3'){
                 solution = 3;
                 document.getElementById('flask').style.filter='saturate(2)';
-                $('#shelf').attr('src', 'images/shelf_with_orange_solution2.png'); 
+                document.getElementById('beaker').style.filter='saturate(2)';
+               
             }
-            if(chosen_conc=='4'){
+            else if(chosen_conc=='4'){
                 solution = 4;
-                document.getElementById('flask').style.filter='saturate(2.5)';
-                $('#shelf').attr('src', 'images/shelf_with_orange_solution3.png'); 
-            }
-            if(chosen_conc=='5'){
-                solution = 5;
                 document.getElementById('flask').style.filter='saturate(3)';
-                $('#shelf').attr('src', 'images/shelf_with_orange_solution4.png'); 
+                document.getElementById('beaker').style.filter='saturate(3)';
+                
             }
-            if(chosen_conc=='6'){
+            else if(chosen_conc=='5'){
+                solution = 5;
+                document.getElementById('flask').style.filter='saturate(4)';
+                document.getElementById('beaker').style.filter='saturate(4)';
+            }
+
+            else if(chosen_conc=='6'){
                 solution = 6;
-                document.getElementById('flask').style.filter='saturate(3.5)';
-                $('#shelf').attr('src', 'images/shelf_with_orange_solution5.png'); 
+                document.getElementById('flask').style.filter='saturate(5)';
+                document.getElementById('beaker').style.filter='saturate(5)';
+
             }
             
         });
     }
-    // When user clicks on the Data button it redirects him to the page containing slideshow of three graphs obtained from three different sample lengths
+    
+    // When user clicks on the Data button it redirects him to the page containing slideshow of graphs obtained from different samples
     function popitup(url) {
         // Opens a new browser window called newwindow. url specifies the URL of the page to open.
         newwindow=window.open(url,'name','height=300,width=250',"_parent");
@@ -102,7 +114,7 @@
         location.reload();
     }
 
-    // When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is changed continuously  to give the blinking light effect. The two images that are swapped is stored in images[]
+    // When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is changed continuously to give the blinking light effect. The two images that are swapped is stored in images[]
     function turnOn() {
         // Get the image
         img = document.getElementById('table_with_spec');
@@ -125,6 +137,7 @@
             var context=document.getElementById('clockScreen');
             var hand =document.getElementById('clockHand');
             // Make the visiblility of the obtained images visible
+            document.getElementById("conc_scale").disabled = true;
             context.style.visibility='visible';
             hand.style.visibility="visible";
             // Rotate 'clockHand' using jQueryRotate.js
@@ -132,10 +145,10 @@
             setInterval(function(){
                 angle+=3;
                 $('#clockHand').rotate(angle);
-            },170);
+            },50);
             step_no++;
-            //After 10 secs dispose clock
-            setTimeout("disposeClock()",10000);
+            //After 3 secs dispose clock
+            setTimeout("disposeClock()",3000);
         }
     }
 
@@ -149,7 +162,7 @@
     }
 
     
-    
+    // This function is called when spectrometer lid is clicked.
     // First time its called to open the spectrophotometer
     // Second time its called to close the spectrophotometer
     function spectrophotometer(){
@@ -158,7 +171,7 @@
             // Replace the spectrophotometer images with the open spectrophotometer images
             images[0] = "images/spec_open.png";
             images[1] = "images/spec_open.png";
-            document.getElementById("demo").innerHTML = "Step-No 9: Click on the cuvette to place it in the sample holder. One has to use water as the sample bank or reference in this measurement. Here a double beam spectrophotometer is shown.In this case one can place the sample in the sample holder(often the front one) and sample bank or reference in the reference holder(often the back one simultaneously.";
+            document.getElementById("demo").innerHTML = "Step-No 9: Click on the cuvette to place it in the sample holder. One has to use water as the sample bank or reference in this measurement. Here a double beam spectrophotometer is shown.In this case one can place the sample in the sample holder(often the front one) and sample bank or reference in the reference holder(often the back one) simultaneously.";
             step_no++;
             }
         else if(step_no == 10){
@@ -171,11 +184,11 @@
 
     }
 
-    // This method is used to play a video which shows constructing graphs based on their sample path length. 
+    // This method is used to play a video which shows constructing graphs for the behavior of the samples for specific samples. 
     function scan(){
         if(step_no==11){
             // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
-            var vid = document.getElementById("1conc");
+            var vid = document.getElementById("plot_graph");
             // Get the scan image background.                                                               }
             var context=document.getElementById('scan');
             // make the image and video obtained visible.
@@ -187,11 +200,11 @@
         }
     }
 
-    // This method makes the graph hidden once the video is played nad close is pressed. 
+    // This method makes the graph hidden once the video is played and close is clicked. 
     function disposeGraph(){
         if(step_no==12){
             // After playing the graph plotting video close option is choosen, the background scan image and the video is mafde hidden.
-            document.getElementById('1conc').style.visibility='hidden';
+            document.getElementById('plot_graph').style.visibility='hidden';
             document.getElementById('scan').style.visibility='hidden';
         }
 
