@@ -6,12 +6,19 @@ Conversion of experiments in molecular absorption spectroscopy responsive lab fr
 
 * Conversion using pure JavaScript animations in the desired sequence.
 
-* Using certain libraries and framework which would make the conversion easier.
+* Using certain libraries and framework which would make the conversion easier, like [tools](http://gotoandlearn.com/play.php?id=174) for Create JS. It's a Flash Professional plugin that allows you to publish flash content to HTML5.
 
 * Using [Google web Designer](https://www.google.com/webdesigner/) for creating interactive HTML5-based designs and motion graphics that can run on any device. 
 
-* Using [Adobe Wallaby](https://blogs.adobe.com/labs/archives/2011/03/convert-flash-to-html-files-with-wallaby-on-labs-now.html) for the conversion.
+* Using [Adobe Wallaby](https://blogs.adobe.com/labs/archives/2011/03/convert-flash-to-html-files-with-wallaby-on-labs-now.html) or [Animate CC](https://helpx.adobe.com/animate/using/creating-publishing-html5-canvas-document.html) for the conversion.
 
+* Using ActionScript to JavaScript transpilers like [AS3JS](http://as3js.org/)
+
+* [Haxe](http://haxe.org/) is a cross-platform toolkit. It is similar to ActionScript and hence it is one of the easiest options for conversion, in particular if used through [OpenFL](http://www.openfl.org/). Haxe can compile to several languages including JavaScript. Some automatic conversion tools are currently available, such as as3hx and as3tohx, which convert a significant part of the code for you.
+
+##### Method adopted
+
+The continuing absence of an easy conversion process from Flash to HTML5 inhibits the development of HTML5 version using various tools mentioned above as they do not satisfy all the desired properties hence making further editing more complex. Pure HTML5 / JavaScript is easier to understand, decompile and re-use.
 
 ##### Terminology
 
