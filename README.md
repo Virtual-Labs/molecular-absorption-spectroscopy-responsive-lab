@@ -44,7 +44,7 @@ The continuing absence of an easy conversion process from Flash to HTML5 and inc
 
 ##### Steps followed in the conversion.
 
-* Get the [.SWF files](#markdown-header-glossary) of the flash experiment which needs to be converted to JavaScript from github.
+* Get the [.SWF files](###glossary) of the flash experiment which needs to be converted to JavaScript from github.
 
 * Using [JPEXS free Flash Decompiler](https://www.free-decompiler.com/flash/download/) extract all the components of the experiment.
 
