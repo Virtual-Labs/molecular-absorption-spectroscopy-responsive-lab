@@ -87,4 +87,12 @@ The continuing absence of an easy conversion process from Flash to HTML5 and inc
 
 * jQueryRotate.js for rotating certain images.
 
+#### Opportuniies for Improvements 
+
+* Lab is not responsive.
+
+* The JavaScript code is re-usable only for experiments of this lab and similar labs. For other labs same instructions can be followed to develop the skeleton code.
+
+* Since many images are used in these experiments, page takes time to load on certain machines. So in order to take care of performance factor, sprites can be used, to reduce the number of http requests for group of images.  
+
 
