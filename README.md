@@ -1,11 +1,11 @@
 # molecular-absorption-spectroscopy-responsive-lab
-##### Problem statement
+#### Problem statement
 Conversion of experiments in molecular absorption spectroscopy responsive lab from flash to JavaScript.
 
-##### Introduction
+#### Introduction
 The most interactive multimedia on the Web, which is in use is Flash. Flash offers the webmaster a single platform to create content that will be seen by the majority of Web site users, and that everyone who sees Flash will be able to interact with it in exactly the same way. However, there are some arguments against Flash, and many webmasters choose to use Flash in only limited pockets within their site. Hence creating similar experiences in JavaScript, we can avoid many of the problems inherent in Flash.
 
-##### Motivation
+#### Motivation
 ###### Problems with Flash
 
 * Accessibility : One of the major problems with Flash is that it presents difficulties for many people with disabilities. For some the issues are in translation from Flash to the screen reader. For others the big problem is the lack of keyboard navigation options in most Flash animations. For those who cannot use a mouse, an animation that requires mouse clicks is of no use.
@@ -23,7 +23,7 @@ With JavaScript and CSS, you can write accessibility into the site from the begi
 Another advantage of JavaScript is that the code to make an animation flutter across the entire screen is no bigger than one that flutters across a small section of the screen. The complexity of the actual animation and the size of any image files used in your animation will determine its memory usage, not the size onscreen. All the while, all the text and links will be 100% indexable by the search engines because they're available in plain text to read.
 
 
-##### Different methods explored
+#### Different methods explored
 
 * Conversion using pure JavaScript animations in the desired sequence.
 
@@ -37,7 +37,7 @@ Another advantage of JavaScript is that the code to make an animation flutter ac
 
 * [Haxe](http://haxe.org/) is a cross-platform toolkit. It is similar to ActionScript and hence it is one of the easiest options for conversion, in particular if used through [OpenFL](http://www.openfl.org/). Haxe can compile to several languages including JavaScript. Some automatic conversion tools are currently available, such as as3hx and as3tohx, which convert a significant part of the code for you.
 
-##### Method adopted
+#### Method adopted
 
 The continuing absence of an easy conversion process from Flash to HTML5 and increased complexity in making further editing inhibits the development of HTML5 version using various tools mentioned above. Pure HTML5 / JavaScript is easier to understand, decompile and re-use.
 
@@ -52,7 +52,6 @@ The continuing absence of an easy conversion process from Flash to HTML5 and inc
 * Flash Decompilor : Flash Decompiler is a SWF to FLA converter, which will help you decompile Flash movies, convert SWF elements into multiple formats and edit SWF files (texts, hyperlinks and more) on the go without Adobe Flash installed. Moreover, you will be able to extract all elements from SWF files and save them to your hard drive in various formats. Flash Decompiler doesn't decompile Captivate projectors (EXE), projectors created outside of Adobe Flash.
 
 * SVG file format : Scalable Vector Graphics (SVG) is an XML-based vector image format for two-dimensional graphics with support for interactivity and animation. 
-
 
 
 ##### Steps followed in the conversion.
