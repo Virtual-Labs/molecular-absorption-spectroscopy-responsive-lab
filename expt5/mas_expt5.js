@@ -1,18 +1,25 @@
     // This file contains all general functions used in the experiment
 
 
-    var images = [];
+    var images = [];// Two images that are alternated in ordered to get the blinking effect of the spectrophotometer
+    images[0] = "images/spec_on_redLight.png";
+    images[1] = "images/spec_on_no_redLight.png";
     var x = 0;
     var y = 0;
+    // Variables necessary to obtain motion of all the images
     var initial_top;
     var initial_left;
+    var final_top;
+    var final_left;
+    var step;
     var elem;
     var img,img1;
     var id,id1;
+    var type_of_movement;// Indicates upward or downward motion
     var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
-    var solution=0.06;// indicates which cuvette
-    images[0] = "images/spec_on_redLight.png";
-    images[1] = "images/spec_on_no_redLight.png";
+    var solution=0.06;// Indicates type of solution being used.
+    
+
 
     // This method is called when the page is loaded. It helps in providing basic functionality to two buttons manual and data and also sets the first set of instructions
     function initial_function(){
@@ -89,7 +96,7 @@
         location.reload();
     }
 
-    // When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is changed continuously  to give the blinking light effect. The two images that are swapped is stored in images[]
+    // When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is changed continuously to give the blinking light effect. The two images that are swapped is stored in images[]
     function turnOn() {
         // Get the image
         img = document.getElementById('table_with_spec');
@@ -107,11 +114,12 @@
     // This method displays a timer which runs for 30 seconds. There exists two images which are hidden initailly; when this method is called they are amde visible and the clock hand is made to rotate.  
     function showClock(){
         if(step_no==0){
-            document.getElementById("conc_scale").disabled = true;
+            
             // Get the images.
             var context=document.getElementById('clockScreen');
             var hand =document.getElementById('clockHand');
             // Make the visiblility of the obtained images visible
+            document.getElementById("conc_scale").disabled = true;
             context.style.visibility='visible';
             hand.style.visibility="visible";
             // Rotate 'clockHand' using jQueryRotate.js
@@ -119,10 +127,10 @@
             setInterval(function(){
                 angle+=3;
                 $('#clockHand').rotate(angle);
-            },170);
+            },50);
             step_no++;
-            //After 10 secs dispose clock
-            setTimeout("disposeClock()",10000);
+            //After 3 secs dispose clock
+            setTimeout("disposeClock()",3000);
         }
     }
 
@@ -132,11 +140,11 @@
         document.getElementById('clockScreen').style.visibility='hidden';
         document.getElementById('clockHand').style.visibility='hidden';
         // Change to next intsruction to be followed.
-        document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker";
+        document.getElementById("demo").innerHTML = "Step-No 2: Make three appropriate concentrations (say 0.001M, 0.00075M, 0.001M) of potassium dichromate [Click and drag on the concentration bar to choose the appropriate of the solution whose absorbance is to be measured it is better to start with the lower concentration solution] Click on the beaker to take a clean dry beaker.";
     }
 
     
-    
+    // This function is called when spectrometer lid is clicked.
     // First time its called to open the spectrophotometer
     // Second time its called to close the spectrophotometer
     function spectrophotometer(){
@@ -145,7 +153,7 @@
             // Replace the spectrophotometer images with the open spectrophotometer images
             images[0] = "images/spec_open.png";
             images[1] = "images/spec_open.png";
-            document.getElementById("demo").innerHTML = "Step-No 9: Click on the cuvette to place it in the sample holder. One has to use water as the sample bank or reference in this measurement. Here a double beam spectrophotometer is shown.In this case one can place the sample in the sample holder(often the front one) and sample bank or reference in the reference holder(often the back one simultaneously.";
+            document.getElementById("demo").innerHTML = "Step-No 9: Click on the cuvette to place it in the sample holder. One has to use water as the sample bank or reference in this measurement. Here a double beam spectrophotometer is shown.In this case one can place the sample in the sample holder(often the front one) and sample bank or reference in the reference holder(often the back one) simultaneously.";
             step_no++;
             }
         else if(step_no == 10){
@@ -157,7 +165,6 @@
         }
 
     }
-
     // This method is used to play a video which shows constructing graphs based on their sample path length. 
     function scan(){
         if(step_no==11){
