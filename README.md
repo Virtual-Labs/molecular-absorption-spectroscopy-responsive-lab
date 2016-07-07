@@ -93,6 +93,12 @@ The continuing absence of an easy conversion process from Flash to HTML5 and inc
 
 * The JavaScript code is re-usable only for experiments of this lab and similar labs. For other labs same instructions can be followed to develop the skeleton code.
 
-* Since many images are used in these experiments, page takes time to load on certain machines. So in order to take care of performance factor, sprites can be used, to reduce the number of http requests for group of images.  
+* Since many images are used in these experiments, page takes time to load on certain machines. So in order to take care of performance factor, sprites can be used, to reduce the number of http requests for group of images. 
+
+#### References
+* [http://www.w3schools.com/](http://www.w3schools.com/) for basic HTML CSS and JavaScript.
+* [http://stackoverflow.com/](http://stackoverflow.com/) for certain difficulties faced during the development.
 
 
+#### Conclusion
+Inspite of Flash being a popular interactive media platform for building web pages, it needs to be converted to JavaScript inorder to make it Free and open-source. Currently the tools available for conversion are not sophisticated enough to convert more complex animations involved in the experiments. Hence for time being conversion using pure Javascript and HTML5 is the best option though it is not the efficient method. 
