@@ -1,19 +1,23 @@
     // This file contains all general functions used in the experiment
 
 
-    var images = [];
+    var images = [];// Two images that are alternated in ordered to get the blinking effect of the spectrophotometer
+    images[0] = "images/spec_on_redLight.png";
+    images[1] = "images/spec_on_no_redLight.png";
     var x = 0;
     var y = 0;
+    // Variables necessary to obtain motion of all the images
     var initial_top;
     var initial_left;
+    var final_top;
+    var final_left;
+    var step;
     var elem;
     var img,img1;
     var id,id1;
+    var type_of_movement;// Indicates upward or downward motion
     var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
-    var cuv;// indicates which cuvette
-    images[0] = "images/spec_on_redLight.png";
-    images[1] = "images/spec_on_no_redLight.png";
-
+    var cuv;// Indicates cuvette choosen.
     // This method is called when the page is loaded. It helps in providing basic functionality to two buttons manual and data and also sets the first set of instructions
     function initial_function(){
 
@@ -95,10 +99,10 @@
             setInterval(function(){
                 angle+=3;
                 $('#clockHand').rotate(angle);
-            },170);
+            },50);
             step_no++;
             //After 10 secs dispose clock
-            setTimeout("disposeClock()",10000);
+            setTimeout("disposeClock()",3000);
         }
     }
 
