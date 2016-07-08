@@ -119,10 +119,10 @@
             setInterval(function(){
                 angle+=3;
                 $('#clockHand').rotate(angle);
-            },170);
+            },50);
             step_no++;
             //After 10 secs dispose clock
-            setTimeout("disposeClock()",10000);
+            setTimeout("disposeClock()",3000);
         }
     }
 
