@@ -188,7 +188,7 @@ function flask() {
             initial_top = Math.round($('#pipette').position().top);
             initial_left = Math.round($('#pipette').position().left);
             // Initialise all the values for the motion of the images.
-            final_top = 280;
+            final_top = 290;
             step_top = 1;
             step_left = 0.5;
             type_of_movement = 0;
@@ -232,9 +232,9 @@ function flask() {
         initial_top = Math.round($('#pipette').position().top);
         initial_left = Math.round($('#pipette').position().left);
         // Initialise all the values for the motion of the images.
-        final_top = 255;
+        final_top = 268;
         step_top = -1;
-        step_left = -2;
+        step_left = -2.2;
         type_of_movement = 1;
         // Move it to the cuvette
         moveImage();

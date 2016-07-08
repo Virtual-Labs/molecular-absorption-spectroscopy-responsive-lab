@@ -17,7 +17,7 @@
     var id,id1;
     var type_of_movement;// Indicates upward or downward motion
     var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
-    var solution=0.06;// Indicates type of solution being used.
+    var solution=3;// Indicates type of solution being used.
     
 
 
