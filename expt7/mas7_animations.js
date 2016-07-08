@@ -49,7 +49,7 @@
             moveImage();
             // Change to next intsruction to be followed.
             document.getElementById("conc_scale").disabled = true;
-            document.getElementById("demo").innerHTML = "Step-No 3: Click on the 2-nitroaniline flask to take it to experiment table";
+            document.getElementById("demo").innerHTML = "Step-No 3: Click on the conical flask to take it to experiment table";
             step_no++;
         }
     }
@@ -72,7 +72,7 @@
             // Move the flask image to desired position.
             moveImage();
             // Change to next intsruction to be followed.
-            document.getElementById("demo").innerHTML = "Step-No 4: Click on the 2-nitroaniline flask to pour the solution into clean, dry beaker";
+            document.getElementById("demo").innerHTML = "Step-No 4: Click on the conical flask to pour the solution into clean, dry beaker";
             step_no += 1;
         }
         else if(step_no==3){
@@ -318,6 +318,7 @@
     function extraCuvette(){
         // Get the transparent image and replace it with a reference cuvette image and move it down into the spectrophotometer.
         $('#ref_cuvette').attr('src', 'images/cuvette_filled_water.png'); 
+        $('#ref_cuvette_label').attr('src', 'images/ref_solution.png'); 
         elem = document.getElementById("ref_cuvette"); 
         // Detect the current position of the flask.
         initial_top = Math.round($('#ref_cuvette').position().top);
@@ -333,6 +334,7 @@
         setTimeout(function(){
             images[0] = "images/spec_open_cuvette.png";
             images[1] = "images/spec_open_cuvette.png";
+            $('#ref_cuvette_label').attr('src', 'images/vertical_button.png'); 
             $('#ref_cuvette').attr('src', 'images/vertical_button.png'); 
             $('#cuvette').attr('src', 'images/vertical_button.png'); 
         },1000);
