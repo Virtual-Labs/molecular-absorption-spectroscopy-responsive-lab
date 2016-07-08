@@ -1,0 +1,155 @@
+<!-- Lab : Molecular absorption spectroscopy 
+     Experiment : Sample Path Length Dependence of Absorbance (Lambert Law) 
+     Author : Rama Shanbhag -->
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <title>mas_8</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="mas_expt8.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="coolclock.js"></script> <script type="text/javascript" src="moreskins.js"></script>
+    <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="jQueryRotate.js"></script>
+    <script type="text/javascript" src="mas_expt8.js"></script>
+    <script type="text/javascript" src="mas8_animations.js"></script>
+    
+</head>
+<body style="max-width: 1080px; max-height: 720px; min-width:1080px;margin: 0 auto; overflow: hidden;" onload="initial_function()"> 
+    <!-- Body is divided into three rows -->
+    <div class= "row">
+        <!-- First row consists of title of the experiment and the reset button -->
+        <h3><center>Simultaneous estimation method for multicomponent samples</center></h3><br>
+        <br>
+    </div>
+   
+
+
+    <div class="row">
+        <!-- Second row consists of two columns with one column containing buttons ie manual and data and the other containing shelf with apparatus -->
+        <div class="col-sm-3">
+            <!-- Manual button displays the set of instructions to be followed to perform experiment
+            On clicking this button a box modal appears over the page n displays the instruction -->
+            <button id="manual_button" style = "background-color: Transparent; border : none; position:absolute; left:25%;"><img src="images/manual_button.png"></button>
+
+            <div id="manual" style = "z-index:1000" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times</span>
+                        <h2>Manual</h2>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>1. Prepare five calibration standards for each analyte:  </p>
+                        <p>0.025 mM, 0.020 mM, 0.015 mM, 0.010 mM, and 0.005 mM coumarin 343 solutions and 0.020mM, 0.015 mM, 0.01 mM, 0.005 mM and 0.0025mM coumarin 6 solutions in ethanol.</p>
+                        <p>Also prepared a solution containg 1:1 (v/v) mixture of 0.025mM coumarin 343 and 0.020 mM coumarin 6.</p>
+                        <p>The solutions to be analyzed are selcted from the drop-down menu. The solution concentrations are selected from the concentration scale bars.</p>
+                        <p>2. Switch on the computer and the instrument powers; wait for 30mins for 'warm-up' of the instrument.   </p>
+                        <p>3. In the instrument one can select light sources (UV and visible), choose the slit width, scan speed and %trasmittance or absorbance display, wavelength range of interest, etc.</p>
+                        <p>4. Take two clean and dry quartx curvettes with a given path length(here we used 1 cm path length curvette).  </p>
+                        <p>5. Fill up one curvete with sample blank (ethanol in the present case) and the other curvette with the lowest concentration coumsrin 343 solution.   </p>
+                        <p>6. Place the sample blank in the reference holder and the sample in the sample holder. </p>
+                        <p>7. Run the scan ( A versus lambda).   </p>
+                        <p>8. Similarly run spectral scans for all the other samples proceeding from lower concentrations to higher concentrations. Everytime one should rinse the cuvette taking a small portion of the solution from the solution that will be analzed.    </p>
+                        <p>9. Repeat steps 5 to 8 for coumarin 6 solutions.   </p>
+                        <p>10. Run the scan for the multiple-component solution (mixture) sample, containing both coumarin 343 and coumarin 6 solutions.   </p>
+                        <p>11. Determine the wavelengths of maximum absorbance (lambda_max) for both coumarin 343 and coumarin 6. Now find out the wavelengths, the absorbance at a given lambda_max for all the solutions and prepare a table containing these data. </p>
+                        <p>12. Determine the absorbance values 0f 2.5*10.  - pending</p>
+                        <p>13. For any lambda_max, calculate the sum of absorbance values of individual components in the mixture from the relation: AX+Y = (AX0/CX0).CX + (AY0)/CY0).CY(see eq 4). </p>
+                        <p>14. Compare the above sum with the measured absorbance value of the mixture = Amix for the same max. </p>
+                        <p>15. Check Amix= AX+Y realtionship for another lambda_max.</p>
+                        <p>16. Construct calibration plots by plotting absorbance versus concentration for two wavelengths (say, lambda=420nm and 463 nm) for both coumarin 343 and coumarin 6 solutions. Determine the slopes of the calibration plots and hence the respective values of lambda's for two different wavelengths for coumarin 343 and coumarin  6. </p>
+                        <p>17. Determine the absorbance values of 1:1 mixture sample at the above two wavelengths.</p>
+                        <p>18. Using the values of mixture absorbance and lambda, determine the concentration of the both coumarin 343 and coumarin 6 in the mixture by solving the Beer Lambert law for the two component system.</p>
+                        <p>19. Calculate the actual concentrations of coumarin 343 and coumarin 6 in the mixture from their original concentrations and volumes taken for making the mixture.</p>
+                        <p>20. Compare the concentration values determined from the absorbance measurements with the concentration values calculated from the actual concentrations taken to prepare the mixture to verify the validity of the principle of the additivity of absorbance values.</p>
+                        <p>21. Do a multi-peak fitting of the spectrum obtained from the solution containing both coumarin 343 and coumarin 6.</p>
+                        <p>22. Discuss your results.</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <br><br><br><br>
+            <!-- Data button displays the graphs obtained on plotting absorbance against wavelength for different sample path lengths
+            On clicking this button a new page displaying the graphs for three different path length is opened  -->
+            <button id="data_button" style = "background-color: Transparent; border : none; position:absolute;bottom:0%; left:25%;"><img src="images/data_button.png" onclick="location.href:'slideshow.html'" ></button>
+            
+        </div>
+         <div class="col-sm-3" > 
+            <div class="conc">
+            <br>
+               <input type="range" id="conc_scale" min="1" max="6" step="1"> 
+               <br>
+            </div>
+        </div>
+    
+        <div class="col-sm-6">
+            
+            <!-- This column conatins the shelf -->
+            <img class="img-responsive" id = "shelf" src="images/shelf_with_orange_solution.png">
+             <select id="solution" style="position:absolute;z-index:1099; left:8%; top:5%;">
+                <option value="Coumarin 343" selected>Coumarin 343</option>
+                <option value="Coumarin 6">Coumarin 6</option>
+                <option value="1:1 mixture">1:1 mixture</option>
+            </select>
+            <!-- A transparent button is placed on top of every apparatus on the shelf. -->
+		   
+
+            <!--  <img id="flask"  style="position:absolute;z-index:999; width:15%; left:8%; height:30; top:6%; cursor:pointer;" onclick="flask();" src="images/dropdown.png">
+ -->
+            <img id="flask"  style="position:absolute;z-index:999; width:8%; left:13%; top:29%; cursor:pointer;" onclick="flask();" src="images/vertical_button.png">
+
+            <img id="pipette"  style="position:absolute;z-index:999; width:7%; left:36%; top:27%;  cursor:pointer;" onclick="pipette();" src="images/vertical_button.png">
+
+            <img id="beaker"  style="position:absolute;z-index:800; width:10%; left:58%; top:25%;  cursor:pointer;" onclick="beaker();" src="images/vertical_button.png">
+
+            <img id="cuvette"  style="position:absolute;z-index:899; width:4%; left:80%; top:48%; cursor:pointer;" onclick="cuvette();" src="images/vertical_button.png">
+      
+        </div>
+
+    </div>
+    <div class="row">
+    <br>
+        <!-- Third row consists of table with various devices on it  -->
+        <div class="col-sm-12">
+        <br><br>
+            <center><img  class="img-responsive"  id = "table_with_spec" src="images/table_with_spec.png"></center>
+
+            <img class="img-responsive" style = "position: absolute; left: 48%; top: 15%; max-width: 50%; max-height: 50%; " src="images/computer.png">
+            <!-- button to scan the sample on the computer-->
+            <img style="position: absolute; z-index: 999; width: 10%; left: 50%;top: 13%; cursor: pointer;" onclick="scan();" src="images/vertical_button.png">
+            <!-- button to open and close the spectrophotometer lid -->
+            <img  style="position: absolute; z-index: 999; width: 4%; left: 36%; top: 20%;  cursor: pointer;" onclick="spectrophotometer();" src="images/vertical_button.png">
+            <!-- reference cuvette -->
+            <img id="ref_cuvette" style="position: absolute; z-index: 899; width: 1.5%; left: 75%; top: 47%; cursor: pointer;" src="images/vertical_button.png">
+            <!-- text that shows the instructions to be followed next -->
+            <div id = "demo" style="position: absolute; top: 70%; left: 27%; max-width: 50%; color: yellow"></div>
+            <!-- button to switch on and switch off the spectrophotometer -->
+            <button style = "background-color: Transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden; position: absolute; left: 17%; top: 45%;" onclick = "turnOn();showClock()"><img src="images/vertical_button.png"></button>
+        </div>
+    </div>
+    <!-- Image of the face of the clock which is displayed on switching on the spectrophotometer -->
+    <img id="clockScreen" style = "position:absolute; top:10%; visibility:hidden" src="images/clock.png">
+    <!-- Image of the hand of the clock -->
+    <img  id="clockHand" style = "position:absolute; top:41%;left:50.75%; visibility:hidden" src="images/hand.png">
+    <!-- Image of the greyed background displayed as a background while scanning the sample -->
+    <img id="scan" style = "position:absolute;z-index:1000; width:100%;height:100%;top:0%;left:0%; visibility:hidden" src="images/483.png">
+    <!-- Video that plots a graph for 0.02 concentration sample -->
+    <video id="1conc" style = "position:absolute;z-index:1100;top:20%;left:20%;visibility : hidden;" ><source src="videos/graph1.mp4" type="video/mp4"></video>
+    <!-- Video that plots a graph for 0.04 concentration sample -->
+    <!-- Transparent image button to close the scanning page -->
+    <img  style="position:absolute; z-index:1200; width:5%; left:74%; top:67%;cursor:pointer;" onclick="disposeGraph();" src="images/vertical_button.png">
+
+            <center><button onclick="reload()">Reset Experiment</button></center>
+
+</body>
+</html>
