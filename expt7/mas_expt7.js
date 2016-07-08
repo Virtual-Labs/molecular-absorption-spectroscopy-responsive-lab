@@ -90,6 +90,7 @@
             var chosen_type = document.getElementById("solution").value;
             if(chosen_type == 'unknown'){
                 solution = 6;
+                document.getElementById("conc_scale").disabled = true;
                 document.getElementById('flask').style.filter='grayscale(100%)';
                 document.getElementById('beaker').style.filter='grayscale(100%)';
 
@@ -97,6 +98,7 @@
             else{
                 solution = 3;
                 document.getElementById("conc_scale").value = 3;
+                document.getElementById("conc_scale").disabled = false;
                 document.getElementById('flask').style.filter='saturate(2)';
                 document.getElementById('flask').style.filter='grayscale(0%)';
                 document.getElementById('beaker').style.filter='grayscale(0%)';
