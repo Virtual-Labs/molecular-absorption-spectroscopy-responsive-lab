@@ -72,10 +72,12 @@
             }
         }
     }
-    // When user clicks on the Data button it redirects him to the page containing slideshow of three graphs obtained from three different sample lengths
+
+    // When user clicks on the Data button it redirects him to the page containing slideshow of three 
+    // graphs obtained from three different sample lengths
     function popitup(url) {
         // Opens a new browser window called newwindow. url specifies the URL of the page to open.
-        newwindow=window.open(url,'name','height=300,width=250',"_parent");
+        newwindow=window.open(url,'name','height=300,width=350',"_parent");
         // Sets focus to the new window if the focus is on the previous page.
         if (window.focus) {
             newwindow.focus()
@@ -83,13 +85,9 @@
         return false;
     }
 
-    // When the user clicks on reset experiment this method is called
-    function reload(){
-        // Reloads the current document.
-        location.reload();
-    }
 
-    // When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is changed continuously  to give the blinking light effect. The two images that are swapped is stored in images[]
+    // When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is changed 
+    // continuously  to give the blinking light effect. The two images that are swapped is stored in images[]
     function turnOn() {
         // Get the image
         img = document.getElementById('table_with_spec');
@@ -100,7 +98,8 @@
         if(x >= images.length){
             x = 0;
         }
-        $("#solution").prop("disabled", true);
+        // $("#solution").prop("disabled", true);
+        // document.getElementById("solution").style.opacity = "0.4";
         // Call turnOn() method every 250ms 
         setTimeout("turnOn()", 250);
     }
@@ -122,21 +121,25 @@
             },50);
             step_no++;
             //After 10 secs dispose clock
-            setTimeout("disposeClock()",3000);
+            setTimeout("removeClock()",3000);
         }
     }
 
     // After 30 seconds of display of the timer the visibility of clock is changed back to hidden.
-    function disposeClock(){
-        // Make the visiblility of the obtained images hidden.
-        document.getElementById('clockScreen').style.visibility='hidden';
-        document.getElementById('clockHand').style.visibility='hidden';
-        // Change to next intsruction to be followed.
-        document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker";
+    // function disposeClock(){
+    //     // Make the visiblility of the obtained images hidden.
+    //     document.getElementById('clockScreen').style.visibility='hidden';
+    //     document.getElementById('clockHand').style.visibility='hidden';
+    //     // Change to next intsruction to be followed.
+    //     document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker";
+    // }
+
+    function removeClock() {
+        $('#clockHand, #clockScreen').remove();
+        $("#solution").prop("disabled", true);
+        document.getElementById("solution").style.opacity = "0.4";
     }
 
-    
-    
     // First time its called to open the spectrophotometer
     // Second time its called to close the spectrophotometer
     function spectrophotometer(){

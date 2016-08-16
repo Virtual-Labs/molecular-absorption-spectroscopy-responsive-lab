@@ -1,4 +1,31 @@
- .modal {
+html {
+overflow-y: scroll;
+overflow-x: scroll;
+}
+
+body{
+    width:1080px; 
+    height:715px; 
+    margin: 0 auto; 
+   /* overflow: hidden;*/
+    position: relative;
+}
+
+h4{   /*its not mandatory as the row is used*/
+    text-align: center;
+
+}
+
+#manual_button, #data_button{
+    /*background-color: Transparent; 
+    border : none; 
+    position:absolute; */
+    /*left:70px;*/
+    float: left;
+    cursor: pointer;
+}
+
+.modal {
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
         z-index: 1; /* Sit on top */
@@ -70,3 +97,162 @@
         from {opacity: 0} 
         to {opacity: 1}
     }
+
+#apparatus{
+   /* position: relative;*/
+    float:right;
+}
+
+#solution{
+    position:absolute;
+    z-index:1099; 
+    left:8%; 
+    top:5%;
+}
+
+#flask{
+    position:absolute;
+    z-index:999; 
+    width:8%; 
+    left:13%; 
+    top:30%; 
+    cursor:pointer;
+}
+
+#pipette{
+    position:absolute;
+    z-index:999; 
+    width:7%; 
+    left:36%; 
+    top:27%;  
+    cursor:pointer;
+}
+
+#beaker{
+    position:absolute;
+    z-index:800; 
+    width:11%; 
+    left:55%; 
+    top:27%;  
+    cursor:pointer;
+}
+
+#cuvette{
+    position:absolute;
+    z-index:899; 
+    width:3%; 
+    left:80%; 
+    top:48%; 
+    cursor:pointer;
+}
+
+#table_with_spec{
+   /* display: block;
+    float:center;*/
+}
+
+#computerimage{
+    position: absolute; 
+    left: 48%; 
+    top: 13%; 
+    max-width: 50%; 
+    max-height: 50%; 
+}
+
+#comp_trans_button{
+    position: absolute; 
+    z-index: 999; 
+    width: 12%;
+    height: 26%; 
+    left: 49%;
+    top: 15%; 
+    cursor: pointer;
+}
+
+#spectrolid_trans_button{
+    position: absolute; 
+    width: 5%; 
+    height: 18%;
+    left: 35%; 
+    top: 20%;  
+    cursor: pointer;
+}
+
+#ref_cuvette{
+    position: absolute; 
+    z-index: 898; 
+    width: 1.4%; 
+    left: 37.35%; 
+    top: 10%; 
+    cursor: pointer;
+}
+
+#power_trans_button{
+    background-color: Transparent; 
+    background-repeat: no-repeat; 
+    border: none; 
+    cursor: pointer; 
+    overflow: hidden; 
+    position: absolute; 
+    left: 17.5%; 
+    top: 45%;
+    width: 3%;
+    height: 6%;
+}
+
+#demo{
+    position: absolute;
+    top: 65%;
+    left: 22%;
+    max-width: 60%;
+    color: yellow;
+}
+
+#clockScreen{
+    position:absolute; 
+    top:75px; 
+    left:0px;
+    visibility:hidden; 
+    z-index:1100;
+}
+
+#clockHand{
+    position:absolute; 
+    top:314px;
+    left:50.75%; 
+    visibility:hidden; 
+    z-index:1102;
+}
+
+#scan{
+    position:absolute;
+    z-index:1100; 
+    top:65px; 
+    visibility:hidden;
+}
+
+#graph1{
+    position:absolute;
+    z-index:1200;
+    top:30%;
+    left:20%;
+    visibility : hidden;
+}
+
+#graph2{
+    position:absolute;
+    z-index:1200;
+    top:30%;
+    left:20%;
+    visibility : hidden;
+}
+
+#disposegraph{
+    position:absolute; 
+    z-index:1200; 
+    width:5%; 
+    left:76%; 
+    top:510px;
+    cursor:pointer;
+}
+
