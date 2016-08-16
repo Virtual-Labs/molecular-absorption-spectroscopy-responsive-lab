@@ -29,6 +29,7 @@
         // Method is called when the solution is changed. Here the change in solution is marked by chamging the grayscale of flask and beaker.
         $('#solution').change(function () {
             var chosen_solution = $('#solution').val();
+            console.log(chosen_solution);
                     
             if(chosen_solution=='caffeine'){
                 solution = 2;
@@ -138,6 +139,8 @@
         $('#clockHand, #clockScreen').remove();
         $("#solution").prop("disabled", true);
         document.getElementById("solution").style.opacity = "0.4";
+        //Change to next intsruction to be followed.
+        document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker";
     }
 
     // First time its called to open the spectrophotometer

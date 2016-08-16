@@ -102,19 +102,25 @@
             },50);
             step_no++;
             //After 10 secs dispose clock
-            setTimeout("disposeClock()",3000);
+            // setTimeout("disposeClock()",3000);
+            setTimeout("removeClock()",3000);
         }
     }
 
     // After 30 seconds of display of the timer the visibility of clock is changed back to hidden.
-    function disposeClock(){
-        // Make the visiblility of the obtained images hidden.
-        document.getElementById('clockScreen').style.visibility='hidden';
-        document.getElementById('clockHand').style.visibility='hidden';
-        // Change to next intsruction to be followed.
+    // function disposeClock(){
+    //     // Make the visiblility of the obtained images hidden.
+    //     document.getElementById('clockScreen').style.visibility='hidden';
+    //     document.getElementById('clockHand').style.visibility='hidden';
+    //     // Change to next intsruction to be followed.
+    //     document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker";
+    // }
+     
+    function removeClock() {
+        $('#clockHand, #clockScreen').remove();
+        //Change to next intsruction to be followed.
         document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker";
-    }
-
+    } 
     
     
     // First time its called to open the spectrophotometer
@@ -143,13 +149,13 @@
         if(step_no==11){
             // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
             if(cuv==1){
-                var vid = document.getElementById("10mm_graph");
+                var vid = document.getElementById("tenmm_graph");
             }
             else if(cuv==2){
-                var vid = document.getElementById("5mm_graph");
+                var vid = document.getElementById("fivemm_graph");
             }
             else if(cuv==3){
-                var vid = document.getElementById("1mm_graph");
+                var vid = document.getElementById("onemm_graph");
             }
             // Get the scan image background.                                                               }
             var context=document.getElementById('scan');
@@ -166,9 +172,9 @@
     function disposeGraph(){
         if(step_no==12){
             // After playing the graph plotting video close option is choosen, the background scan image and the video is mafde hidden.
-            document.getElementById('10mm_graph').style.visibility='hidden';
-            document.getElementById('5mm_graph').style.visibility='hidden';
-            document.getElementById('1mm_graph').style.visibility='hidden';
+            document.getElementById('tenmm_graph').style.visibility='hidden';
+            document.getElementById('fivemm_graph').style.visibility='hidden';
+            document.getElementById('onemm_graph').style.visibility='hidden';
             document.getElementById('scan').style.visibility='hidden';
         }
 

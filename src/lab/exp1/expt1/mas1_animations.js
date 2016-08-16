@@ -11,7 +11,9 @@
                     clearInterval(id);
                  } else {
                     initial_top+=step_top; 
+                    // console.log(initial_top);
                     initial_left+=step_left;
+                    // console.log(initial_left);
                     elem.style.top = initial_top + 'px'; 
                     elem.style.left = initial_left + 'px'; 
 
@@ -25,7 +27,7 @@
                     initial_left+=step_left;
                     elem.style.top = initial_top + 'px'; 
                     elem.style.left = initial_left + 'px'; 
-
+                    
                 }
             }
         } 
@@ -95,7 +97,7 @@
         step_left = 0.5;
         type_of_movement = 1;
         // Move the flask image to desired location. 
-        moveImage();
+        moveImage(); 
         // Call changeFlask() at a regular interval of 50 ms.
         id1 = setInterval(changeFlask,50);
         // Change to next intsruction to be followed.
@@ -177,7 +179,7 @@
         // Move it back to the table
         elem.style.width = "8%"
         // Change the image to an empty flask image
-        elem.src= "images/69.png"; 
+        elem.src= "images/emptyflask.png"; 
         moveImage();
     }
 
@@ -246,7 +248,7 @@
         setTimeout(function() {
             img = document.getElementById("cuvette");
             // Change the cuvette image to filled cuvette image
-            if(solution == 6){
+            if(solution == 2){
                 img.src = "images/cuvette_filled0.png";
             }
             else{

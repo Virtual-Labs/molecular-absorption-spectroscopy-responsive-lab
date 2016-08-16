@@ -37,7 +37,7 @@
             On clicking this button a box modal appears over the page n displays the instruction -->
 
             <!-- <button id="manual_button" style = "background-color: Transparent; border : none; position:absolute; left:70px;"><img src="images/manual_button.png"></button> -->
-            <img id="manual_button" src="images/manual_button.png"><br/><br/>
+            <img id="manual_button" src="images/manual_button.png" onmouseover="this.src='images/hover_manual.png';" onmouseout="this.src='images/manual_button.png'"><br/><br/>
 
             <div id="manual" style = "z-index:1200" class="modal">
                 <!-- Modal content -->
@@ -75,7 +75,7 @@
             On clicking this button a new page displaying the graphs for three different path length is opened  -->
 
             <!-- <button id="data_button" style = "background-color: Transparent; border : none; position:absolute;bottom:0%; left:70px;"><img src="images/data_button.png" ></button> -->
-            <img id="data_button" src="images/data_button.png" >
+            <img id="data_button" src="images/data_button.png"  onmousemove="this.src='images/hover_data.png';" onmouseout="this.src='images/data_button.png'">
         </div>
 
         <div class="col-sm-6" id="apparatus">
@@ -110,7 +110,8 @@
             <!-- button to open and close the spectrophotometer lid -->
             <img class="" id ="spectrolid_trans_button" onclick="spectrophotometer();" src="images/vertical_button.png">
             <!-- reference cuvette -->
-            <img id="ref_cuvette" class="" src="images/vertical_button.png">
+            <!-- <img id="ref_cuvette" class="" src="images/vertical_button.png"> -->
+            <img id="ref_cuvette" class="">
             <!-- text that shows the instructions to be followed next -->
             <div id = "demo"></div>
             <!-- button to switch on and switch off the spectrophotometer -->
