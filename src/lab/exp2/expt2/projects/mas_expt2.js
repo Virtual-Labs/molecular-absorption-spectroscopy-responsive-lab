@@ -6,6 +6,7 @@ var solvents = ["Cyclohexane","Dioxane","Acetonitrile","Etmhanol","Ethylene Glyc
 var cases = [0,1,2,3,4];
 var x=0;
 var step_no=0;
+
 function initial_function(){
   var index=0;
         document.getElementById("data_button").addEventListener("click", function() {
@@ -70,7 +71,8 @@ function initial_function(){
         setTimeout("turnOn()", 250);
   
     }
-function showClock(){
+    
+    function showClock(){
         if(step_no==8){
             // Get the images.
             var context=document.getElementById('clockScreen');
@@ -83,10 +85,10 @@ function showClock(){
             setInterval(function(){
                 angle+=3;
                 $('#clockHand').rotate(angle);
-            },170);
+            },50);
             step_no++;
             //After 10 secs dispose clock
-            setTimeout("disposeClock()",10000);
+            setTimeout("disposeClock()",3000);
         }
     }
 

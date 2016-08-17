@@ -29,13 +29,11 @@
         // Method is called when the solution is changed. Here the change in solution is marked by chamging the grayscale of flask and beaker.
         $('#solution').change(function () {
             var chosen_solution = $('#solution').val();
-            console.log(chosen_solution);
                     
             if(chosen_solution=='caffeine'){
                 solution = 2;
                 document.getElementById('flask').style.filter='grayscale(100%)';
                 document.getElementById('beaker').style.filter='grayscale(100%)';
-
             }
             else{
                 solution = 1;
