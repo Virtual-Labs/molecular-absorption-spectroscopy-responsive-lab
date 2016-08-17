@@ -175,7 +175,12 @@
     function scan(){
         if(step_no==11){
             // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
-            var vid = document.getElementById("1conc");
+            if(solution==1){
+                var vid = document.getElementById("graph");
+            }
+            if(solution==2){
+                var vid = document.getElementById("graph");
+            }
             // Get the scan image background.                                                               }
             var context=document.getElementById('scan');
             // make the image and video obtained visible.
@@ -191,7 +196,7 @@
     function disposeGraph(){
         if(step_no==12){
             // After playing the graph plotting video close option is choosen, the background scan image and the video is mafde hidden.
-            document.getElementById('1conc').style.visibility='hidden';
+            document.getElementById('graph').style.visibility='hidden';
             document.getElementById('scan').style.visibility='hidden';
         }
 
