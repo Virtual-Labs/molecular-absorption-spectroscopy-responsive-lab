@@ -95,21 +95,30 @@ function showClock(){
     setInterval(function(){
       angle+=3;
       $('#clockHand').rotate(angle);
-    },170);
+    },50);
     step_no++;
     //After 10 secs dispose clock
-    setTimeout("disposeClock()",10000);
+    // setTimeout("disposeClock()",10000);
+    setTimeout("removeClock()",3000);
   }
 }
 
 // After 30 seconds of display of the timer the visibility of clock is changed back to hidden.
-function disposeClock(){
-  // Make the visiblility of the obtained images hidden.
-  document.getElementById('clockScreen').style.visibility='hidden';
-  document.getElementById('clockHand').style.visibility='hidden';
-  // Change to next intsruction to be followed.
-  document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker"; 
-}
+// function disposeClock(){
+//   // Make the visiblility of the obtained images hidden.
+//   document.getElementById('clockScreen').style.visibility='hidden';
+//   document.getElementById('clockHand').style.visibility='hidden';
+//   // Change to next intsruction to be followed.
+//   document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker"; 
+// }
+
+function removeClock() {
+        $('#clockHand, #clockScreen').remove();
+        $("#solution").prop("disabled", true);
+        document.getElementById("solution").style.opacity = "0.4";
+        //Change to next intsruction to be followed.
+        document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker";
+    }
 
 
 // This function is used to move an image using initial and final position parameters
@@ -167,8 +176,6 @@ function moveBeaker()
   }
 
 }
-
-
 
 
 // This is the function called when flask is clicked.
@@ -294,7 +301,7 @@ function moveFlaskBack() {
   // Move it back to the table
   elem.style.width = "8%";
   // Change the image to an empty flask image
-  elem.src= "images/69.png"; 
+  elem.src= "images/emptyflask.png"; 
   moveImage();
 }
 
@@ -455,7 +462,7 @@ function moveCuvette() {
     // Initialise all the values for the motion of the images.
     final_top = 340;
     step_top = .75;
-    step_left = -0.4;
+    step_left = -0.43;
     type_of_movement = 0;
     // Move it to the table.
     moveImage();
@@ -585,7 +592,7 @@ function scan(){
 
 
   // Get the scan image background.
-  var context=document.getElementById('scanning');
+  var context=document.getElementById('scan');
   // make the image and video obtained visible.
   context.style.visibility='visible';
   vid.style.visibility='visible';
@@ -599,6 +606,6 @@ function disposeGraph(){
   if(step_no==17){
     // After playing the graph plotting video close option is choosen, the background scan image and the video is made hidden.
     vid.style.visibility='hidden';
-    document.getElementById('scanning').style.visibility='hidden';
+    document.getElementById('scan').style.visibility='hidden';
   }
 }
