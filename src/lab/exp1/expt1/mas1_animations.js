@@ -266,7 +266,7 @@
             // get the image of the shelf
             elem = document.getElementById("cuvette"); 
             // Move the cuvette from the shelf to the table
-            elem.style.width = "2.5%";
+            elem.style.width = "2.6%";
             // Detect the current position of the flask.
             initial_top = Math.round($('#cuvette').position().top);
             initial_left = Math.round($('#cuvette').position().left);
@@ -321,6 +321,7 @@
     function extraCuvette(){
         // Get the transparent image and replace it with a reference cuvette image and move it down into the spectrophotometer.
         $('#ref_cuvette').attr('src', 'images/cuvette_filled_water.png'); 
+        document.getElementById("reference").style.visibility ="visible";
         elem = document.getElementById("ref_cuvette"); 
         // Detect the current position of the flask.
         initial_top = Math.round($('#ref_cuvette').position().top);
@@ -338,6 +339,7 @@
             images[1] = "images/spec_open_cuvette.png";
             $('#ref_cuvette').attr('src', 'images/vertical_button.png'); 
             $('#cuvette').attr('src', 'images/vertical_button.png'); 
+            document.getElementById("reference").style.visibility ="hidden";
         },1000);
 
     }

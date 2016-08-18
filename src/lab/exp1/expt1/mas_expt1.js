@@ -44,7 +44,7 @@
             
         });
         // Intial intrsuction to be followed
-        document.getElementById("demo").innerHTML = "Step-No 1: Prepare following two solutions: a) 0.001M of potassium dichromate (K2Cr2O7) and b) 5mg/L caffeine in distilled water. Here the solutions are shown in two volumetric flasks. One can select a solution for measurement by clicking on desired solution from the dropdown menu. Turn on the instrument clicking n the power button and wait for 30 min for initialisationof the instrument.";
+        document.getElementById("demo").innerHTML = "Step-No 1: Prepare following two solutions: a) 0.001M of potassium dichromate (K2Cr2O7) and b) 5mg/L caffeine in distilled water. Here the solutions are shown in two volumetric flasks. One can select a solution for measurement by clicking on desired solution from the dropdown menu. Turn on the instrument clicking on the power button and wait for 30 min for initialisation of the instrument.";
 
         var modal = document.getElementById('manual');
 

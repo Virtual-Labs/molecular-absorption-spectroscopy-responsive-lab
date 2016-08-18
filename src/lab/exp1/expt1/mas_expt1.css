@@ -139,8 +139,8 @@ h4{   /*its not mandatory as the row is used*/
 
 #cuvette{
     position:absolute;
-    z-index:899; 
-    width:3%; 
+    z-index:898; 
+    width:2.5%; 
     left:80%; 
     top:48%; 
     cursor:pointer;
@@ -179,9 +179,19 @@ h4{   /*its not mandatory as the row is used*/
     cursor: pointer;
 }
 
-#ref_cuvette{
+#reference{
     position: absolute; 
     z-index: 898; 
+    width: 15%; 
+    left: 40%; 
+    top: 0%; 
+    cursor: pointer;
+    visibility: hidden;
+}
+
+#ref_cuvette{
+    position: absolute; 
+    z-index: 899; 
     width: 1.4%; 
     left: 37.35%; 
     top: 10%; 
