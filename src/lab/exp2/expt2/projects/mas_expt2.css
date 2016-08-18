@@ -124,14 +124,21 @@ h4{   /*its not mandatory as the row is used*/
 #round-bottom-flask{
     position:absolute;
     z-index:999; 
-    left:15%; 
+    left:18%; 
     top:10%; 
     cursor:pointer;
 }
 
-#pipette{
+#solution_name{
     position:absolute;
     z-index:999; 
+    left:4%; 
+    top:99%; 
+}
+
+#pipette{
+    position:absolute;
+    z-index:998; 
     left: 38%; 
     top:8%;  
     cursor:pointer;
@@ -139,8 +146,9 @@ h4{   /*its not mandatory as the row is used*/
 
 #quartz-cuvette{
     position:absolute;
-    top: 45.5%;
-    left:50%;
+    z-index:999; 
+    top: -40%;
+    left:48%;
     cursor:pointer;
 }
 
@@ -214,6 +222,7 @@ h4{   /*its not mandatory as the row is used*/
     left: 22%;
     max-width: 60%;
     color: yellow;
+    font-size: 12px;
 }
 
 #clockScreen{
@@ -238,6 +247,13 @@ h4{   /*its not mandatory as the row is used*/
     top:65px; 
     left:15px;
     visibility:hidden;
+}
+
+#popup{
+    position:fixed;
+    left:-10px;
+    top:-20px;
+    z-index:1249084129;
 }
 
 #video0{
@@ -288,4 +304,41 @@ h4{   /*its not mandatory as the row is used*/
     left:82%; 
     top:68%;
     cursor:pointer;
+}
+
+#form{
+    position:absolute;
+    top:-30px;
+    left:-40px;
+    z-index:41137848484874;
+    height:115%;
+    width:115%;
+    visibility:hidden;
+}
+
+#start-button{
+    position:absolute;
+    left:675px;
+    top:80px;
+    cursor:pointer;
+    z-index:4113784848488;
+    visibility:hidden;
+}
+
+#input1{
+    position:absolute;
+    left:413px;
+    top:307px;
+    visibility:hidden;
+    z-index:4113784848488;
+    width:7%
+}
+
+#input2{
+    position:absolute;
+    left:523px;
+    top:307px;
+    visibility:hidden;
+    z-index:4113784848488;
+    width:7%;
 }
