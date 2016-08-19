@@ -1,3 +1,42 @@
+ html {
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+body{
+    width:1080px; 
+    height:715px; 
+    margin: 0 auto; 
+   /* overflow: hidden;*/
+    position: relative;
+}
+
+h4{   
+    text-align: center;
+}
+
+#manual_button, #data_button{
+    /*background-color: Transparent; 
+    border : none; */
+    position:absolute; 
+    left: 30px;
+    /*float: left;*/
+    cursor: pointer;
+}
+
+#scale_image{
+    position: absolute;
+    left: 250px;
+    top:0px;
+}
+
+#conc_scale{
+    position: absolute;
+    left: 293px;
+    width: 165px;
+    top:23px;
+}
+
  .modal {
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
@@ -84,8 +123,159 @@
         justify-content: space-around;
     }
 
+#apparatus{
+   /* position: relative;*/
+    float:right;
+}
 
-    .rangeslider,
+#flask{
+    position:absolute;
+    z-index:999; 
+    width:8%; 
+    left:13%; 
+    top:30%; 
+    cursor:pointer;
+}
+
+#pipette{
+    position:absolute;
+    z-index:999; 
+    width:7%; 
+    left:36%; 
+    top:27%;  
+    cursor:pointer;
+}
+
+#beaker{
+    position:absolute;
+    z-index:800; 
+    width:11%; 
+    left:55%; 
+    top:27%;  
+    cursor:pointer;
+}
+
+#cuvette{
+    position:absolute;
+    z-index:898; 
+    width:2.5%; 
+    left:80%; 
+    top:48%; 
+    cursor:pointer;
+}
+
+#computerimage{
+    position: absolute; 
+    left: 48%; 
+    top: 13%; 
+    max-width: 50%; 
+    max-height: 50%; 
+}
+
+#comp_trans_button{
+    position: absolute; 
+    z-index: 999; 
+    width: 12%;
+    height: 26%; 
+    left: 49%;
+    top: 15%; 
+    cursor: pointer;
+}
+
+#spectrolid_trans_button{
+    position: absolute; 
+    z-index:2;
+    width: 5%; 
+    height: 18%;
+    left: 35%; 
+    top: 20%;  
+    cursor: pointer;
+}
+
+#reference{
+    position: absolute; 
+    z-index: 898; 
+    width: 15%; 
+    left: 40%; 
+    top: 0%; 
+    cursor: pointer;
+    visibility: hidden;
+}
+
+#ref_cuvette{
+    position: absolute; 
+    z-index: 899; 
+    width: 1.4%; 
+    left: 37.35%; 
+    top: 10%; 
+    cursor: pointer;
+}
+
+#power_trans_button{
+    background-color: Transparent; 
+    background-repeat: no-repeat; 
+    border: none; 
+    cursor: pointer; 
+    overflow: hidden; 
+    position: absolute; 
+    z-index:2;
+    left: 17.5%; 
+    top: 45%;
+    width: 3%;
+    height: 6%;
+}
+
+#demo{
+    position: absolute;
+    top: 65%;
+    left: 22%;
+    max-width: 60%;
+    color: yellow;
+}
+
+#clockScreen{
+    position:absolute; 
+    top:75px; 
+    left:0px;
+    visibility:hidden; 
+    z-index:1100;
+}
+
+#clockHand{
+    position:absolute; 
+    top:314px;
+    left:50.75%; 
+    visibility:hidden; 
+    z-index:1102;
+}
+
+#scan{
+    position:absolute;
+    z-index:1100; 
+    top:65px; 
+    left:15px;
+    visibility:hidden;
+}
+
+
+#plot_graph{
+    position:absolute;
+    z-index:1200;
+    top:200px; 
+    left:20%; 
+    visibility:hidden;
+}
+
+#disposegraph{
+    position: absolute;
+    z-index: 1200;
+    width: 7%;
+    left: 84%;
+    top: 572px;
+    cursor: pointer;
+    height: 3%;
+}
+    /*.rangeslider,
         input[type='range'] {
         position: relative; 
         left:30px;
@@ -107,3 +297,4 @@
         -o-background-size: cover;
         background-repeat: no-repeat;
     }
+*/

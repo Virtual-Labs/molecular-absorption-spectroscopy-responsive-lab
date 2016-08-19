@@ -2,7 +2,7 @@
 // This file contains all the functions used in animation of the images in the experiment
 
 
-    // This function is a general method used to move images from initial position to final position.
+// This function is a general method used to move images from initial position to final position.
     function moveImage(){
         id = setInterval(frame, 5);
         function frame() {
@@ -11,7 +11,9 @@
                     clearInterval(id);
                  } else {
                     initial_top+=step_top; 
+                    // console.log(initial_top);
                     initial_left+=step_left;
+                    // console.log(initial_left);
                     elem.style.top = initial_top + 'px'; 
                     elem.style.left = initial_left + 'px'; 
 
@@ -25,7 +27,7 @@
                     initial_left+=step_left;
                     elem.style.top = initial_top + 'px'; 
                     elem.style.left = initial_left + 'px'; 
-
+                    
                 }
             }
         } 
@@ -48,13 +50,14 @@
             // Move the beaker image to desired position.
             moveImage();
             // Change to next intsruction to be followed.
-            document.getElementById("conc_scale").disabled = true;
-            document.getElementById("demo").innerHTML = "Step-No 3: Click on the conical flask to take it to experiment table";
+    
+            document.getElementById("demo").innerHTML = "Step-No 3: Click on the 2-nitroaniline flask to take it to experiment table";
             step_no++;
         }
     }
 
-    // This is the function called when flask is clicked.
+
+        // This is the function called when flask is clicked.
     // When this function is called for the first time the flask moves from shelf to table.
     // When this function is called for the second time the moveFlask() method is called.   
     function flask() {
@@ -72,7 +75,7 @@
             // Move the flask image to desired position.
             moveImage();
             // Change to next intsruction to be followed.
-            document.getElementById("demo").innerHTML = "Step-No 4: Click on the conical flask to pour the solution into clean, dry beaker";
+            document.getElementById("demo").innerHTML = "Step-No 4: Click on the 2-nitroaniline flask to pour the solution into clean, dry beaker";
             step_no += 1;
         }
         else if(step_no==3){
@@ -94,9 +97,11 @@
         step_left = 0.5;
         type_of_movement = 1;
         // Move the flask image to desired location. 
-        moveImage();
+        moveImage(); 
         // Call changeFlask() at a regular interval of 50 ms.
         id1 = setInterval(changeFlask,50);
+        // Change to next intsruction to be followed.
+        document.getElementById("demo").innerHTML = "Step-No 5: Click on the micropipette to collect appropriate quantity of solution from the beaker";
         // Call moveFlaskBack() to move it back to the table.
         setTimeout("moveFlaskBack()",1725);
     }
@@ -174,12 +179,12 @@
         // Move it back to the table
         elem.style.width = "8%"
         // Change the image to an empty flask image
-        elem.src= "images/69.png"; 
+        elem.src= "images/emptyflask.png"; 
         moveImage();
     }
 
     
-    // This function is called when pipette is clicked.
+        // This function is called when pipette is clicked.
     // When this function is called for the first time fillPipette() method is called.
     // When this function is called for the third time movePipette() method is called.
     function pipette() {
@@ -243,7 +248,12 @@
         setTimeout(function() {
             img = document.getElementById("cuvette");
             // Change the cuvette image to filled cuvette image
-            img.src = "images/cuvette_filled.png";
+            if(solution == 2){
+                img.src = "images/cuvette_filled0.png";
+            }
+            else{
+                img.src = "images/cuvette_filled.png";
+            }
             
         }, 1000);
     }
@@ -256,7 +266,7 @@
             // get the image of the shelf
             elem = document.getElementById("cuvette"); 
             // Move the cuvette from the shelf to the table
-            elem.style.width = "2.5%";
+            elem.style.width = "2.6%";
             // Detect the current position of the flask.
             initial_top = Math.round($('#cuvette').position().top);
             initial_left = Math.round($('#cuvette').position().left);
@@ -268,7 +278,7 @@
             // Move it to the table.
             moveImage();
             // Change the next instruction to be followed.
-            document.getElementById("demo").innerHTML = "Step-No 7: Pour the solution from the micropipette into the cuvette by clicking on the cuvette(In actual measurements the cuvette is filled to two-third of its volume)";
+            document.getElementById("demo").innerHTML = "Step-No 7: Pour the solution from the micropipette into the cuvette by clicking on the cuvette(In actual measurements the cuvette is filled to two-third of its volume";
             step_no++;
         }
         else if(step_no == 9){

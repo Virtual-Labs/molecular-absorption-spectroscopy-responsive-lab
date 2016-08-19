@@ -316,7 +316,7 @@
             } 
            
             // Change the next instruction to be followed.
-            document.getElementById("demo").innerHTML = "Step-No 7: Pour the solution from the micropipette into the cuvette by clicking on the cuvette(In actual measurements the cuvette is filled to two-third of its volume";
+            document.getElementById("demo").innerHTML = "Step-No 7: Pour the solution from the micropipette into the cuvette by clicking on the pipette(In actual measurements the cuvette is filled to two-third of its volume";
             step_no++;
         }
         else if(step_no == 9){
@@ -387,6 +387,7 @@
     function extraCuvette(){
         // Get the transparent image and replace it with a reference cuvette image and move it down into the spectrophotometer.
         $('#ref_cuvette').attr('src', 'images/cuvette_filled_water.png'); 
+        document.getElementById("reference").style.visibility ="visible";
         elem = document.getElementById("ref_cuvette"); 
         // Detect the current position of the flask.
         initial_top = Math.round($('#ref_cuvette').position().top);
@@ -406,7 +407,7 @@
             $('#cuvette1').attr('src', 'images/vertical_button.png'); 
             $('#cuvette2').attr('src', 'images/vertical_button.png'); 
             $('#cuvette3').attr('src', 'images/vertical_button.png'); 
-
+            document.getElementById("reference").style.visibility ="hidden";
         },800);
 
     }

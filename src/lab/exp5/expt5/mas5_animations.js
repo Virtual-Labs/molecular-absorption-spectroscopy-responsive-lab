@@ -50,6 +50,7 @@
             // Change to next intsruction to be followed.
             document.getElementById("demo").innerHTML = "Step-No 3: Click on the 2-nitroaniline flask to take it to experiment table";
             step_no++;
+            document.getElementById("conc_scale").disabled ="true";
         }
     }
 // This is the function called when flask is clicked.
@@ -308,6 +309,7 @@ function flask() {
     function extraCuvette(){
         // Get the transparent image and replace it with a reference cuvette image and move it down into the spectrophotometer.
         $('#ref_cuvette').attr('src', 'images/cuvette_filled_water.png'); 
+        document.getElementById("reference").style.visibility ="visible";
         elem = document.getElementById("ref_cuvette"); 
         // Detect the current position of the flask.
         initial_top = Math.round($('#ref_cuvette').position().top);
@@ -325,6 +327,7 @@ function flask() {
             images[1] = "images/spec_open_cuvette.png";
             $('#ref_cuvette').attr('src', 'images/vertical_button.png'); 
             $('#cuvette').attr('src', 'images/vertical_button.png'); 
+            document.getElementById("reference").style.visibility ="hidden";
         },1000);
 
     }

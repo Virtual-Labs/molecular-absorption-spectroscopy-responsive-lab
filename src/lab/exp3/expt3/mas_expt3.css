@@ -157,8 +157,23 @@ h4{
     cursor:pointer;
 }
 
-#table_with_spec{
+#reference{
+    position: absolute; 
+    z-index: 898; 
+    width: 15%; 
+    left: 40%; 
+    top: 0%; 
+    cursor: pointer;
+    visibility: hidden;
+}
 
+#ref_cuvette{
+    position: absolute; 
+    z-index: 899; 
+    width: 1.4%; 
+    left: 37.35%; 
+    top: 10%; 
+    cursor: pointer;
 }
 
 #computerimage{
@@ -242,6 +257,14 @@ h4{
     top:60px; 
     left:15px;
     visibility:hidden;
+}
+
+#scanimage{
+    position:absolute;
+    z-index:1100; 
+    top:60px; 
+    left:15px;
+    visibility:hidden; 
 }
 
 #tenmm_graph{

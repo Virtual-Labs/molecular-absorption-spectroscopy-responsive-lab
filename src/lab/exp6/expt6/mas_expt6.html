@@ -19,22 +19,24 @@
     <script type="text/javascript" src="mas6_animations.js"></script>
     
 </head>
-<body id ="main" style="width:1080px; height:715px; margin: 0 auto; overflow: hidden;" onload="initial_function()"> 
+<center>
+<body id ="main" onload="initial_function()">  
     <!-- Body is divided into three rows -->
     <div class= "row">
         <!-- First row consists of title of the experiment and the reset button -->
-        <h3><center>Verification of Beer-Lambert Law</center></h3><br>
-        <center><button onclick="reload()">Reset Experiment</button></center>
-        <br>
-    </div>
+        <h4>Verification of Beer-Lambert Law</h4><br/>
+        <center><button onclick = "location.reload()">Reset Experiment</button></center>
+    </div><br/>
 
 
     <div class="row">
         <!-- Second row consists of three columns with one column containing buttons ie manual and data, the other containing concentration scale and another containing shelf with apparatus -->
-        <div class="col-sm-3">
+        <div class="col-sm-6">
             <!-- Manual button displays the set of instructions to be followed to perform experiment
             On clicking this button a box modal appears over the page n displays the instruction -->
-            <button id="manual_button" style = "background-color: Transparent; border : none; position:absolute; left:70px;""><img src="images/manual_button.png"></button>
+            <!-- <button id="manual_button" style = "background-color: Transparent; border : none; position:absolute; left:70px;""><img src="images/manual_button.png"></button> -->
+
+            <img id="manual_button" src="images/manual_button.png" onmouseover="this.src='images/hover_manual.png';" onmouseout="this.src='images/manual_button.png'"><br/><br/>
 
             <div id="manual" style = "z-index:1200" class="modal">
                 <!-- Modal content -->
@@ -66,68 +68,63 @@
                     </div>
                 </div>
             </div>
-
-            <br><br><br><br>
             <!-- Data button displays the graphs obtained on plotting absorbance against wavelength for different sample path lengths
             On clicking this button a new page displaying the graphs for three different path length is opened  -->
-            <button id="data_button" style = "background-color: Transparent; border : none; position:absolute;bottom:0%; left:70px;"><img src="images/data_button.png" ></button>
+            <!-- <button id="data_button" style = "background-color: Transparent; border : none; position:absolute;bottom:0%; left:70px;"><img src="images/data_button.png" ></button> -->
+            <img id="data_button" src="images/data_button.png"  onmousemove="this.src='images/hover_data.png';" onmouseout="this.src='images/data_button.png'">
+            <img id = "scale_image" src="images/scale.png">
+            <input type="range" id="conc_scale" min="1" max="6" step="1" value="0"> 
             
-        </div>
-         <div class="col-sm-3" >
-            <!-- This consists of a slider with 5 range points and has a background image defined in conc class --> 
-            <div class="conc">
-            <br>
-               <input type="range" id="conc_scale" min="1" max="6" step="1"> 
-               <br>
-            </div>
-        </div>
+        </div>         
 
-        <div class="col-sm-6">
-            
+        <div class="col-sm-6" id="apparatus">
             <!-- This column conatins the shelf -->
-            <img class="img-responsive" id = "shelf" src="images/only_shelf.png">
+            <img class="" id = "shelf" src="images/only_shelf.png">
             
             <!-- Every apparatus on the shelf as images -->
-            <img id="flask"  style="position:absolute;z-index:999; width:8%; left:13%; top:30%; cursor:pointer;" onclick="flask();" src="images/flask.png">
+            <img id="flask"   onclick="flask();" src="images/flask.png">
 
-            <img id="pipette"  style="position:absolute;z-index:999; width:7%; left:36%; top:27%;  cursor:pointer;" onclick="pipette();" src="images/pipette.png">
+            <img id="pipette" onclick="pipette();" src="images/pipette.png">
 
-            <img id="beaker"  style="position:absolute;z-index:800; width:11%; left:55%; top:27%;  cursor:pointer;" onclick="beaker();" src="images/beaker.png">
+            <img id="beaker"  onclick="beaker();" src="images/beaker.png">
 
-            <img id="cuvette"  style="position:absolute;z-index:899; width:3%; left:80%; top:48%; cursor:pointer;" onclick="cuvette();" src="images/cuvette.png">
+            <img id="cuvette" onclick="cuvette();" src="images/cuvette.png">
         </div>
 
     </div>
+    <br/><br/><br/>
+
     <div class="row">
-    <br>
         <!-- Third row consists of table with various devices on it  -->
-        <div class="col-sm-12">
-        <br><br>
-            <center><img  class="img-responsive"  id = "table_with_spec" src="images/table_with_spec.png"></center>
+        <div class="col-sm-12" id="table">
+            <img  class=""  id = "table_with_spec" src="images/table_with_spec.png">
 
-                <img class="img-responsive" style = "position: absolute; left: 48%; top: 15%; max-width: 50%; max-height: 50%; " src="images/computer.png">
-                <!-- button to scan the sample on the computer-->
-                <img style="position: absolute; z-index: 999; width: 10%; left: 50%;top: 13%; cursor: pointer;" onclick="scan();" src="images/vertical_button.png">
-                <!-- button to open and close the spectrophotometer lid -->
-                <img  style="position: absolute; z-index: 999; width: 4%; left: 36%; top: 20%;  cursor: pointer;" onclick="spectrophotometer();" src="images/vertical_button.png">
-                <!-- reference cuvette -->
-                <img id="ref_cuvette" style="position: absolute; z-index: 898; width: 1.4%; left: 37.35%; top: 20%; cursor: pointer;" src="images/vertical_button.png">
-                <!-- text that shows the instructions to be followed next -->
-                <div id = "demo" style="position: absolute; top: 70%; left: 27%; max-width: 50%; color: yellow"></div>
-                <!-- button to switch on and switch off the spectrophotometer -->
-                <button style = "background-color: Transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden; position: absolute; left: 17%; top: 45%;" onclick = "turnOn();showClock()"><img src="images/vertical_button.png"></button>
-            </div>
+            <img class="" id ="computerimage" src="images/computer.png">
+            <!-- button to scan the sample on the computer-->
+            <img class="" id ="comp_trans_button" onclick="scan();" src="images/vertical_button.png">
+            <!-- button to open and close the spectrophotometer lid -->
+            <img class="" id ="spectrolid_trans_button" onclick="spectrophotometer();" src="images/vertical_button.png">
+            <!-- reference cuvette -->
+            <!-- <img id="ref_cuvette" class="" src="images/vertical_button.png"> -->
+            <img id = "reference" src = "images/reference.png" alt ="image">
+            <img id="ref_cuvette" class="">
+            <!-- text that shows the instructions to be followed next -->
+            <div id = "demo" ></div>
+            <!-- button to switch on and switch off the spectrophotometer -->
+            <button id="power_trans_button" onclick = "turnOn();showClock()"><img src="images/vertical_button.png"></button>
         </div>
+    </div>
 
-        <!-- Image of the face of the clock which is displayed on switching on the spectrophotometer -->
-        <img id="clockScreen" style = "position:absolute; top:65px; z-index:1100; visibility:hidden" src="images/clock.png">
-        <!-- Image of the hand of the clock -->
-        <img  id="clockHand" style = "position:absolute; top:305px; z-index:1102; left:50.55%; visibility:hidden" src="images/hand.png">
-        <!-- Image of the grayed background displayed as a background while scanning the sample -->
-        <img id="scan" style = "position:absolute;z-index:1100;top:65px; visibility:hidden" src="images/483.png">
-        <!-- Video that plots a graph for 0.02 concentration sample -->
-        <video id="plot_graph" style = "position:absolute;z-index:1200;top:200px; left:20%; visibility:hidden;" ><source src="videos/graph1.mp4" type="video/mp4"></video>
-        <!-- Transparent image button to close the scanning page -->
-        <img  style="position:absolute; z-index:1200; left:74%; top:510px; cursor:pointer;" onclick="disposeGraph();" src="images/vertical_button.png">
-    </body>
+    <!-- Image of the face of the clock which is displayed on switching on the spectrophotometer -->
+    <img id="clockScreen" src="images/clock.png">
+    <!-- Image of the hand of the clock -->
+    <img  id="clockHand"  src="images/hand.png">
+    <!-- Image of the grayed background displayed as a background while scanning the sample -->
+    <img id="scan" src="images/483.png">
+    <!-- Video that plots a graph for 0.02 concentration sample -->
+    <video id="plot_graph" ><source src="videos/graph1.mp4" type="video/mp4"></video>
+    <!-- Transparent image button to close the scanning page -->
+    <img  id = "disposegraph" onclick="disposeGraph();" src="images/vertical_button.png">
+</body>
+</center>
 </html>

@@ -100,7 +100,7 @@
     // When user clicks on the Data button it redirects him to the page containing slideshow of graphs obtained from different samples
     function popitup(url) {
         // Opens a new browser window called newwindow. url specifies the URL of the page to open.
-        newwindow=window.open(url,'name','height=300,width=250',"_parent");
+        newwindow=window.open(url,'name','height=300,width=350',"_parent");
         // Sets focus to the new window if the focus is on the previous page.
         if (window.focus) {
             newwindow.focus()
@@ -148,19 +148,27 @@
             },50);
             step_no++;
             //After 3 secs dispose clock
-            setTimeout("disposeClock()",3000);
+            // setTimeout("disposeClock()",3000);
+            setTimeout("removeClock()",3000);
         }
     }
 
     // After 30 seconds of display of the timer the visibility of clock is changed back to hidden.
-    function disposeClock(){
-        // Make the visiblility of the obtained images hidden.
-        document.getElementById('clockScreen').style.visibility='hidden';
-        document.getElementById('clockHand').style.visibility='hidden';
-        // Change to next intsruction to be followed.
+    // function disposeClock(){
+    //     // Make the visiblility of the obtained images hidden.
+    //     document.getElementById('clockScreen').style.visibility='hidden';
+    //     document.getElementById('clockHand').style.visibility='hidden';
+    //     // Change to next intsruction to be followed.
+    //     document.getElementById("demo").innerHTML = "Step-No 2: Make three appropriate concentrations (say 0.001M, 0.00075M, 0.001M) of potassium dichromate [Click and drag on the concentration bar to choose the appropriate of the solution whose absorbance is to be measured it is better to start with the lower concentration solution] Click on the beaker to take a clean dry beaker.";
+    // }
+    
+    function removeClock() {
+        $('#clockHand, #clockScreen').remove();
+        $("#solution").prop("disabled", true);
+        document.getElementById("solution").style.opacity = "0.4";
+        //Change to next intsruction to be followed.
         document.getElementById("demo").innerHTML = "Step-No 2: Make three appropriate concentrations (say 0.001M, 0.00075M, 0.001M) of potassium dichromate [Click and drag on the concentration bar to choose the appropriate of the solution whose absorbance is to be measured it is better to start with the lower concentration solution] Click on the beaker to take a clean dry beaker.";
     }
-
     
     // This function is called when spectrometer lid is clicked.
     // First time its called to open the spectrophotometer
