@@ -18,10 +18,10 @@
     <script type="text/javascript" src="mas_expt1.js"></script>
     <script type="text/javascript" src="mas1_animations.js"></script>
 
-
 </head>
 <center>
 <body id ="main" onload="initial_function()">  
+<div>
     <!-- Body is divided into three rows -->
     <div class= "row">
         <!-- First row consists of title of the experiment and the reset button -->
@@ -47,7 +47,7 @@
                         <h2>Manual</h2>
                     </div>
 
-                    <div class="modal-body">
+                    <div class="modal-body" style="text-align:left;">
                         <p>1. Familiarize with the spectrophotometer.  </p>
                         <p>2. Turn on the instrument clicking on the power button and wait for 30 min for initialization of the instrument. </p>
                         <p>3. Prepare following two solutions: a) ~0.001 M of a potassium dichromate (K2Cr2O7) and b) ~5mg/L caffeine in distilled water. Here the solutions are shown on two volumetric flasks. One can select a solution for measurement by clicking on the desired solution from the drop-down menu. </p>
@@ -125,13 +125,24 @@
     <img  id="clockHand"  src="images/hand.png">
     <!-- Image of the greyed background displayed as a background while scanning the sample -->
     <img class="" id="scan"  src="images/483.png">
+    <!-- This image is used to enter the input values to display the graph1/graph2-->
+    <img id="scan_graph" src="images/scan_graph1.png">
+    <!--Displays the graph by clicking on start button -->
+    <img id="start_btn" src="images/vertical_button.png"  onclick="startBtn();">
+    <!--graph input values -->
+    <input id = "input1" type="text" >
+    <input id = "input2" type="text" >    
+    <!-- background image for the graphs instruction -->
+    <img id = "instruction_bkgd" src="images/graph_instruction.png">
+    <!-- graphs instruction is displayed here....-->
+    <div id = "graph_instruction"></div>
     <!-- Video that plots a graph for type 1 sample -->
     <video id="graph1" ><source src="videos/graph1.mp4" type="video/mp4"></video>
     <!-- Video that plots a graph for type 2 sample -->
     <video id="graph2" ><source src="videos/graph2.mp4" type="video/mp4"></video>
     <!-- Transparent image button to close the scanning page -->
     <img class="" id="disposegraph" onclick="disposeGraph();" src="images/vertical_button.png">
-
+   
 </body>
 </center>
 </html>

@@ -103,6 +103,13 @@ h4{
     float:right;
 }
 
+#solution{
+    position:absolute;
+    z-index:1099; 
+    left:8%; 
+    top:5%;
+}
+
 #flask{
     position:absolute;
     z-index:999; 
@@ -245,8 +252,8 @@ h4{
 
 #clockHand{
     position:absolute; 
-    top:295.60px;
-    left:50.81%; 
+    top:294.70px;
+    left:50.85%; 
     visibility:hidden; 
     z-index:1102;
 }
@@ -259,44 +266,61 @@ h4{
     visibility:hidden;
 }
 
-#scanimage{
-    position:absolute;
-    z-index:1100; 
-    top:60px; 
-    left:15px;
+#scanimage1, #scanimage2, #scanimage3 {
+    position: absolute;
+    z-index: 1100;
+    top: 111px;
+    left: 10px;
+    width: 100%;
     visibility:hidden; 
 }
 
+#scan_btn{
+    position: absolute;
+    z-index: 1200;
+    top: 519px;
+    left: 262px;
+    width: 9%;
+    height: 5%;
+    cursor: pointer;
+}
+
 #tenmm_graph{
-    position:absolute;
-    z-index:1100;
-    top:20%;
-    left:20%;
-    visibility : hidden;
+    position: absolute;
+    z-index: 1300;
+    top: 28%;
+    left: 10.1%;
+    visibility: hidden;
+    width: 82.99%;
+    height: 65%;
 }
 
 #fivemm_graph{
-    position:absolute;
-    z-index:1100;
-    top:20%;
-    left:20%;
-    visibility : hidden;
+    position: absolute;
+    z-index: 1300;
+    top: 28%;
+    left: 10.1%;
+    visibility: hidden;
+    width: 82.99%;
+    height: 65%;
 }
 
 #onemm_graph{
-    position:absolute;
-    z-index:1100;
-    top:20%;
-    left:20%;
-    visibility : hidden;
+    position: absolute;
+    z-index: 1300;
+    top: 28%;
+    left: 10.1%;
+    visibility: hidden;
+    width: 82.99%;
+    height: 65%;
 }
 
 #disposegraph{
     position: absolute;
-    z-index: 1200;
-    width: 7%;
+    z-index: 1300;
+    width: 8%;
     left: 84%;
-    top: 520px;
+    top: 631px;
     cursor: pointer;
     height: 3%;
 }

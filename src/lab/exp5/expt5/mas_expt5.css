@@ -264,6 +264,25 @@ h4{   /*its not mandatory as the row is used*/
     visibility:hidden;
 }
 
+#scan_image{
+    position: absolute;
+    z-index: 1100;
+    top: 185px;
+    left: 198px;
+    visibility:hidden;
+}
+
+#scan_btn{
+    position: absolute;
+    z-index: 1100;
+    top: 404px;
+    left: 317px;
+    width: 7%;
+    height: 4%;
+    visibility:hidden;
+    cursor: pointer;
+}
+
 #first_conc, #second_conc, #third_conc,
 #fourth_conc, #fifth_conc{  /*0.02mMconc*/
    position:absolute;
@@ -277,8 +296,8 @@ h4{   /*its not mandatory as the row is used*/
     position: absolute;
     z-index: 1200;
     width: 7%;
-    left: 84%;
-    top: 513px;
+    left: 76%;
+    top: 520px;
     cursor: pointer;
     height: 3%;
 }

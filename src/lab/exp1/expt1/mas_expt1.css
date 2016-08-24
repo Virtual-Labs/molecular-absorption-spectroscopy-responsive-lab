@@ -13,7 +13,6 @@ body{
 
 h4{   /*its not mandatory as the row is used*/
     text-align: center;
-
 }
 
 #manual_button, #data_button{
@@ -239,28 +238,90 @@ h4{   /*its not mandatory as the row is used*/
     visibility:hidden;
 }
 
-#graph1{
+#scan_graph{
     position:absolute;
     z-index:1200;
-    top:30%;
-    left:20%;
+    top:18%;
+    left:1%;
+    width: 100%; 
+    visibility : hidden;
+}
+
+#start_btn{
+    position: absolute;
+    z-index: 1200;
+    top: 23%;
+    left: 50%;
+    width: 3%;
+    height: 5%;
+    visibility : hidden;
+    cursor: pointer;
+}
+
+#input1{
+    position: absolute;
+    z-index: 1200;
+    top: 55%;
+    left: 22%;
+    width: 7%;
+    height: 5%;
+    visibility : hidden;
+}
+
+#input2{
+    position: absolute;
+    z-index: 1200;
+    top: 55%;
+    left: 34%;
+    width: 7%;
+    height: 5%;
+    visibility: hidden;
+}
+
+#instruction_bkgd{
+    position: absolute;
+    z-index: 1350;
+    top: 87%;
+    left: 7%;
+    width: 90%;
+    visibility: hidden;
+}
+
+#graph_instruction{
+    position: absolute;
+    z-index: 1351;
+    top: 87%;
+    left: 11%;
+    color: white;
+    max-width: 80%;
+    text-align: left;
+    font-size: 15px;
+}
+
+#graph1{
+    position: absolute;
+    z-index: 1300;
+    top: 24%;
+    left: 7%;
+    width: 90%;
     visibility : hidden;
 }
 
 #graph2{
-    position:absolute;
-    z-index:1200;
-    top:30%;
-    left:20%;
+    position: absolute;
+    z-index: 1300;
+    top: 24%;
+    left: 7%;        
+    width: 90%;
     visibility : hidden;
 }
 
 #disposegraph{
     position: absolute;
-    z-index: 1200;
-    width: 7%;
-    left: 85%;
-    top: 530px;
+    z-index: 1350;
+    width: 9%;
+    left: 88%;
+    top: 565px;
     cursor: pointer;
     height: 3%;
 }

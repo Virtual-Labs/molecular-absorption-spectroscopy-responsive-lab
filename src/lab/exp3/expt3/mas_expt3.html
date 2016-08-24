@@ -75,6 +75,10 @@
         <div class="col-sm-6" id="apparatus">
             <!-- This column conatins the shelf -->
             <img  id = "shelf" src="images/only_shelf.png">
+            <!-- This column conatins the shelf dropdown box to choose the type of the solution and apparatus-->
+            <select id="solution" >
+                <option selected>Potassium Dichromate</option>
+            </select>
             <!-- A transparent button is placed on top of every apparatus on the shelf. -->
             <img id="flask"  onclick="flask();" src="images/flask.png">
 
@@ -117,8 +121,12 @@
     <img  id="clockHand"  src="images/hand.png">
     <!-- Image of the greyed background displayed as a background while scanning the sample -->
     <img class="" id="scan"  src="images/483.png">
-    <!-- scan image -->
-    <img class="" id="scanimage"  src="images/scan.png">
+    <!-- scan images -->
+    <img class="" id="scanimage1"  src="images/scan10mm.png">
+    <img class="" id="scanimage2"  src="images/scan5mm.png">
+    <img class="" id="scanimage3"  src="images/scan1mm.png">
+    <!-- image used to display the graph video by clicking on it -->
+    <img id ="scan_btn" src="images/vertical_button.png" onclick= "scanGraph();">
     <!-- Video that plots a graph for 10 mm sample -->
     <video id="tenmm_graph" ><source src="videos/10mm_scan.mp4" type="video/mp4"></video>
     <!-- Video that plots a graph for 5 mm sample -->

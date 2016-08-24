@@ -55,10 +55,9 @@
             }
         }
         $('#conc_scale').change(function () {
-            var chosen_conc = document.getElementById("conc_scale").value;   
+            var chosen_conc = document.getElementById("conc_scale").value;  
             if(chosen_conc=='0.02'){
                 solution = 1;
-                
             }
             if(chosen_conc=='0.04'){
                 solution = 2;
@@ -174,38 +173,59 @@
 
     }
     // This method is used to play a video which shows constructing graphs based on their sample path length. 
-    function scan(){
-        if(step_no==11){
-            // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
-            if(solution==1){
-                var vid = document.getElementById("first_conc");
-            }
-            else if(solution==2){
-                var vid = document.getElementById("second_conc");
-            }
-            else if(solution==3){
-                var vid = document.getElementById("third_conc");
-            }
-            else if(solution==4){
-                var vid = document.getElementById("fourth_conc");
-            }
-            else if(solution==5){
-                var vid = document.getElementById("fifth_conc");
-            }
-            // Get the scan image background.                                                               }
-            var context=document.getElementById('scan');
-            // make the image and video obtained visible.
-            context.style.visibility='visible';
-            vid.style.visibility='visible';
-            //play the video.
-            vid.play(); 
-            step_no++;
+    // function scan(){
+    //     if(step_no==11){
+    //         // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
+    //         if(solution==1){
+    //             var vid = document.getElementById("first_conc");
+    //         }
+    //         else if(solution==2){
+    //             var vid = document.getElementById("second_conc");
+    //         }
+    //         else if(solution==3){
+    //             var vid = document.getElementById("third_conc");
+    //         }
+    //         else if(solution==4){
+    //             var vid = document.getElementById("fourth_conc");
+    //         }
+    //         else if(solution==5){
+    //             var vid = document.getElementById("fifth_conc");
+    //         }
+    //         // Get the scan image background.                                                               }
+    //         var context=document.getElementById('scan');
+    //         // make the image and video obtained visible.
+    //         context.style.visibility='visible';
+    //         vid.style.visibility='visible';
+    //         //play the video.
+    //         vid.play(); 
+    //         step_no++;
+    //     }
+    // }
+
+
+    function scan() {
+        if(solution == 1){
+                document.getElementById("scan_image").style.visibility = "visible";
         }
+        //Get the scan image background and scan button visible.                                                               }
+        var context=document.getElementById('scan');
+        context.style.visibility='visible';
+        document.getElementById("scan_btn").style.visibility = "visible";
+    }
+
+    function scanBtn() {
+        alert("hello");
+        if(solution==1){
+            var vid = document.getElementById("first_conc");
+        }
+        // make the video obtained visible.
+        vid.style.visibility='visible';
+        //play the video.
+        vid.play(); 
     }
 
     // This method makes the graph hidden once the video is played nad close is pressed. 
     function disposeGraph(){
-        if(step_no==12){
             // After playing the graph plotting video close option is choosen, the background scan image and the video is mafde hidden.
             document.getElementById('first_conc').style.visibility='hidden';
             document.getElementById('second_conc').style.visibility='hidden';
@@ -213,6 +233,5 @@
             document.getElementById('fourth_conc').style.visibility='hidden';
             document.getElementById('fifth_conc').style.visibility='hidden';
             document.getElementById('scan').style.visibility='hidden';
-        }
 
     }

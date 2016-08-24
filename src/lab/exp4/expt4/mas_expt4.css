@@ -1,6 +1,6 @@
-html {
-overflow-y: scroll;
-overflow-x: scroll;
+ html {
+    overflow-y: scroll;
+    overflow-x: scroll;
 }
 
 body{
@@ -11,9 +11,8 @@ body{
     position: relative;
 }
 
-h4{   /*its not mandatory as the row is used*/
+h4{   
     text-align: center;
-
 }
 
 #manual_button, #data_button{
@@ -25,7 +24,21 @@ h4{   /*its not mandatory as the row is used*/
     cursor: pointer;
 }
 
-.modal {
+#scale_image{
+    position: absolute;
+    left: 250px;
+    top:0px;
+    width: 40%;
+}
+
+#conc_scale{
+    position: absolute;
+    left: 278px;
+    width: 166px;
+    top: 23px;
+}
+
+ .modal {
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
         z-index: 1; /* Sit on top */
@@ -40,6 +53,13 @@ h4{   /*its not mandatory as the row is used*/
         -webkit-animation-duration: 0.4s;
         animation-name: fadeIn;
         animation-duration: 0.4s
+    }
+    html {
+      min-width: 100%;
+      min-height: 100%;
+      background-position: top center;
+      width: 1080px;
+      max-height: 715px;
     }
 
     /* Modal Content */
@@ -96,6 +116,12 @@ h4{   /*its not mandatory as the row is used*/
     @keyframes fadeIn {
         from {opacity: 0} 
         to {opacity: 1}
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
     }
 
 #apparatus{
@@ -239,29 +265,44 @@ h4{   /*its not mandatory as the row is used*/
     visibility:hidden;
 }
 
-#graph1{
-    position:absolute;
-    z-index:1200;
-    top:30%;
-    left:20%;
-    visibility : hidden;
-}
 
-#graph2{
+#plot_graph{
     position:absolute;
     z-index:1200;
-    top:30%;
-    left:20%;
-    visibility : hidden;
+    top:200px; 
+    left:20%; 
+    visibility:hidden;
 }
 
 #disposegraph{
     position: absolute;
     z-index: 1200;
     width: 7%;
-    left: 85%;
-    top: 530px;
+    left: 84%;
+    top: 572px;
     cursor: pointer;
     height: 3%;
 }
+    /*.rangeslider,
+        input[type='range'] {
+        position: relative; 
+        left:30px;
+        width: 190px;
+    }
 
+    .rangeslider__ruler {
+          cursor: pointer;
+          font-size: .7em;
+          margin: 20px 3px 0 3px;
+          position: relative;
+          top: 100%;
+          text-align: justify;
+    }
+    .conc{
+        background:url("images/scale.png");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-repeat: no-repeat;
+    }
+*/

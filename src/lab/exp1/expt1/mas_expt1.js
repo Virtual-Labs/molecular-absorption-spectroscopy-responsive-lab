@@ -32,6 +32,7 @@
                     
             if(chosen_solution=='caffeine'){
                 solution = 2;
+                console.log(solution);
                 document.getElementById('flask').style.filter='grayscale(100%)';
                 document.getElementById('beaker').style.filter='grayscale(100%)';
             }
@@ -44,7 +45,7 @@
             
         });
         // Intial intrsuction to be followed
-        document.getElementById("demo").innerHTML = "Step-No 1: Prepare following two solutions: a) 0.001M of potassium dichromate (K2Cr2O7) and b) 5mg/L caffeine in distilled water. Here the solutions are shown in two volumetric flasks. One can select a solution for measurement by clicking on desired solution from the dropdown menu. Turn on the instrument clicking on the power button and wait for 30 min for initialisation of the instrument.";
+        document.getElementById("demo").innerHTML = "Step-No 1: Prepare following two solutions: a) 0.001M of potassium dichromate (K2Cr2O7) and b) 5mg/L caffeine in distilled water. Here the solutions are shown in two volumetric flasks. One can select a solution for measurement by clicking on desired solution from the dropdown menu. Turn on the instrument clicking on the power button and wait for 30 min for initialization of the instrument.";
 
         var modal = document.getElementById('manual');
 
@@ -163,33 +164,84 @@
     }
 
     // This method is used to play a video which shows constructing graphs based on their sample path length. 
+    // function scan(){
+    //     if(step_no==11){
+    //         // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
+    //         if(solution==1){
+    //             var vid = document.getElementById("graph1");
+    //         }
+    //         if(solution==2){
+    //             var vid = document.getElementById("graph2");
+    //         }
+    //         // Get the scan image background.                                                               }
+    //         var context=document.getElementById('scan');
+    //         // make the image and video obtained visible.
+    //         context.style.visibility='visible';
+    //         vid.style.visibility='visible';
+    //         //play the video.
+    //         vid.play(); 
+    //         step_no++;
+    //     }
+    // }
+
     function scan(){
         if(step_no==11){
             // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
-            if(solution==1){
-                var vid = document.getElementById("graph1");
+            var scan_graph = document.getElementById("scan_graph");
+            var input1 = document.getElementById("input1");
+            var input2 = document.getElementById("input2");
+            var start_btn = document.getElementById("start_btn");
+            var instruction_bkgd = document.getElementById("instruction_bkgd");
+            var graph_instruction = document.getElementById("graph_instruction");
+            scan_graph.style.visibility = "visible";
+            input1.style.visibility = "visible";
+            input2.style.visibility = "visible";
+            start_btn.style.visibility = "visible";
+            instruction_bkgd.style.visibility ="visible";
+
+            if(solution == 1){
+                graph_instruction.innerHTML = "On the screen enter the wavelength range of spectral scan. For K2Cr2O7: start: 700 nm End: 325 nm. In real operation, the wavelength range of incident light for the sample is chosen and the wavelength scan is run via the accompanied computer software. One can run the scan in absorbance (A)  or transmittance (%T) mode. Click on the green 'start' button on the measurement set-up screen to run the wavelength scan. Observe the wavelength scan. If the spectrophotometer is a single beam instrument, then first the sample blank or reference is taken in a cuvette and the wavelength scan is run followed by the sample. One has to subtract the reference data from the sample data for respective wavelengths";
+            }else if(solution ==2){
+                graph_instruction.innerHTML = "On the screen enter the wavelength range of spectral scan. For caffeine: start: 590 nm End: 290 nm. In real operation, the wavelength range of incident light for the sample is chosen and the wavelength scan is run via the accompanied computer software. One can run the scan in absorbance (A)  or transmittance (%T) mode. Click on the green 'start' button on the measurement set-up screen to run the wavelength scan. Observe the wavelength scan. If the spectrophotometer is a single beam instrument, then first the sample blank or reference is taken in a cuvette and the wavelength scan is run followed by the sample. One has to subtract the reference data from the sample data for respective wavelengths";
             }
-            if(solution==2){
-                var vid = document.getElementById("graph2");
-            }
-            // Get the scan image background.                                                               }
-            var context=document.getElementById('scan');
-            // make the image and video obtained visible.
-            context.style.visibility='visible';
-            vid.style.visibility='visible';
-            //play the video.
-            vid.play(); 
-            step_no++;
         }
     }
 
-    // This method makes the graph hidden once the video is played nad close is pressed. 
+    function startBtn(){
+             var input1 = document.getElementById("input1").value;
+             var input2 = document.getElementById("input2").value;
+             var video1 = document.getElementById("graph1");
+             var video2 = document.getElementById("graph2");
+             var context = document.getElementById('scan');
+            if(solution == 1 &&  input1 == 700 && input2 == 325){
+                document.getElementById("scan_graph").style.visibility = "hidden";
+                context.style.visibility='visible';
+                video1.style.visibility='visible';
+                document.getElementById("graph_instruction").innerHTML = "Click on the close button when the spectral scal is complete. In real operation, the scan data are stored in the computer. The instrument stores data and therefore asks for the Sample File name. One enters a file name to save the data.";
+                video1.play();
+            }
+            
+            else if(solution == 2 && input1 == 590 && input2 == 290){
+                document.getElementById("scan_graph").style.visibility = "hidden";
+                context.style.visibility='visible';
+                video2.style.visibility='visible';
+                document.getElementById("graph_instruction").innerHTML = "Click on the close button when the spectral scal is complete. In real operation, the scan data are stored in the computer. The instrument stores data and therefore asks for the Sample File name. One enters a file name to save the data.";
+                video2.play();
+            }
+            else{
+                alert("Enter start and end values and click start button on top of the window");
+            }
+    }
+
+    //This method makes the graph hidden once the video is played and close is pressed. 
     function disposeGraph(){
-        if(step_no==12){
             // After playing the graph plotting video close option is choosen, the background scan image and the video is mafde hidden.
             document.getElementById('graph1').style.visibility='hidden';
             document.getElementById('graph2').style.visibility='hidden';
             document.getElementById('scan').style.visibility='hidden';
-        }
-
+            document.getElementById('start_btn').style.visibility = 'hidden';
+            document.getElementById("input1").style.visibility = 'hidden';
+            document.getElementById("input2").style.visibility = 'hidden';
+            document.getElementById("graph_instruction").style.visibility ="hidden";
+            document.getElementById("instruction_bkgd").style.visibility ="hidden";
     }
