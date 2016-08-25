@@ -1,6 +1,5 @@
     // This file contains all general functions used in the experiment
 
-
     var images = [];
     var x = 0;
     var y = 0;
@@ -10,7 +9,8 @@
     var img,img1;
     var id,id1;
     var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
-    var solution=4;// indicates which cuvette
+    var solution=1;// Indicates type of solution being used.
+    var sliderange;
     images[0] = "images/spec_on_redLight.png";
     images[1] = "images/spec_on_no_redLight.png";
 
@@ -21,9 +21,31 @@
             popitup("slideshow.html");
         }, false);
 
+
+        // Method is called when the solution is changed. Here the change in solution is marked by chamging the saturation of flask and grayscale of beaker.
+        $('#solution').change(function () {
+            var chosen_solution = $('#solution').val();
+            alert(chosen_solution);
+                    
+            if(chosen_solution=='coumarin 343'){
+                solution = 1;
+                alert("dsa");
+                // document.getElementById('flask').style.filter='saturate(1%)';
+                // document.getElementById('beaker').style.filter='grayscale(100%)';
+            }
+            else if(chosen_solution=='coumarin 6'){
+                solution = 2;
+                // document.getElementById('flask').style.filter='saturate(2%)';
+                // document.getElementById('beaker').style.filter='grayscale(100%)';   
+            }
+            else {
+                solution = 3;
+                // document.getElementById('flask').style.filter='saturate(3%)';
+                document.getElementById('beaker').style.filter='grayscale(100%)'; 
+            }
+        });
+
         // Intial intrsuction to be followed
-        document.getElementById('flask').style.filter='saturate(4)'
-        $('#shelf').attr('src', 'images/shelf_with_orange_solution3.png'); 
         document.getElementById("demo").innerHTML = "Step-No 1: The solutions to be analyzed are selcted from the drop-down menu. The solution concentrations are selected from the concentration scale bars & turn on the instrument clicking on the power button and wait for 30 mins for initialization of the instrument.";
         var modal = document.getElementById('manual');
 
@@ -49,42 +71,29 @@
                 modal.style.display = "none";
             }
         }
+
+        // Method is called when the slider range is changed.
         $('#conc_scale').change(function () {
             var chosen_conc = document.getElementById("conc_scale").value; 
-            if(chosen_conc=='1'){
-                solution = 1;
-                document.getElementById('flask').style.filter='saturate(1)';
-                $('#shelf').attr('src', 'images/shelf_with_orange_solution.png'); 
-                
-            }
-            if(chosen_conc=='2'){
-                solution = 2;
-                document.getElementById('flask').style.filter='saturate(1.5)';
-                $('#shelf').attr('src', 'images/shelf_with_orange_solution1.png'); 
-            }
-            if(chosen_conc=='3'){
-                solution = 3;
-                document.getElementById('flask').style.filter='saturate(2)';
-                $('#shelf').attr('src', 'images/shelf_with_orange_solution2.png'); 
-            }
-            if(chosen_conc=='4'){
-                solution = 4;
-                document.getElementById('flask').style.filter='saturate(2.5)';
-                $('#shelf').attr('src', 'images/shelf_with_orange_solution3.png'); 
-            }
-            if(chosen_conc=='5'){
-                solution = 5;
-                document.getElementById('flask').style.filter='saturate(3)';
-                $('#shelf').attr('src', 'images/shelf_with_orange_solution4.png'); 
-            }
-            if(chosen_conc=='6'){
-                solution = 6;
-                document.getElementById('flask').style.filter='saturate(3.5)';
-                $('#shelf').attr('src', 'images/shelf_with_orange_solution5.png'); 
-            }
-            
+            console.log(chosen_conc);
+            // if(chosen_conc=='1'){
+            //     sliderange = 1;
+            // }
+            // else if(chosen_conc=='2'){
+            //     sliderange = 2;
+            // }
+            // else if(chosen_conc=='3'){
+            //     sliderange = 3;
+            // }
+            // else if(chosen_conc=='4'){
+            //     sliderange = 4;
+            // }
+            // else{
+            //     sliderange = 5;
+            // }
         });
     }
+
     // When user clicks on the Data button it redirects him to the page containing slideshow of three graphs obtained from three different sample lengths
     function popitup(url) {
         // Opens a new browser window called newwindow. url specifies the URL of the page to open.
@@ -132,23 +141,30 @@
             setInterval(function(){
                 angle+=3;
                 $('#clockHand').rotate(angle);
-            },170);
+            },50);
             step_no++;
             //After 10 secs dispose clock
-            setTimeout("disposeClock()",10000);
+            // setTimeout("disposeClock()",3000);
+            setTimeout("removeClock()",3000);
         }
     }
 
     // After 30 seconds of display of the timer the visibility of clock is changed back to hidden.
-    function disposeClock(){
-        // Make the visiblility of the obtained images hidden.
-        document.getElementById('clockScreen').style.visibility='hidden';
-        document.getElementById('clockHand').style.visibility='hidden';
-        // Change to next intsruction to be followed.
-        document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take 1 clean, dry beaker.";
-    }
+    // function disposeClock(){
+    //     // Make the visiblility of the obtained images hidden.
+    //     document.getElementById('clockScreen').style.visibility='hidden';
+    //     document.getElementById('clockHand').style.visibility='hidden';
+    //     // Change to next intsruction to be followed.
+    //     document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take 1 clean, dry beaker.";
+    // }
 
-    
+    function removeClock() {
+        $('#clockHand, #clockScreen').remove();
+        $("#solution").prop("disabled", true);
+        document.getElementById("solution").style.opacity = "0.4";
+        //Change to next intsruction to be followed.
+        document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take a clean, dry beaker.";
+    }
     
     // First time its called to open the spectrophotometer
     // Second time its called to close the spectrophotometer
@@ -176,10 +192,10 @@
         if(step_no==11){
             // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
             if(solution==1){
-                var vid = document.getElementById("graph");
+                var vid = document.getElementById("graph1");
             }
             if(solution==2){
-                var vid = document.getElementById("graph");
+                var vid = document.getElementById("graph2");
             }
             // Get the scan image background.                                                               }
             var context=document.getElementById('scan');

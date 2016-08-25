@@ -7,17 +7,8 @@
 
     <meta charset="utf-8">
     <title>pH effects on absorption spectra: pKa determination by spectrophotometric method</title>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="lib/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="mas_expt9.css">
-    <script type="text/javascript" src="lib/jquery.js"></script>
-    <script type="text/javascript" src="lib/bootstrap.js"></script>
-    <script type="text/javascript" src="expt9.js"></script>
-    <script type="text/javascript" src="lib/easeljs.js"></script>
-    <script type="text/javascript" src="lib/jquery2.js"></script>
-    <script type="text/javascript" src="jQueryRotate.js"></script>  -->
     <meta charset="utf-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="mas_expt9.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
@@ -54,7 +45,7 @@
               <h2>Manual</h2>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body" style="text-align:left;font-size:18px;">
             <p>
               <ol>
                   <li>Prepare the following solutions: (i) a 0.5g/L methyl orange solution by dissolving 0.05 g methyl orange in 100 mL distilled water; (ii) a 0.2 M disodium hydrogen orthophosphate (Na<sub>2</sub>HPO<sub>4</sub>) solution by dissolving 5.68 g Na<sub>2</sub>HPO<sub>4</sub> in 200 mL distilled water; and (iii) a 0.1 M citric acid solution by dissolving 9.61 g citric acid in 500 mL distilled water.
@@ -75,16 +66,15 @@
                   </li><li>Determine the acid dissociation constant, K<sub>a</sub> for methyl orange.</li> </ol> </p>
               </ol>
             </p>
-
           </div>
         </div>
       </div>
-       <!-- Data button displays the graphs obtained on plotting absorbance against wavelength for different sample path lengths
+      <!-- Data button displays the graphs obtained on plotting absorbance against wavelength for different sample path lengths
             On clicking this button a new page displaying the graphs for three different path length is opened  -->
-        <!-- <button id="data_button" style = "background-color: Transparent; border:none; position:absolute;bottom:0%; left:25%;"><img src="images/data_button.png" ></button> -->
-        <img id="data_button" src="images/data_button.png"  onmousemove="this.src='images/hover_data.png';" onmouseout="this.src='images/data_button.png'"><br/><br/><br/>
-        <img id ="image_slider" src="images/slider.png" >
-        <input type="range" id="ph_scale" min="0" max="7" step="1" value="0" >
+      <!-- <button id="data_button" style = "background-color: Transparent; border:none; position:absolute;bottom:0%; left:25%;"><img src="images/data_button.png" ></button> -->
+      <img id="data_button" src="images/data_button.png"  onmousemove="this.src='images/hover_data.png';" onmouseout="this.src='images/data_button.png'"><br/><br/><br/>
+      <img id ="image_slider" src="images/slider.png" >
+      <input type="range" id="ph_scale" min="0" max="7" step="1" value="0" >
   </div>
  
   <div class="col-sm-6"  id = "apparatus">
@@ -119,6 +109,7 @@
             <img class="" id ="spectrolid_trans_button" onclick="spectrophotometer();" src="images/vertical_button.png">
             <!-- reference cuvette -->
             <!-- <img id="ref_cuvette" class="" src="images/vertical_button.png"> -->
+            <img id = "reference" src = "images/reference.png" >
             <img id="ref_cuvette" class="">
             <!-- text that shows the instructions to be followed next -->
             <div id = "demo"></div>

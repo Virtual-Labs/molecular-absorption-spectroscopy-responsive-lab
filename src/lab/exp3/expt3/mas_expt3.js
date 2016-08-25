@@ -214,5 +214,7 @@
             document.getElementById('onemm_graph').style.visibility='hidden';
             document.getElementById('scan').style.visibility='hidden';
             document.getElementById("scanimage1").style.visibility ='hidden';
+            document.getElementById("scanimage2").style.visibility ='hidden';
+            document.getElementById("scanimage3").style.visibility ='hidden';
         }
     }

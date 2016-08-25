@@ -49,7 +49,7 @@
                         <h2>Manual</h2>
                     </div>
 
-                    <div class="modal-body">
+                    <div class="modal-body" style="text-align:left;font-size:18px;">
                         <p>1. Prepare five calibration standards for each analyte:  </p>
                         <p>0.025 mM, 0.020 mM, 0.015 mM, 0.010 mM, and 0.005 mM coumarin 343 solutions and 0.020mM, 0.015 mM, 0.01 mM, 0.005 mM and 0.0025mM coumarin 6 solutions in ethanol.</p>
                         <p>Also prepared a solution containg 1:1 (v/v) mixture of 0.025mM coumarin 343 and 0.020 mM coumarin 6.</p>
@@ -87,7 +87,7 @@
 
            <div id ="scale">
                 <img src="images/scale.png">
-                <input id = "slider" type="range" id="conc_scale" min="0" max="4" step="1" value="0"> 
+                <input id = "slider" type="range" id="conc_scale" min="0" max="4" step="1" > 
            </div>
 
         </div>
@@ -108,22 +108,17 @@
                 <option value="1:1 mixture">1:1 mixture</option>
             </select>
             <!-- A transparent button is placed on top of every apparatus on the shelf. -->
-            <!-- <img id="flask" onclick="flask();" src="images/vertical_button.png">
-
-            <img id="pipette" onclick="pipette();" src="images/vertical_button.png">
-
-            <img id="beaker"  onclick="beaker();" src="images/vertical_button.png">
-
-            <img id="cuvette"  onclick="cuvette();" src="images/vertical_button.png"> -->
             <img id="flask" onclick="flask();" src="images/flask.png">
 
-            <img id="pipette" onclick="pipette();" src="images/vertical_button.png">
+            <img id="pipette" onclick="pipette();" src="images/pipette.png">
 
-            <img id="beaker"  onclick="beaker();" src="images/vertical_button.png">
+            <img id="beaker"  onclick="beaker();" src="images/beaker.png">
 
-            <img id="cuvette"  onclick="cuvette();" src="images/vertical_button.png">
-      </div>
-    </div><br/><br/><br/>
+            <img id="cuvette"  onclick="cuvette();" src="images/cuvette.png">
+        </div>
+
+    </div>
+    <br/><br/><br/>
 
     <div class="row">
         <!-- Third row consists of table with various devices on it  -->
@@ -137,6 +132,7 @@
             <img class="" id ="spectrolid_trans_button" onclick="spectrophotometer();" src="images/vertical_button.png">
             <!-- reference cuvette -->
             <!-- <img id="ref_cuvette" class="" src="images/vertical_button.png"> -->
+            <img id = "reference" src = "images/reference.png" >
             <img id="ref_cuvette" class="">
             <!-- text that shows the instructions to be followed next -->
             <div id = "demo"></div>
@@ -152,9 +148,9 @@
     <!-- Image of the greyed background displayed as a background while scanning the sample -->
     <img class="" id="scan"  src="images/483.png">
     <!-- Video that plots a graph for type 1 sample -->
-    <video id="graph" style = "position:absolute;z-index:1200;top:30%;left:20%;visibility :hidden;" ><source src="videos/graph.mp4" type="video/mp4"></video>
+    <video id="graph1" style = "position:absolute;z-index:1200;top:30%;left:20%;visibility :hidden;" ><source src="videos/graph.mp4" type="video/mp4"></video>
     <!-- Video that plots a graph for type 2 sample -->
-    <!-- <video id="graph2" style = "position:absolute;z-index:1200;top:30%;left:20%;visibility : hidden;" ><source src="videos/graph2.mp4" type="video/mp4"></video> -->
+    <video id="graph2" style = "position:absolute;z-index:1200;top:30%;left:20%;visibility : hidden;" ><source src="videos/graph2.mp4" type="video/mp4"></video>
     <!-- Transparent image button to close the scanning page -->
     <img class="" style="position:absolute; z-index:1200; width:5%; left:76%; top:510px;cursor:pointer;" onclick="disposeGraph();" src="images/vertical_button.png">
 </body>

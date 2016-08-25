@@ -252,8 +252,8 @@ h4{
 
 #clockHand{
     position:absolute; 
-    top:294.70px;
-    left:50.85%; 
+    top:294.50px;
+    left:50.75%; 
     visibility:hidden; 
     z-index:1102;
 }
@@ -266,12 +266,21 @@ h4{
     visibility:hidden;
 }
 
-#scanimage1, #scanimage2, #scanimage3 {
+#scanimage1,  #scanimage3 {
     position: absolute;
     z-index: 1100;
     top: 111px;
     left: 10px;
     width: 100%;
+    visibility:hidden; 
+}
+
+#scanimage2, #scanimage3{
+    position: absolute;
+    z-index: 1100;
+    top: 215px;
+    left: 109px;
+    width: 83%;
     visibility:hidden; 
 }
 
@@ -285,27 +294,7 @@ h4{
     cursor: pointer;
 }
 
-#tenmm_graph{
-    position: absolute;
-    z-index: 1300;
-    top: 28%;
-    left: 10.1%;
-    visibility: hidden;
-    width: 82.99%;
-    height: 65%;
-}
-
-#fivemm_graph{
-    position: absolute;
-    z-index: 1300;
-    top: 28%;
-    left: 10.1%;
-    visibility: hidden;
-    width: 82.99%;
-    height: 65%;
-}
-
-#onemm_graph{
+#tenmm_graph, #fivemm_graph, #onemm_graph{
     position: absolute;
     z-index: 1300;
     top: 28%;
