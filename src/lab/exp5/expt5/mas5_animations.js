@@ -51,6 +51,9 @@
             document.getElementById("demo").innerHTML = "Step-No 3: Click on the 2-nitroaniline flask to take it to experiment table";
             step_no++;
             document.getElementById("conc_scale").disabled ="true";
+            document.getElementById("conc_scale").style.opacity = "0.4";
+            $("#solution").prop("disabled", true);
+            document.getElementById("solution").style.opacity = "0.4";
         }
     }
 // This is the function called when flask is clicked.

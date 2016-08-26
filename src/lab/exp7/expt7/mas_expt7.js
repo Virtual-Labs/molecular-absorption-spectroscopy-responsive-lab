@@ -28,7 +28,7 @@
         }, false);
         document.getElementById('flask').style.filter='saturate(2)'
         // Intial instruction to be followed
-        document.getElementById("demo").innerHTML = "Step-No 1:  Prepare a standard K2Cr2O7 solution of strength nearly 3x10^-3 M in 0.01 N H2SO4(For the experiments described here we have used a solution of strength 3.16x10^-3 M. This is used as stock solution.) Switch on the computer and the instrument powers; wait for 30 min for warm up of the machine";
+        document.getElementById("demo").innerHTML = "Step-No 1:  Prepare a standard K2Cr2O7 solution of strength nearly 3x10<sup>-3</sup> M in 0.01 N H2SO4(For the experiments described here we have used a solution of strength 3.16x10<sup>-3</sup> M. This is used as stock solution.) Switch on the computer and the instrument powers; wait for 30 min for warm up of the instrument.";
         
         var modal = document.getElementById('manual');
         // Get the button that opens the manual modal
@@ -55,12 +55,10 @@
         }
         // Method is called when the concentration of the solution is changed. This method is called in order to change the color of the solution accordingly by cahnging the saturation of the flask and and mark the selected solution.
         $('#conc_scale').change(function () {
-            var chosen_conc = document.getElementById("conc_scale").value; 
-            
+            var chosen_conc = document.getElementById("conc_scale").value;          
             if(chosen_conc=='1'){
                 solution = 1;
                 document.getElementById('flask').style.filter='saturate(0.75)';
-                
             }
             else if(chosen_conc=='2'){
                 solution = 2;
@@ -91,7 +89,8 @@
             if(chosen_type == 'unknown'){
                 solution = 6;
                 document.getElementById("conc_scale").disabled = true;
-                document.getElementById('flask').style.filter='grayscale(100%)';
+                document.getElementById("conc_scale").style.opacity ="0.4";
+                document.getElementById('flask').style.filter= 'saturate(0.75)';
                 document.getElementById('beaker').style.filter='grayscale(100%)';
 
             }
@@ -99,6 +98,7 @@
                 solution = 3;
                 document.getElementById("conc_scale").value = 3;
                 document.getElementById("conc_scale").disabled = false;
+                document.getElementById("conc_scale").style.opacity ="1";
                 document.getElementById('flask').style.filter='saturate(2)';
                 document.getElementById('flask').style.filter='grayscale(0%)';
                 document.getElementById('beaker').style.filter='grayscale(0%)';
@@ -147,10 +147,6 @@
             var context=document.getElementById('clockScreen');
             var hand =document.getElementById('clockHand');
             // Make the visiblility of the obtained images visible
-            if(solution==6){
-                document.getElementById("conc_scale").disabled = true;
-            }
-            document.getElementById("solution").disabled = true;
             context.style.visibility='visible';
             hand.style.visibility="visible";
             // Rotate 'clockHand' using jQueryRotate.js
@@ -161,17 +157,24 @@
             },50);
             step_no++;
             //After 3 secs dispose clock
-            setTimeout("disposeClock()",3000);
+            // setTimeout("disposeClock()",3000);
+            setTimeout("removeClock()",3000);
         }
     }
 
     // After 30 seconds of display of the timer the visibility of clock is changed back to hidden.
-    function disposeClock(){
-        // Make the visiblility of the obtained images hidden.
-        document.getElementById('clockScreen').style.visibility='hidden';
-        document.getElementById('clockHand').style.visibility='hidden';
-        // Change to next intsruction to be followed.
-        document.getElementById("demo").innerHTML = "Step-No 2: Make three appropriate concentrations (say 0.001M, 0.00075M, 0.001M) of potassium dichromate [Click and drag on the concentration bar to choose the appropriate of the solution whose absorbance is to be measured it is better to start with the lower concentration solution] Click on the beaker to take a clean dry beaker.";
+    // function disposeClock(){
+    //     // Make the visiblility of the obtained images hidden.
+    //     document.getElementById('clockScreen').style.visibility='hidden';
+    //     document.getElementById('clockHand').style.visibility='hidden';
+    //     // Change to next intsruction to be followed.
+    //     document.getElementById("demo").innerHTML = "Step-No 2: Make three appropriate concentrations (say 0.001M, 0.00075M, 0.001M) of potassium dichromate [Click and drag on the concentration bar to choose the appropriate of the solution whose absorbance is to be measured it is better to start with the lower concentration solution] Click on the beaker to take a clean dry beaker.";
+    // }
+
+     function removeClock() {
+        $('#clockHand, #clockScreen').remove();
+        //Change to next intsruction to be followed.
+        document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker";
     }
 
     

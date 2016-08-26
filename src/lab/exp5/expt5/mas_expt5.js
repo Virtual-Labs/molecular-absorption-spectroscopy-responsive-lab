@@ -17,7 +17,7 @@
     var id,id1;
     var type_of_movement;// Indicates upward or downward motion
     var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
-    var solution=3;// Indicates type of solution being used.
+    var solution=1;// Indicates type of solution being used.
     
 
 
@@ -71,7 +71,7 @@
                 solution = 4;
                 
             }
-            if(chosen_conc=='0.10'){
+            if(chosen_conc=='0.1'){
                 solution = 5;
             }
             document.getElementById('scale_value').innerHTML =chosen_conc + "mM";
@@ -81,7 +81,7 @@
     // When user clicks on the Data button it redirects him to the page containing slideshow of three graphs obtained from three different sample lengths
     function popitup(url) {
         // Opens a new browser window called newwindow. url specifies the URL of the page to open.
-        newwindow=window.open(url,'name','height=300,width=350',"_parent");
+        newwindow=window.open(url,'name','height=400,width=350',"_parent");
         // Sets focus to the new window if the focus is on the previous page.
         if (window.focus) {
             newwindow.focus()
@@ -144,8 +144,6 @@
 
     function removeClock() {
         $('#clockHand, #clockScreen').remove();
-        $("#solution").prop("disabled", true);
-        document.getElementById("solution").style.opacity = "0.4";
         //Change to next intsruction to be followed.
         document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker";
     }
@@ -173,59 +171,38 @@
 
     }
     // This method is used to play a video which shows constructing graphs based on their sample path length. 
-    // function scan(){
-    //     if(step_no==11){
-    //         // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
-    //         if(solution==1){
-    //             var vid = document.getElementById("first_conc");
-    //         }
-    //         else if(solution==2){
-    //             var vid = document.getElementById("second_conc");
-    //         }
-    //         else if(solution==3){
-    //             var vid = document.getElementById("third_conc");
-    //         }
-    //         else if(solution==4){
-    //             var vid = document.getElementById("fourth_conc");
-    //         }
-    //         else if(solution==5){
-    //             var vid = document.getElementById("fifth_conc");
-    //         }
-    //         // Get the scan image background.                                                               }
-    //         var context=document.getElementById('scan');
-    //         // make the image and video obtained visible.
-    //         context.style.visibility='visible';
-    //         vid.style.visibility='visible';
-    //         //play the video.
-    //         vid.play(); 
-    //         step_no++;
-    //     }
-    // }
-
-
-    function scan() {
-        if(solution == 1){
-                document.getElementById("scan_image").style.visibility = "visible";
+    function scan(){
+        if(step_no==11){
+            // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
+            if(solution==1){
+                var vid = document.getElementById("first_conc");
+            }
+            else if(solution==2){
+                var vid = document.getElementById("second_conc");
+            }
+            else if(solution==3){
+                var vid = document.getElementById("third_conc");
+            }
+            else if(solution==4){
+                var vid = document.getElementById("fourth_conc");
+            }
+            else if(solution==5){
+                var vid = document.getElementById("fifth_conc");
+            }
+            // Get the scan image background.                                                               }
+            var context=document.getElementById('scan');
+            // make the image and video obtained visible.
+            context.style.visibility='visible';
+            vid.style.visibility='visible';
+            //play the video.
+            vid.play(); 
+            step_no++;
         }
-        //Get the scan image background and scan button visible.                                                               }
-        var context=document.getElementById('scan');
-        context.style.visibility='visible';
-        document.getElementById("scan_btn").style.visibility = "visible";
-    }
-
-    function scanBtn() {
-        alert("hello");
-        if(solution==1){
-            var vid = document.getElementById("first_conc");
-        }
-        // make the video obtained visible.
-        vid.style.visibility='visible';
-        //play the video.
-        vid.play(); 
     }
 
     // This method makes the graph hidden once the video is played nad close is pressed. 
     function disposeGraph(){
+        if(step_no==12){
             // After playing the graph plotting video close option is choosen, the background scan image and the video is mafde hidden.
             document.getElementById('first_conc').style.visibility='hidden';
             document.getElementById('second_conc').style.visibility='hidden';
@@ -233,5 +210,5 @@
             document.getElementById('fourth_conc').style.visibility='hidden';
             document.getElementById('fifth_conc').style.visibility='hidden';
             document.getElementById('scan').style.visibility='hidden';
-
+        }
     }

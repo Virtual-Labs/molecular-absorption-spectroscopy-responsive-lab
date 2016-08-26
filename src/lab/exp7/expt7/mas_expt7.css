@@ -125,9 +125,23 @@ h4{   /*its not mandatory as the row is used*/
     top:23px;
 }
 
+#solution_name{
+    position: absolute;
+    left: 253px;
+    top:70px;
+    color: red;
+}
+
 #apparatus{
    /* position: relative;*/
     float:right;
+}
+
+#solution{
+    position:absolute; 
+    z-index:1099; 
+    left:40px; 
+    top:6px
 }
 
 #flask{
@@ -206,7 +220,7 @@ h4{   /*its not mandatory as the row is used*/
 
 #ref_cuvette{
     position: absolute; 
-    z-index: 899; 
+    z-index: 700; 
     width: 1.4%; 
     left: 37.35%; 
     top: 10%; 
@@ -233,6 +247,7 @@ h4{   /*its not mandatory as the row is used*/
     left: 22%;
     max-width: 60%;
     color: yellow;
+    text-align: left;
 }
 
 #clockScreen{

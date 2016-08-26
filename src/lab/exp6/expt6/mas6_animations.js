@@ -49,6 +49,9 @@
             moveImage();
             // Change to next intsruction to be followed.
             document.getElementById("conc_scale").disabled = true;
+            document.getElementById("conc_scale").style.opacity ="0.4";
+            document.getElementById("solution").disabled = true;
+            document.getElementById("solution").style.opacity ="0.4";
             document.getElementById("demo").innerHTML = "Step-No 3: Click on the conical flask to take it to experiment table";
             step_no++;
         }
@@ -148,11 +151,59 @@
         }
         if (y == 16){
             img.style.width = '15%';
-            img1.src = "images/beaker0.png";
+            // img1.src = "images/beaker0.png";
+            if(solution == 1){
+                img1.src = "images/beaker0.png";
+                img1.style.filter ="saturate(0.75)";
+            }
+            else if(solution == 2) {
+                img1.src = "images/beaker0.png";
+                img1.style.filter ="saturate(1)";
+            }
+            else if(solution == 3) {
+                img1.src = "images/beaker0.png";
+                img1.style.filter ="saturate(2)";
+            }
+            else if(solution ==4) {
+                img1.src = "images/beaker0.png";
+                img1.style.filter ="saturate(3)";
+            }
+            else if(solution ==5) {
+                img1.src = "images/beaker0.png";
+                img1.style.filter ="saturate(4)";
+            }
+            else if(solution ==6) {
+                img1.src = "images/beaker0.png";
+                img1.style.filter ="saturate(5)";
+            }
         }
         if (y == 25){
             img.style.width = '14%';
-            img1.src = "images/beaker2.png";
+            // img1.src = "images/beaker2.png";
+            if(solution ==1){
+                img1.src = "images/beaker2.png";
+                img1.style.filter ="saturate(0.75)";
+            }
+            else if(solution ==2) {
+                img1.src = "images/beaker2.png";
+                img1.style.filter ="saturate(1)";
+            }
+            else if(solution ==3) {
+                img1.src = "images/beaker2.png";
+                img1.style.filter ="saturate(2)";
+            }
+            else if(solution ==4) {
+                img1.src = "images/beaker2.png";
+                img1.style.filter ="saturate(3)";
+            }
+            else if(solution ==5) {
+                img1.src = "images/beaker2.png";
+                img1.style.filter ="saturate(4)";
+            }
+            else if(solution ==6) {
+                img1.src = "images/beaker2.png";
+                img1.style.filter ="saturate(5)";
+            }
         }
         if(y == 30){
             clearInterval(id1);
@@ -174,7 +225,7 @@
         // Move it back to the table
         elem.style.width = "8%"
         // Change the image to an empty flask image
-        elem.src= "images/69.png"; 
+        elem.src= "images/emptyflask.png"; 
         moveImage();
     }
 
@@ -244,7 +295,24 @@
             img = document.getElementById("cuvette");
             // Change the cuvette image to filled cuvette image
             img.src = "images/cuvette_filled.png";
-            
+            if(solution == 1){
+                img1.style.filter ="saturate(0.75)";
+            }
+            else if(solution == 2) {
+                img1.style.filter ="saturate(1)";
+            }
+            else if(solution == 3) {
+                img1.style.filter ="saturate(2)";
+            }
+            else if(solution ==4) {
+                img1.style.filter ="saturate(3)";
+            }
+            else if(solution ==5) {
+                img1.style.filter ="saturate(4)";
+            }
+            else if(solution ==6) {
+                img1.style.filter ="saturate(5)";
+            }
         }, 1000);
     }
 

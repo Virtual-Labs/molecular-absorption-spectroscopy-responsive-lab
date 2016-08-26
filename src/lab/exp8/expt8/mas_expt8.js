@@ -9,7 +9,7 @@
     var img,img1;
     var id,id1;
     var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
-    var solution=1;// Indicates type of solution being used.
+    // var solution=1;// Indicates type of solution being used.
     var sliderange;
     images[0] = "images/spec_on_redLight.png";
     images[1] = "images/spec_on_no_redLight.png";
@@ -22,31 +22,32 @@
         }, false);
 
 
-        // Method is called when the solution is changed. Here the change in solution is marked by chamging the saturation of flask and grayscale of beaker.
+        // Method is called when the solution is changed. change in solution changes the saturation of flask and scale range.
         $('#solution').change(function () {
-            var chosen_solution = $('#solution').val();
-            alert(chosen_solution);
-                    
-            if(chosen_solution=='coumarin 343'){
+            var chosen_solution = $('#solution').val();               
+            if(chosen_solution == 'coumarin 343'){
                 solution = 1;
-                alert("dsa");
-                // document.getElementById('flask').style.filter='saturate(1%)';
-                // document.getElementById('beaker').style.filter='grayscale(100%)';
+                document.getElementById('slider_bkgd').src = "images/scale1.png";
+                //document.getElementById('beaker').style.filter='grayscale(100%)';
             }
-            else if(chosen_solution=='coumarin 6'){
+            else if(chosen_solution == 'coumarin 6'){
                 solution = 2;
-                // document.getElementById('flask').style.filter='saturate(2%)';
+                alert("fdf");
+                document.getElementById("flask").src= "images/darkerflask.png";
+                document.getElementById('slider_bkgd').src = "images/scale2.png";
                 // document.getElementById('beaker').style.filter='grayscale(100%)';   
             }
             else {
                 solution = 3;
-                // document.getElementById('flask').style.filter='saturate(3%)';
-                document.getElementById('beaker').style.filter='grayscale(100%)'; 
+                document.getElementById("flask").src "images/darkerflask.png";
+                document.getElementById('scale').style.visibility = 'hidden';
+                // document.getElementById('beaker').style.filter='grayscale(100%)'; 
             }
         });
 
         // Intial intrsuction to be followed
         document.getElementById("demo").innerHTML = "Step-No 1: The solutions to be analyzed are selcted from the drop-down menu. The solution concentrations are selected from the concentration scale bars & turn on the instrument clicking on the power button and wait for 30 mins for initialization of the instrument.";
+
         var modal = document.getElementById('manual');
 
         // Get the button that opens the manual modal

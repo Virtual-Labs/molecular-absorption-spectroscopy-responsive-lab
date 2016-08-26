@@ -49,6 +49,9 @@
             moveImage();
             // Change to next intsruction to be followed.
             document.getElementById("conc_scale").disabled = true;
+            document.getElementById("conc_scale").style.opacity = "0.4";
+            $("#solution").prop("disabled", true);
+            document.getElementById("solution").style.opacity = "0.4";
             document.getElementById("demo").innerHTML = "Step-No 3: Click on the conical flask to take it to experiment table";
             step_no++;
         }
@@ -150,11 +153,58 @@
         }
         if (y == 16){
             img.style.width = '15%';
-            img1.src = "images/beaker0.png";
+            if(solution ==1){
+                img1.src = "images/beaker0.png";
+                img1.style.filter ="saturate(0.75)";
+            }
+            else if(solution ==2) {
+                img1.src = "images/beaker0.png";
+                img1.style.filter ="saturate(1)";
+            }
+            else if(solution ==3) {
+                img1.src = "images/beaker0.png";
+                img1.style.filter ="saturate(2)";
+            }
+            else if(solution ==4) {
+                img1.src = "images/beaker0.png";
+                img1.style.filter ="saturate(3)";
+            }
+            else if(solution ==5) {
+                img1.src = "images/beaker0.png";
+                img1.style.filter ="saturate(4)";
+            }
+            else if(solution ==6) {
+                img1.src = "images/beaker0.png";
+                img1.style.filter ="saturate(0.75)";
+            }
         }
         if (y == 25){
             img.style.width = '14%';
-            img1.src = "images/beaker2.png";
+            if(solution ==1){
+                img1.src = "images/beaker2.png";
+                img1.style.filter ="saturate(0.75)";
+            }
+            else if(solution ==2) {
+                img1.src = "images/beaker2.png";
+                img1.style.filter ="saturate(1)";
+            }
+            else if(solution ==3) {
+                img1.src = "images/beaker2.png";
+                img1.style.filter ="saturate(2)";
+            }
+            else if(solution ==4) {
+                img1.src = "images/beaker2.png";
+                img1.style.filter ="saturate(3)";
+            }
+            else if(solution ==5) {
+                img1.style.filter ="saturate(4)";
+                img1.src = "images/beaker2.png";
+                
+            }
+            else if(solution ==6) {
+                img1.src = "images/beaker2.png";
+                img1.style.filter ="saturate(0.75)";
+            }
         }
         if(y == 30){
             clearInterval(id1);
@@ -245,11 +295,36 @@
         setTimeout(function() {
             img = document.getElementById("cuvette");
             // Change the cuvette image to filled cuvette image
-            if(solution == 6){
-                img.src = "images/cuvette_filled0.png";
-            }
-            else{
+            // if(solution == 6){
+            //     img.src = "images/cuvette_filled0.png";
+            // }
+            // else{
+            //     img.src = "images/cuvette_filled.png";
+            // }
+
+            if(solution ==1){
                 img.src = "images/cuvette_filled.png";
+                img.style.filter ="saturate(0.75)";
+            }
+            else if(solution ==2) {
+                img.src = "images/cuvette_filled.png";
+                img.style.filter ="saturate(1)";
+            }
+            else if(solution ==3) {
+                img.src = "images/cuvette_filled.png";
+                img.style.filter ="saturate(2)";
+            }
+            else if(solution ==4) {
+                img.src = "images/cuvette_filled.png";
+                img.style.filter ="saturate(3)";
+            }
+            else if(solution ==5) {
+                img.src = "images/cuvette_filled.png";
+                img.style.filter ="saturate(4)";
+            }
+            else if(solution ==6) {
+                img.src = "images/cuvette_filled.png";
+                img.style.filter ="saturate(0.75)";
             }
             
         }, 1000);
@@ -318,7 +393,7 @@
     function extraCuvette(){
         // Get the transparent image and replace it with a reference cuvette image and move it down into the spectrophotometer.
         $('#ref_cuvette').attr('src', 'images/cuvette_filled_water.png'); 
-        $('#ref_cuvette_label').attr('src', 'images/ref_solution.png'); 
+        document.getElementById("reference").style.visibility ="visible";
         elem = document.getElementById("ref_cuvette"); 
         // Detect the current position of the flask.
         initial_top = Math.round($('#ref_cuvette').position().top);
@@ -337,6 +412,7 @@
             $('#ref_cuvette_label').attr('src', 'images/vertical_button.png'); 
             $('#ref_cuvette').attr('src', 'images/vertical_button.png'); 
             $('#cuvette').attr('src', 'images/vertical_button.png'); 
+            document.getElementById("reference").style.visibility ="hidden";
         },1000);
 
     }

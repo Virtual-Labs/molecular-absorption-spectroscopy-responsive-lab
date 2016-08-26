@@ -68,14 +68,17 @@
             <!-- <button id="data_button" style = "background-color: Transparent; border : none; position:absolute;bottom:0%; left:70px;"><img src="images/data_button.png" ></button> -->
             <img id="data_button" src="images/data_button.png"  onmousemove="this.src='images/hover_data.png';" onmouseout="this.src='images/data_button.png'">
 
-            <img id= "scale_image" src="images/scale.png">
-            <input type="range" id="conc_scale" min="1" max="5" step="1"> 
+            <div id = "scale">
+                <img id= "scale_image" src="images/scale.png">
+                <input type="range" id="conc_scale" min="1" max="5" step="1"> 
+                <p id ="solution_name">Concentration of patassium Dichromate</p>
+            </div>
         </div>
 
         <div class="col-sm-6"  id = "apparatus">
             <!-- This column conatins the shelf dropdown box to choose the type of the solution and apparatus-->
             <img class="" id = "shelf" src="images/only_shelf.png">
-            <select id="solution" style="position:absolute; z-index:1099; left:40px; top:6px">
+            <select id="solution" >
                 <option value="k2cr2o7" selected>Potassium Dichromate</option>
                 <option value="unknown">Unknown Solution</option>
             </select>

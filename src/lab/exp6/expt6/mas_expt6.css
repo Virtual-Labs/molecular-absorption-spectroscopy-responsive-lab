@@ -128,6 +128,13 @@ h4{
     float:right;
 }
 
+#solution{
+    position:absolute; 
+    z-index:1099; 
+    left:40px; 
+    top:6px
+}
+
 #flask{
     position:absolute;
     z-index:999; 
@@ -157,7 +164,7 @@ h4{
 
 #cuvette{
     position:absolute;
-    z-index:898; 
+    z-index:700; 
     width:2.5%; 
     left:80%; 
     top:48%; 
@@ -231,6 +238,7 @@ h4{
     left: 22%;
     max-width: 60%;
     color: yellow;
+    text-align: left;
 }
 
 #clockScreen{

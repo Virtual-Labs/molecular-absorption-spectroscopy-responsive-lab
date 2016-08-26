@@ -61,7 +61,7 @@
                 solution = 1;
                 document.getElementById('flask').style.filter='saturate(0.75)';
                 document.getElementById('beaker').style.filter='saturate(0.75)';
-                
+                alert("fedf");
             }
             else if(chosen_conc=='2'){
                 solution = 2;
@@ -100,7 +100,7 @@
     // When user clicks on the Data button it redirects him to the page containing slideshow of graphs obtained from different samples
     function popitup(url) {
         // Opens a new browser window called newwindow. url specifies the URL of the page to open.
-        newwindow=window.open(url,'name','height=300,width=350',"_parent");
+        newwindow=window.open(url,'name','height=400,width=350',"_parent");
         // Sets focus to the new window if the focus is on the previous page.
         if (window.focus) {
             newwindow.focus()
@@ -137,7 +137,6 @@
             var context=document.getElementById('clockScreen');
             var hand =document.getElementById('clockHand');
             // Make the visiblility of the obtained images visible
-            document.getElementById("conc_scale").disabled = true;
             context.style.visibility='visible';
             hand.style.visibility="visible";
             // Rotate 'clockHand' using jQueryRotate.js
@@ -164,8 +163,6 @@
     
     function removeClock() {
         $('#clockHand, #clockScreen').remove();
-        $("#solution").prop("disabled", true);
-        document.getElementById("solution").style.opacity = "0.4";
         //Change to next intsruction to be followed.
         document.getElementById("demo").innerHTML = "Step-No 2: Make three appropriate concentrations (say 0.001M, 0.00075M, 0.001M) of potassium dichromate [Click and drag on the concentration bar to choose the appropriate of the solution whose absorbance is to be measured it is better to start with the lower concentration solution] Click on the beaker to take a clean dry beaker.";
     }

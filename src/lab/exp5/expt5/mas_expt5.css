@@ -117,22 +117,30 @@ h4{   /*its not mandatory as the row is used*/
     top: 25px;
 }
 
+#scale_value{
+    position: absolute;
+    top:50px;
+    left: 350px;
+    font-weight: bold;
+}
+
 #concentration{
     position: absolute;
     top:70px;
     left: 280px;
 }
 
-#scale_value{
-    position: absolute;
-    top:50px;
-    left:350px;
-}
-
 #apparatus{
    /* position: relative;*/
     float:right;
     top:-65px;
+}
+
+#solution{
+    position:absolute; 
+    z-index:1099; 
+    left:40px; 
+    top:6px
 }
 
 #flask{
@@ -238,6 +246,7 @@ h4{   /*its not mandatory as the row is used*/
     left: 22%;
     max-width: 60%;
     color: yellow;
+    text-align: left;
 }
 
 #clockScreen{
@@ -295,30 +304,10 @@ h4{   /*its not mandatory as the row is used*/
 #disposegraph{
     position: absolute;
     z-index: 1200;
-    width: 7%;
-    left: 76%;
-    top: 520px;
+    width: 8%;
+    left: 84%;
+    top: 510px;
     cursor: pointer;
-    height: 3%;
+    height: 4%;
 }
-   /* .rangeslider,
-        input[type='range'] {
-        width: 240px;
-    }
-
-    .rangeslider__ruler {
-          cursor: pointer;
-          font-size: .7em;
-          margin: 20px 3px 0 3px;
-          position: relative;
-          top: 100%;
-          text-align: justify;
-    }
-.conc{
-        background:url("images/box.png");
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-repeat: no-repeat;
-    }
-*/
+   

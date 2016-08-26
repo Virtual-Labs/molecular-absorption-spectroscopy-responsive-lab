@@ -72,8 +72,8 @@
             <!-- <button id="data_button" style = "background-color: Transparent; border : none; position:absolute;bottom:0%; left:70px"><img src="images/data_button.png" ></button> -->
             <img id="data_button" src="images/data_button.png"  onmousemove="this.src='images/hover_data.png';" onmouseout="this.src='images/data_button.png'">
 
-            <img id="scale_image" src = "images/box1.png" >
-            <input type="range" id="conc_scale" min="0.02" max="0.10" step="0.02" >
+            <img id="scale_image" src = "images/scale_bkgd.png" >
+            <input type="range" id="conc_scale" min="0.02" max="0.10" step="0.02" value="0" >
             <p id="scale_value">0.02mM</p> 
             <p id="concentration">Concentration of 2-nitroaniline</p>
             <!-- This consists of a slider with 5 range points and has a background image defined in conc class -->
@@ -91,6 +91,9 @@
             <!-- This column conatins the shelf -->
             <img class="" id = "shelf" src="images/only_shelf.png">
             <!-- Every apparatus on the shelf as images -->
+            <select id="solution" >
+                <option value="k2cr2o7" selected>2-nitroaniline</option>
+            </select>
             <img id="flask"  onclick="flask();" src="images/flask.png">
 
             <img id="pipette" onclick="pipette();" src="images/pipette.png">
@@ -130,10 +133,6 @@
     <img  id="clockHand" src="images/hand.png">
     <!-- Image of the greyed background displayed as a background while scanning the sample -->
     <img id="scan" src="images/483.png">
-    <!-- image which gets displayed after clicking on the monitor -->
-    <img id ="scan_image" src="images/scanimage.png">
-    <!-- displays the graph by clicking on this scan image button -->
-    <img id ="scan_btn" src="images/vertical_button.png" onclick="scanBtn();">
     <!-- Video that plots a graph for 0.02 concentration sample -->
     <video id="first_conc" ><source src="videos/graph1.mp4" type="video/mp4"></video>
     <!-- Video that plots a graph for 0.04 concentration sample -->
