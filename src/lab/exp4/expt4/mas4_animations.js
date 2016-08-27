@@ -48,7 +48,8 @@
             // Move the beaker image to desired position.
             moveImage();
             // Change to next intsruction to be followed.
-            document.getElementById("conc_scale").disabled = true;
+            $("#solution").prop("disabled", true);
+            document.getElementById("solution").style.opacity = "0.4";
             document.getElementById("demo").innerHTML = "Step-No 3: Click on the conical flask to take it to experiment table";
             step_no++;
         }

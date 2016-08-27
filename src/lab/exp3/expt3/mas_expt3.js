@@ -56,7 +56,7 @@
     // When user clicks on the Data button it redirects him to the page containing slideshow of three graphs obtained from three different sample lengths
     function popitup(url) {
         // Opens a new browser window called newwindow. url specifies the URL of the page to open.
-        newwindow=window.open(url,'name','height=300,width=350',"_parent");
+        newwindow=window.open(url,'name','height=350,width=350',"_parent");
         // Sets focus to the new window if the focus is on the previous page.
         if (window.focus) {
             newwindow.focus()
@@ -145,59 +145,22 @@
     }
 
     // This method is used to play a video which shows constructing graphs based on their sample path length. 
-    // function scan(){
-    //     if(step_no==11){
-    //         // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
-    //      if(cuv==1){
-    //             var vid = document.getElementById("tenmm_graph");
-    //         }
-    //         else if(cuv==2){
-    //             var vid = document.getElementById("fivemm_graph");
-    //         }
-    //         else if(cuv==3){
-    //             var vid = document.getElementById("onemm_graph");
-    //         }
-    //         // Get the scan image background.                                                               }
-    //         var context=document.getElementById('scan');
-    //         // make the image and video obtained visible.
-    //         context.style.visibility='visible';
-    //         vid.style.visibility='visible';
-    //         //play the video.
-    //         vid.play(); 
-    //         step_no++;
-    //     }
-    // }
-
-//This method is used to display the scan image based on the cuvette choosen
     function scan(){
         if(step_no==11){
             // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
-            if(cuv==1){
-                document.getElementById("scanimage1").style.visibility = "visible";
-            }
-            else if(cuv==2){
-                document.getElementById("scanimage2").style.visibility = "visible";
-            }
-            else if(cuv==3){
-                document.getElementById("scanimage3").style.visibility = "visible";
-            }
-            step_no++;
-        }
-    }
-
-// This method is called when we click on the scan button to display the graphs video.
-    function scanGraph(){
-        if(step_no == 12){
-            if(cuv==1){
+         if(cuv==1){
                 var vid = document.getElementById("tenmm_graph");
             }
             else if(cuv==2){
                 var vid = document.getElementById("fivemm_graph");
             }
             else if(cuv==3){
-                 var vid = document.getElementById("onemm_graph");
+                var vid = document.getElementById("onemm_graph");
             }
-            //make the video obtained visible.
+            // Get the scan image background.                                                               }
+            var context=document.getElementById('scan');
+            // make the image and video obtained visible.
+            context.style.visibility='visible';
             vid.style.visibility='visible';
             //play the video.
             vid.play(); 
@@ -205,9 +168,10 @@
         }
     }
 
+
 // This method makes the graph hidden once the video is played nad close is pressed. 
     function disposeGraph(){
-        if(step_no==13){
+        if(step_no==12){
             // After playing the graph plotting video close option is choosen, the background scan image and the video is mafde hidden.
             document.getElementById('tenmm_graph').style.visibility='hidden';
             document.getElementById('fivemm_graph').style.visibility='hidden';

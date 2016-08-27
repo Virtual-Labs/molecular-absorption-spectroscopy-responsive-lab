@@ -17,7 +17,7 @@
     var id,id1;
     var type_of_movement;// Indicates upward or downward motion
     var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
-    var solution=3;// Indicates type of solution being used.
+    var solution=2;// Indicates type of solution being used.
     
 
     // This method is called when the page is loaded. It helps in providing basic functionality to two buttons manual and data and also sets the first set of instructions.
@@ -56,7 +56,6 @@
         // Method is called when the concentration of the solution is changed. This method is called in order to change the color of the solution accordingly by cahnging the saturation of the flask and and mark the selected solution.
         $('#conc_scale').change(function () {
             var chosen_conc = document.getElementById("conc_scale").value; 
-            
             if(chosen_conc=='1'){
                 solution = 1;
                 document.getElementById('beaker').style.filter='saturate(0.75)';
@@ -113,7 +112,6 @@
             var context=document.getElementById('clockScreen');
             var hand =document.getElementById('clockHand');
             // Make the visiblility of the obtained images visible
-            document.getElementById("conc_scale").disabled = true;
             context.style.visibility='visible';
             hand.style.visibility="visible";
             // Rotate 'clockHand' using jQueryRotate.js
@@ -140,8 +138,6 @@
     
     function removeClock() {
         $('#clockHand, #clockScreen').remove();
-        $("#solution").prop("disabled", true);
-        document.getElementById("solution").style.opacity = "0.4";
         //Change to next intsruction to be followed.
         document.getElementById("demo").innerHTML = "Step-No 2: Make three appropriate concentrations (say 0.001M, 0.00075M, 0.001M) of potassium dichromate [Click and drag on the concentration bar to choose the appropriate of the solution whose absorbance is to be measured it is better to start with the lower concentration solution] Click on the beaker to take a clean dry beaker.";
     }
@@ -170,25 +166,34 @@
 
     // This method is used to play a video which shows constructing graphs for the behavior of the samples for specific samples. 
     function scan(){
-        if(step_no==11){
-            // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
-            var vid = document.getElementById("plot_graph");
-            // Get the scan image background.                                                               }
-            var context=document.getElementById('scan');
-            // make the image and video obtained visible.
-            context.style.visibility='visible';
-            vid.style.visibility='visible';
-            //play the video.
-            vid.play(); 
-            step_no++;
-        }
-    }
+      if(step_no==11){
+            if(solution == 1){
+                vid = document.getElementById("graph1");
+            }
+            else if(solution == 2){
+                vid = document.getElementById("graph2");          
+            }
+            else if(solution ==3){
+                vid = document.getElementById("graph3");          
+            }
+    // Get the scan image background.
+      var context=document.getElementById('scan');
+      // make the image and video obtained visible.
+      context.style.visibility='visible';
+      vid.style.visibility='visible';
+      //play the video
+      vid.play(); 
+      step_no++;
+    } 
+}
 
     // This method makes the graph hidden once the video is played and close is clicked. 
     function disposeGraph(){
         if(step_no==12){
             // After playing the graph plotting video close option is choosen, the background scan image and the video is mafde hidden.
-            document.getElementById('plot_graph').style.visibility='hidden';
+            document.getElementById('graph1').style.visibility='hidden';
+            document.getElementById('graph2').style.visibility='hidden';
+            document.getElementById('graph3').style.visibility='hidden';
             document.getElementById('scan').style.visibility='hidden';
         }
 

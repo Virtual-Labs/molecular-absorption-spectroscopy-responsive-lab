@@ -75,7 +75,7 @@
             <img id="data_button" src="images/data_button.png"  onmousemove="this.src='images/hover_data.png';" onmouseout="this.src='images/data_button.png'">
 
             <img id = "scale_image" src="images/scale2.png">
-            <input type="range" id="conc_scale" min="1" max="3" step="1" value="0"> 
+            <input type="range" id="conc_scale" min="1" max="3" step="1" > 
         </div>         
 
         <div class="col-sm-6" id="apparatus">
@@ -92,7 +92,7 @@
 
             <img id="beaker"  onclick="beaker();" src="images/beaker.png">
 
-            <img id="cuvette" onclick="cuvette();" src="images/cuvette1.png">
+            <img id="cuvette" onclick="cuvette();" src="images/cuvette.png">
         </div>
 
     </div>
@@ -125,8 +125,12 @@
     <img  id="clockHand"  src="images/hand.png">
     <!-- Image of the grayed background displayed as a background while scanning the sample -->
     <img id="scan" src="images/483.png">
-    <!-- Video that plots a graph for 0.02 concentration sample -->
-    <video id="plot_graph" ><source src="videos/graph1.mp4" type="video/mp4"></video>
+    <!-- Video that plots a graph for 0.10 concentration sample -->
+    <video id="graph1" ><source src="videos/graph1.mp4" type="video/mp4"></video>
+     <!-- Video that plots a graph for 0.5 concentration sample -->
+    <video id="graph2" ><source src="videos/graph2.mp4" type="video/mp4"></video>
+     <!-- Video that plots a graph for 1.00 concentration sample -->
+    <video id="graph3" ><source src="videos/graph3.mp4" type="video/mp4"></video>
     <!-- Transparent image button to close the scanning page -->
     <img  id = "disposegraph" onclick="disposeGraph();" src="images/vertical_button.png">
 </body>

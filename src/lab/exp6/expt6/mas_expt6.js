@@ -61,7 +61,6 @@
                 solution = 1;
                 document.getElementById('flask').style.filter='saturate(0.75)';
                 document.getElementById('beaker').style.filter='saturate(0.75)';
-                alert("fedf");
             }
             else if(chosen_conc=='2'){
                 solution = 2;

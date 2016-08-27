@@ -104,7 +104,7 @@ h4{
     top:10px;
 }
 
-#slider{
+#conc_scale{
     position: absolute;
     top: 20px;
     left: 32px;
@@ -266,119 +266,23 @@ h4{
     visibility:hidden;
 }
 
-#scan_graph{
-    position:absolute;
-    z-index:1200;
-    top:18%;
-    left:1%;
-    width: 100%; 
-    visibility : hidden;
-}
-
-#start_btn{
-    position: absolute;
-    z-index: 1200;
-    top: 23%;
-    left: 50%;
-    width: 3%;
-    height: 5%;
-    visibility : hidden;
-    cursor: pointer;
-}
-
-#input1{
-    position: absolute;
-    z-index: 1200;
-    top: 55%;
-    left: 22%;
-    width: 7%;
-    height: 5%;
-    visibility : hidden;
-}
-
-#input2{
-    position: absolute;
-    z-index: 1200;
-    top: 55%;
-    left: 34%;
-    width: 7%;
-    height: 5%;
-    visibility: hidden;
-}
-
-#instruction_bkgd{
-    position: absolute;
-    z-index: 1350;
-    top: 87%;
-    left: 7%;
-    width: 90%;
-    visibility: hidden;
-}
-
-#graph_instruction{
-    position: absolute;
-    z-index: 1351;
-    top: 87%;
-    left: 11%;
-    color: white;
-    max-width: 80%;
-    text-align: left;
-    font-size: 15px;
-}
-
-#graph1{
-    position: absolute;
-    z-index: 1300;
-    top: 24%;
-    left: 7%;
-    width: 90%;
-    visibility : hidden;
-}
-
-#graph2{
-    position: absolute;
-    z-index: 1300;
-    top: 24%;
-    left: 7%;        
-    width: 90%;
-    visibility : hidden;
-}
-
 #disposegraph{
     position: absolute;
-    z-index: 1350;
-    width: 9%;
-    left: 88%;
+    z-index: 1400;
+    width: 8%;
+    left: 79%;
     top: 565px;
     cursor: pointer;
     height: 3%;
 }
 
-
-  /*.rangeslider,
-        input[type='range'] {
-        position: relative; 
-        left:30px;
-        width: 190px;
-    }
-
-    .rangeslider__ruler {
-          cursor: pointer;
-          font-size: .7em;
-          margin: 20px 3px 0 3px;
-          position: relative;
-          top: 100%;
-          text-align: justify;
-    }
-    .conc{
-        background:url("images/scale.png");
-        width:100%;
-        height:100%;
-    }*/
-
-
-
-/*#graph {
-    width: 450px;
-    height: 350px;
-}*/
+ #graph1, #graph2, #graph3,
+ #graph4, #graph5, #graph6, #graph7,
+ #graph8, #graph9, #graph10, #graph11 {
+    position: absolute;
+    z-index: 1200;
+    top: 27%;
+    left: 22%;
+    height: 56%;
+    visibility: hidden;
+}

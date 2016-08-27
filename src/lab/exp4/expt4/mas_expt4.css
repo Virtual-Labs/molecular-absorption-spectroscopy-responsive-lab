@@ -267,43 +267,22 @@ h4{
 }
 
 
-#plot_graph{
-    position:absolute;
-    z-index:1200;
-    top:200px; 
-    left:20%; 
-    visibility:hidden;
+#graph1, #graph2, #graph3{
+    position: absolute;
+    z-index: 1200;
+    top: 27%;
+    left: 15%;
+    height: 56%;
+    visibility: hidden;
 }
 
 #disposegraph{
-    position: absolute;
+   position: absolute;
     z-index: 1200;
-    width: 7%;
-    left: 84%;
-    top: 572px;
+    width: 8%;
+    left: 79%;
+    top: 565px;
     cursor: pointer;
     height: 3%;
 }
-    /*.rangeslider,
-        input[type='range'] {
-        position: relative; 
-        left:30px;
-        width: 190px;
-    }
-
-    .rangeslider__ruler {
-          cursor: pointer;
-          font-size: .7em;
-          margin: 20px 3px 0 3px;
-          position: relative;
-          top: 100%;
-          text-align: justify;
-    }
-    .conc{
-        background:url("images/scale.png");
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-repeat: no-repeat;
-    }
-*/
+   

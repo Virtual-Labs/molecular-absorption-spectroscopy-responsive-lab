@@ -51,7 +51,7 @@
             moveImage();
             // Change to next intsruction to be followed.
     
-            document.getElementById("demo").innerHTML = "Step-No 3: Click on the 2-nitroaniline flask to take it to experiment table";
+            document.getElementById("demo").innerHTML = "Step-No 3: Click on the flask to take it to experiment table";
             step_no++;
         }
     }
@@ -75,7 +75,7 @@
             // Move the flask image to desired position.
             moveImage();
             // Change to next intsruction to be followed.
-            document.getElementById("demo").innerHTML = "Step-No 4: Click on the 2-nitroaniline flask to pour the solution into clean, dry beaker";
+            document.getElementById("demo").innerHTML = "Step-No 4: Click on the flask to pour the solution into clean, dry beaker";
             step_no += 1;
         }
         else if(step_no==3){

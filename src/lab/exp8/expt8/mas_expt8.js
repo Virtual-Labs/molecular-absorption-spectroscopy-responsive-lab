@@ -10,7 +10,9 @@
     var id,id1;
     var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
     // var solution=1;// Indicates type of solution being used.
-    var sliderange;
+    var chosen_solution = 'Coumarin343';
+    var chosen_conc ='0';
+    var slider_range = 1; 
     images[0] = "images/spec_on_redLight.png";
     images[1] = "images/spec_on_no_redLight.png";
 
@@ -24,24 +26,63 @@
 
         // Method is called when the solution is changed. change in solution changes the saturation of flask and scale range.
         $('#solution').change(function () {
-            var chosen_solution = $('#solution').val();               
-            if(chosen_solution == 'coumarin 343'){
+            var chosen_solution = $('#solution').val();      
+            if(chosen_solution =='Coumarin343'){
                 solution = 1;
                 document.getElementById('slider_bkgd').src = "images/scale1.png";
-                //document.getElementById('beaker').style.filter='grayscale(100%)';
+                document.getElementById('beaker').style.filter='grayscale(100%)';
             }
-            else if(chosen_solution == 'coumarin 6'){
+            else if(chosen_solution =='Coumarin6'){
                 solution = 2;
-                alert("fdf");
                 document.getElementById("flask").src= "images/darkerflask.png";
                 document.getElementById('slider_bkgd').src = "images/scale2.png";
-                // document.getElementById('beaker').style.filter='grayscale(100%)';   
+                document.getElementById('beaker').style.filter='grayscale(100%)';   
             }
-            else {
+            else if(chosen_solution == "1:1mixture"){
                 solution = 3;
-                document.getElementById("flask").src "images/darkerflask.png";
+                document.getElementById("flask").src = "images/darkerflask.png";
                 document.getElementById('scale').style.visibility = 'hidden';
                 // document.getElementById('beaker').style.filter='grayscale(100%)'; 
+            }
+        });
+
+        // Method is called when the slider range is changed.
+        $('#conc_scale').change(function () {
+            var chosen_conc = $("#conc_scale").val();
+            var chosen_solution = $('#solution').val(); 
+            
+            if(chosen_conc=='0' &&  chosen_solution =='Coumarin343'){
+                slider_range = 1;
+            }
+            else if(chosen_conc=='1' &&  chosen_solution =='Coumarin343'){
+                 slider_range = 2;
+            }
+            else if(chosen_conc=='2' &&  chosen_solution =='Coumarin343'){
+                 slider_range = 3;
+            }
+            else if(chosen_conc=='3' &&  chosen_solution =='Coumarin343'){
+                 slider_range = 4;
+            }
+            else if(chosen_conc=='4' &&  chosen_solution =='Coumarin343'){
+                 slider_range = 5;
+            }
+            else if(chosen_conc=='0' &&  chosen_solution =='Coumarin6'){
+                 slider_range = 6;
+            }
+            else if(chosen_conc=='1' &&  chosen_solution =='Coumarin6'){
+                 slider_range = 7;
+            }
+            else if(chosen_conc=='2' &&  chosen_solution =='Coumarin6'){
+                 slider_range = 8;
+            }
+            else if(chosen_conc=='3' &&  chosen_solution =='Coumarin343'){
+                 slider_range = 9;
+            }
+            else if(chosen_conc=='4' &&  chosen_solution =='Coumarin343'){
+                 slider_range = 10;
+            }
+            else{
+                 slider_range = 11;
             }
         });
 
@@ -73,26 +114,7 @@
             }
         }
 
-        // Method is called when the slider range is changed.
-        $('#conc_scale').change(function () {
-            var chosen_conc = document.getElementById("conc_scale").value; 
-            console.log(chosen_conc);
-            // if(chosen_conc=='1'){
-            //     sliderange = 1;
-            // }
-            // else if(chosen_conc=='2'){
-            //     sliderange = 2;
-            // }
-            // else if(chosen_conc=='3'){
-            //     sliderange = 3;
-            // }
-            // else if(chosen_conc=='4'){
-            //     sliderange = 4;
-            // }
-            // else{
-            //     sliderange = 5;
-            // }
-        });
+        
     }
 
     // When user clicks on the Data button it redirects him to the page containing slideshow of three graphs obtained from three different sample lengths
@@ -192,12 +214,40 @@
     function scan(){
         if(step_no==11){
             // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
-            if(solution==1){
+            if( slider_range==1){
                 var vid = document.getElementById("graph1");
             }
-            if(solution==2){
+            else if( slider_range==2){
                 var vid = document.getElementById("graph2");
             }
+            else if( slider_range==3){
+                var vid = document.getElementById("graph3");
+            }
+            else if( slider_range==4){
+                var vid = document.getElementById("graph4");
+            }
+            else if( slider_range==5){
+                var vid = document.getElementById("graph5");
+            }
+            else if( slider_range==6){
+                var vid = document.getElementById("graph6");
+            }
+            else if( slider_range==7){
+                var vid = document.getElementById("graph7");
+            }
+            else if( slider_range==8){
+                var vid = document.getElementById("graph8");
+            }
+            else if( slider_range==9){
+                var vid = document.getElementById("graph9");
+            }
+            else if( slider_range==10){
+                var vid = document.getElementById("graph10");
+            }
+            else{
+                var vid = document.getElementById("graph11");
+            }
+
             // Get the scan image background.                                                               }
             var context=document.getElementById('scan');
             // make the image and video obtained visible.
@@ -213,7 +263,17 @@
     function disposeGraph(){
         if(step_no==12){
             // After playing the graph plotting video close option is choosen, the background scan image and the video is mafde hidden.
-            document.getElementById('graph').style.visibility='hidden';
+            document.getElementById('graph1').style.visibility='hidden';
+            document.getElementById('graph2').style.visibility='hidden';
+            document.getElementById('graph3').style.visibility='hidden';
+            document.getElementById('graph4').style.visibility='hidden';
+            document.getElementById('graph5').style.visibility='hidden';
+            document.getElementById('graph6').style.visibility='hidden';
+            document.getElementById('graph7').style.visibility='hidden';
+            document.getElementById('graph8').style.visibility='hidden';
+            document.getElementById('graph9').style.visibility='hidden';
+            document.getElementById('graph10').style.visibility='hidden';
+            document.getElementById('graph11').style.visibility='hidden';
             document.getElementById('scan').style.visibility='hidden';
         }
 

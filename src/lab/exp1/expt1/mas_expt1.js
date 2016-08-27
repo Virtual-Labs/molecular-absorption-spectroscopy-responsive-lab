@@ -28,8 +28,7 @@
         }, false);
         // Method is called when the solution is changed. Here the change in solution is marked by chamging the grayscale of flask and beaker.
         $('#solution').change(function () {
-            var chosen_solution = $('#solution').val();
-                    
+            var chosen_solution = $('#solution').val();      
             if(chosen_solution=='caffeine'){
                 solution = 2;
                 console.log(solution);
@@ -77,7 +76,7 @@
     // graphs obtained from three different sample lengths
     function popitup(url) {
         // Opens a new browser window called newwindow. url specifies the URL of the page to open.
-        newwindow=window.open(url,'name','height=300,width=350',"_parent");
+        newwindow=window.open(url,'name','height=380,width=350',"_parent");
         // Sets focus to the new window if the focus is on the previous page.
         if (window.focus) {
             newwindow.focus()

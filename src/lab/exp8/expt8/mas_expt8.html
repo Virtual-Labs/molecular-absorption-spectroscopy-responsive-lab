@@ -87,7 +87,7 @@
 
            <div id ="scale">
                 <img id="slider_bkgd" src="images/scale1.png">
-                <input id = "slider" type="range" id="conc_scale" min="0" max="4" step="1" value = "0"> 
+                <input type="range" id="conc_scale" min="0" max="4" step="1" value="0" > 
            </div>
 
         </div>
@@ -103,9 +103,9 @@
             <!-- This column conatins the shelf -->
             <img  id = "shelf" src="images/shelf.png">
              <select id="solution" >
-                <option value="Coumarin 343" selected>Coumarin 343</option>
-                <option value="Coumarin 6">Coumarin 6</option>
-                <option value="1:1 mixture">1:1 mixture</option>
+                <option value="Coumarin343" >Coumarin 343</option>
+                <option value="Coumarin6">Coumarin 6</option>
+                <option value="1:1mixture">1:1 mixture</option>
             </select>
             <!-- A transparent button is placed on top of every apparatus on the shelf. -->
             <img id="flask" onclick="flask();" src="images/flask.png">
@@ -147,12 +147,22 @@
     <img  id="clockHand"  src="images/hand.png">
     <!-- Image of the greyed background displayed as a background while scanning the sample -->
     <img class="" id="scan"  src="images/483.png">
-    <!-- Video that plots a graph for type 1 sample -->
-    <video id="graph1" style = "position:absolute;z-index:1200;top:30%;left:20%;visibility :hidden;" ><source src="videos/graph.mp4" type="video/mp4"></video>
-    <!-- Video that plots a graph for type 2 sample -->
-    <video id="graph2" style = "position:absolute;z-index:1200;top:30%;left:20%;visibility : hidden;" ><source src="videos/graph2.mp4" type="video/mp4"></video>
+    <!-- Video that plots a graph for type coumarim343 concentration sample -->
+    <video id="graph1" ><source src="videos/graph1.mp4" type="video/mp4"></video>
+    <video id="graph2" ><source src="videos/graph2.mp4" type="video/mp4"></video>
+    <video id="graph3" ><source src="videos/graph3.mp4" type="video/mp4"></video>
+    <video id="graph4" ><source src="videos/graph4.mp4" type="video/mp4"></video>
+    <video id="graph5" ><source src="videos/graph5.mp4" type="video/mp4"></video>
+    <!-- Video that plots a graph for type coumarim6 concentration sample -->
+    <video id="graph6" ><source src="videos/graph6.mp4" type="video/mp4"></video>
+    <video id="graph7" ><source src="videos/graph7.mp4" type="video/mp4"></video>
+    <video id="graph8" ><source src="videos/graph8.mp4" type="video/mp4"></video>
+    <video id="graph9" ><source src="videos/graph9.mp4" type="video/mp4"></video>
+    <video id="graph10" ><source src="videos/graph10.mp4" type="video/mp4"></video>
+    <!-- Video that plots a graph for type 1:1mixture concentration sample -->
+    <video id="graph11" ><source src="videos/graph11.mp4" type="video/mp4"></video>
     <!-- Transparent image button to close the scanning page -->
-    <img class="" style="position:absolute; z-index:1200; width:5%; left:76%; top:510px;cursor:pointer;" onclick="disposeGraph();" src="images/vertical_button.png">
+    <img class="" onclick="disposeGraph();" src="images/vertical_button.png">
 </body>
 </center>
 </html>
