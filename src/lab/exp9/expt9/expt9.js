@@ -115,8 +115,6 @@ function showClock(){
 
 function removeClock() {
         $('#clockHand, #clockScreen').remove();
-        $("#solution").prop("disabled", true);
-        document.getElementById("solution").style.opacity = "0.4";
         //Change to next intsruction to be followed.
         document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker";
     }
@@ -172,6 +170,7 @@ function moveBeaker()
     
     // Change to next intsruction to be followed.
     document.getElementById("ph_scale").disabled = true;
+    document.getElementById("ph_scale").style.opacity ="0.4";
     document.getElementById("demo").innerHTML = "Step-No 3: Click on the buffer solution to take to experiment table.";
     step_no++;
   }
@@ -562,6 +561,7 @@ function spectrophotometer(){
 // This method is used to play a video which shows constructing graphs for the behavior of the samples for specific samples. 
 function scan(){
     // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the pH choosen appropriate graph video is obtained.
+    if(step_no == 16){
     var chosen_ph = document.getElementById("ph_scale").value; 
       if(chosen_ph=='0'){
         vid = document.getElementById("ph22_graph");
@@ -588,19 +588,22 @@ function scan(){
         vid = document.getElementById("ph52_graph");          
       }
  
- // Get the scan image background.
-  var context=document.getElementById('scan');
-  // make the image and video obtained visible.
-  context.style.visibility='visible';
-  vid.style.visibility='visible';
-  //play the video
-  vid.play(); 
-  step_no++;
+   // Get the scan image background.
+    var context=document.getElementById('scan');
+    // make the image and video obtained visible.
+    context.style.visibility='visible';
+    vid.style.visibility='visible';
+    //play the video
+    vid.play(); 
+    step_no++;
+  }
 }
 
 // This method makes the graph hidden once the video is played and close is clicked. 
 function disposeGraph(){
+  if(step_no ==17){
     // After playing the graph plotting video close option is choosen, the background scan image and the video is made hidden.
     vid.style.visibility='hidden';
     document.getElementById('scan').style.visibility='hidden';
+  }
 }
