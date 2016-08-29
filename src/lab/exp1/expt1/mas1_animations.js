@@ -49,15 +49,16 @@
             type_of_movement = 0;
             // Move the beaker image to desired position.
             moveImage();
+            $("#solution").prop("disabled", true);
+            document.getElementById("solution").style.opacity = "0.4";
             // Change to next intsruction to be followed.
-    
             document.getElementById("demo").innerHTML = "Step-No 3: Click on the flask to take it to experiment table";
             step_no++;
         }
     }
 
 
-        // This is the function called when flask is clicked.
+    // This is the function called when flask is clicked.
     // When this function is called for the first time the flask moves from shelf to table.
     // When this function is called for the second time the moveFlask() method is called.   
     function flask() {

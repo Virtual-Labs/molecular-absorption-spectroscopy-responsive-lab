@@ -55,7 +55,8 @@
         }
         // Method is called when the concentration of the solution is changed. This method is called in order to change the color of the solution accordingly by cahnging the saturation of the flask and and mark the selected solution.
         $('#conc_scale').change(function () {
-            var chosen_conc = document.getElementById("conc_scale").value;          
+            var chosen_conc = document.getElementById("conc_scale").value;
+            alert(chosen_conc);          
             if(chosen_conc=='1'){
                 solution = 1;
                 document.getElementById('flask').style.filter='saturate(0.75)';

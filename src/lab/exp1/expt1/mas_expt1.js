@@ -135,8 +135,6 @@
 
     function removeClock() {
         $('#clockHand, #clockScreen').remove();
-        $("#solution").prop("disabled", true);
-        document.getElementById("solution").style.opacity = "0.4";
         //Change to next intsruction to be followed.
         document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker";
     }
@@ -217,7 +215,11 @@
                 context.style.visibility='visible';
                 video1.style.visibility='visible';
                 document.getElementById("graph_instruction").innerHTML = "Click on the close button when the spectral scal is complete. In real operation, the scan data are stored in the computer. The instrument stores data and therefore asks for the Sample File name. One enters a file name to save the data.";
+                document.getElementById("start_btn").style.visibility = 'hidden';
+                document.getElementById("input1").style.visibility = 'hidden';
+                document.getElementById("input2").style.visibility = 'hidden';
                 video1.play();
+                
             }
             
             else if(solution == 2 && input1 == 590 && input2 == 290){
@@ -225,6 +227,9 @@
                 context.style.visibility='visible';
                 video2.style.visibility='visible';
                 document.getElementById("graph_instruction").innerHTML = "Click on the close button when the spectral scal is complete. In real operation, the scan data are stored in the computer. The instrument stores data and therefore asks for the Sample File name. One enters a file name to save the data.";
+                document.getElementById("start_btn").style.visibility = 'hidden';
+                document.getElementById("input1").style.visibility = 'hidden';
+                document.getElementById("input2").style.visibility = 'hidden';
                 video2.play();
             }
             else{
@@ -238,9 +243,6 @@
             document.getElementById('graph1').style.visibility='hidden';
             document.getElementById('graph2').style.visibility='hidden';
             document.getElementById('scan').style.visibility='hidden';
-            document.getElementById('start_btn').style.visibility = 'hidden';
-            document.getElementById("input1").style.visibility = 'hidden';
-            document.getElementById("input2").style.visibility = 'hidden';
             document.getElementById("graph_instruction").style.visibility ="hidden";
             document.getElementById("instruction_bkgd").style.visibility ="hidden";
     }
