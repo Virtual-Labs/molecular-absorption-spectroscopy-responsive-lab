@@ -296,25 +296,41 @@
             // Change the cuvette image to filled cuvette image
             img.src = "images/cuvette_filled.png";
             if(solution == 1){
-                img1.style.filter ="saturate(0.75)";
+                img.style.filter ="saturate(0.75)";
             }
             else if(solution == 2) {
-                img1.style.filter ="saturate(1)";
+                img.style.filter ="saturate(1)";
             }
             else if(solution == 3) {
-                img1.style.filter ="saturate(2)";
+                img.style.filter ="saturate(2)";
             }
             else if(solution ==4) {
-                img1.style.filter ="saturate(3)";
+                img.style.filter ="saturate(3)";
             }
             else if(solution ==5) {
-                img1.style.filter ="saturate(4)";
+                img.style.filter ="saturate(4)";
             }
             else if(solution ==6) {
-                img1.style.filter ="saturate(5)";
+                img.style.filter ="saturate(5)";
             }
         }, 1000);
+        setTimeout(movebackPipette, 2000);
     }
+
+//This function is used to move the pipette back to the shelf.
+function movebackPipette() {
+            elem = document.getElementById("pipette");
+            // Detect the current position of the pipette.
+            initial_top = Math.round($('#pipette').position().top);
+            initial_left = Math.round($('#pipette').position().left);
+            // Initialise all the values for the motion of the images.
+            final_top = 39;
+            step_top = -1;
+            step_left = -.30;
+            type_of_movement = 1;
+            // Move it to the shelf
+            moveImage();
+}
 
     // This function is called cuvette is clicked.
     // When this method is called for the first time the tansparent image button on the shelf cuvette is replaced with an image of the cuvette and is moved down and the shelf image is changed to an image with no cuvette depending on the cuvette clicked.
