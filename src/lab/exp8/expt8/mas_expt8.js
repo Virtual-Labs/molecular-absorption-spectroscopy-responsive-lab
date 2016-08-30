@@ -183,8 +183,6 @@
 
     function removeClock() {
         $('#clockHand, #clockScreen').remove();
-        $("#solution").prop("disabled", true);
-        document.getElementById("solution").style.opacity = "0.4";
         //Change to next intsruction to be followed.
         document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take a clean, dry beaker.";
     }

@@ -114,7 +114,7 @@ h4{   /*its not mandatory as the row is used*/
     top: 90px;
 }
 
-#slider{
+#conc_scale{
     position: absolute;
     left: 124px;
     width: 310px;
@@ -139,24 +139,24 @@ h4{   /*its not mandatory as the row is used*/
 #pipette{
     position:absolute;
     z-index:998; 
-    left: 38%; 
+    left: 42%; 
     top:8%;  
     cursor:pointer;
 }
 
-#quartz-cuvette{
-    position:absolute;
-    z-index:999; 
-    top: -40%;
-    left:48%;
-    cursor:pointer;
+#quartz_cuvette{
+    position: absolute;
+    z-index: 999;
+    top: 47%;
+    left: 69%;
+    cursor: pointer;
 }
 
 #cuvette{
     position:absolute;
     z-index:999;
     top:45.5%;
-    left:70%;
+    left:77%;
     cursor:pointer;
 }
 
@@ -223,6 +223,7 @@ h4{   /*its not mandatory as the row is used*/
     max-width: 60%;
     color: yellow;
     font-size: 12px;
+    text-align: left;   
 }
 
 #clockScreen{
@@ -250,10 +251,24 @@ h4{   /*its not mandatory as the row is used*/
 }
 
 #popup{
-    position:fixed;
-    left:-10px;
-    top:-20px;
+    position:absolute;
+    top:65px; 
+    left:15px;
     z-index:1249084129;
+    visibility: hidden;
+}
+
+#start{
+    position: absolute;
+    top: 339px;
+    left: 181px;
+    width: 73%;
+    z-index: 1249084139;
+    background-color: #cad86b;
+    height: 12%;
+    font-size: 35px;
+    font-weight: bold;
+    visibility: hidden;
 }
 
 #video0{

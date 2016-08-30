@@ -52,6 +52,40 @@ function initial_function(){
                 modal.style.display = "none";
             }
         };
+
+        // Method is called when the concentration of the solution is changed. This method is called in order to change the color of the solution accordingly by cahnging the saturation of the flask and and mark the selected solution.
+        // $('#conc_scale').change(function () {
+        //     var chosen_conc = document.getElementById("conc_scale").value;
+        //     img = document.getElementById("round-bottom-flask") ;
+        //     img.src = "image-specific/filled-round-bottom-flask.png";
+        //     document.getElementById("demo").innerHTML = "Step-No 2: Click on the volumetric flask containing the solution."; 
+        //     if(chosen_conc=='1'){
+        //         solution = 1;
+        //         document.getElementById("solution_name").src = "image-specific/solution.png";
+        //     }
+        //     else if(chosen_conc=='2'){
+        //         solution = 2;
+        //         document.getElementById("solution_name").src = "image-specific/solution1.png";
+                
+        //     }
+        //     else if(chosen_conc=='3'){
+        //         solution = 3;
+        //         document.getElementById("solution_name").src = "image-specific/solution2.png";
+               
+        //     }
+        //     else if(chosen_conc=='4'){
+        //         solution = 4;
+        //         document.getElementById("solution_name").src = "image-specific/solution3.png";
+                
+        //     }
+        //     else if(chosen_conc=='5'){
+        //         solution = 5;
+        //         document.getElementById("solution_name").src = "image-specific/solution4.png";
+
+        //     }
+            
+        // });
+
  }
 
 function popitup(url) {
@@ -85,7 +119,7 @@ function turnOn() {
 }
     
 function showClock(){
-  if(step_no==8){
+  if(step_no==7){
       // Get the images.
       var context=document.getElementById('clockScreen');
       var hand =document.getElementById('clockHand');
@@ -117,14 +151,14 @@ function removeClock() {
   $('#clockHand, #clockScreen').remove();
 }
 
-// This specifies the solution to be used when the input button is clicked
+//This specifies the solution to be used when the input button is clicked
 function setSolution(){
   var img;
   img = document.getElementById("round-bottom-flask") ;
   img.src = "image-specific/filled-round-bottom-flask.png";
   document.getElementById("demo").innerHTML = "Step-No 2: Click on the volumetric flask containing the solution.";
   var sol_name;
-  sol_name = document.getElementById("slider").value;
+  sol_name = document.getElementById("conc_scale").value;
   if(sol_name == 0){
     document.getElementById("solution_name").src = "image-specific/solution.png";
   }
@@ -140,8 +174,6 @@ function setSolution(){
   else if(sol_name == 4){
     document.getElementById("solution_name").src = "image-specific/solution4.png";
   }
-  document.getElementById("slider").disabled = true;
-  document.getElementById("slider").style.opacity = 0.4;
 }
 
 
@@ -181,7 +213,7 @@ function setSolution(){
 function moveFlask(){
         if(step_no==0){
             empty_flask = document.getElementById("round-bottom-flask").src;
-            if(empty_flask == "file:///home/shankar/Desktop/molecular-absorption-spectroscopy-responsive-lab/src/lab/exp2/expt2/projects/image-specific/round-bottom-flask.png")
+            if(empty_flask == "image-specific/round-bottom-flask.png")
             {
               alert("please first select the solvent from the solvent selection bar");
             }
@@ -199,7 +231,9 @@ function moveFlask(){
             // Move the flask image to desired position.
             moveImage();
             // Change to next intsruction to be followed.
-            document.getElementById("solution_name").style.visibility ="hidden";    
+            document.getElementById("solution_name").style.visibility ="hidden";
+            document.getElementById("conc_scale").disabled = true;
+            document.getElementById("conc_scale").style.opacity = "0.4";   
             document.getElementById("demo").innerHTML = "Step-No 3:Click on the quartz cuvette (path length 1x1cm) to take it to the instrument table. Quartz cuvettes for spectrophotometric measurements are transparent only on two opposite sides, unlke the  all-side transparent quartz cuvettes used for flourescence measurements.";
             step_no++;
           }
@@ -211,14 +245,14 @@ function moveFlask(){
 function moveCuvette() {
           if(step_no  == 1){
             // get the image of the shelf
-            elem = document.getElementById("quartz-cuvette"); 
+            elem = document.getElementById("quartz_cuvette"); 
             // Move the cuvette from the shelf to the table
             // elem.style.width = "2.6%";
             // Detect the current position of the flask.
-            initial_top = Math.round($('#quartz-cuvette').position().top);
-            initial_left = Math.round($('#quartz-cuvette').position().left);
+            initial_top = Math.round($('#quartz_cuvette').position().top);
+            initial_left = Math.round($('#quartz_cuvette').position().left);
             // Initialise all the values for the motion of the images.
-            final_top = 210;
+            final_top = 340;
             step_top = 1;
             step_left = -0.2;
             type_of_movement = 0;
@@ -242,14 +276,14 @@ function rotatePipette() {
                 clearInterval(id);
             }
             $("#pipette").rotate(angle);
-            },16.67);
+            },16.60);
             //Detect thecurrent position of the flask.
             initial_top = Math.round($('#pipette').position().top);
             initial_left = Math.round($('#pipette').position().left);
             // Initialise all the values for the motion of the images.
-            final_top = 265;
+            final_top = 243;
             step_top = 1;
-            step_left = -0.1;
+            step_left = -0.14;
             type_of_movement = 0;
             // Move the beaker image to desired position.
             moveImage();
@@ -260,10 +294,59 @@ function rotatePipette() {
           else if(step_no == 3){
             $("#pipette").rotate(0);
             elem.src = "image-specific/pipette-with-solution.png";
-            // elem.style.left = 38%;
-            document.getElementById("demo").innerHTML = "Click on the pipette to take it out of the volumetric flask.";
+            document.getElementById("demo").innerHTML = "Step-No 6: Click on the pipette to take it out of the volumetric flask.";
+            step_no++;          
+          }
+          else if(step_no == 4){
+            elem = document.getElementById("pipette");
+             $("#pipette").animate({
+                  left: '310px'
+              },"slow");
+            // Change to next instruction to be followed.
+            document.getElementById("demo").innerHTML = "Step-No 7:Click on the pipette again to transfer the solution into the cuvette ";
+            step_no ++;
+          }
+
+          else if(step_no == 5){
+            elem = document.getElementById("pipette");
+             $("#pipette").rotate(20);
+             $("#pipette").attr("src", "image-specific/pipette.png");
+             $("#quartz_cuvette").attr("src", "image-specific/cuv.png");
+            // Change to next instruction to be followed.
+            document.getElementById("demo").innerHTML = "Step-No 7:Click on the pipette again to transfer the solution into the cuvette ";
+            step_no ++;
+            setTimeout(movebackPipette, 1000);
           }
 }
+
+          //This function is used to move the pipette back to the shelf.
+          function movebackPipette() {
+                      elem = document.getElementById("pipette");
+                      // Detect the current position of the pipette.
+                      initial_top = Math.round($('#pipette').position().top);
+                      initial_left = Math.round($('#pipette').position().left);
+                      // Initialise all the values for the motion of the images.
+                      final_top = 23;
+                      step_top = -1;
+                      step_left = -.30;
+                      type_of_movement = 1;
+                      // Move it to the shelf
+                      moveImage();
+                      document.getElementById("demo").innerHTML = "Step-No 8: To start the absorption spectral scan. click on the pop-up 'start Absorption Measurement";
+                      setTimeout( function(){
+                        document.getElementById("popup").style.visibility = 'visible';
+                        document.getElementById("start").style.visibility = 'visible';
+                      }, 2000);
+          }
+
+    function showInstruction() {
+      if(step_no == 6){
+          document.getElementById("popup").style.visibility = 'hidden';
+          document.getElementById("start").style.visibility = 'hidden';
+          document.getElementById("demo").innerHTML = 'Turn on the spectrometer clicking on the power button. In real operation it takes approx.30 min for initialization of the instrument.'
+      step_no++;
+      }
+    }
 
 
 // //This moves the flask to the table

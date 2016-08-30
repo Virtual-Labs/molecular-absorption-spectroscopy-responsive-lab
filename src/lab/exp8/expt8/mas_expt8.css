@@ -252,8 +252,8 @@ h4{
 
 #clockHand{
     position:absolute; 
-    top: 294px;
-    left: 50.85%;
+    top: 294.60px;
+    left: 50.75%;
     visibility:hidden; 
     z-index:1102;
 }

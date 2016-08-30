@@ -83,7 +83,7 @@
 
             <div id = "scale">
                 <img  id ="scale_image" src="image-specific/slider1.png" >
-                <input type="range" id="slider" min="0" max="4" step="1" value="0" onclick="setSolution()">
+                <input type="range" id="conc_scale" min="0" max="4" step="1" value="0" onclick="setSolution();" >
             </div>
 
         </div>
@@ -93,7 +93,7 @@
             <img class="" id="round-bottom-flask"  src="image-specific/round-bottom-flask.png" onclick="moveFlask()">
             <img  id = "solution_name" >
             <img class="" id="pipette" src="image-specific/pipette.png" onclick="rotatePipette()">
-            <img class="" id="quartz-cuvette" src="image-specific/quartz-cuvette1.png" onclick="moveCuvette()">
+            <img class="" id="quartz_cuvette" src="image-specific/quartz-cuvette1.png" onclick="moveCuvette()">
             <img class="" id="cuvette" src="image-specific/cuvette.png" >
         </div>
     </div><br/><br/><br/>
@@ -121,8 +121,8 @@
     <!-- Image of the hand of the clock -->
     <img  id="clockHand"  src="images/hand.png">
     <!-- Image of the greyed background displayed as a background while scanning the sample -->
-    <img class="" id="scan"  src="images/483.png">
-    <img id="popup" >
+    <img id="popup" src="image-specific/transparent.png" >
+    <button id ="start" onclick = "showInstruction();">Start Absorption Spectroscopy</button>
     <video id="video0" ><source src="videos/1.mp4" type="video/mp4"></video>
     <video id="video1" ><source src="videos/2.mp4" type="video/mp4"></video>
     <video id="video2" ><source src="videos/3.mp4" type="video/mp4"></video>

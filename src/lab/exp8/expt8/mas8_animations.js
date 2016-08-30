@@ -50,7 +50,10 @@
             // Move the beaker image to desired position.
             moveImage();
             // Change to next intsruction to be followed.
-    
+            $("#solution").prop("disabled", true);
+            document.getElementById("solution").style.opacity = "0.4";
+            document.getElementById('conc_scale').disabled = "true";
+            document.getElementById("conc_scale").style.opacity = "0.4";
             document.getElementById("demo").innerHTML = "Step-No 3: Click on the conical flask to take it to experiment table";
             step_no++;
         }
@@ -256,6 +259,22 @@
             }
             
         }, 1000);
+ setTimeout(movebackPipette, 2000);
+}
+
+    //This function is used to move the pipette back to the shelf.
+    function movebackPipette() {
+                elem = document.getElementById("pipette");
+                // Detect the current position of the pipette.
+                initial_top = Math.round($('#pipette').position().top);
+                initial_left = Math.round($('#pipette').position().left);
+                // Initialise all the values for the motion of the images.
+                final_top = 39;
+                step_top = -1;
+                step_left = -.30;
+                type_of_movement = 1;
+                // Move it to the shelf
+                moveImage();
     }
 
     // This function is called cuvette is clicked.
