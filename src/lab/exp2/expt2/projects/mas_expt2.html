@@ -18,12 +18,7 @@
 </head>
 <center>
 <body style="width: 1080px; height: 720px; margin: 0 auto; "onload="initial_function()"> 
-    <img id="form" src="image-specific/input-form.png" >
-    <img id="start-button" src="images/vertical_button.png" onclick="graphresult()">
-    <input id="input1" type="text" >
-    <input id="input2" type="text" >
-
-    <!-- Body is divided into three rows -->
+   <!-- Body is divided into three rows -->
     <div class= "row">
        <!-- First row consists of title of the experiment and the reset button -->
        <h4>Solvent Effects on the UV-visible Absorption Spectra</h4><br/>
@@ -108,7 +103,7 @@
             <!-- button to open and close the spectrophotometer lid -->
             <img class="" id ="spectrolid_trans_button" onclick="spectrophotometer();" src="images/vertical_button.png">
             <!-- reference cuvette -->
-            <!-- <img id="ref_cuvette" class="" src="images/vertical_button.png"> -->
+            <<img id = "reference" src = "image-specific/reference.png" >
             <img id="ref_cuvette" class="">
             <!-- text that shows the instructions to be followed next -->
             <div id = "demo"></div>
@@ -123,12 +118,29 @@
     <!-- Image of the greyed background displayed as a background while scanning the sample -->
     <img id="popup" src="image-specific/transparent.png" >
     <button id ="start" onclick = "showInstruction();">Start Absorption Spectroscopy</button>
-    <video id="video0" ><source src="videos/1.mp4" type="video/mp4"></video>
-    <video id="video1" ><source src="videos/2.mp4" type="video/mp4"></video>
+    <!-- This image is used to enter the input values to display the graph1/graph2-->
+    <img id="scan_graph" src="image-specific/input-form.png">
+    <!--Displays the graph by clicking on start button -->
+    <img id="start_btn" src="images/vertical_button.png"  onclick="startBtn();">
+    <!--graph input values -->
+    <input id = "input1" type="text" >
+    <input id = "input2" type="text" >    
+    <!-- background image for the graphs instruction -->
+    <img id = "instruction_bkgd" src="image-specific/graph_instruction.png">
+    <!-- graphs instruction is displayed here....-->
+    <div id = "graph_instruction"></div>
+    <!-- Video that plots a graph for type 1 sample -->
+    <video id="video1" ><source src="videos/1.mp4" type="video/mp4"></video>
+    <!-- Video that plots a graph for type 2 sample -->
     <video id="video2" ><source src="videos/3.mp4" type="video/mp4"></video>
+     <!-- Video that plots a graph for type 3 sample -->
     <video id="video3" ><source src="videos/4.mp4" type="video/mp4"></video>
-    <video id="video4" ><source src="videos/5.mp4" type="video/mp4"></video>
-    <img class="" id = "disposegraph" onclick="disposeGraph();" src="images/vertical_button.png">
+     <!-- Video that plots a graph for type 4 sample -->
+    <video id="video4" ><source src="videos/4.mp4" type="video/mp4"></video>
+     <!-- Video that plots a graph for type 5 sample -->
+    <video id="video5" ><source src="videos/5.mp4" type="video/mp4"></video>
+    <!-- Transparent image button to close the scanning page -->
+    <img class="" id="disposegraph" onclick="disposeGraph();" src="images/vertical_button.png">
 </body>
 </center>
 </html>

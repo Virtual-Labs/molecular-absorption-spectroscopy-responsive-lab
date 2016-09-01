@@ -193,6 +193,16 @@ h4{   /*its not mandatory as the row is used*/
     cursor: pointer;
 }
 
+#reference{
+    position: absolute; 
+    z-index: 898; 
+    width: 15%; 
+    left: 40%; 
+    top: 0%; 
+    cursor: pointer;
+    visibility: hidden;
+}
+
 #ref_cuvette{
     position: absolute; 
     z-index: 898; 
@@ -227,19 +237,20 @@ h4{   /*its not mandatory as the row is used*/
 }
 
 #clockScreen{
-    position:absolute; 
-    top:75px; 
-    left:0px;
-    visibility:hidden; 
-    z-index:1100;
+    position: absolute;
+    top: 54px;
+    left: 83px;
+    z-index: 1100;
+    height: 92%;
+    visibility: hidden;
 }
 
 #clockHand{
-    position:absolute; 
-    top:314px;
-    left:50.75%; 
-    visibility:hidden; 
-    z-index:1102;
+    position: absolute;
+    top: 300px;
+    left: 59.92%;
+    z-index: 1102;
+    visibility: hidden;
 }
 
 #scan{
@@ -271,89 +282,83 @@ h4{   /*its not mandatory as the row is used*/
     visibility: hidden;
 }
 
-#video0{
-    position:absolute;
-    /*z-index:1123452300;*/
-    top:20%;
-    left:20%;
+#scan_graph{
+    position: absolute;
+    z-index: 1200;
+    top: 6%;
+    left: -12%;
+    width: 127%;
+    height: 100%;
+    visibility: hidden;
+}
+
+#start_btn{
+    position: absolute;
+    z-index: 1200;
+    top: 23%;
+    left: 50%;
+    width: 3%;
+    height: 5%;
+    visibility : hidden;
+    cursor: pointer;
+}
+
+#input1{
+    position: absolute;
+    z-index: 1200;
+    top: 49%;
+    left: 26%;
+    width: 7%;
+    height: 5%;
     visibility : hidden;
 }
 
-#video1{
-    position:absolute;
-    /*z-index:11543200;*/
-    top:20%;
-    left:20%;
-    visibility : hidden;
+#input2{
+    position: absolute;
+    z-index: 1200;
+    top: 49%;
+    left: 36%;
+    width: 7%;
+    height: 5%;
+    visibility: hidden;
 }
 
-#video2{
-    position:absolute;
-   /* z-index:1245100;*/
-    top:20%;
-    left:20%;
-    visibility : hidden;
-
+#instruction_bkgd{
+    position: absolute;
+    z-index: 1350;
+    top: 75%;
+    left: 7%;
+    width: 90%;
+    visibility: hidden;
 }
 
-#video3{
-    position:absolute;
-    /*z-index:1452324100;*/
-    top:20%;
-    left:20%;
-    visibility : hidden;
+#graph_instruction{
+    position: absolute;
+    z-index: 1351;
+    top: 87%;
+    left: 11%;
+    color: white;
+    max-width: 80%;
+    text-align: left;
+    font-size: 15px;
 }
 
-#video4{
-    position:absolute;
-    /*z-index:1123424500;*/
-    top:20%;
-    left:20%;
+#video1, #video2, #video3, #video4, #video5{
+    position: absolute;
+    z-index: 1300;
+    top: 24%;
+    left: 7%;
+    width: 90%;
     visibility : hidden;
 }
 
 #disposegraph{
-    position:absolute; 
-    /*z-index:125469345833593405645038600; */
-    width:5%;
-    left:82%; 
-    top:68%;
-    cursor:pointer;
+    position: absolute;
+    z-index: 1350;
+    width: 9%;
+    left: 88%;
+    top: 565px;
+    cursor: pointer;
+    height: 3%;
 }
 
-#form{
-    position:absolute;
-    top:-30px;
-    left:-40px;
-    z-index:41137848484874;
-    height:115%;
-    width:115%;
-    visibility:hidden;
-}
-
-#start-button{
-    position:absolute;
-    left:675px;
-    top:80px;
-    cursor:pointer;
-    z-index:4113784848488;
-    visibility:hidden;
-}
-
-#input1{
-    position:absolute;
-    left:413px;
-    top:307px;
-    visibility:hidden;
-    z-index:4113784848488;
-    width:7%
-}
-
-#input2{
-    position:absolute;
-    left:523px;
-    top:307px;
-    visibility:hidden;
-    z-index:4113784848488;
-    width:7%;
-}
