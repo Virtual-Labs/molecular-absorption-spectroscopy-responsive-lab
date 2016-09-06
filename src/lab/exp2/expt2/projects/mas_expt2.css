@@ -11,17 +11,13 @@ body{
     position: relative;
 }
 
-h4{   /*its not mandatory as the row is used*/
+h4{ 
     text-align: center;
-
 }
 
 #manual_button, #data_button{
-    /*background-color: Transparent; 
-    border : none; */
     position:absolute; 
     left: 110px;
-    /*float: left;*/
     cursor: pointer;
 }
 
@@ -102,11 +98,6 @@ h4{   /*its not mandatory as the row is used*/
     float: right;
 }
 
-/*#scale{
-   position: absolute;
-   left :190px;
-}*/
-
 #scale_image{
     position: absolute;
     width: 320px;
@@ -146,7 +137,7 @@ h4{   /*its not mandatory as the row is used*/
 
 #quartz_cuvette{
     position: absolute;
-    z-index: 999;
+    z-index: 700;
     top: 47%;
     left: 69%;
     cursor: pointer;
@@ -158,11 +149,6 @@ h4{   /*its not mandatory as the row is used*/
     top:45.5%;
     left:77%;
     cursor:pointer;
-}
-
-#table_with_spec{
-   /* display: block;
-    float:center;*/
 }
 
 #computerimage{
@@ -205,7 +191,7 @@ h4{   /*its not mandatory as the row is used*/
 
 #ref_cuvette{
     position: absolute; 
-    z-index: 898; 
+    z-index: 600; 
     width: 1.4%; 
     left: 37.35%; 
     top: 10%; 
@@ -247,8 +233,8 @@ h4{   /*its not mandatory as the row is used*/
 
 #clockHand{
     position: absolute;
-    top: 300px;
-    left: 59.92%;
+    top: 301px;
+    left: 59.99%;
     z-index: 1102;
     visibility: hidden;
 }
@@ -256,8 +242,8 @@ h4{   /*its not mandatory as the row is used*/
 #scan{
     position:absolute;
     z-index:1100; 
-    top:65px; 
-    left:15px;
+    top:61px; 
+    left:85px;
     visibility:hidden;
 }
 
@@ -284,7 +270,7 @@ h4{   /*its not mandatory as the row is used*/
 
 #scan_graph{
     position: absolute;
-    z-index: 1200;
+    z-index: 1100;
     top: 6%;
     left: -12%;
     width: 127%;
@@ -335,7 +321,7 @@ h4{   /*its not mandatory as the row is used*/
 #graph_instruction{
     position: absolute;
     z-index: 1351;
-    top: 87%;
+    top: 78%;
     left: 11%;
     color: white;
     max-width: 80%;
@@ -346,7 +332,7 @@ h4{   /*its not mandatory as the row is used*/
 #video1, #video2, #video3, #video4, #video5{
     position: absolute;
     z-index: 1300;
-    top: 24%;
+    top: 17%;
     left: 7%;
     width: 90%;
     visibility : hidden;
@@ -357,7 +343,7 @@ h4{   /*its not mandatory as the row is used*/
     z-index: 1350;
     width: 9%;
     left: 88%;
-    top: 565px;
+    top: 518px;
     cursor: pointer;
     height: 3%;
 }

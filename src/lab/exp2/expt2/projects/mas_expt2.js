@@ -2,11 +2,7 @@ var images = [];
 var img;
 images[0] = "images/spec_on_redLight.png";
 images[1] = "images/spec_on_no_redLight.png";
-// var solvents = ["Cyclohexane","Dioxane","Acetonitrile","Etmhanol","Ethylene Glycol"];
-// var cases = [0,1,2,3,4];
 var x=0;
-// var step_no=0;
-
 // Variables necessary to obtain motion of all the images
     var initial_top;
     var initial_left;
@@ -18,8 +14,8 @@ var x=0;
     var id,id1;
     var type_of_movement;// Indicates upward or downward motion
     var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
-    // var solution=1;// Indicates type of solution being used.
-
+    var sol_name;
+    var empty_flask;
 function initial_function(){
   var index=0;
         document.getElementById("data_button").addEventListener("click", function() {
@@ -71,13 +67,8 @@ function reload(){
     location.reload();
 }
 
-
-
 //This specifies the solution to be used when the input button is clicked
 function setSolution(){
-  var img;
-  img = document.getElementById("round-bottom-flask") ;
-  var sol_name;
   sol_name = document.getElementById("conc_scale").value;
   if(sol_name == 0){
     document.getElementById("solution_name").src = "image-specific/solution.png";
@@ -104,7 +95,7 @@ function setSolution(){
 
 
 // This function is a general method used to move images from initial position to final position.
-    function moveImage(){
+function moveImage(){
         id = setInterval(frame, 5);
         function frame() {
             if(type_of_movement == 0){
@@ -132,36 +123,36 @@ function setSolution(){
                 }
             }
         } 
-    }
+}
 
 // This is the function called when flask is clicked. 
 // It moves the beaker from the shelf to the table.
 function moveFlask(){
         if(step_no==0){
-            empty_flask = document.getElementById("round-bottom-flask").src;
-            if(empty_flask == "/home/shankar/Desktop/molecular-absorption-spectroscopy-responsive-lab/src/lab/exp2/expt2/projects/image-specific/round-bottom-flask.png")
+            empty_flask = document.getElementById("round-bottom-flask");
+            if( empty_flask.src == "image-specific/round-bottom-flask.png" )
             {
-              alert("please first select the solvent from the solvent selection bar");
+                alert("please first select the solvent from the solvent selection bar");
             }
-            else{
-              // Get image
-            elem = document.getElementById("round-bottom-flask"); 
-            //Detect thecurrent position of the flask.
-            initial_top = Math.round($('#round-bottom-flask').position().top);
-            initial_left = Math.round($('#round-bottom-flask').position().left);
-            // Initialise all the values for the motion of the images.
-            final_top = 305;
-            step_top = 1;
-            step_left = 0.3;
-            type_of_movement = 0;
-            // Move the flask image to desired position.
-            moveImage();
-            // Change to next intsruction to be followed.
-            document.getElementById("solution_name").style.visibility ="hidden";
-            document.getElementById("conc_scale").disabled = true;
-            document.getElementById("conc_scale").style.opacity = "0.4";   
-            document.getElementById("demo").innerHTML = "Step-No 3:Click on the quartz cuvette (path length 1x1cm) to take it to the instrument table. Quartz cuvettes for spectrophotometric measurements are transparent only on two opposite sides, unlke the  all-side transparent quartz cuvettes used for flourescence measurements.";
-            step_no++;
+            else {
+                // Get image
+                elem = document.getElementById("round-bottom-flask"); 
+                //Detect thecurrent position of the flask.
+                initial_top = Math.round($('#round-bottom-flask').position().top);
+                initial_left = Math.round($('#round-bottom-flask').position().left);
+                // Initialise all the values for the motion of the images.
+                final_top = 305;
+                step_top = 1;
+                step_left = 0.3;
+                type_of_movement = 0;
+                // Move the flask image to desired position.
+                moveImage();
+                // Change to next intsruction to be followed.
+                document.getElementById("solution_name").style.visibility ="hidden";
+                document.getElementById("conc_scale").disabled = true;
+                document.getElementById("conc_scale").style.opacity = "0.4";   
+                document.getElementById("demo").innerHTML = "Step-No 3:Click on the quartz cuvette (path length 1x1cm) to take it to the instrument table. Quartz cuvettes for spectrophotometric measurements are transparent only on two opposite sides, unlke the  all-side transparent quartz cuvettes used for flourescence measurements.";
+                step_no++;
           }
       }
   }
@@ -173,7 +164,6 @@ function moveCuvette() {
             // get the image of the shelf
             elem = document.getElementById("quartz_cuvette"); 
             // Move the cuvette from the shelf to the table
-            // elem.style.width = "2.6%";
             // Detect the current position of the flask.
             initial_top = Math.round($('#quartz_cuvette').position().top);
             initial_left = Math.round($('#quartz_cuvette').position().left);
@@ -210,12 +200,12 @@ function moveCuvette() {
 }
 
 //This method is used to move the cuvette downwards into the spectrophotometer.
-    function moveDown(){
+function moveDown(){
         // Detect the current position of the flask.
         initial_top = Math.round($('#quartz_cuvette').position().top);
         initial_left = Math.round($('#quartz_cuvette').position().left);
         // Initialise all the values for the motion of the images.
-        final_top = 290;
+        final_top = 320;
         step_top = 1;
         step_left = 0;
         type_of_movement = 0;
@@ -223,9 +213,9 @@ function moveCuvette() {
         moveImage();
         // Call extraCuvette() method which moves the reference cuvette into the spectrophotometer.
         setTimeout("extraCuvette()",1000);
-    }
+}
 
-     function extraCuvette(){
+function extraCuvette(){
         // Get the transparent image and replace it with a reference cuvette image and move it down into the spectrophotometer.
         $('#ref_cuvette').attr('src', 'images/cuvette_filled_water.png'); 
         document.getElementById("reference").style.visibility ="visible";
@@ -249,7 +239,7 @@ function moveCuvette() {
             document.getElementById("reference").style.visibility ="hidden";
         },1000);
 
-    }
+}
 
 // This function is called when we click on the pipette
 function rotatePipette() {
@@ -259,18 +249,18 @@ function rotatePipette() {
             var angle=0;
             var id = setInterval(function(){
             angle+=1;
-            if(angle>=26.5){
+            if(angle>=23){
                 clearInterval(id);
             }
             $("#pipette").rotate(angle);
-            },16.60);
+            },10);
             //Detect thecurrent position of the flask.
             initial_top = Math.round($('#pipette').position().top);
             initial_left = Math.round($('#pipette').position().left);
             // Initialise all the values for the motion of the images.
             final_top = 243;
             step_top = 1;
-            step_left = -0.14;
+            step_left = -0.12;
             type_of_movement = 0;
             // Move the beaker image to desired position.
             moveImage();
@@ -281,14 +271,15 @@ function rotatePipette() {
           else if(step_no == 3){
             $("#pipette").rotate(0);
             elem.src = "image-specific/pipette-with-solution.png";
+            elem.style.left = "225.16px";
             document.getElementById("demo").innerHTML = "Step-No 6: Click on the pipette to take it out of the volumetric flask.";
             step_no++;          
           }
           else if(step_no == 4){
             elem = document.getElementById("pipette");
-             $("#pipette").animate({
-                  left: '310px'
-              },"slow");
+             $("#pipette").animate({top: '210px'},"slow")
+                          .animate({left: '330px'},"slow")
+                          .animate({top: '230px'},"slow");
             // Change to next instruction to be followed.
             document.getElementById("demo").innerHTML = "Step-No 7:Click on the pipette again to transfer the solution into the cuvette ";
             step_no ++;
@@ -296,7 +287,7 @@ function rotatePipette() {
 
           else if(step_no == 5){
             elem = document.getElementById("pipette");
-             $("#pipette").rotate(20);
+             $("#pipette").rotate(34);
              $("#pipette").attr("src", "image-specific/pipette.png");
              $("#quartz_cuvette").attr("src", "image-specific/cuv.png");
             // Change to next instruction to be followed.
@@ -413,55 +404,98 @@ function removeClock() {
             instruction_bkgd.style.visibility ="visible";
 
             if(sol_name == 0){
-                graph_instruction.innerHTML = "On the screen enter the wavelength range of spectral scan. For K2Cr2O7: start: 700 nm End: 325 nm. In real operation, the wavelength range of incident light for the sample is chosen and the wavelength scan is run via the accompanied computer software. One can run the scan in absorbance (A)  or transmittance (%T) mode. Click on the green 'start' button on the measurement set-up screen to run the wavelength scan. Observe the wavelength scan. If the spectrophotometer is a single beam instrument, then first the sample blank or reference is taken in a cuvette and the wavelength scan is run followed by the sample. One has to subtract the reference data from the sample data for respective wavelengths";
+                graph_instruction.innerHTML = "On the screen enter the wavelength range of spectral scan. start: 430 nm End: 275 nm. In real operation, the wavelength range of incident light for the sample is chosen and the wavelength scan is run via the accompanied computer software. One can run the scan in absorbance (A)  or transmittance (%T) mode. Click on the green 'start' button on the measurement set-up screen to run the wavelength scan. Observe the wavelength scan.";
             }else if(sol_name ==1){
-                graph_instruction.innerHTML = "On the screen enter the wavelength range of spectral scan. For caffeine: start: 590 nm End: 290 nm. In real operation, the wavelength range of incident light for the sample is chosen and the wavelength scan is run via the accompanied computer software. One can run the scan in absorbance (A)  or transmittance (%T) mode. Click on the green 'start' button on the measurement set-up screen to run the wavelength scan. Observe the wavelength scan. If the spectrophotometer is a single beam instrument, then first the sample blank or reference is taken in a cuvette and the wavelength scan is run followed by the sample. One has to subtract the reference data from the sample data for respective wavelengths";
-            }
+                graph_instruction.innerHTML = "On the screen enter the wavelength range of spectral scan. start: 430 nm End: 275 nm. In real operation, the wavelength range of incident light for the sample is chosen and the wavelength scan is run via the accompanied computer software. One can run the scan in absorbance (A)  or transmittance (%T) mode. Click on the green 'start' button on the measurement set-up screen to run the wavelength scan. Observe the wavelength scan.";            }
+            else if(sol_name ==2){
+                graph_instruction.innerHTML = "On the screen enter the wavelength range of spectral scan. start: 430 nm End: 275 nm. In real operation, the wavelength range of incident light for the sample is chosen and the wavelength scan is run via the accompanied computer software. One can run the scan in absorbance (A)  or transmittance (%T) mode. Click on the green 'start' button on the measurement set-up screen to run the wavelength scan. Observe the wavelength scan.";            }
+            else if(sol_name ==3){
+                graph_instruction.innerHTML = "On the screen enter the wavelength range of spectral scan. start: 430 nm End: 275 nm. In real operation, the wavelength range of incident light for the sample is chosen and the wavelength scan is run via the accompanied computer software. One can run the scan in absorbance (A)  or transmittance (%T) mode. Click on the green 'start' button on the measurement set-up screen to run the wavelength scan. Observe the wavelength scan.";            }
+            else if(sol_name ==4){
+                graph_instruction.innerHTML = "On the screen enter the wavelength range of spectral scan. start: 430 nm End: 275 nm. In real operation, the wavelength range of incident light for the sample is chosen and the wavelength scan is run via the accompanied computer software. One can run the scan in absorbance (A)  or transmittance (%T) mode. Click on the green 'start' button on the measurement set-up screen to run the wavelength scan. Observe the wavelength scan.";            }
+            else if(sol_name ==5){
+                graph_instruction.innerHTML = "On the screen enter the wavelength range of spectral scan. start: 430 nm End: 275 nm. In real operation, the wavelength range of incident light for the sample is chosen and the wavelength scan is run via the accompanied computer software. One can run the scan in absorbance (A)  or transmittance (%T) mode. Click on the green 'start' button on the measurement set-up screen to run the wavelength scan. Observe the wavelength scan.";            }
         }
     }
 
-    // function startBtn(){
-    //          var input1 = document.getElementById("input1").value;
-    //          var input2 = document.getElementById("input2").value;
-    //          var video1 = document.getElementById("graph1");
-    //          var video2 = document.getElementById("graph2");
-    //          var context = document.getElementById('scan');
-    //         if(solution == 1 &&  input1 == 700 && input2 == 325){
-    //             document.getElementById("scan_graph").style.visibility = "hidden";
-    //             context.style.visibility='visible';
-    //             video1.style.visibility='visible';
-    //             document.getElementById("graph_instruction").innerHTML = "Click on the close button when the spectral scal is complete. In real operation, the scan data are stored in the computer. The instrument stores data and therefore asks for the Sample File name. One enters a file name to save the data.";
-    //             document.getElementById("start_btn").style.visibility = 'hidden';
-    //             document.getElementById("input1").style.visibility = 'hidden';
-    //             document.getElementById("input2").style.visibility = 'hidden';
-    //             video1.play();
+    function startBtn(){
+                 var input1 = document.getElementById("input1").value;
+                 var input2 = document.getElementById("input2").value;
+                 var video1 = document.getElementById("video1");
+                 var video2 = document.getElementById("video2");
+                 var video3 = document.getElementById("video3");
+                 var video4 = document.getElementById("video4");
+                 var video5 = document.getElementById("video5");
+                 var context = document.getElementById('scan');
+            if(sol_name == 0 &&  input1 == 430 && input2 == 275){
+                document.getElementById("scan_graph").style.visibility = "hidden";
+                context.style.visibility='visible';
+                video1.style.visibility='visible';
+                document.getElementById("graph_instruction").innerHTML = "Click on the close button when the spectral scal is complete. In real operation, the scan data are stored in the computer. The instrument stores data and therefore asks for the Sample File name. One enters a file name to save the data.";
+                document.getElementById("start_btn").style.visibility = 'hidden';
+                document.getElementById("input1").style.visibility = 'hidden';
+                document.getElementById("input2").style.visibility = 'hidden';
+                video1.play();
                 
-    //         }
+            }
             
-    //         else if(solution == 2 && input1 == 590 && input2 == 290){
-    //             document.getElementById("scan_graph").style.visibility = "hidden";
-    //             context.style.visibility='visible';
-    //             video2.style.visibility='visible';
-    //             document.getElementById("graph_instruction").innerHTML = "Click on the close button when the spectral scal is complete. In real operation, the scan data are stored in the computer. The instrument stores data and therefore asks for the Sample File name. One enters a file name to save the data.";
-    //             document.getElementById("start_btn").style.visibility = 'hidden';
-    //             document.getElementById("input1").style.visibility = 'hidden';
-    //             document.getElementById("input2").style.visibility = 'hidden';
-    //             video2.play();
-    //         }
-    //         else{
-    //             alert("Enter start and end values and click start button on top of the window");
-    //         }
-    // }
+            else if(sol_name == 1 &&  input1 == 430 && input2 == 275){
+                document.getElementById("scan_graph").style.visibility = "hidden";
+                context.style.visibility='visible';
+                video2.style.visibility='visible';
+                document.getElementById("graph_instruction").innerHTML = "Click on the close button when the spectral scal is complete. In real operation, the scan data are stored in the computer. The instrument stores data and therefore asks for the Sample File name. One enters a file name to save the data.";
+                document.getElementById("start_btn").style.visibility = 'hidden';
+                document.getElementById("input1").style.visibility = 'hidden';
+                document.getElementById("input2").style.visibility = 'hidden';
+                video2.play();
+            }
+            else if(sol_name == 2  && input1 == 430 && input2 == 275){
+                document.getElementById("scan_graph").style.visibility = "hidden";
+                context.style.visibility='visible';
+                video3.style.visibility='visible';
+                document.getElementById("graph_instruction").innerHTML = "Click on the close button when the spectral scal is complete. In real operation, the scan data are stored in the computer. The instrument stores data and therefore asks for the Sample File name. One enters a file name to save the data.";
+                document.getElementById("start_btn").style.visibility = 'hidden';
+                document.getElementById("input1").style.visibility = 'hidden';
+                document.getElementById("input2").style.visibility = 'hidden';
+                video3.play();
+            }
+            else if(sol_name == 3  && input1 == 430 && input2 == 275){
+                document.getElementById("scan_graph").style.visibility = "hidden";
+                context.style.visibility='visible';
+                video4.style.visibility='visible';
+                document.getElementById("graph_instruction").innerHTML = "Click on the close button when the spectral scal is complete. In real operation, the scan data are stored in the computer. The instrument stores data and therefore asks for the Sample File name. One enters a file name to save the data.";
+                document.getElementById("start_btn").style.visibility = 'hidden';
+                document.getElementById("input1").style.visibility = 'hidden';
+                document.getElementById("input2").style.visibility = 'hidden';
+                video4.play();
+            }
+            else if(sol_name == 4  && input1 == 430 && input2 == 275){
+                document.getElementById("scan_graph").style.visibility = "hidden";
+                context.style.visibility='visible';
+                video5.style.visibility='visible';
+                document.getElementById("graph_instruction").innerHTML = "Click on the close button when the spectral scal is complete. In real operation, the scan data are stored in the computer. The instrument stores data and therefore asks for the Sample File name. One enters a file name to save the data.";
+                document.getElementById("start_btn").style.visibility = 'hidden';
+                document.getElementById("input1").style.visibility = 'hidden';
+                document.getElementById("input2").style.visibility = 'hidden';
+                video5.play();
+            }
+            else{
+                alert("Enter start and end values and click start button on top of the window");
+            }
+    }
 
-    // //This method makes the graph hidden once the video is played and close is pressed. 
-    // function disposeGraph(){
-    //         // After playing the graph plotting video close option is choosen, the background scan image and the video is mafde hidden.
-    //         document.getElementById('graph1').style.visibility='hidden';
-    //         document.getElementById('graph2').style.visibility='hidden';
-    //         document.getElementById('scan').style.visibility='hidden';
-    //         document.getElementById("graph_instruction").style.visibility ="hidden";
-    //         document.getElementById("instruction_bkgd").style.visibility ="hidden";
-    // }
+//This method makes the graph hidden once the video is played and close is pressed. 
+function disposeGraph(){
+          // After playing the graph plotting video close option is choosen, the background scan image and the video is mafde hidden.
+            document.getElementById('video1').style.visibility='hidden';
+            document.getElementById('video2').style.visibility='hidden';
+            document.getElementById('video3').style.visibility='hidden';
+            document.getElementById('video4').style.visibility='hidden';
+            document.getElementById('video5').style.visibility='hidden';
+            document.getElementById('scan').style.visibility='hidden';
+            document.getElementById("graph_instruction").style.visibility ="hidden";
+            document.getElementById("instruction_bkgd").style.visibility ="hidden";
+}
 
   
 
