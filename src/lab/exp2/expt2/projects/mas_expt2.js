@@ -330,6 +330,7 @@ function rotatePipette() {
       }
       else if(step_no == 3 && count == 3){
         elem.src = "image-specific/pipette-with-solution.png";
+        document.getElementById('round-bottom-flask').src = "image-specific/half-filled-flask.png";
         document.getElementById("demo").innerHTML = "Step-No 6: Click on the pipette to take it out of the volumetric flask.";
         step_no++;
         setTimeout(function(){ 
