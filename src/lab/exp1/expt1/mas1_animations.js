@@ -188,7 +188,8 @@ function moveFlaskBack() {
 }
 
 // This function is called when pipette is clicked.
-// When this function is called for the first time fillPipette() method is called.
+// When this function is called for the first time pipette is moved from the shelf to the flask on the table.
+// When this function is called for the second time fillPipette() method is called.
 // When this function is called for the third time movePipette() method is called.
 function pipette() {
        if ( step_no == 4 && count == 4){
@@ -252,7 +253,7 @@ function movePipette(){
         // Change the cuvette image to filled cuvette image
         setTimeout(function() {
             if(solution == 2){
-                document.getElementById("cuvette").src = "images/cuvette_filled0.png";
+                document.getElementById("cuvette").src = "images/cuvette_filled_caffine.png";
             }
             else{
                 document.getElementById("cuvette").src = "images/cuvette_filled.png";
@@ -314,7 +315,7 @@ function cuvette(){
         // Initialise all the values for the motion of the images.
         final_top = 221;
         step_top = -0.5;
-        step_left = -1.75;
+        step_left = -1.76;
         type_of_movement = 1;
         // Move it to a position over the spectrophotometer.
         moveImage();
@@ -330,7 +331,7 @@ function moveDown(){
     initial_top = Math.round($('#cuvette').position().top);
     initial_left = Math.round($('#cuvette').position().left);
     // Initialise all the values for the motion of the images.
-    final_top = 290;
+    final_top = 280;
     step_top = 1;
     step_left = 0;
     type_of_movement = 0;
@@ -350,9 +351,9 @@ function extraCuvette(){
     initial_top = Math.round($('#ref_cuvette').position().top);
     initial_left = Math.round($('#ref_cuvette').position().left);
     // Initialise all the values for the motion of the images.
-    final_top = 50;
-    step_top = 1;
-    step_left = -4;
+    final_top = 42;
+    step_top = 0.5;
+    step_left = -2.70;
     type_of_movement = 0;
     // Move it into the spectrophotometer.
     moveImage();
@@ -360,5 +361,6 @@ function extraCuvette(){
     setTimeout(function(){
         $('#ref_cuvette, #cuvette, #reference').css('visibility', 'hidden');
         cursorPointers('cuvette', 'spectrolid_trans_button');
-    },3000);
+        count++;
+    },2000);
 }

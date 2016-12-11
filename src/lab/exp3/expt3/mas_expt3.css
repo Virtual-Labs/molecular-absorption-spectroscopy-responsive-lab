@@ -1,29 +1,27 @@
-html {
-    overflow-y: scroll;
-    overflow-x: scroll;
-}
-
 body{
     width:1080px; 
     height:715px; 
     margin: 0 auto; 
-   /* overflow: hidden;*/
+    overflow: hidden;
     position: relative;
 }
 
-h4{   
+h3{  
     text-align: center;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+}
+
+#reset_btn{
+    margin: auto;
+    display: block;
 }
 
 #manual_button, #data_button{
-    /*background-color: Transparent; 
-    border : none; */
     position:absolute; 
     left: 30px;
-    /*float: left;*/
     cursor: pointer;
 }
-
 
 .modal {
         display: none; /* Hidden by default */
@@ -105,82 +103,79 @@ h4{
 
 #solution{
     position:absolute;
-    z-index:1099; 
+    z-index:1; 
     left:8%; 
     top:5%;
 }
 
 #flask{
     position:absolute;
-    z-index:999; 
+    z-index:1; 
     width:8%; 
     left:13%; 
     top:30%; 
-    cursor:pointer;
 }
 
 #pipette{
    position:absolute;
-   z-index:999; 
+   z-index:2; 
    width:7%; 
    left:36%; 
    top:27%;  
-   cursor:pointer;
 }
 
 #beaker{
     position:absolute;
-    z-index:800; 
+    z-index:1; 
     width:11%; 
     left:55%; 
     top:27%;  
-    cursor:pointer;
 }
 
 #cuvette1{
     position:absolute;
-    z-index:899; 
+    z-index:2; 
     width:3%; 
     left:77%; 
     top:48%; 
-    cursor:pointer;
 }
 
 #cuvette2{
     position:absolute;
-    z-index:899; 
+    z-index:2; 
     width:3%; 
     left:83%; 
     top:48%; 
-    cursor:pointer;
 }
 
 #cuvette3{
     position:absolute;
-    z-index:899; 
+    z-index:2; 
     width:3%; 
     left:89%; 
     top:48%; 
-    cursor:pointer;
 }
 
 #reference{
     position: absolute; 
-    z-index: 898; 
+    z-index: 1; 
     width: 15%; 
     left: 40%; 
     top: 0%; 
-    cursor: pointer;
     visibility: hidden;
 }
 
 #ref_cuvette{
     position: absolute; 
-    z-index: 899; 
-    width: 1.4%; 
-    left: 37.35%; 
-    top: 10%; 
-    cursor: pointer;
+    z-index: 1; 
+    width: 1.4%;
+    left: 52.35%; 
+    top: -5%; 
+}
+
+#table_with_spec{
+    margin:auto;
+    display: block;
 }
 
 #computerimage{
@@ -193,45 +188,30 @@ h4{
 
 #comp_trans_button{
     position: absolute; 
-    z-index: 999; 
+    z-index: 1; 
     width: 12%;
     height: 26%; 
     left: 49%;
     top: 15%; 
-    cursor: pointer;
 }
 
 #spectrolid_trans_button{
     position: absolute; 
-    z-index:2;
+    z-index:1;
     width: 5%; 
     height: 18%;
     left: 35%; 
     top: 20%;  
-    cursor: pointer;
-}
-
-#ref_cuvette{
-    position: absolute; 
-    z-index: 898; 
-    width: 1.4%; 
-    left: 37.35%; 
-    top: 10%; 
-    cursor: pointer;
 }
 
 #power_trans_button{
-    background-color: Transparent; 
-    background-repeat: no-repeat; 
-    border: none; 
-    cursor: pointer; 
-    overflow: hidden; 
     position: absolute; 
-    z-index:2;
+    z-index:1;
     left: 17.5%; 
     top: 45%;
     width: 3%;
     height: 6%;
+    cursor: pointer;
 }
 
 #demo{
@@ -248,7 +228,7 @@ h4{
     top:56px; 
     left:0px;
     visibility:hidden; 
-    z-index:1100;
+    z-index:3;
 }
 
 #clockHand{
@@ -256,29 +236,20 @@ h4{
     top:294.50px;
     left:50.75%; 
     visibility:hidden; 
-    z-index:1102;
+    z-index:4;
 }
 
 #scan{
     position:absolute;
-    z-index:1100; 
-    top:60px; 
+    z-index:6; 
+    top:118px; 
     left:15px;
     visibility:hidden;
 }
 
-#scanimage1,  #scanimage3 {
+#scanimage1, #scanimage2, #scanimage3{
     position: absolute;
-    z-index: 1100;
-    top: 111px;
-    left: 10px;
-    width: 100%;
-    visibility:hidden; 
-}
-
-#scanimage2, #scanimage3{
-    position: absolute;
-    z-index: 1100;
+    z-index: 7;
     top: 215px;
     left: 109px;
     width: 83%;
@@ -287,17 +258,16 @@ h4{
 
 #scan_btn{
     position: absolute;
-    z-index: 1200;
+    z-index: 8;
     top: 519px;
     left: 262px;
     width: 9%;
     height: 5%;
-    cursor: pointer;
 }
 
-#tenmm_graph, #fivemm_graph, #onemm_graph{
+.video{
     position: absolute;
-    z-index: 1300;
+    z-index: 10;
     top: 28%;
     left: 10.1%;
     visibility: hidden;
@@ -307,10 +277,9 @@ h4{
 
 #disposegraph{
     position: absolute;
-    z-index: 1300;
+    z-index: 13;
     width: 8%;
     left: 84%;
     top: 631px;
-    cursor: pointer;
     height: 3%;
 }

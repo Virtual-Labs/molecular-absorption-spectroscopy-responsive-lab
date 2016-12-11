@@ -195,17 +195,19 @@ h3{
 #reference{
     position: absolute; 
     width: 15%; 
-    left: 40%; 
-    top: 0%; 
+    left: 54%; 
+    top: -9%; 
     visibility: hidden;
 }
 
 #ref_cuvette{
     position: absolute; 
     z-index: 1; 
-    width: 1.4%; 
-    left: 37.35%; 
-    top: 10%; 
+    width: 1.7%;
+    height: 10%;
+    left: 52.35%; 
+    top: -5%; 
+    visibility: hidden;
 }
 
 #power_trans_button{

@@ -196,7 +196,7 @@ function spectrophotometer(){
         cursorPointers('spectrolid_trans_button', 'cuvette');
         step_no++;
     }
-    else if(step_no == 10 && count == 12){
+    else if(step_no == 10 && count == 13){
         // Replace the spectrophotometer images with the closed spectrophotmeter images.
         images[0] = "images/spec_close.png";
         images[1] = "images/spec_close1.png";

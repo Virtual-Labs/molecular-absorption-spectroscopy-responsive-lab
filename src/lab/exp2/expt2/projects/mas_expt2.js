@@ -275,16 +275,16 @@ function moveDown(){
 
 function extraCuvette(){
         // Get the transparent image and replace it with a reference cuvette image and move it down into the spectrophotometer.
-        $('#ref_cuvette').attr('src', 'image-specific/reference_cuv.png'); 
+        document.getElementById('ref_cuvette').style.visibility = 'visible';
         document.getElementById("reference").style.visibility ="visible";
         elem = document.getElementById("ref_cuvette");
         // Detect the current position of the flask.
         initial_top = Math.round($('#ref_cuvette').position().top);
         initial_left = Math.round($('#ref_cuvette').position().left);
         // Initialise all the values for the motion of the image-specific.
-        final_top = 60;
-        step_top = 2.1;
-        step_left = 0;
+        final_top = 42;
+        step_top = 0.5;
+        step_left = -1.42;
         type_of_movement = 0;
         // Move it into the spectrophotometer.
         moveImage();
@@ -294,7 +294,6 @@ function extraCuvette(){
             cursorPointers('quartz_cuvette', 'spectrolid_trans_button');
             count++;
         },4000);
-
 }
 
 /*This method is called whan the pipette is clicked.
