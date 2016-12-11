@@ -3,25 +3,42 @@
 <head>
 
     <meta charset="utf-8">
-    <title>mas_3</title>
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="mas_expt4.css">
+    <link rel="stylesheet" href="../../libraries/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="../../libraries/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function playVideo(Id) {
+            document.getElementById(Id).play();
+        }
+    </script>
+
+    <style type="text/css">
+        h3{
+            text-align: center;
+            font-weight: bold;
+            font-family:"Times New Roman", Times, serif;
+        }
+        button{
+            margin:auto;
+            display:block;
+        }
+    </style>
+    <title>Effect of path length on transmittance</title>
     
 </head>
-<center>
-<body>
+<body >
+<div class = "container">
     <div class= "row">
-        <h4>Effect of path length on transmittance</h4><br/>
-        <center><button onclick = "location.reload()">Reset Experiment</button></center>
-        <video id="pathlength_video" ><source src="videos/pathlength.mp4" type="video/mp4"></video>
-        <center><button onclick ="document.getElementById('pathlength_video').play();">Click here to view the Effect of path length on transmittance</button></center>
+        <div class="col-sm-12">
+            <h3>Effect of path length on transmittance</h3><br>
+            <button onclick = "window.location.reload()">Reset Experiment</button><br>
+            <div class="embed-responsive embed-responsive-16by9">
+                <video id="video"  class="embed-responsive-item"><source src="videos/pathlength.mp4" type="video/mp4"></video>
+            </div><br>
+            <button onclick = "playVideo('video')">Click here to view the Effect of path length on transmittance</button>
+        </div>
     </div>
-    
+</div>  
 </body>
-</center>
 </html>

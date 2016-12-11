@@ -89,7 +89,7 @@ function popitup(url) {
 //This function is used to add click events to elements
 function addclickEvents(){
     document.getElementById("reset_btn").addEventListener("click", function() {
-            location.reload();
+            window.location.reload();
     }, false);
     document.getElementById("data_button").addEventListener("click", function() {
             popitup("slideshow.html");
