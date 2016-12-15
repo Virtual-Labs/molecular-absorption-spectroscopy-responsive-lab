@@ -1,163 +1,224 @@
-var images = [];
-images[0]="images/spec_on_no_redLight.png";
-images[1]="images/spec_on_redLight.png";
-var x = 0;
-var y = 0;
-var initial_top;
-var initial_left;
-var elem;
-var img,img1;
-var mql;
-var id,id1;
-var step_no=0;// This variable is used to perform all the actions in the required sequence. Depending on the value of this variable the part of the method is called.
-var final_top, step_top, step_left, type_of_movement;
-var vid;
+// This file contains all general functions used of the experiment
+    var images = []; /* Two images that are alternated in ordered to get the blinking effect of the 
+                       spectrophotometer. */
+    images[0] = "images/spec_with_red.png";
+    images[1] = "images/spec_with_red.png";
+    var x = 0;
+    var y = 0;
+    var turnon; //this variable is used to store the spectrometer table images.
+    // Variables necessary to obtain motion of all the images
+    var initial_top;
+    var initial_left;
+    var final_top;
+    var final_left;
+    var step;
+    var elem;
+    var img,img1;
+    var id,id1;
+    var type_of_movement;// Indicates upward or downward motion
+    var step_no=0; /* This variable is used to perform all the actions on images in the required sequence. 
+                      Depending on the value of this variable the part of the method is called.*/
+    var count = 0; /* This variable is used to perform the actions on the objects without distortions.
+                      i.e., It make sures that one or more actions are not performed at a time. */
 
-// This method is called when the page is loaded. It helps in providing basic functionality to two buttons manual and data and also sets the first set of instructions
+/*This method is called when the page is loaded. *
+   First function helps in providing basic functionality to manual button and also sets the 
+   first set of instructions.
+   Second function adds click events to elements as soon as the page loads.
+   Third function adds mouse events to elements as soon as the page loads. */
+window.onload = function(){ 
+    initial_function();
+    addclickEvents();
+    mouseEvents();
+}
+
+/*This method is called when the page is loaded. It helps in providing basic functionality to 
+manual button and also sets the first set of instructions. */
 function initial_function(){
-
-  
-  document.getElementById("data_button").addEventListener("click", function() {
-    popitup("slideshow.html");
-  }, false);
-  
-  // Intial intrsuction to be followed
-  document.getElementById("demo").innerHTML = "Step-No 1: Prepare the following solutions: (i) a 0.5g/L methyl orange solution by dissolving 0.05 g methyl orange in 100 mL distilled water; (ii) a 0.2 M disodium hydrogen orthophosphate (Na<sub>2</sub>HPO<sub>4</sub>) solution by dissolving 5.68 g Na<sub>2</sub>HPO<sub>4</sub> in 200 mL distilled water; and (iii) a 0.1 M citric acid solution by dissolving 9.61 g citric acid in 500 mL distilled water. Prepare eight buffer solutions by mixing varying amounts of the Na<sub>2</sub>HPO<sub>4</sub> solution and the citric acid solution as given in Table 1. Divide each buffer solution into two equal portions of 25 mL volume. Add 0.5 mL of methyl orange solution to one 25 mL portion of each buffer solution. Absorbance measurements of the buffer solutions containing the methyl orange indicator have to be carried out against the other portions of buffer as the reference or sample blank. These sample solutions are shown on a selection scale. Switch on the computer and the instrument powers; wait for 30 minutes for ‘warm-up’ of the instrument.";
-
-  var modal = document.getElementById('manual');
-
-  // Get the button that opens the manual modal
-  var btn = document.getElementById("manual_button");
-
-  // Get the <span> element that closes the manual modal
-  var span = document.getElementsByClassName("close")[0];
-
-  // When the user clicks the button, open the manual modal 
-  btn.onclick = function() {
-    modal.style.display = "block";
-  };
-
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-    modal.style.display = "none";
-  };
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
+    // Intial intrsuction to be followed
+    document.getElementById("demo").innerHTML = "Step-No 1: Prepare the following solutions: (i) a 0.5g/L methyl orange solution by dissolving 0.05 g methyl orange in 100 mL distilled water; (ii) a 0.2 M disodium hydrogen orthophosphate (Na<sub>2</sub>HPO<sub>4</sub>) solution by dissolving 5.68 g Na<sub>2</sub>HPO<sub>4</sub> in 200 mL distilled water; and (iii) a 0.1 M citric acid solution by dissolving 9.61 g citric acid in 500 mL distilled water. Prepare eight buffer solutions by mixing varying amounts of the Na<sub>2</sub>HPO<sub>4</sub> solution and the citric acid solution as given in Table 1. Divide each buffer solution into two equal portions of 25 mL volume. Add 0.5 mL of methyl orange solution to one 25 mL portion of each buffer solution. Absorbance measurements of the buffer solutions containing the methyl orange indicator have to be carried out against the other portions of buffer as the reference or sample blank. These sample solutions are shown on a selection scale. Switch on the computer and the instrument powers; wait for 30 minutes for ‘warm-up’ of the instrument.";
+    var modal = document.getElementById('manual');
+    // Get the button that opens the manual modal
+    var btn = document.getElementById("manual_button");
+    // Get the <span> element that closes the manual modal
+    var span = document.getElementsByClassName("close")[0];
+    // When the user clicks the button, open the manual modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    };
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
       modal.style.display = "none";
-    }
-  };
+    };
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
 }
-// When user clicks on the Data button it redirects him to the page containing slideshow of three graphs obtained from three different sample lengths
+
+/*When user clicks on the Data button it redirects him to the page containing slideshow of the graphs 
+obtained from different sample concentration values.*/
 function popitup(url) {
-  // Opens a new browser window called newwindow. url specifies the URL of the page to open.
-  newwindow=window.open(url,'name','height=300,width=250',"_parent");
-  // Sets focus to the new window if the focus is on the previous page.
-  if (window.focus) {
-    newwindow.focus();
-  }
-  return false;
+    // Opens a new browser window called newwindow. url specifies the URL of the page to open.
+    newwindow=window.open(url,'name','height=400,width=350',"_parent");
+    // Sets focus to the new window if the focus is on the previous page.
+    if (window.focus) {
+        newwindow.focus()
+    }
+    return false;
 }
 
-// When the user clicks on reset experiment this method is called
-function reload(){
-  // Reloads the current document.
-  location.reload();
+//This function is used to add click events to elements
+function addclickEvents(){
+    document.getElementById("reset_btn").addEventListener("click", function() {
+            window.location.reload();
+    }, false);
+    document.getElementById("data_button").addEventListener("click", function() {
+            popitup("slideshow.html");
+    }, false);
+    document.getElementById("flask").addEventListener("click", function() {
+            moveFlask();
+    }, false);
+    document.getElementById("micro_pipette").addEventListener("click", function() {
+            moveMicropipette();
+    }, false);
+    document.getElementById("pipette").addEventListener("click", function() {
+            movePipette();
+    }, false);
+    document.getElementById("beaker").addEventListener("click", function() {
+            moveBeaker();
+    }, false);
+    document.getElementById("cuvette").addEventListener("click", function() {
+            moveCuvette();
+    }, false);
+    document.getElementById("comp_trans_button").addEventListener("click", function() {
+            scan();
+    }, false);
+    document.getElementById("spectrolid_trans_button").addEventListener("click", function() {
+            spectrophotometer();
+    }, false);
+    document.getElementById("power_trans_button").addEventListener("click", function() {
+            changeImage(); showClock();
+    }, false);
+    document.getElementById("scan_btn").addEventListener("click", function() {
+            scanGraph();
+    }, false);
+    document.getElementById("disposegraph").addEventListener("click", function() {
+            disposeGraph();
+    }, false);
 }
 
-// When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is changed continuously  to give the blinking light effect. The two images that are swapped is stored in images[]
+//This function is used to add mouse events to elements.
+function mouseEvents(){
+    document.getElementById("manual_button").addEventListener("mouseover", function(){
+        this.src='images/hover_manual.png';
+    });
+    document.getElementById("manual_button").addEventListener("mouseout", function(){
+        this.src='images/manual_button.png';
+    });
+    document.getElementById("data_button").addEventListener("mouseover", function(){
+        this.src='images/hover_data.png';
+    });
+    document.getElementById("data_button").addEventListener("mouseout", function(){
+        this.src='images/data_button.png';
+    });
+}
+
+//To disable and enable the cursor pointers on elements.
+function cursorPointers(id1, id2){
+    document.getElementById(id1).style.cursor = "default";
+    document.getElementById(id2).style.cursor = "pointer";
+}
+
+//Call changeImage() method every 250ms 
+function changeImage(){
+    setInterval(turnOn, 250);
+}
+
+/*When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is 
+changed continuously to give the blinking light effect. The two images that are swapped is stored in images[]*/
 function turnOn() {
-  // Get the image
-  img = document.getElementById('table_with_spec');
-  // Change the source of the image 
-  img.src = images[x];
-  //increment x;
-  x++;
-  if(x >= images.length){
-    x = 0;
-  }
-  // Call turnOn() method every 250ms 
-  setTimeout("turnOn()", 250);
+    // Get the image
+    turnon = document.getElementById('table_with_spec');
+    // Change the source of the image 
+    turnon.src = images[x];
+    //increment x;
+    x++;
+    if(x >= images.length){
+        x = 0;
+    }
 }
 
-// This method displays a timer which runs for 30 seconds. There exists two images which are hidden initailly; when this method is called they are amde visible and the clock hand is made to rotate.  
+/*This method displays a timer which runs for 30 seconds. There exists two images which are hidden initailly; 
+when this method is called they are made visible and the clock hand is made to rotate.*/  
 function showClock(){
-  if(step_no==0){
-    // Get the images.
-    var context=document.getElementById('clockScreen');
-    var hand =document.getElementById('clockHand');
-    // Make the visiblility of the obtained images visible
-    context.style.visibility='visible';
-    hand.style.visibility="visible";
-    // Rotate 'clockHand' using jQueryRotate.js
-    var angle = 0;
-    setInterval(function(){
-      angle+=3;
-      $('#clockHand').rotate(angle);
-    },50);
-    step_no++;
-    //After 10 secs dispose clock
-    // setTimeout("disposeClock()",10000);
-    setTimeout("removeClock()",3000);
-    document.getElementById("demo").innerHTML = "Click on the beaker to take clean dry beak";
-  }
+    if(step_no==0){
+        // Get the images.
+        var context=document.getElementById('clockScreen');
+        var hand =document.getElementById('clockHand');
+        // Make the visiblility of the obtained images visible
+        context.style.visibility='visible';
+        hand.style.visibility="visible";
+        // Rotate 'clockHand' using jQueryRotate.js
+        var angle = 0;
+        setInterval(function(){
+            angle+=3;
+            $('#clockHand').rotate(angle);
+        },50);
+        step_no++;
+        //After 3 secs dispose clock
+        setTimeout("removeClock()",3000);
+    }
 }
 
-// After 30 seconds of display of the timer the visibility of clock is changed back to hidden.
-// function disposeClock(){
-//   // Make the visiblility of the obtained images hidden.
-//   document.getElementById('clockScreen').style.visibility='hidden';
-//   document.getElementById('clockHand').style.visibility='hidden';
-//   // Change to next intsruction to be followed.
-//   document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker"; 
-// }
-
+// After 3 seconds of display of the timer the visibility of clock is changed back to hidden.
 function removeClock() {
-        $('#clockHand, #clockScreen').remove();
-        //Change to next intsruction to be followed.
-        document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take clean, dry beaker";
-    }
-
-
-// This function is used to move an image using initial and final position parameters
-
-function moveImage(){
-  id = setInterval(frame, 5);
-  function frame() {
-    if(type_of_movement == 0){
-      if (initial_top > final_top) {
-        clearInterval(id);
-      } else {
-        initial_top+=step_top; 
-        initial_left+=step_left;
-        elem.style.top = initial_top + 'px'; 
-        elem.style.left = initial_left + 'px'; 
-        
-      }
-    }
-    else if(type_of_movement == 1){
-      if (initial_top < final_top) {
-        clearInterval(id);
-      } else {
-        initial_top+=step_top; 
-        initial_left+=step_left;
-        elem.style.top = initial_top + 'px'; 
-        elem.style.left = initial_left + 'px'; 
-        
-      }
-    }
-  } 
+    $('#clockHand, #clockScreen').remove();
+    //Change to next intsruction to be followed.
+    document.getElementById("demo").innerHTML = "Step-No 2: Click on the beaker to take a clean, dry beaker.";
+    cursorPointers('power_trans_button', 'beaker');
 }
 
-//This is the function when the beaker is clicked.
+// This function is a general method used to move images from initial position to final position.
+function moveImage(){
+    id = setInterval(frame, 5);
+    function frame() {
+        if(type_of_movement == 0){
+            if (initial_top > final_top) {
+                clearInterval(id);
+                count++;
+            } else {
+                initial_top+=step_top; 
+                initial_left+=step_left;
+                elem.style.top = initial_top + 'px'; 
+                elem.style.left = initial_left + 'px'; 
+            }
+        }
+        else if(type_of_movement == 1){
+            if (initial_top < final_top) {
+                clearInterval(id);
+                count++;
+            } else {
+                initial_top+=step_top; 
+                initial_left+=step_left;
+                elem.style.top = initial_top + 'px'; 
+                elem.style.left = initial_left + 'px'; 
+                
+            }
+        }
+    } 
+}
 
+// This is the function called when beaker is clicked. 
+// It moves the beaker from the shelf to the table.
 function moveBeaker()
 {
   if(step_no == 1){
     // Get image
     elem = document.getElementById("beaker"); 
-    //Detect thecurrent position of the flask.
+    //Detect the current position of the beaker .
     initial_top = Math.round($('#beaker').position().top);
     initial_left = Math.round($('#beaker').position().left);
     // Initialise all the values for the motion of the images.
@@ -167,31 +228,27 @@ function moveBeaker()
     type_of_movement = 0;
     // Move the beaker image to desired position.
     moveImage();
-    
     // Change to next intsruction to be followed.
-    document.getElementById("ph_scale").disabled = true;
-    document.getElementById("ph_scale").style.opacity ="0.4";
+    document.getElementById("slider").disabled = true;
+    document.getElementById("slider").style.opacity ="0.4";
     document.getElementById("demo").innerHTML = "Step-No 3: Click on the buffer solution to take to experiment table.";
+    cursorPointers('beaker', 'flask');
     step_no++;
   }
-
 }
 
-
-// This is the function called when flask is clicked.
-// When this function is called for the first time the flask moves from shelf to table.
-// When this function is called for the second time the moveFlask() method is called.   
-
-
+// This is the function called when buffer solution flask is clicked.
+// When this function is called for the first time the flask moves from shelf to the table.
+// When this function is called for the second time pourFlask() method is called.   
 function moveFlask() {
-  if (step_no == 2){
+  if (step_no == 2 && count == 1){
     // Get image
     elem = document.getElementById("flask");
     // Detect the current position of the flask. 
     initial_top = Math.round($('#flask').position().top);
     initial_left = Math.round($('#flask').position().left);
     // Initialise all the values for the motion of the images.
-    final_top = 305;
+    final_top = 315;
     step_top = 1;
     step_left = 0.5;
     type_of_movement = 0;
@@ -201,39 +258,37 @@ function moveFlask() {
     document.getElementById("demo").innerHTML = "Step-No 4: Click on the buffer solution to pour the solution into the clean, dry beaker.";
     step_no++;
   }
-  else if(step_no==3){
+  else if(step_no==3 && count == 2){
     document.getElementById("flask").onclick = pourFlask();
     document.getElementById("demo").innerHTML = "Step-No 5: Click on the bigger pipette to collect 0.5 ml methylorange solution from the volumetric flask (kept on the shelf).";
     step_no++;
   }
 }
 
-
-
-// This method moves the flask upwards and then calls changeFlask() and moveFlaskback() 
+// This method moves the flask upwards and then calls changeFlask() and moveFlaskback().
 function pourFlask() {
-  // Get image
-  elem = document.getElementById("flask");
-  // Detect the current position of the flask. 
-  initial_top = Math.round($('#flask').position().top);
-  initial_left = Math.round($('#flask').position().left);
-  // Initialise all the values for the motion of the images.
-  final_top = 250;
-  step_top = -0.75;
-  step_left = 0.57;
-  type_of_movement = 1;
-  // Move the flask image to desired location. 
-  moveImage();
-  // Call changeFlask() at a regular interval of 50 ms.
-  id1 = setInterval(changeFlask,50);
-  // Call moveFlaskBack() to move it back to the table.
-  setTimeout(moveFlaskBack,1725);
+    // Get image
+    elem = document.getElementById("flask");
+    // Detect the current position of the flask. 
+    initial_top = Math.round($('#flask').position().top);
+    initial_left = Math.round($('#flask').position().left);
+    // Initialise all the values for the motion of the images.
+    final_top = 250;
+    step_top = -0.75;
+    step_left = 0.57;
+    type_of_movement = 1;
+    // Move the flask image to desired location. 
+    moveImage();
+    // Call changeFlask() at a regular interval of 50 ms.
+    id1 = setInterval(changeFlask,50);
+    // Call moveFlaskBack() to move it back to the table.
+    setTimeout(moveFlaskBack,1725);
 }
 
-// This method provides rotational motion along with the solution pouring effect to the flask and filling effect to the beaker. It consists of a set of 30 images flask[] changed continuously.
+/* This method provides rotational motion along with the solution pouring effect to the flask and filling 
+effect to the beaker. It consists of a set of 30 images flask[] changed continuously.*/
 function changeFlask(){
   img = document.getElementById("flask");
-  img1 = document.getElementById("beaker");
   var flask =[];
   flask[0] = "images/flask1.png";
   flask[1] = "images/flask2.png";
@@ -269,9 +324,7 @@ function changeFlask(){
   if(y < flask.length){
     img.src = flask[y];
   }
-
   y++;
-
   if (y == 3){
     img.style.width = '11%';
   }
@@ -294,27 +347,31 @@ function moveFlaskBack() {
   initial_top = Math.round($('#flask').position().top);
   initial_left = Math.round($('#flask').position().left);
   //Initialise all the values for the motion of the images.
-  final_top = 305;
+  final_top = 315;
   step_top = 1;
   step_left = -1;
   type_of_movement = 0;
   // Move it back to the table
   elem.style.width = "8%";
   // Change the image to an empty flask image
-  elem.src= "images/emptyflask.png"; 
+  elem.src= "images/empty_flask.png"; 
   moveImage();
+  cursorPointers('flask', 'pipette');
 }
 
-
 // This function is called when bigger pipette is clicked.
-
-function movePipette1() {
-  if (step_no == 4){
+// When it is called for the first time, pipette is moved to the methyl orange flask.
+/*When it is called for the second time, pipette extracts the solution.
+(Here the pipette images will be changed.)*/
+// When it is called for the third time, pippette is moved down to the beaker to add solution into it.
+// When it is called for the fourth time, pipete image gets changed and moves back to the shelf.
+function movePipette() {
+  if (step_no == 4 && count == 4){
     // Get image
-    elem = document.getElementById("pipette1"); 
-    // Detect the current position of the flask.
-    initial_top = Math.round($('#pipette1').position().top);
-    initial_left = Math.round($('#pipette1').position().left);
+    elem = document.getElementById("pipette"); 
+    // Detect the current position of the pipette.
+    initial_top = Math.round($('#pipette').position().top);
+    initial_left = Math.round($('#pipette').position().left);
     // Initialise all the values for the motion of the images.
     final_top = 0;
     step_top = -0.05;
@@ -326,21 +383,22 @@ function movePipette1() {
     document.getElementById("demo").innerHTML = "Step-No 5: Click on the bigger pipette to collect 0.5 ml methylorange solution from the volumetric flask (kept on the shelf).";
     step_no++;
   }
-
-  else if(step_no==5){
-    img = document.getElementById("pipette1");
-    img.src = "images/pipette1_filled.png";
+  else if(step_no==5 && count == 5){
+    setTimeout(function(){
+      img = document.getElementById("pipette");
+      img.src = "images/pipette1_filled.png";
+      count++;
+    }, 500);
     // Change to next instruction to be followed.
     document.getElementById("demo").innerHTML = "Step-No 6: Again click on the bigger pipette now, to add the 0.5ml of methylorange solution to the beaker on the table below.";
     step_no++;
   }
-
-  else if(step_no==6){
+  else if(step_no==6 && count == 6){
     // Get images
-    elem = document.getElementById("pipette1");
+    elem = document.getElementById("pipette");
     // Detect the current position of the pipette.
-    initial_top = Math.round($('#pipette1').position().top);
-    initial_left = Math.round($('#pipette1').position().left);
+    initial_top = Math.round($('#pipette').position().top);
+    initial_left = Math.round($('#pipette').position().left);
     // Initialise all the values for the motion of the images.
     final_top = 268;
     step_top = 1;
@@ -352,20 +410,43 @@ function movePipette1() {
     document.getElementById("demo").innerHTML = "Step-No 6: Again click on the bigger pipette now, to add the 0.5ml of methylorange solution to the beaker on the table below.";
     step_no++;
   }
-  
-  else if(step_no==7){
-
+  else if(step_no==7 && count == 7){
     img = document.getElementById("beaker");
-    img.src = "images/beaker_red.png";
-    img1 = document.getElementById("pipette1");
+    conc_value = document.getElementById('slider').value;
+    alert(conc_value);
+    if(conc_value == 0) {
+      img.src = "images/beaker_red.png";
+    }
+    else if(conc_value == 1) {
+      img.src = "images/beaker_red.png";
+    }
+    else if(conc_value == 2) {
+      img.src = "images/beaker_red.png";
+    }
+    else if(conc_value == 3) {
+      img.src = "images/beakerph34.png";
+    }
+    else if(conc_value == 4) {
+      img.src = "images/beakerph38.png";
+    }
+    else if(conc_value == 5) {
+      img.src = "images/beakerph42.png";
+    }
+    else if(conc_value == 6) {
+      img.src = "images/beaker_yellow.png";
+    }
+    else if(conc_value == 7) {
+      img.src = "images/beaker_yellow.png";
+    }
+    img1 = document.getElementById("pipette");
     img1.src = "images/pipette1.png";
     // Get images
-    elem = document.getElementById("pipette1");
+    elem = document.getElementById("pipette");
     // Detect the current position of the pipette.
-    initial_top = Math.round($('#pipette1').position().top);
-    initial_left = Math.round($('#pipette1').position().left);
+    initial_top = Math.round($('#pipette').position().top);
+    initial_left = Math.round($('#pipette').position().left);
     // Initialise all the values for the motion of the images.
-    final_top = 21;
+    final_top = 18;
     step_top = -1;
     step_left = -.30;
     type_of_movement = 1;
@@ -373,66 +454,66 @@ function movePipette1() {
     moveImage();
     // Change to next instruction to be followed.
     document.getElementById("demo").innerHTML = "Step-No 7: Click on the micropipette to collect appropriate quantity of solution from the beaker.";
+    cursorPointers('pipette', 'micro_pipette');
     step_no++;
   }
 }
 
-
 // This function is called when micro pipette is clicked.
-
-function movePipette2() {
-  if ( step_no == 8){
-    // Get image
-    elem = document.getElementById("pipette2"); 
-    // Detect the current position of the flask.
-    initial_top = Math.round($('#pipette2').position().top);
-    initial_left = Math.round($('#pipette2').position().left);
-    // Initialise all the values for the motion of the images.
-    final_top = 268;
-    step_top = 1;
-    step_left = 0.52;
-    type_of_movement = 0;
-    // Move it to the beaker
-    moveImage();
-    // Change to next instruction to be followed. 
-    step_no++;
+// When it is called for the first time pipette is moved from the shelf to the beaker on the table.
+/*When it is called for the second time, pipette extracts the solution.
+(Here the pipette images will be changed.)*/
+//When it is called for the third time, pipette is moved to the cuvette.
+//When it is called for the fourth time, pipete and cuvette image gets changed and pipette moves back to the shelf.
+function moveMicropipette() {
+    if(step_no == 8 && count == 8){
+      // Get image
+      elem = document.getElementById("micro_pipette"); 
+      // Detect the current position of the pipette.
+      initial_top = Math.round($('#micro_pipette').position().top);
+      initial_left = Math.round($('#micro_pipette').position().left);
+      // Initialise all the values for the motion of the images.
+      final_top = 274;
+      step_top = 1;
+      step_left = 0.52;
+      type_of_movement = 0;
+      // Move it to the beaker
+      moveImage();
+      step_no++;
   }
-
-  else if(step_no==9){
-    img = document.getElementById("pipette2");
-    img.src = "images/pipette2_filled.png";
-    // Change to next instruction to be followed.
-    document.getElementById("demo").innerHTML = "Step-No 8: Take cuvette by clicking on it";
-    step_no++;
+  else if(step_no==9 && count == 9){
+      img = document.getElementById("micro_pipette");
+      img.src = "images/micro_pipette_filled.png";
+      // Change to next instruction to be followed.
+      document.getElementById("demo").innerHTML = "Step-No 8: Take cuvette by clicking on it";
+      cursorPointers('micro_pipette', 'cuvette')
+      step_no++;
   }
-
-  else if(step_no==11){
+  else if(step_no==11 && count == 10){
     // Get images
-    elem = document.getElementById("pipette2");
-    // Detect the current position of the flask.
-    initial_top = Math.round($('#pipette2').position().top);
-    initial_left = Math.round($('#pipette2').position().left);
+    elem = document.getElementById("micro_pipette");
+    // Detect the current position of the pipette.
+    initial_top = Math.round($('#micro_pipette').position().top);
+    initial_left = Math.round($('#micro_pipette').position().left);
     // Initialise all the values for the motion of the images.
     final_top = 267;
     step_top = -.052;
-    step_left = -2.1;
+    step_left = -0.5;
     type_of_movement = 1;
     // Move it to the cuvette
     moveImage();
-    // Change to next instruction to be followed.
     step_no++;
   }
-  
-  else if(step_no==12){
-    img = document.getElementById("pipette2");
-    img.src = "images/pipette2.png";
-    img = document.getElementById("cuvette");
-    img.src = "images/cuvette_filled.png";
+  else if(step_no==12 && count == 11){
+    img = document.getElementById("micro_pipette");
+    img.src = "images/micro_pipette.png";
+    img1 = document.getElementById("cuvette");
+    img1.src = "images/cuvette_filled.png";
     // Get images
-    elem = document.getElementById("pipette2");
+    elem = document.getElementById("micro_pipette");
     // Detect the current position of the flask.
-    initial_top = Math.round($('#pipette2').position().top);
-    initial_left = Math.round($('#pipette2').position().left);
+    initial_top = Math.round($('#micro_pipette').position().top);
+    initial_left = Math.round($('#micro_pipette').position().left);
     // Initialise all the values for the motion of the images.
     final_top = 30;
     step_top = -2;   
@@ -441,26 +522,25 @@ function movePipette2() {
     // Move it to the shelf
     moveImage();
     document.getElementById("demo").innerHTML = "Step-No 10: Click on the spectrophotometer lid to open it.";
+    cursorPointers('micro_pipette', 'spectrolid_trans_button');
     step_no++;
-    
   }
 }
 
 
 // This function is called cuvette is clicked.
-// When this method is called for the first time the tansparent image button on the shelf cuvette is replaced with an image of the cuvette and is moved down and the shelf image is changed to an image with no cuvette depending on the cuvette clicked.
+// When it is called for the first time cuvette is moved from the shelf onto the table.
 // When this method is called for the second time the cuvette is moved upto the spectrophotometer.
 function moveCuvette() {
   if (step_no == 10) {
     // get the image of the shelf
     elem = document.getElementById("cuvette"); 
     // Move the cuvette from the shelf to the table
-    elem.style.width = "2.5%";
-    // Detect the current position of the flask.
+    // Detect the current position of the cuvette.
     initial_top = Math.round($('#cuvette').position().top);
     initial_left = Math.round($('#cuvette').position().left);
     // Initialise all the values for the motion of the images.
-    final_top = 340;
+    final_top = 345;
     step_top = .75;
     step_left = -0.43;
     type_of_movement = 0;
@@ -468,142 +548,173 @@ function moveCuvette() {
     moveImage();
     // Change the next instruction to be followed.
     document.getElementById("demo").innerHTML = "Step-No 9: Pour the solution from the micropipette into the cuvette by clicking on the cuvette(In actual measurements the cuvette is filled to two-third of its volume)";
+    cursorPointers('cuvette', 'micro_pipette');
     step_no++;
   }
   else if(step_no == 14){
     // Depending on the cuvette choosen get images accordingly.
     elem = document.getElementById("cuvette"); 
     // Move the cuvette from the table to the socket in the spectrophotmeter.
-    // Detect the current position of the flask.
+    // Detect the current position of the cuvette.
     initial_top = Math.round($('#cuvette').position().top);
     initial_left = Math.round($('#cuvette').position().left);
     // Initialise all the values for the motion of the images.
     final_top = 221;
     step_top = -0.5;
-    step_left = -1.7;
+    step_left = -1.6;
     type_of_movement = 1;
     // Move it to a position over the spectrophotometer.
     moveImage();
-    // After 1200ms call moveDown() method.
+    // After 1500ms call moveDown() method.
     setTimeout("moveDown()",1500);
-    step_no++;
     document.getElementById("demo").innerHTML = "Step-No 12: Click on the spectrophotometer lid to close it.";
-    
+    step_no++;
   }
 }
 
 // This method is used to move the cuvette downwards into the spectrophotometer.
 function moveDown(){
-  // Detect the current position of the flask.
-  initial_top = Math.round($('#cuvette').position().top);
-  initial_left = Math.round($('#cuvette').position().left);
-  // Initialise all the values for the motion of the images.
-  final_top = 290;
-  step_top = 1;
-  step_left = 0;
-  type_of_movement = 0;
-  // Move it into the spectrophotometer.
-  moveImage();
-  // Call extraCuvette() method which moves the reference cuvette into the spectrophotometer.
-  setTimeout("extraCuvette()",400);
+    // Detect the current position of the flask.
+    initial_top = Math.round($('#cuvette').position().top);
+    initial_left = Math.round($('#cuvette').position().left);
+    // Initialise all the values for the motion of the images.
+    final_top = 292;
+    step_top = 1;
+    step_left = 0;
+    type_of_movement = 0;
+    // Move it into the spectrophotometer.
+    moveImage();
+    // Call extraCuvette() method which moves the reference cuvette into the spectrophotometer.
+    setTimeout("extraCuvette()",1500);
 }
 
 // This method is used to move the reference cuvette into the spectrophptometer. 
 function extraCuvette(){
-  // Get the transparent image and replace it with a reference cuvette image and move it down into the spectrophotometer.
-  $('#ref_cuvette').attr('src', 'images/cuvette_filled_water.png'); 
-  document.getElementById("reference").style.visibility ="visible";
-  elem = document.getElementById("ref_cuvette"); 
-  // Detect the current position of the flask.
-  initial_top = Math.round($('#ref_cuvette').position().top);
-  initial_left = Math.round($('#ref_cuvette').position().left);
-  // Initialise all the values for the motion of the images.
-  final_top = 250;
-  step_top = 1;
-  step_left = -1;
-  type_of_movement = 1;
-  // Move it into the spectrophotometer.
-  moveImage();
-  // After 800ms make the sample cuvette and the referance cuvette hidden and replace the spectrophotometer with an image that has cuvette within them. 
-  setTimeout(function(){
-    images[0] = "images/spec_open_cuvette.png";
-    images[1] = "images/spec_open_cuvette.png";
-    $('#ref_cuvette').attr('src', 'images/vertical_button.png'); 
-    $('#cuvette').attr('src', 'images/vertical_button.png'); 
-    document.getElementById("reference").style.visibility ="hidden";
-  },1000);
-
+    // Get the transparent image and replace it with a reference cuvette image and move it down into the spectrophotometer.
+    $('#ref_cuvette').attr('src', 'images/cuvette_filled_water.png'); 
+    document.getElementById("reference").style.visibility ="visible";
+    elem = document.getElementById("ref_cuvette"); 
+    // Detect the current position of the flask.
+    initial_top = Math.round($('#ref_cuvette').position().top);
+    initial_left = Math.round($('#ref_cuvette').position().left);
+    // Initialise all the values for the motion of the images.
+    final_top = 42;
+    step_top = 0.5;
+    step_left = -1.38;
+    type_of_movement = 0;
+    // Move it into the spectrophotometer.
+    moveImage();
+    // After 2000ms make the sample cuvette and the referance cuvette hidden. 
+    setTimeout(function(){
+        $('#ref_cuvette, #cuvette, #reference').css('visibility', 'hidden');
+        cursorPointers('cuvette', 'spectrolid_trans_button');
+        count++;
+    },2000);
 }
-
 
 // This function is called when spectrometer lid is clicked.
 // First time its called to open the spectrophotometer
 // Second time its called to close the spectrophotometer
 function spectrophotometer(){
-
-  if (step_no == 13){
+  if (step_no == 13 && count ==12){
     // Replace the spectrophotometer images with the open spectrophotometer images
     images[0] = "images/spec_open.png";
     images[1] = "images/spec_open.png";
     document.getElementById("demo").innerHTML = "Step-No 11: Click on the cuvette to place it in the sample holder. One has to use water as the sample blank or reference in this measurement. Here a double beam spectrophotometer is shown. In this case, one can place the sample in the sample holder (often the front one) and the sample bank or reference in the reference holder (often the back one) simultaneously.";
+    cursorPointers('spectrolid_trans_button', 'cuvette');
     step_no++;
   }
-  else if(step_no == 15){
+  else if(step_no == 15 && count == 16){
     // Replace the spectrophotometer images with the closed spectrophotmeter images.
-    images[0] = "images/spec_on_redLight.png";
-    images[1] = "images/spec_on_no_redLight.png";
+    images[0] = "images/spec_close.png";
+    images[1] = "images/spec_close1.png";
     document.getElementById("demo").innerHTML = "Step-No 13: Run the wavelength scan by clicking on the computer monitor and observe the wavelength scan.";
-    step_no++;
-  }
-
-}
-
-// This method is used to play a video which shows constructing graphs for the behavior of the samples for specific samples. 
-function scan(){
-    // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the pH choosen appropriate graph video is obtained.
-    if(step_no == 16){
-    var chosen_ph = document.getElementById("ph_scale").value; 
-      if(chosen_ph=='0'){
-        vid = document.getElementById("ph22_graph");
-      }
-      else if(chosen_ph=='1'){
-        vid = document.getElementById("ph26_graph");          
-      }
-      else if(chosen_ph=='2'){
-        vid = document.getElementById("ph30_graph");          
-      }
-      else if(chosen_ph=='3'){
-        vid = document.getElementById("ph34_graph");          
-      }
-      else if(chosen_ph=='4'){
-        vid = document.getElementById("ph38_graph");          
-      }
-      else if(chosen_ph=='5'){
-        vid = document.getElementById("ph42_graph");          
-      }
-      else if(chosen_ph=='6'){
-        vid = document.getElementById("ph46_graph");          
-      }
-      else if(chosen_ph=='7'){
-        vid = document.getElementById("ph52_graph");          
-      }
- 
-   // Get the scan image background.
-    var context=document.getElementById('scan');
-    // make the image and video obtained visible.
-    context.style.visibility='visible';
-    vid.style.visibility='visible';
-    //play the video
-    vid.play(); 
+    cursorPointers('spectrolid_trans_button', 'comp_trans_button');
     step_no++;
   }
 }
 
-// This method makes the graph hidden once the video is played and close is clicked. 
+//This method is called to display the graph image based on cuvette chosen by clicking on computer screen.
+function scan() {
+    if(step_no==16){
+        conc_value = document.getElementById('slider').value;
+        if(conc_value==0){
+            document.getElementById('scanimage1').style.visibility = 'visible';
+        }
+        else if(conc_value==1){
+            document.getElementById('scanimage2').style.visibility = 'visible';
+        }
+        else if(conc_value==2){
+            document.getElementById('scanimage3').style.visibility = 'visible';
+        }
+        else if(conc_value==3){
+            document.getElementById('scanimage4').style.visibility = 'visible';
+        }
+        else if(conc_value==4){
+            document.getElementById('scanimage5').style.visibility = 'visible';
+        }
+        else if(conc_value==5){
+            document.getElementById('scanimage6').style.visibility = 'visible';
+        }
+        else if(conc_value==6){
+            document.getElementById('scanimage7').style.visibility = 'visible';
+        }
+        else if(conc_value==7){
+            document.getElementById('scanimage8').style.visibility = 'visible';
+        }
+        // Get the scan image background.                                                               }
+        document.getElementById('scan').style.visibility = 'visible';
+        cursorPointers('comp_trans_button','scan_btn');
+        step_no++;
+    }
+}
+
+// This method is used to play a video which shows constructing graphs based on the concentration values. 
+function scanGraph(){
+    if(step_no==17){
+        /*After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, 
+        depending on the value choosen from the slider appropriate graph video is obtained.*/
+        if(conc_value==0){
+            var vid = document.getElementById("graph1");
+        }
+        else if(conc_value==1){
+            var vid = document.getElementById("graph2");
+        }
+        else if(conc_value==2){
+            var vid = document.getElementById("graph3");
+        }
+        else if(conc_value==3){
+            var vid = document.getElementById("graph4");
+        }
+        else if(conc_value==4){
+            var vid = document.getElementById("graph5");
+        }
+        else if(conc_value==5){
+            var vid = document.getElementById("graph6");
+        }
+        else if(conc_value==6){
+            var vid = document.getElementById("graph7");
+        }
+        else if(conc_value==7){
+            var vid = document.getElementById("graph8");
+        }
+        $(".scanimage").css('visibility', 'hidden');
+        // make the video obtained visible.
+        vid.style.visibility='visible';
+        //play the video.
+        vid.play(); 
+        cursorPointers('scan_btn', 'disposegraph');
+        step_no++;
+    }
+}
+
+//This method makes the graph hidden once the video is played and close is pressed. 
 function disposeGraph(){
-  if(step_no ==17){
-    // After playing the graph plotting video close option is choosen, the background scan image and the video is made hidden.
-    vid.style.visibility='hidden';
-    document.getElementById('scan').style.visibility='hidden';
-  }
+    if(step_no==18){
+        /*After playing the graph plotting video close option is choosen, the background scan image and the 
+        video is made hidden.*/
+        $('#scan, .video').css('visibility', 'hidden');
+        document.getElementById('disposegraph').style.cursor = 'default';
+        document.getElementById('demo').innerHTML= ' Click on Reset button to start new measurement.Repeat the measurement with next higher concentration and so on.';
+    }
 }

@@ -14,7 +14,7 @@
     var img,img1;
     var id,id1;
     var type_of_movement;// Indicates upward or downward motion
-    var conc_solution= 0; //default chosen solution
+    var conc_solution= 0; //default chosen concentration value.
     var step_no=0; /* This variable is used to perform all the actions in the required sequence. 
                       Depending on the value of this variable the part of the method is called.*/
     var count = 0; /* This variable is used to perform the animations of the objects without distortions */  
@@ -193,7 +193,6 @@ function spectrophotometer(){
 function scan() {
     if(step_no==11){
         conc_solution = document.getElementById("slider").value;
-        alert(conc_solution);
         if(conc_solution==0){
             document.getElementById('scanimage1').style.visibility = 'visible';
         }

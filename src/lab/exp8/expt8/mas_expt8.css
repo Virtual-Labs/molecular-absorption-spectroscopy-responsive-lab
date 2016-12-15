@@ -1,26 +1,25 @@
-html {
-overflow-y: scroll;
-overflow-x: scroll;
-}
-
 body{
     width:1080px; 
-    height:715px; 
+    height:740px; 
     margin: 0 auto; 
-   /* overflow: hidden;*/
+    overflow: hidden;
     position: relative;
 }
 
-h4{  
+h3{  
     text-align: center;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+}
+
+#reset_btn{
+    margin: auto;
+    display: block;
 }
 
 #manual_button, #data_button{
-    /*background-color: Transparent; 
-    border : none; */
     position:absolute; 
     left: 30px;
-    /*float: left;*/
     cursor: pointer;
 }
 
@@ -104,133 +103,112 @@ h4{
     top:10px;
 }
 
-#conc_scale{
+#slider{
     position: absolute;
     top: 20px;
     left: 32px;
     width: 182px;
 }
-
-
 #apparatus{
-   /* position: relative;*/
     float:right;
 }
 
 #solution{
     position:absolute;
-    z-index:900; 
+    z-index:1; 
     left:8%; 
     top:5%;
 }
 
 #flask{
     position:absolute;
-    z-index:999; 
+    z-index:1; 
     width:8%; 
     left:13%; 
     top:30%; 
-    cursor:pointer;
     /* -webkit-filter: saturate(290%);  Chrome, Safari, Opera 
     filter: saturate(290%);*/
 }
 
 #pipette{
     position:absolute;
-    z-index:999; 
-    width:7%; 
-    left:36%; 
-    top:27%;  
-    cursor:pointer;
+    z-index:1; 
+    width:3%; 
+    left:37%; 
+    top:22%;  
 }
 
 #beaker{
     position:absolute;
-    z-index:900; 
+    z-index:1; 
     width:11%; 
     left:55%; 
     top:27%;  
-    cursor:pointer;
 }
 
 #cuvette{
     position:absolute;
-    z-index:898; 
+    z-index:2; 
     width:2.5%; 
     left:80%; 
-    top:48%; 
-    cursor:pointer;
+    top:55%; 
+}
+
+#table_with_spec{
+    margin:auto;
+    display: block;
 }
 
 #computerimage{
     position: absolute; 
     left: 48%; 
-    top: 13%; 
+    top: 10%; 
     max-width: 50%; 
     max-height: 50%; 
 }
 
 #comp_trans_button{
     position: absolute; 
-    z-index: 999; 
+    z-index: 1; 
     width: 12%;
     height: 26%; 
     left: 49%;
-    top: 15%; 
-    cursor: pointer;
+    top: 12%; 
 }
 
 #spectrolid_trans_button{
     position: absolute; 
-    z-index:2;
+    z-index:1;
     width: 5%; 
     height: 18%;
     left: 35%; 
     top: 20%;  
-    cursor: pointer;
 }
 
 #reference{
     position: absolute; 
-    z-index: 898; 
     width: 15%; 
-    left: 40%; 
-    top: 0%; 
-    cursor: pointer;
-    visibility: hidden;
-}
-
-#reference{
-    position: absolute; 
-    z-index: 898; 
-    width: 15%; 
-    left: 40%; 
-    top: 0%; 
-    cursor: pointer;
+    left: 54%; 
+    top: -9%; 
     visibility: hidden;
 }
 
 #ref_cuvette{
     position: absolute; 
-    z-index: 899; 
-    width: 1.4%; 
-    left: 37.35%; 
-    top: 10%; 
-    cursor: pointer;
+    z-index: 1; 
+    width: 1.4%;
+    left: 52.35%; 
+    top: -5%; 
 }
 
 #power_trans_button{
-    background-color: Transparent; 
-    background-repeat: no-repeat; 
-    border: none; 
-    cursor: pointer; 
-    overflow: hidden; 
     position: absolute; 
-    z-index:2;
-    left: 17.5%; 
+    z-index:1;
+    left: 18.4%; 
     top: 45%;
-    width: 3%;
+    width: 1.4%;
     height: 6%;
+    cursor: pointer;
 }
 
 #demo{
@@ -247,7 +225,7 @@ h4{
     top:56px; 
     left:0px;
     visibility:hidden; 
-    z-index:1100;
+    z-index:3;
 }
 
 #clockHand{
@@ -255,34 +233,49 @@ h4{
     top: 294.60px;
     left: 50.75%;
     visibility:hidden; 
-    z-index:1102;
+    z-index:5;
 }
 
 #scan{
     position:absolute;
-    z-index:1100; 
+    z-index:6; 
     top:65px; 
     left:15px;
     visibility:hidden;
 }
 
-#disposegraph{
+.scanimage{
     position: absolute;
-    z-index: 1400;
-    width: 8%;
-    left: 79%;
-    top: 565px;
-    cursor: pointer;
-    height: 3%;
+    z-index: 8;
+    top: 16%;
+    left: 11%;
+    width: 80%;
+    visibility:hidden; 
 }
 
- #graph1, #graph2, #graph3,
- #graph4, #graph5, #graph6, #graph7,
- #graph8, #graph9, #graph10, #graph11 {
+#scan_btn{
     position: absolute;
-    z-index: 1200;
-    top: 27%;
-    left: 22%;
-    height: 56%;
+    z-index: 10;
+    top: 441px;
+    left: 262px;
+    width: 9%;
+    height: 4%;
+}
+
+.video{
+    position: absolute;
+    z-index: 12;
+    top: 16%;
+    left: 11%;
+    width: 80%;
     visibility: hidden;
+}
+
+#disposegraph{
+    position: absolute;
+    z-index: 14;
+    width: 7%;
+    left: 81%;
+    top: 605px;
+    height: 3%;
 }
