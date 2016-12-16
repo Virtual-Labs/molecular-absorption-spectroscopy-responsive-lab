@@ -191,7 +191,7 @@ function pipette() {
         initial_top = Math.round($('#pipette').position().top);
         initial_left = Math.round($('#pipette').position().left);
         // Initialise all the values for the motion of the images.
-        final_top = 290;
+        final_top = 280;
         step_top = 1;
         step_left = 0.5;
         type_of_movement = 0;
@@ -219,10 +219,11 @@ function pipette() {
 
 // This method replaces the beaker image with less amount of solution.
 function fillPipette() {
-    elem = document.getElementById("beaker");
-    elem.src = "images/beaker1.png";
+    img = document.getElementById("beaker");
+    img.src = "images/beaker1.png";
     setTimeout(function() {
-        elem.src = "images/beaker3.png";
+        img.src = "images/beaker3.png";
+        elem.src = "images/pipette_filled.png";
         cursorPointers('pipette', 'cuvette');
         count++;
     }, 1000);
@@ -238,14 +239,15 @@ function movePipette(){
     // Initialise all the values for the motion of the images.
     final_top = 268;
     step_top = -1;
-    step_left = -2.2;
+    step_left = -3.9;
     type_of_movement = 1;
     // Move it to the cuvette
     moveImage();
     setTimeout(function() {
         img = document.getElementById("cuvette");
-        // Change the cuvette image to filled cuvette image
+        // Change the cuvette image to filled cuvette image and pipette filled image to pipette image.
         img.src = "images/cuvette_filled.png";
+        elem.src = "images/pipette.png";
     }, 1000);
     setTimeout(movebackPipette, 1000);
 }
@@ -274,7 +276,6 @@ function cuvette(){
         // get the image of the shelf
         elem = document.getElementById("cuvette"); 
         // Move the cuvette from the shelf to the table
-        elem.style.width = "2.5%";
         // Detect the current position of the flask.
         initial_top = Math.round($('#cuvette').position().top);
         initial_left = Math.round($('#cuvette').position().left);
@@ -300,7 +301,7 @@ function cuvette(){
         // Initialise all the values for the motion of the images.
         final_top = 221;
         step_top = -0.5;
-        step_left = -1.75;
+        step_left = -1.76;
         type_of_movement = 1;
         // Move it to a position over the spectrophotometer.
         moveImage();

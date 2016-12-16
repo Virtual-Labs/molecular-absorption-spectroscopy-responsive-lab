@@ -14,10 +14,12 @@
     var img,img1;
     var id,id1;
     var type_of_movement;// Indicates upward or downward motion
+    var turnon; // It is used to store the spectrometer table images.
     var conc_solution= 0; //default chosen concentration value.
     var step_no=0; /* This variable is used to perform all the actions in the required sequence. 
                       Depending on the value of this variable the part of the method is called.*/
-    var count = 0; /* This variable is used to perform the animations of the objects without distortions */  
+    var count = 0; /* This variable is used to perform the actions on the objects without distortions.
+                      i.e., It make sures that one or more actions are not performed at a time. */ 
 
 /*This method is called when the page is loaded. *
    First function helps in providing basic functionality to manual button and also sets the first set of instructions.
@@ -32,7 +34,6 @@ window.onload = function(){
 /*This method is called when the page is loaded. It helps in providing basic functionality to 
 manual button and also sets the first set of instructions. */
 function initial_function(){
-    document.getElementById('flask').style.filter='saturate(2)'
     // Intial instruction to be followed
     document.getElementById("demo").innerHTML = "Step-No 1:Turn on the instrument clicking on the power button and wait for 30 mins for initialization of the instrument.";
     var modal = document.getElementById('manual');
@@ -43,21 +44,21 @@ function initial_function(){
     // When the user clicks the button, open the manual modal 
     btn.onclick = function() {
         modal.style.display = "block";
-    }
+    };
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
-    }
+    };
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
+    };
 }
     
-/*When user clicks on the Data button it redirects him to the page containing slideshow of graphs obtained from
- different samples*/
+/*When user clicks on the Data button it redirects him to the page containing slideshow of graphs 
+obtained from different samples*/
 function popitup(url) {
     // Opens a new browser window called newwindow. url specifies the URL of the page to open.
     newwindow=window.open(url,'name','height=300,width=250',"_parent");
@@ -95,7 +96,7 @@ function addclickEvents(){
             spectrophotometer();
     }, false);
     document.getElementById("power_trans_button").addEventListener("click", function() {
-            turnOn(); showClock();
+            changeImage(); showClock();
     }, false);
     document.getElementById("scan_btn").addEventListener("click", function() {
             scanGraph();
@@ -121,20 +122,24 @@ function mouseEvents(){
     });
 }
 
+
+// Call turnOn() method every 250ms 
+function changeImage() {
+    setInterval("turnOn()", 250);
+}
+
 /*When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is 
 changed continuously to give the blinking light effect. The two images that are swapped is stored in images[]*/
 function turnOn() {
     // Get the image
-    img = document.getElementById('table_with_spec');
+    turnon = document.getElementById('table_with_spec');
     // Change the source of the image 
-    img.src = images[x];
+    turnon.src = images[x];
     //increment x;
     x++;
     if(x >= images.length){
         x = 0;
     }
-    // Call turnOn() method every 250ms 
-    setTimeout("turnOn()", 250);
 }
 
 /*This method displays a timer which runs for 30 seconds. There exists two images which are hidden initailly; 
@@ -239,6 +244,6 @@ function disposeGraph(){
         /*After playing the graph plotting video close option is choosen, the background scan image and the 
         video is made hidden.*/
         $('#scan, .video').css('visibility', 'hidden');
-        document.getElementById('demo').innerHTML= ' Click on Reset button to start new measurement.Repeat the measurement with next higher concentration and so on.';
+        document.getElementById('demo').innerHTML= ' Click on Reset button to start new measurement. Repeat the measurement with next higher concentration and so on.';
     }
 }

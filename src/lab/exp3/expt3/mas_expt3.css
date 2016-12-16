@@ -117,11 +117,11 @@ h3{
 }
 
 #pipette{
-   position:absolute;
-   z-index:2; 
-   width:7%; 
-   left:36%; 
-   top:27%;  
+    position:absolute;
+    z-index:1; 
+    width:3%; 
+    left:38%; 
+    top:23%;  
 }
 
 #beaker{
@@ -158,10 +158,9 @@ h3{
 
 #reference{
     position: absolute; 
-    z-index: 1; 
     width: 15%; 
-    left: 40%; 
-    top: 0%; 
+    left: 56%; 
+    top: -6%; 
     visibility: hidden;
 }
 
@@ -181,7 +180,7 @@ h3{
 #computerimage{
     position: absolute; 
     left: 48%; 
-    top: 13%; 
+    top: 10%; 
     max-width: 50%; 
     max-height: 50%; 
 }
@@ -192,7 +191,7 @@ h3{
     width: 12%;
     height: 26%; 
     left: 49%;
-    top: 15%; 
+    top: 12%; 
 }
 
 #spectrolid_trans_button{
@@ -259,7 +258,7 @@ h3{
 #scan_btn{
     position: absolute;
     z-index: 8;
-    top: 519px;
+    top: 529px;
     left: 262px;
     width: 9%;
     height: 5%;
@@ -268,11 +267,10 @@ h3{
 .video{
     position: absolute;
     z-index: 10;
-    top: 28%;
-    left: 10.1%;
-    visibility: hidden;
-    width: 82.99%;
-    height: 65%;
+    top: 215px;
+    left: 109px;
+    width: 83%;
+    visibility:hidden;
 }
 
 #disposegraph{
@@ -280,6 +278,6 @@ h3{
     z-index: 13;
     width: 8%;
     left: 84%;
-    top: 631px;
+    top: 643px;
     height: 3%;
 }

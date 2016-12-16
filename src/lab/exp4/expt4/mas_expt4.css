@@ -124,7 +124,6 @@ h3{
     }
 
 #apparatus{
-   /* position: relative;*/
     float:right;
 }
 
@@ -141,14 +140,16 @@ h3{
     width:8%; 
     left:13%; 
     top:30%; 
+    -webkit-filter: saturate(2); /* Safari 6.0 - 9.0 */
+    filter: saturate(2);
 }
 
 #pipette{
     position:absolute;
-    z-index:2; 
-    width:7%; 
-    left:36%; 
-    top:27%;  
+    z-index:1; 
+    width:3%; 
+    left:38%; 
+    top:23%;  
 }
 
 #beaker{
@@ -175,7 +176,7 @@ h3{
 #computerimage{
     position: absolute; 
     left: 48%; 
-    top: 13%; 
+    top: 10%; 
     max-width: 50%; 
     max-height: 50%; 
 }
@@ -186,7 +187,7 @@ h3{
     width: 12%;
     height: 26%; 
     left: 49%;
-    top: 15%; 
+    top: 13%; 
 }
 
 #spectrolid_trans_button{
@@ -260,10 +261,10 @@ h3{
 #scanimage1, #scanimage2, #scanimage3{
     position: absolute;
     z-index: 8;
-    top: 189px;
-    left: 163px;
-    width: 72%;
-    visibility:hidden; 
+    top: 27%;
+    left: 15%;
+    height: 56%;
+    visibility: hidden; 
 }
 
 #scan_btn{

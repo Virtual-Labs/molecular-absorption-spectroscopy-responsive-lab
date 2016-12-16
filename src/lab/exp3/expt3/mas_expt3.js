@@ -14,19 +14,22 @@ var elem;
 var img,img1;
 var id,id1;
 var type_of_movement;// Indicates upward or downward motion
+var turnon; // It is used to store the spectrometer table images.
 var cuv;// Indicates cuvette choosen.
 var step_no=0; /* This variable is used to perform all the actions in the required sequence. 
                  Depending on the value of this variable the part of the method is called.*/
-var count = 0; /* This variable is used to perform the animations of the objects without distortions */
+var count = 0; /* This variable is used to perform the actions on the objects without distortions.
+                      i.e., It make sures that one or more actions are not performed at a time. */ 
 
 /*This method is called when the page is loaded. *
-   First function helps in providing basic functionality to manual button and also sets the first set of instructions.
+   First function helps in providing basic functionality to manual button and also sets the 
+   first set of instructions.
    Second function adds click events to elements as soon as the page loads.
    Third function adds mouse events to elements as soon as the page loads. */
 window.onload = function(){ 
-        initial_function();
-        addclickEvents();
-        mouseEvents();
+    initial_function();
+    addclickEvents();
+    mouseEvents();
 }
 
 /*This method is called when the page is loaded. It helps in providing basic functionality to 
@@ -42,21 +45,21 @@ function initial_function(){
     // When the user clicks the button, open the manual modal 
     btn.onclick = function() {
         modal.style.display = "block";
-    }
+    };
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
-    }
+    };
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
+    };
 }
 
-/*When user clicks on the Data button it redirects him to the page containing slideshow of three graphs obtained 
-from three different sample lengths. */
+/*When user clicks on the Data button it redirects him to the page containing slideshow of three 
+graphs obtained from three different sample lengths. */
 function popitup(url) {
     // Opens a new browser window called newwindow. url specifies the URL of the page to open.
     newwindow=window.open(url,'name','height=350,width=350',"_parent");
@@ -100,7 +103,7 @@ function addclickEvents(){
             spectrophotometer();
     }, false);
     document.getElementById("power_trans_button").addEventListener("click", function() {
-            turnOn(); showClock();
+            changeImage(); showClock();
     }, false);
     document.getElementById("scan_btn").addEventListener("click", function() {
             scanGraph();
@@ -126,20 +129,21 @@ function mouseEvents(){
     });
 }
 
-
+// Call turnOn() method every 250ms
+function changeImage() { 
+    setInterval("turnOn()", 250);
+}
 // When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is changed continuously  to give the blinking light effect. The two images that are swapped is stored in images[]
 function turnOn() {
     // Get the image
-    img = document.getElementById('table_with_spec');
+    turnon = document.getElementById('table_with_spec');
     // Change the source of the image 
-    img.src = images[x];
+    turnon.src = images[x];
     //increment x;
     x++;
     if(x >= images.length){
         x = 0;
     }
-    // Call turnOn() method every 250ms 
-    setTimeout("turnOn()", 250);
 }
 
 // This method displays a timer which runs for 30 seconds. There exists two images which are hidden initailly; when this method is called they are amde visible and the clock hand is made to rotate.  

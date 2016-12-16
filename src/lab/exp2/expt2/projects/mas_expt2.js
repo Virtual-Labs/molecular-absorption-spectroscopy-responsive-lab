@@ -15,9 +15,11 @@
     var id,id1;
     var solution;
     var type_of_movement;// Indicates upward or downward motion
+    var turnon; // It is used to store the spectrometer table image.
     var step_no=0; /*This variable is used to perform all the actions in the required sequence. 
                      Depending on the value of this variable the part of the method is called.*/
-    var count = 0; /* This variable is used to perform the animations of the objects without distortions */
+    var count = 0; /* This variable is used to perform the actions on the objects without distortions.
+                      i.e., It make sures that one or more actions are not performed at a time. */ 
 
 /*This method is called when the page is loaded. *
    First function helps in providing basic functionality to manual button and also sets the first set of instructions.
@@ -69,24 +71,20 @@ function setSolution(){
       solution = document.getElementById("slider").value;
       if(solution == 0){
         document.getElementById("solution_name").src = "image-specific/solution.png";
-        document.getElementById("round-bottom-flask").src = "image-specific/filled-round-bottom-flask.png"
       }
       else if(solution == 1){
         document.getElementById("solution_name").src = "image-specific/solution1.png";
-        document.getElementById("round-bottom-flask").src = "image-specific/filled-round-bottom-flask.png"
       }
       else if(solution == 2){
         document.getElementById("solution_name").src = "image-specific/solution2.png";
-        document.getElementById("round-bottom-flask").src = "image-specific/filled-round-bottom-flask.png"
       }
       else if(solution == 3){
         document.getElementById("solution_name").src = "image-specific/solution3.png";
-        document.getElementById("round-bottom-flask").src = "image-specific/filled-round-bottom-flask.png"
       }
       else if(solution == 4){
         document.getElementById("solution_name").src = "image-specific/solution4.png";
-        document.getElementById("round-bottom-flask").src = "image-specific/filled-round-bottom-flask.png"
       }
+      document.getElementById("round-bottom-flask").src = "image-specific/filled-round-bottom-flask.png";
       document.getElementById("demo").innerHTML = "Step-No 2: Click on the volumetric flask containing the solution.";
 }
 
@@ -117,7 +115,7 @@ function addclickEvents(){
             spectrophotometer();
     }, false);
     document.getElementById("power_trans_button").addEventListener("click", function() {
-            turnOn(); showClock();
+            changeImage(); showClock();
     }, false);
     document.getElementById("start").addEventListener("click", function() {
             showInstruction();
@@ -372,7 +370,7 @@ function movebackPipette() {
       type_of_movement = 1;
       // Move it to the shelf
       moveImage();
-      document.getElementById("demo").innerHTML = "Step-No 8: To start the absorption spectral scan. click on the pop-up 'start Absorption Measurement";
+      document.getElementById("demo").innerHTML = "Step-No 8: To start the absorption spectral scan. click on the pop-up 'start Absorption Measurement'.";
       setTimeout( function(){
         document.getElementById("scan").style.visibility = 'visible';
         document.getElementById("start").style.visibility = 'visible';
@@ -390,19 +388,21 @@ function showInstruction() {
   }
 }
 
+// Call turnOn() method every 250ms 
+function changeImage(){
+    setInterval("turnOn()", 250);
+}
 
 function turnOn() {
   // Get the image
-  img = document.getElementById('table_with_spec');
+  turnon = document.getElementById('table_with_spec');
   // Change the source of the image 
-  img.src = images[x];
+  turnon.src = images[x];
   //increment x;
   x++;
   if(x >= images.length){
       x = 0;
   }
-  // Call turnOn() method every 250ms 
-  setTimeout("turnOn()", 250);
 }
     
 function showClock(){

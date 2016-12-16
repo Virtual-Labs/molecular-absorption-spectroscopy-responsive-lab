@@ -15,6 +15,7 @@
     var elem;
     var img,img1;
     var id,id1;
+    var turnon; // It is used to store the spectrometer table images.
     var type_of_movement;// Indicates upward or downward motion
     var step_no=0; /* This variable is used to perform all the actions on images in the required sequence. 
                       Depending on the value of this variable the part of the method is called.*/
@@ -385,8 +386,8 @@ function movePipette() {
   }
   else if(step_no==5 && count == 5){
     setTimeout(function(){
-      img = document.getElementById("pipette");
-      img.src = "images/pipette1_filled.png";
+      elem.src = "images/pipette1_filled.png";
+      document.getElementById('orange_flask').src = "images/half-filled-flask.png";
       count++;
     }, 500);
     // Change to next instruction to be followed.
@@ -413,7 +414,6 @@ function movePipette() {
   else if(step_no==7 && count == 7){
     img = document.getElementById("beaker");
     conc_value = document.getElementById('slider').value;
-    alert(conc_value);
     if(conc_value == 0) {
       img.src = "images/beaker_red.png";
     }
@@ -508,7 +508,31 @@ function moveMicropipette() {
     img = document.getElementById("micro_pipette");
     img.src = "images/micro_pipette.png";
     img1 = document.getElementById("cuvette");
-    img1.src = "images/cuvette_filled.png";
+    conc_value = document.getElementById('slider').value;
+    if(conc_value == 0) {
+      img1.src = "images/cuvette_red.png";
+    }
+    else if(conc_value == 1) {
+      img1.src = "images/cuvette_red.png";
+    }
+    else if(conc_value == 2) {
+      img1.src = "images/cuvette_red.png";
+    }
+    else if(conc_value == 3) {
+      img1.src = "images/cuvetteph34.png";
+    }
+    else if(conc_value == 4) {
+      img1.src = "images/cuvetteph38.png";
+    }
+    else if(conc_value == 5) {
+      img1.src = "images/cuvetteph42.png";
+    }
+    else if(conc_value == 6) {
+      img1.src = "images/cuvette_yellow.png";
+    }
+    else if(conc_value == 7) {
+      img1.src = "images/cuvette_yellow.png";
+    }
     // Get images
     elem = document.getElementById("micro_pipette");
     // Detect the current position of the flask.

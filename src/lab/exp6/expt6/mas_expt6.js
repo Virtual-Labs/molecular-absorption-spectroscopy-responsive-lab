@@ -1,9 +1,11 @@
 // This file contains all general functions used of the experiment
-    var images = [];// Two images that are alternated in ordered to get the blinking effect of the spectrophotometer
+    var images = []; /* Two images that are alternated in ordered to get the blinking effect of the 
+                       spectrophotometer. */
     images[0] = "images/spec_with_red.png";
     images[1] = "images/spec_with_red.png";
     var x = 0;
     var y = 0;
+    var turnon; //this variable is used to store the spectrometer table images.
     // Variables necessary to obtain motion of all the images
     var initial_top;
     var initial_left;
@@ -14,26 +16,29 @@
     var img,img1;
     var id,id1;
     var type_of_movement;// Indicates upward or downward motion
-    var conc_value = 0; //indicates the default conc value.
-    var step_no=0; /* This variable is used to perform all the actions in the required sequence. 
+    var turnon; // It is used to store the spectrometer table images.
+    var step_no=0; /* This variable is used to perform all the actions on images in the required sequence. 
                       Depending on the value of this variable the part of the method is called.*/
-    var count = 0; /* This variable is used to perform the animations of the objects without distortions */  
-
+    var count = 0; /* This variable is used to perform the actions on the objects without distortions.
+                      i.e., It make sures that one or more actions are not performed at a time. */
+    var choosen_solution= "Potassium Dichromate"; // default choosen solution.
+    
 /*This method is called when the page is loaded. *
-   First function helps in providing basic functionality to manual button and also sets the first set of instructions.
+   First function helps in providing basic functionality to manual button and also sets the 
+   first set of instructions.
    Second function adds click events to elements as soon as the page loads.
    Third function adds mouse events to elements as soon as the page loads. */
 window.onload = function(){ 
-        initial_function();
-        addclickEvents();
-        mouseEvents();
-}    
+    initial_function();
+    addclickEvents();
+    mouseEvents();
+}
 
 /*This method is called when the page is loaded. It helps in providing basic functionality to 
 manual button and also sets the first set of instructions. */
 function initial_function(){
-    // Intial instruction to be followed
-    document.getElementById("demo").innerHTML = "Step-No 1:  Turn on the instrument clicking on the power button and wait for 30 mins for initialization of the instrument.";
+    // Intial intrsuction to be followed
+    document.getElementById("demo").innerHTML = "Step-No 1: Turn on the instrument clicking on the power button and wait for 30 min for initialization of the instrument.";
     var modal = document.getElementById('manual');
     // Get the button that opens the manual modal
     var btn = document.getElementById("manual_button");
@@ -42,29 +47,17 @@ function initial_function(){
     // When the user clicks the button, open the manual modal 
     btn.onclick = function() {
         modal.style.display = "block";
-    }
+    };
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
-    }
+    };
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
-}
-    
-/*When user clicks on the Data button it redirects him to the page containing slideshow of three graphs 
-obtained from three different sample lengths*/
-function popitup(url) {
-    // Opens a new browser window called newwindow. url specifies the URL of the page to open.
-    newwindow=window.open(url,'name','height=400,width=350',"_parent");
-    // Sets focus to the new window if the focus is on the previous page.
-    if (window.focus) {
-        newwindow.focus()
-    }
-    return false;
+    };
 }
 
 //This function is used to add click events to elements
@@ -85,7 +78,7 @@ function addclickEvents(){
             beaker();
     }, false);
     document.getElementById("cuvette").addEventListener("click", function() {
-            cuvette(this);
+            cuvette();
     }, false);
     document.getElementById("comp_trans_button").addEventListener("click", function() {
             scan();
@@ -94,13 +87,10 @@ function addclickEvents(){
             spectrophotometer();
     }, false);
     document.getElementById("power_trans_button").addEventListener("click", function() {
-            turnOn(); showClock();
+            changeImage(); showClock();
     }, false);
     document.getElementById("scan_btn").addEventListener("click", function() {
             scanGraph();
-    }, false);
-    document.getElementById("slider").addEventListener("click", function() {
-            setSolution();
     }, false);
     document.getElementById("disposegraph").addEventListener("click", function() {
             disposeGraph();
@@ -121,56 +111,47 @@ function mouseEvents(){
     document.getElementById("data_button").addEventListener("mouseout", function(){
         this.src='images/data_button.png';
     });
-}    
+}
 
-//This function is used to select the solution concentration.
-function setSolution(){
-    conc_value = document.getElementById('slider').value;
-    if(conc_value==1){
-        document.getElementById("flask").style.filter='contrast(100%)';
-        document.getElementById("beaker").style.filter='contrast(100%)';
-        document.getElementById("cuvette").style.filter='contrast(100%)';
+/*When user clicks on the Data button it redirects him to the page containing slideshow of the graphs 
+obtained from different sample concentration values.*/
+function popitup(url) {
+    // Opens a new browser window called newwindow. url specifies the URL of the page to open.
+    newwindow=window.open(url,'name','height=400,width=350',"_parent");
+    // Sets focus to the new window if the focus is on the previous page.
+    if (window.focus) {
+        newwindow.focus()
     }
-    else if(conc_value==2){
-        document.getElementById("flask").style.filter='contrast(130%)';
-        document.getElementById("beaker").style.filter='contrast(130%)';
-        document.getElementById("cuvette").style.filter='contrast(130%)';
-    }
-    else if(conc_value==3){
-        document.getElementById("flask").style.filter='contrast(150%)';
-        document.getElementById("beaker").style.filter='contrast(150%)';
-        document.getElementById("cuvette").style.filter='contrast(150%)';
-    }
-    else if(conc_value==4){
-        document.getElementById("flask").style.filter='contrast(160%)';
-        document.getElementById("beaker").style.filter='contrast(160%)';
-        document.getElementById("cuvette").style.filter='contrast(160%)';
-    }
-    else if(conc_value==5){
-        document.getElementById("flask").style.filter='contrast(180%)';
-        document.getElementById("beaker").style.filter='contrast(180%)';
-        document.getElementById("cuvette").style.filter='contrast(180%)';
-    }
+    return false;
+}
+
+//To disable and enable the cursor pointers on elements.
+function cursorPointers(id1, id2){
+    document.getElementById(id1).style.cursor = "default";
+    document.getElementById(id2).style.cursor = "pointer";
+}
+
+//Call changeImage() method every 250ms 
+function changeImage(){
+    setInterval(turnOn, 250);
 }
 
 /*When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is 
 changed continuously to give the blinking light effect. The two images that are swapped is stored in images[]*/
 function turnOn() {
     // Get the image
-    img = document.getElementById('table_with_spec');
+    turnon = document.getElementById('table_with_spec');
     // Change the source of the image 
-    img.src = images[x];
+    turnon.src = images[x];
     //increment x;
     x++;
     if(x >= images.length){
         x = 0;
     }
-    // Call turnOn() method every 250ms 
-    setTimeout("turnOn()", 250);
 }
 
 /*This method displays a timer which runs for 30 seconds. There exists two images which are hidden initailly; 
-when this method is called they are amde visible and the clock hand is made to rotate.*/  
+when this method is called they are made visible and the clock hand is made to rotate.*/  
 function showClock(){
     if(step_no==0){
         // Get the images.
@@ -191,14 +172,14 @@ function showClock(){
     }
 }
 
-// After 30 seconds of display of the timer the visibility of clock is changed back to hidden.
+// After 3 seconds of display of the timer the visibility of clock is changed back to hidden.
 function removeClock() {
     $('#clockHand, #clockScreen').remove();
     //Change to next intsruction to be followed.
-    document.getElementById("demo").innerHTML = "Step-No 2: Make three appropriate concentrations (say 0.001M, 0.00075M, 0.001M) of potassium dichromate [Click and drag on the concentration bar to choose the appropriate of the solution whose absorbance is to be measured it is better to start with the lower concentration solution] Click on the beaker to take a clean dry beaker.";
+    document.getElementById("demo").innerHTML = "Step-No 2:Make three aqueous solutions of appropriate concentrations (say, 0.001 M, 0.00075M, 0.001 M) of potassium dichromate [Click and drag on the concentration bar to choose the appropriate concentration of the solution whose absorbance has to be measured]. One should start with the lowest concentration solution first.Click on the beaker to take a clean, dry beaker.";
     cursorPointers('power_trans_button', 'beaker');
 }
-    
+
 // This function is called when spectrometer lid is clicked.
 // First time its called to open the spectrophotometer
 // Second time its called to close the spectrophotometer
@@ -220,12 +201,11 @@ function spectrophotometer(){
         cursorPointers('spectrolid_trans_button', 'comp_trans_button');
     }
 }
-
+    
 //This method is called to display the graph image based on cuvette chosen by clicking on computer screen.
 function scan() {
     if(step_no==11){
         conc_value = document.getElementById('slider').value;
-        alert(conc_value);
         if(conc_value==0){
             document.getElementById('scanimage1').style.visibility = 'visible';
         }
@@ -251,28 +231,29 @@ function scan() {
     }
 }
 
-// This method is used to play a video which shows constructing graphs based on their sample path length. 
+// This method is used to play a video which shows constructing graphs based on the concentration values. 
 function scanGraph(){
     if(step_no==12){
-        /*After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, 
-        depending on the solution choosen appropriate graph video is obtained.*/
+        /*After the cuvette are inserted into the spectrophotometer, when the computer is pressed to scan, 
+        depending on the value choosen from the slider appropriate graph video is obtained.*/
+        conc_value = document.getElementById('slider').value;
         if(conc_value==0){
-            var vid = document.getElementById("graph1");
+            vid = document.getElementById('graph1');
         }
         // else if(conc_value==1){
-        //     var vid = document.getElementById("graph2");
+        //     vid = document.getElementById('graph2');
         // }
         // else if(conc_value==2){
-        //     var vid = document.getElementById("graph3");
+        //     vid = document.getElementById('graph3');
         // }
         // else if(conc_value==3){
-        //     var vid = document.getElementById("graph4");
+        //     vid = document.getElementById('graph4');
         // }
         // else if(conc_value==4){
-        //     var vid = document.getElementById("graph5");
+        //     vid = document.getElementById('graph5');
         // }
         // else if(conc_value==5){
-        //     var vid = document.getElementById("graph6");
+        //     vid = document.getElementById('graph6');
         // }
         $(".scanimage").css('visibility', 'hidden');
         // make the video obtained visible.
@@ -290,6 +271,7 @@ function disposeGraph(){
         /*After playing the graph plotting video close option is choosen, the background scan image and the 
         video is made hidden.*/
         $('#scan, .video').css('visibility', 'hidden');
+        document.getElementById('disposegraph').style.cursor = 'default';
         document.getElementById('demo').innerHTML= ' Click on Reset button to start new measurement.Repeat the measurement with next higher concentration and so on.';
     }
 }

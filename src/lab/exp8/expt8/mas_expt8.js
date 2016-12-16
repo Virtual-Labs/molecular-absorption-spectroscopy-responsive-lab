@@ -15,6 +15,7 @@
     var elem;
     var img,img1;
     var id,id1;
+    var turnon; //It is used to store the spectrometer table images.
     var type_of_movement;// Indicates upward or downward motion
     var step_no=0; /* This variable is used to perform all the actions on images in the required sequence. 
                       Depending on the value of this variable the part of the method is called.*/
@@ -236,7 +237,6 @@ function spectrophotometer(){
 function scan() {
     if(step_no==11){
         conc_value = document.getElementById('slider').value;
-        alert(choosen_solution);
         if(choosen_solution=='Coumarin343'&& conc_value==0){
             document.getElementById('scanimage1').style.visibility = 'visible';
         }

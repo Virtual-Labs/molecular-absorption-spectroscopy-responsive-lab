@@ -14,10 +14,12 @@
     var img,img1;
     var id,id1;
     var type_of_movement;// Indicates upward or downward motion
+    var turnon; // It is used to store the spectrometer table image.
     var conc_value = 0.02; //indicates the default conc value.
     var step_no=0; /* This variable is used to perform all the actions in the required sequence. 
                       Depending on the value of this variable the part of the method is called.*/
-    var count = 0; /* This variable is used to perform the animations of the objects without distortions */  
+    var count = 0; /* This variable is used to perform the actions on the objects without distortions.
+                      i.e., It make sures that one or more actions are not performed at a time. */ 
 
 /*This method is called when the page is loaded. *
    First function helps in providing basic functionality to manual button and also sets the first set of instructions.
@@ -94,7 +96,7 @@ function addclickEvents(){
             spectrophotometer();
     }, false);
     document.getElementById("power_trans_button").addEventListener("click", function() {
-            turnOn(); showClock();
+            changeImage(); showClock();
     }, false);
     document.getElementById("scan_btn").addEventListener("click", function() {
             scanGraph();
@@ -129,20 +131,23 @@ function setSolution(){
     document.getElementById('scale_value').innerHTML =conc_value + "mM";
 }
 
+// Call turnOn() method every 250ms
+function changeImage() { 
+    setInterval("turnOn()", 250);
+}
+
 /*When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is 
 changed continuously to give the blinking light effect. The two images that are swapped is stored in images[]*/
 function turnOn() {
     // Get the image
-    img = document.getElementById('table_with_spec');
+    turnon = document.getElementById('table_with_spec');
     // Change the source of the image 
-    img.src = images[x];
+    turnon.src = images[x];
     //increment x;
     x++;
     if(x >= images.length){
         x = 0;
     }
-    // Call turnOn() method every 250ms 
-    setTimeout("turnOn()", 250);
 }
 
 /*This method displays a timer which runs for 30 seconds. There exists two images which are hidden initailly; 

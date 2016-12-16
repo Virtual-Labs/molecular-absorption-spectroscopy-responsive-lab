@@ -15,44 +15,43 @@
     var img,img1;
     var id,id1;
     var type_of_movement;// Indicates upward or downward motion
-    var solution=1;// Indicates type of solution being used.
+    var turnon; // It is used to store the spectrometer table image.
+    var choosen_solution ="potassium";// Indicates default type of solution being used.
     var step_no=0; /*This variable is used to perform all the actions in the required sequence. 
                      Depending on the value of this variable the part of the method is called.*/
-    var count = 0; /* This variable is used to perform the animations of the objects without distortions */
+ 	var count = 0; /* This variable is used to perform the actions on the objects without distortions.
+                      i.e., It make sures that one or more actions are not performed at a time. */ 
 
 /*This method is called when the page is loaded. *
-   First function helps in providing basic functionality to manual button and also sets the first set of instructions.
-   Second function adds click events to elements as soon as the page loads.
-   Third function adds mouse events to elements as soon as the page loads. */
+First function helps in providing basic functionality to manual button and also sets the first set of instructions.
+Second function adds click events to elements as soon as the page loads.
+Third function adds mouse events to elements as soon as the page loads. */
 window.onload = function(){ 
-        initial_function();
-        addclickEvents();
-        mouseEvents();
+    initial_function();
+    addclickEvents();
+    mouseEvents();
 }
 
 /*This method is called when the page is loaded. It helps in providing basic functionality to two buttons 
 manual and data and also sets the first set of instructions. */
 function initial_function(){
-    document.getElementById("data_button").addEventListener("click", function() {
-            popitup("slideshow.html");
-    }, false);
-    /*Method is called when the solution is changed. Here the change in solution is marked by chamging the grayscale 
-    of flask and beaker. */
+    /*Method is called when the solution is changed. Here the change in solution is marked by changing
+     the grayscale of flask and beaker. */
     $('#solution').change(function () {
-            var chosen_solution = $('#solution').val();      
-            if(chosen_solution=='caffeine'){
-                solution = 2;
+            choosen_solution = $('#solution').val();      
+            if(choosen_solution=='caffeine'){
                 document.getElementById('flask').style.filter='grayscale(100%)';
                 document.getElementById('beaker').style.filter='grayscale(100%)';
+                document.getElementById("cuvette").style.filter='grayscale(100%)';
             }
             else{
-                solution = 1;
                 document.getElementById('flask').style.filter='grayscale(0%)';
                 document.getElementById('beaker').style.filter='grayscale(0%)';
+                document.getElementById('cuvette').style.filter='grayscale(0%)';
             }
     });
     // Intial intrsuction to be followed
-    document.getElementById("demo").innerHTML = "Step-No 1: Prepare following two solutions: a) 0.001M of potassium dichromate (K2Cr2O7) and b) 5mg/L caffeine in distilled water. Here the solutions are shown in two volumetric flasks. One can select a solution for measurement by clicking on desired solution from the dropdown menu. Turn on the instrument clicking on the power button and wait for 30 min for initialization of the instrument.";
+    document.getElementById("demo").innerHTML = "Step-No 1: Prepare following two solutions: a)~0.001M of potassium dichromate (K2Cr2O7) and b) ~5mg/L caffeine in distilled water. Here the solutions are shown in two volumetric flasks. One can select a solution for measurement by clicking on desired solution from the dropdown menu. Turn on the instrument clicking on the power button and wait for 30 min for initialization of the instrument.";
     var modal = document.getElementById('manual');
     // Get the button that opens the manual modal
     var btn = document.getElementById("manual_button");
@@ -61,17 +60,17 @@ function initial_function(){
     // When the user clicks the button, open the manual modal 
     btn.onclick = function() {
         modal.style.display = "block";
-    }
+    };
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
-    }
+    };
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
+    };
 }
 
 /*When user clicks on the Data button it redirects him to the page containing slideshow of three 
@@ -113,7 +112,7 @@ function addclickEvents(){
             spectrophotometer();;
     }, false);
     document.getElementById("power_trans_button").addEventListener("click", function() {
-            turnOn(); showClock();
+            changeImage(); showClock();
     }, false);
     document.getElementById("start_btn").addEventListener("click", function() {
             startBtn();
@@ -139,8 +138,13 @@ function mouseEvents(){
     });
 }
 
-/*When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is changed 
-continuously  to give the blinking light effect. The two images that are swapped is stored in images[] */
+// Call turnOn() method every 250ms
+function changeImage() { 
+    setInterval("turnOn()", 250);
+}
+
+/*When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image 
+is changed continuously  to give the blinking light effect. The two images that are swapped is stored in images[] */
 function turnOn() {
     // Get the image
     turnon = document.getElementById('table_with_spec');
@@ -151,8 +155,6 @@ function turnOn() {
     if(x >= images.length){
         x = 0;
     }
-    // Call turnOn() method every 250ms 
-    setTimeout("turnOn()", 250);
 }
 
 /*This method displays a timer which runs for 30 seconds. There exists two images which are hidden initailly; 
@@ -211,10 +213,10 @@ function scan(){
     if(step_no==11){
         // After the cuvette are inserted into the spectrophotometer, when the computer in pressed to scan, depending on the cuvette choosen appropriate graph video is obtained.
         $(".data_validation, #instruction_bkgd, #graph_instruction").css("visibility", "visible");
-        if(solution == 1){
+        if(choosen_solution == "potassium"){
             document.getElementById("graph_instruction").innerHTML = "On the screen enter the wavelength range of spectral scan. For K2Cr2O7: start: 700 nm End: 325 nm. In real operation, the wavelength range of incident light for the sample is chosen and the wavelength scan is run via the accompanied computer software. One can run the scan in absorbance (A)  or transmittance (%T) mode. Click on the green 'start' button on the measurement set-up screen to run the wavelength scan. Observe the wavelength scan. If the spectrophotometer is a single beam instrument, then first the sample blank or reference is taken in a cuvette and the wavelength scan is run followed by the sample. One has to subtract the reference data from the sample data for respective wavelengths";
             step_no++;
-        }else if(solution ==2){
+        }else if(choosen_solution == "caffeine"){
             document.getElementById("graph_instruction").innerHTML = "On the screen enter the wavelength range of spectral scan. For caffeine: start: 590 nm End: 290 nm. In real operation, the wavelength range of incident light for the sample is chosen and the wavelength scan is run via the accompanied computer software. One can run the scan in absorbance (A)  or transmittance (%T) mode. Click on the green 'start' button on the measurement set-up screen to run the wavelength scan. Observe the wavelength scan. If the spectrophotometer is a single beam instrument, then first the sample blank or reference is taken in a cuvette and the wavelength scan is run followed by the sample. One has to subtract the reference data from the sample data for respective wavelengths";
             step_no++;
         }
@@ -228,7 +230,7 @@ function startBtn(){
         input2 = document.getElementById("input2").value;
         video1 = document.getElementById("video1");
         video2 = document.getElementById("video2");
-        if(solution== 1 &&  input1 == 700 && input2 == 325){
+        if(choosen_solution== "potassium" &&  input1 == 700 && input2 == 325){
             $(".data_validation").css("visibility", "hidden");
             $("#scan, #video1").css("visibility", "visible");
             document.getElementById("graph_instruction").innerHTML = "Step-No 14:Click on the close button when the spectral scal is complete. In real operation, the scan data are stored in the computer. The instrument stores data and therefore asks for the Sample File name. One enters a file name to save the data.";
@@ -236,7 +238,7 @@ function startBtn(){
             step_no++;
             cursorPointers('start_btn', 'disposegraph');
         }
-        else if(solution == 2 && input1 == 590 && input2 == 290){
+        else if(choosen_solution == "caffeine" && input1 == 590 && input2 == 290){
             $(".data_validation").css("visibility", "hidden");
             $("#scan, #video2").css("visibility", "visible");
             document.getElementById("graph_instruction").innerHTML = "Step-No 14:Click on the close button when the spectral scal is complete. In real operation, the scan data are stored in the computer. The instrument stores data and therefore asks for the Sample File name. One enters a file name to save the data.";
@@ -254,11 +256,11 @@ function disposeGraph(){
     if(step_no == 13) {
     // After playing the graph plotting video close option is choosen, the background scan image and the video is made hidden.
         $('.video, .common').css('visibility', 'hidden');
-        if(solution == 1) {
+        if(choosen_solution == "potassium") {
             document.getElementById('demo').innerHTML = 'Reset to repeat the measurement for another sample.';
         }
-        else if(solution == 2) {
+        else if(choosen_solution == "caffeine") {
             document.getElementById('demo').innerHTML = 'Collect data by clicking on the Data tab.';
         }
-    }
+    }   
 }

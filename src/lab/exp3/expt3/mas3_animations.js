@@ -39,7 +39,7 @@ function beaker() {
     if(step_no==1){
         // Get image
         elem = document.getElementById("beaker"); 
-        //Detect thecurrent position of the flask.
+        //Detect thecurrent position of the beaker.
         initial_top = Math.round($('#beaker').position().top);
         initial_left = Math.round($('#beaker').position().left);
         // Initialise all the values for the motion of the images.
@@ -195,7 +195,7 @@ function pipette() {
         initial_top = Math.round($('#pipette').position().top);
         initial_left = Math.round($('#pipette').position().left);
         // Initialise all the values for the motion of the images.
-        final_top = 290;
+        final_top = 280;
         step_top = 1;
         step_left = 0.5;
         type_of_movement = 0;
@@ -223,10 +223,11 @@ function pipette() {
 
 // This method replaces the beaker image with less amount of solution.
 function fillPipette() {
-    elem = document.getElementById("beaker");
-    elem.src = "images/beaker1.png";
+    img = document.getElementById("beaker");
+    img.src = "images/beaker1.png";
     setTimeout(function() {
-        elem.src = "images/beaker3.png";
+        elem.src = "images/pipette_filled.png";
+        img.src = "images/beaker3.png";
         cursorPointers('pipette', 'cuvette1');
         count++;
     }, 1000);
@@ -236,13 +237,13 @@ function fillPipette() {
 function movePipette(){
     // Get images
     elem = document.getElementById("pipette");
-    // Detect the current position of the flask.
+    // Detect the current position of the pipette.
     initial_top = Math.round($('#pipette').position().top);
     initial_left = Math.round($('#pipette').position().left);
     // Initialise all the values for the motion of the images.
     final_top = 268;
     step_top = -1;
-    step_left = -3;
+    step_left = -5.1;
     type_of_movement = 1;
     // Move it to the cuvette
     moveImage();
@@ -258,6 +259,7 @@ function movePipette(){
         }
         // Change the cuvette image to filled cuvette image
         img.src = "images/cuvette_filled.png";
+        elem.src = "images/pipette.png";
     }, 1000);
     setTimeout(movebackPipette, 2000);
 }

@@ -15,6 +15,7 @@
     var elem;
     var img,img1;
     var id,id1;
+    var turnon; // It is used to store the spectrometer table images.
     var type_of_movement;// Indicates upward or downward motion
     var step_no=0; /* This variable is used to perform all the actions on images in the required sequence. 
                       Depending on the value of this variable the part of the method is called.*/
@@ -37,7 +38,7 @@ window.onload = function(){
 manual button and also sets the first set of instructions. */
 function initial_function(){
     // Intial intrsuction to be followed
-    document.getElementById("demo").innerHTML = "Step-No 1:Prepare a standard K2Cr2O7 aqueous solution of strength nearly 3×10-3 M in 0.01 N H2SO4 (for the experiments described here we have used a solution of strength = 3.16×10-3 M. This is used as stock solution.Switch on the computer and the instrument powers; wait for 30 minutes for ‘warm-up’ of the instrument. ";
+    document.getElementById("demo").innerHTML = "Step-No 1:Prepare a standard K2Cr2O7 aqueous solution of strength nearly 3×10<sub>-3</sub> M in 0.01 N H2SO4 (for the experiments described here we have used a solution of strength = 3.16×10<sub>-3</sub>M. This is used as stock solution.Switch on the computer and the instrument powers; wait for 30 minutes for ‘warm-up’ of the instrument. ";
     var modal = document.getElementById('manual');
     // Get the button that opens the manual modal
     var btn = document.getElementById("manual_button");
@@ -134,15 +135,15 @@ function setSolution() {
         choosen_solution = $('#solution').val();
         if(choosen_solution =='Potassium Dichromate'){
             document.getElementById('scale_image').src = "images/scale.png";
-            document.getElementById('flask').style.filter = 'saturate(100%)';
-            document.getElementById('beaker').style.filter= 'saturate(100%)';
-            document.getElementById('cuvette').style.filter= 'saturate(100%)';
+            document.getElementById('flask').style.filter = 'saturate(150%)';
+            document.getElementById('beaker').style.filter= 'saturate(150%)';
+            document.getElementById('cuvette').style.filter= 'saturate(150%)';
             document.getElementById('scale').style.visibility = 'visible';
         }      
-        else if(choosen_solution =='Unknown solution'){
-            document.getElementById('flask').style.filter = 'saturate(0%)';
-            document.getElementById('beaker').style.filter= 'saturate(50%)';
-            document.getElementById('cuvette').style.filter= 'saturate(50%)'; 
+        else if(choosen_solution =='Unknown Solution'){
+            document.getElementById('flask').style.filter = 'saturate(80%)';
+            document.getElementById('beaker').style.filter= 'saturate(80%)';
+            document.getElementById('cuvette').style.filter= 'saturate(80%)'; 
             document.getElementById('scale').style.visibility = 'hidden';  
         }   
     });
@@ -244,7 +245,7 @@ function scan() {
         // else if(choosen_solution=='Potassium Dichromate'&& conc_value==4){
         //     document.getElementById('scanimage5').style.visibility = 'visible';
         // }
-        // else if(choosen_solution=='Unknown solution'){
+        // else if(choosen_solution=='Unknown Solution'){
         //     document.getElementById('scanimage6').style.visibility = 'visible';
         // }
         // Get the scan image background.                                                               }

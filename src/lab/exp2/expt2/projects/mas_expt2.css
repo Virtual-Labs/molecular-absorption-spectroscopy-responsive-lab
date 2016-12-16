@@ -169,7 +169,7 @@ h3{
 #computerimage{
     position: absolute; 
     left: 48%; 
-    top: 13%; 
+    top: 10%; 
     max-width: 50%; 
     max-height: 50%; 
 }
@@ -179,7 +179,7 @@ h3{
     width: 12%;
     height: 26%; 
     left: 49%;
-    top: 15%; 
+    top: 12%; 
     z-index: 1;
 }
 
@@ -280,7 +280,7 @@ h3{
 #start_btn{
     position: absolute;
     z-index: 7;
-    top: 23%;
+    top: 21%;
     left: 50%;
     width: 3%;
     height: 5%;

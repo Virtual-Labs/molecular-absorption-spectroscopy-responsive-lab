@@ -246,13 +246,14 @@ function movePipette(){
     // Initialise all the values for the motion of the images.
     final_top = 268;
     step_top = -1;
-    step_left = -10;
+    step_left = -12.60;
     type_of_movement = 1;
     // Move it to the cuvette
     moveImage();
     setTimeout(function() {
         img = document.getElementById("cuvette");
         img.src = "images/cuvette_filled.png";
+        elem.src = "images/pipette.png";
     }, 1000);
     setTimeout(movebackPipette, 2000);
 }
@@ -307,7 +308,7 @@ function cuvette(){
         // Initialise all the values for the motion of the images.
         final_top = 221;
         step_top = -0.5;
-        step_left = -1.75;
+        step_left = -1.72;
         type_of_movement = 1;
         // Move it to a position over the spectrophotometer.
         moveImage();
@@ -323,7 +324,7 @@ function moveDown(){
     initial_top = Math.round($('#cuvette').position().top);
     initial_left = Math.round($('#cuvette').position().left);
     // Initialise all the values for the motion of the images.
-    final_top = 288;
+    final_top = 282;
     step_top = 1;
     step_left = 0;
     type_of_movement = 0;

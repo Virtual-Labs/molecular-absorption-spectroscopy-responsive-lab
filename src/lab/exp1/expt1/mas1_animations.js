@@ -41,7 +41,7 @@ function beaker() {
     if(step_no==1){
         // Get image
         elem = document.getElementById("beaker"); 
-        //Detect thecurrent position of the flask.
+        //Detect thecurrent position of the beaker.
         initial_top = Math.round($('#beaker').position().top);
         initial_left = Math.round($('#beaker').position().left);
         // Initialise all the values for the motion of the images.
@@ -64,7 +64,7 @@ function beaker() {
 // When this function is called for the first time the flask moves from shelf to table.
 // When this function is called for the second time the moveFlask() method is called.   
 function flask() {
-    if ( step_no == 2 && count == 1){
+    if (step_no == 2 && count == 1){
         // Get image
         elem = document.getElementById("flask");
         // Detect the current position of the flask. 
@@ -79,7 +79,7 @@ function flask() {
         moveImage();
         // Change to next intsruction to be followed.
         document.getElementById("demo").innerHTML = "Step-No 4: Click on the flask to pour the solution into clean, dry beaker";
-        step_no ++;
+        step_no++;
     }
     else if(step_no==3 && count == 2){
         document.getElementById("flask").onclick = moveFlask();
@@ -192,14 +192,14 @@ function moveFlaskBack() {
 // When this function is called for the second time fillPipette() method is called.
 // When this function is called for the third time movePipette() method is called.
 function pipette() {
-       if ( step_no == 4 && count == 4){
+       if (step_no == 4 && count == 4){
             // Get image
             elem = document.getElementById("pipette"); 
-            // Detect the current position of the flask.
+            // Detect the current position of the pipette.
             initial_top = Math.round($('#pipette').position().top);
             initial_left = Math.round($('#pipette').position().left);
             // Initialise all the values for the motion of the images.
-            final_top = 290;
+            final_top = 280;
             step_top = 1;
             step_left = 0.5;
             type_of_movement = 0;
@@ -227,16 +227,17 @@ function pipette() {
 
 // This method replaces the beaker image with less amount of solution.
 function fillPipette() {
-        elem = document.getElementById("beaker");
-        elem.src = "images/beaker1.png";
+        img = document.getElementById("beaker");
+        img.src = "images/beaker1.png";
         setTimeout(function() {
-            elem.src = "images/beaker3.png";
+            img.src = "images/beaker3.png";
+            elem.src = "images/pipette_filled.png";
             cursorPointers('pipette', 'cuvette');
             count++;
         }, 1000);
 }
     
-// This method moves the filled pipette to the cuvette and replaces that cuvette image to a filled cuvette image
+//This method moves the filled pipette to the cuvette and replaces that cuvette image to a filled cuvette image.
 function movePipette(){
         // Get images
         elem = document.getElementById("pipette");
@@ -246,19 +247,14 @@ function movePipette(){
         // Initialise all the values for the motion of the images.
         final_top = 268;
         step_top = -1;
-        step_left = -2.2;
+        step_left = -4.9;
         type_of_movement = 1;
         // Move it to the cuvette
         moveImage();
-        // Change the cuvette image to filled cuvette image
+        // Change the cuvette image to filled cuvette image and pipette filled image to pipette image.
         setTimeout(function() {
-            if(solution == 2){
-                document.getElementById("cuvette").src = "images/cuvette_filled_caffine.png";
-            }
-            else{
-                document.getElementById("cuvette").src = "images/cuvette_filled.png";
-            }
-            
+            elem.src = "images/pipette.png";
+            document.getElementById("cuvette").src = "images/cuvette_filled.png";
         }, 1000);
         setTimeout(movebackPipette, 2000);
 }
@@ -296,7 +292,7 @@ function cuvette(){
         // Initialise all the values for the motion of the images.
         final_top = 340;
         step_top = 1;
-        step_left = -0.6;
+        step_left = -0.65;
         type_of_movement = 0;
         // Move it to the table.
         moveImage();
@@ -315,7 +311,7 @@ function cuvette(){
         // Initialise all the values for the motion of the images.
         final_top = 221;
         step_top = -0.5;
-        step_left = -1.76;
+        step_left = -1.70;
         type_of_movement = 1;
         // Move it to a position over the spectrophotometer.
         moveImage();

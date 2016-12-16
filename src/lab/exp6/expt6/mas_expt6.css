@@ -1,6 +1,6 @@
 body{
     width:1080px; 
-    height:715px; 
+    height:740px; 
     margin: 0 auto; 
     overflow: hidden;
     position: relative;
@@ -23,20 +23,7 @@ h3{
     cursor: pointer;
 }
 
-#scale_image{
-    position: absolute;
-    left: 250px;
-    top:0px;
-}
-
-#slider{
-    position: absolute;
-    left: 293px;
-    width: 165px;
-    top:23px;
-}
-
- .modal {
+.modal {
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
         z-index: 1; /* Sit on top */
@@ -51,13 +38,6 @@ h3{
         -webkit-animation-duration: 0.4s;
         animation-name: fadeIn;
         animation-duration: 0.4s
-    }
-    html {
-      min-width: 100%;
-      min-height: 100%;
-      background-position: top center;
-      width: 1080px;
-      max-height: 715px;
     }
 
     /* Modal Content */
@@ -116,21 +96,29 @@ h3{
         to {opacity: 1}
     }
 
-    body {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
+#scale_image{
+    position: absolute;
+    width: 57%;
+    top:-5%;
+    left:45%;
+}
+
+#slider{
+    position: absolute;
+    top: 25px;
+    left: 299px;
+    width: 217px;
+}
 
 #apparatus{
     float:right;
 }
 
 #solution{
-    position:absolute; 
+    position:absolute;
     z-index:1; 
-    left:40px; 
-    top:6px
+    left:8%; 
+    top:5%;
 }
 
 #flask{
@@ -143,10 +131,10 @@ h3{
 
 #pipette{
     position:absolute;
-    z-index:2; 
-    width:7%; 
-    left:36%; 
-    top:27%;  
+    z-index:1; 
+    width:3%; 
+    left:37%; 
+    top:22%;  
 }
 
 #beaker{
@@ -162,20 +150,20 @@ h3{
     z-index:2; 
     width:2.5%; 
     left:80%; 
-    top:48%; 
-}
-
-#computerimage{
-    position: absolute; 
-    left: 48%; 
-    top: 13%; 
-    max-width: 50%; 
-    max-height: 50%; 
+    top:55%; 
 }
 
 #table_with_spec{
     margin:auto;
     display: block;
+}
+
+#computerimage{
+    position: absolute; 
+    left: 48%; 
+    top: 10%; 
+    max-width: 50%; 
+    max-height: 50%; 
 }
 
 #comp_trans_button{
@@ -184,7 +172,7 @@ h3{
     width: 12%;
     height: 26%; 
     left: 49%;
-    top: 15%; 
+    top: 12%; 
 }
 
 #spectrolid_trans_button{
@@ -233,23 +221,23 @@ h3{
 
 #clockScreen{
     position:absolute; 
-    top:75px; 
+    top:56px; 
     left:0px;
     visibility:hidden; 
-    z-index:4;
+    z-index:3;
 }
 
 #clockHand{
     position:absolute; 
-    top:314px;
-    left:50.75%; 
+    top: 294.60px;
+    left: 50.75%;
     visibility:hidden; 
-    z-index: 5;
+    z-index:5;
 }
 
 #scan{
     position:absolute;
-    z-index:7; 
+    z-index:6; 
     top:65px; 
     left:15px;
     visibility:hidden;
@@ -258,35 +246,35 @@ h3{
 .scanimage{
     position: absolute;
     z-index: 8;
-    top: 194px;
-    left: 167px;
-    width: 72%;
+    top: 16%;
+    left: 11%;
+    width: 80%;
     visibility:hidden; 
 }
 
 #scan_btn{
     position: absolute;
     z-index: 10;
-    top: 432px;
-    left: 295px;
-    width: 8%;
-    height: 5%;
+    top: 423px;
+    left: 264px;
+    width: 9%;
+    height: 4%;
 }
 
 .video{
     position: absolute;
     z-index: 12;
-    top: 27%;
-    left: 15%;
-    height: 56%;
+    top: 16%;
+    left: 11%;
+    width: 80%;
     visibility: hidden;
 }
 
 #disposegraph{
     position: absolute;
     z-index: 14;
-    width: 7%;
-    left: 79%;
-    top: 564px;
+    width: 8%;
+    left: 82%;
+    top: 531px;
     height: 3%;
-}    
+}

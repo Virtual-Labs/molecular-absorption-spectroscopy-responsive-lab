@@ -133,7 +133,9 @@ h3{
     z-index:1; 
     width:8%; 
     left:13%; 
-    top:30%; 
+    top:30%;
+    -webkit-filter: saturate(150%); /* Safari 6.0 - 9.0 */
+    filter: saturate(150%); 
 }
 
 #pipette{
@@ -149,7 +151,9 @@ h3{
     z-index:1; 
     width:11%; 
     left:55%; 
-    top:27%;  
+    top:27%; 
+    -webkit-filter: saturate(150%); /* Safari 6.0 - 9.0 */
+    filter: saturate(150%);  
 }
 
 #cuvette{
@@ -157,7 +161,9 @@ h3{
     z-index:2; 
     width:2.5%; 
     left:80%; 
-    top:55%; 
+    top:55%;
+    -webkit-filter: saturate(150%); /* Safari 6.0 - 9.0 */
+    filter: saturate(150%); 
 }
 
 #table_with_spec{
