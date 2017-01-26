@@ -46,8 +46,8 @@ function beaker() {
         // Move the beaker image to desired position.
         moveImage();
         // Change to next intsruction to be followed.
-        $("#solution, #slider").prop("disabled", true);
-        $("#solution, #slider").css("opacity", "0.6");
+        $("#solution").prop("disabled", true);
+        $("#solution").css("opacity", "0.4");
         document.getElementById("demo").innerHTML = "Step-No 3: Click on the conical flask to take it to experiment table";
         cursorPointers("beaker", "flask");
         step_no++;

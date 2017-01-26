@@ -71,6 +71,9 @@ function addclickEvents(){
     document.getElementById("solution").addEventListener("click", function() {
             setSolution();
     }, false);
+    document.getElementById("slider").addEventListener("click", function() {
+            setValue();
+    }, false);
     document.getElementById("flask").addEventListener("click", function() {
             flask();
     }, false);
@@ -139,14 +142,89 @@ function setSolution() {
             document.getElementById('beaker').style.filter= 'saturate(150%)';
             document.getElementById('cuvette').style.filter= 'saturate(150%)';
             document.getElementById('scale').style.visibility = 'visible';
-        }      
+            document.getElementById('slider').value=0;
+        } 
         else if(choosen_solution =='Unknown Solution'){
-            document.getElementById('flask').style.filter = 'saturate(80%)';
-            document.getElementById('beaker').style.filter= 'saturate(80%)';
-            document.getElementById('cuvette').style.filter= 'saturate(80%)'; 
+            document.getElementById('flask').style.filter = 'saturate(90%)';
+            document.getElementById('beaker').style.filter= 'saturate(90%)';
+            document.getElementById('cuvette').style.filter= 'saturate(90%)'; 
             document.getElementById('scale').style.visibility = 'hidden';  
         }   
     });
+}
+
+function setValue() {
+    var conc_value = document.getElementById('slider').value;
+        if(conc_value == 0){
+            // Standard syntax
+            document.getElementById("flask").style.filter = "saturate(90%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("flask").style.WebkitFilter = "saturate(90%)";
+            // Standard syntax
+            document.getElementById("beaker").style.filter = "saturate(90%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("beaker").style.WebkitFilter = "saturate(90%)";
+            // Standard syntax
+            document.getElementById("cuvette").style.filter = "saturate(90%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("cuvette").style.WebkitFilter = "saturate(90%)";
+        }
+        else if(conc_value == 1){
+            // Standard syntax
+            document.getElementById("flask").style.filter = "saturate(200%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("flask").style.WebkitFilter = "saturate(200%)";
+            // Standard syntax
+            document.getElementById("beaker").style.filter = "saturate(200%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("beaker").style.WebkitFilter = "saturate(200%)";
+            // Standard syntax
+            document.getElementById("cuvette").style.filter = "saturate(200%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("cuvette").style.WebkitFilter = "saturate(200%)";
+        }
+        else if(conc_value == 2){
+            // Standard syntax
+            document.getElementById("flask").style.filter = "saturate(250%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("flask").style.WebkitFilter = "saturate(250%)";
+            // Standard syntax
+            document.getElementById("beaker").style.filter = "saturate(250%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("beaker").style.WebkitFilter = "saturate(250%)";
+            // Standard syntax
+            document.getElementById("cuvette").style.filter = "saturate(250%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("cuvette").style.WebkitFilter = "saturate(250%)";
+        }
+        else if(conc_value == 3){
+            // Standard syntax
+            document.getElementById("flask").style.filter = "saturate(300%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("flask").style.WebkitFilter = "saturate(300%)";
+            // Standard syntax
+            document.getElementById("beaker").style.filter = "saturate(300%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("beaker").style.WebkitFilter = "saturate(300%)";
+            // Standard syntax
+            document.getElementById("cuvette").style.filter = "saturate(300%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("cuvette").style.WebkitFilter = "saturate(300%)";
+        }
+        else if(conc_value == 4){
+            // Standard syntax
+            document.getElementById("flask").style.filter = "saturate(420%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("flask").style.WebkitFilter = "saturate(420%)";
+            // Standard syntax
+            document.getElementById("beaker").style.filter = "saturate(420%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("beaker").style.WebkitFilter = "saturate(420%)";
+            // Standard syntax
+            document.getElementById("cuvette").style.filter = "saturate(420%)";
+            // Code for Safari 6.0 - 9.0
+            document.getElementById("cuvette").style.WebkitFilter = "saturate(420%)";
+        }
 }
 
 //To disable and enable the cursor pointers on elements.
@@ -163,6 +241,9 @@ function changeImage(){
 /*When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is 
 changed continuously to give the blinking light effect. The two images that are swapped is stored in images[]*/
 function turnOn() {
+    /* Make the power button hidden, once the button is clicked to ensure that the spectrofluorimeter runs 
+    only for one click. */
+    document.getElementById('power_trans_button').style.visibility = 'hidden';
     // Get the image
     turnon = document.getElementById('table_with_spec');
     // Change the source of the image 
@@ -229,10 +310,10 @@ function spectrophotometer(){
 //This method is called to display the graph image based on cuvette chosen by clicking on computer screen.
 function scan() {
     if(step_no==11){
-        conc_value = document.getElementById('slider').value;
-        if(choosen_solution=='Potassium Dichromate'&& conc_value==0){
-            document.getElementById('scanimage1').style.visibility = 'visible';
-        }
+        //conc_value = document.getElementById('slider').value;
+        // if(choosen_solution=='Potassium Dichromate'&& conc_value==0){
+        //     document.getElementById('scanimage1').style.visibility = 'visible';
+        // }
         // else if(choosen_solution=='Potassium Dichromate'&& conc_value==1){
         //     document.getElementById('scanimage2').style.visibility = 'visible';
         // }
@@ -248,6 +329,10 @@ function scan() {
         // else if(choosen_solution=='Unknown Solution'){
         //     document.getElementById('scanimage6').style.visibility = 'visible';
         // }
+
+        if(choosen_solution=='Potassium Dichromate'||'Unknown Solution'){
+            document.getElementById('scanimage1').style.visibility = 'visible';
+        }
         // Get the scan image background.                                                               }
         document.getElementById('scan').style.visibility = 'visible';
         cursorPointers('comp_trans_button','scan_btn');
@@ -260,10 +345,10 @@ function scanGraph(){
     if(step_no==12){
         /*After the cuvette are inserted into the spectrophotometer, when the computer is pressed to scan, 
         depending on the value choosen from the slider appropriate graph video is obtained.*/
-        conc_value = document.getElementById('slider').value;
-        if(choosen_solution=='Potassium Dichromate'&& conc_value==0){
-            vid = document.getElementById('graph1');
-        }
+        //conc_value = document.getElementById('slider').value;
+        // if(choosen_solution=='Potassium Dichromate'&& conc_value==0){
+        //     vid = document.getElementById('graph1');
+        // }
         // else if(choosen_solution=='Potassium Dichromate'&& conc_value==1){
         //     vid = document.getElementById('graph2');
         // }
@@ -279,6 +364,10 @@ function scanGraph(){
         // else if(choosen_solution=='Unknown Solution'){
         //     vid = document.getElementById('graph6');
         // }
+
+        if(choosen_solution=='Potassium Dichromate'||'Unknown Solution'){
+            vid = document.getElementById('graph1');
+        }
         $(".scanimage").css('visibility', 'hidden');
         // make the video obtained visible.
         vid.style.visibility='visible';

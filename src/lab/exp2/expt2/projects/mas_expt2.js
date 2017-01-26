@@ -352,7 +352,7 @@ function rotatePipette() {
         step_no ++;
         setTimeout(function(){ 
                 movebackPipette();
-            }, 200);
+        }, 200);
     }
 }
 
@@ -382,8 +382,10 @@ function showInstruction() {
   if(step_no == 6){
       document.getElementById("scan").style.visibility = 'hidden';
       document.getElementById("start").style.visibility = 'hidden';
-      document.getElementById("demo").innerHTML = 'Step-No 9: Turn on the spectrometer clicking on the power button. In real operation it takes approx.30 min for initialization of the instrument.'
+      document.getElementById("demo").innerHTML = 'Step-No 9: Turn on the spectrometer clicking on the power button. In real operation it takes approx.30 min for initialization of the instrument.';
       cursorPointers('start', 'power_trans_button');
+      // Make the hidden power button to visible to run the spectrofluorimeter.  
+      document.getElementById('power_trans_button').style.visibility = 'visible';
       step_no++;
   }
 }
@@ -394,15 +396,18 @@ function changeImage(){
 }
 
 function turnOn() {
-  // Get the image
-  turnon = document.getElementById('table_with_spec');
-  // Change the source of the image 
-  turnon.src = images[x];
-  //increment x;
-  x++;
-  if(x >= images.length){
-      x = 0;
-  }
+    /* Make the power button hidden, once the button is clicked to ensure that the spectrofluorimeter runs 
+    only for one click. */
+    document.getElementById('power_trans_button').style.visibility = 'hidden';
+    // Get the image
+    turnon = document.getElementById('table_with_spec');
+    // Change the source of the image 
+    turnon.src = images[x];
+    //increment x;
+    x++;
+    if(x >= images.length){
+        x = 0;
+    }
 }
     
 function showClock(){

@@ -139,19 +139,22 @@ function setSolution() {
             document.getElementById('beaker').style.filter= 'saturate(100%)';
             document.getElementById('cuvette').style.filter= 'saturate(100%)';
             document.getElementById('scale').style.visibility = 'visible';
+            document.getElementById('slider').value=0;
         }      
         else if(choosen_solution =='Coumarin6'){
             document.getElementById('scale_image').src = "images/scale2.png";
             document.getElementById('flask').style.filter = 'saturate(400%)';
             document.getElementById('beaker').style.filter= 'saturate(400%)';
             document.getElementById('cuvette').style.filter= 'saturate(400%)'; 
-            document.getElementById('scale').style.visibility = 'visible';  
+            document.getElementById('scale').style.visibility = 'visible';
+            document.getElementById('slider').value=0;  
         }
         else if(choosen_solution == '1:1mixture') {
             document.getElementById('flask').style.filter = 'saturate(400%)';
             document.getElementById('beaker').style.filter= 'saturate(400%)';
             document.getElementById('cuvette').style.filter= 'saturate(400%)';
             document.getElementById('scale').style.visibility = 'hidden';
+            document.getElementById('slider').value=0;
         }   
     });
 }
@@ -170,6 +173,9 @@ function changeImage(){
 /*When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is 
 changed continuously to give the blinking light effect. The two images that are swapped is stored in images[]*/
 function turnOn() {
+    /* Make the power button hidden, once the button is clicked to ensure that the spectrofluorimeter runs 
+    only for one click. */
+    document.getElementById('power_trans_button').style.visibility = 'hidden';
     // Get the image
     turnon = document.getElementById('table_with_spec');
     // Change the source of the image 

@@ -68,6 +68,9 @@ function addclickEvents(){
     document.getElementById("data_button").addEventListener("click", function() {
             popitup("slideshow.html");
     }, false);
+    document.getElementById("slider").addEventListener("click", function() {
+            setSolution();
+    }, false);
     document.getElementById("flask").addEventListener("click", function() {
             flask();
     }, false);
@@ -113,6 +116,95 @@ function mouseEvents(){
     });
 }
 
+// Depending on the slider value selected, concentration color of the solution in the flask gets changed.
+function setSolution(){
+    var conc_value = document.getElementById('slider').value;
+    if(conc_value == 0){
+        // Standard syntax
+        document.getElementById("flask").style.filter = "saturate(100%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("flask").style.WebkitFilter = "saturate(100%)";
+        // Standard syntax
+        document.getElementById("beaker").style.filter = "saturate(100%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("beaker").style.WebkitFilter = "saturate(100%)";
+        // Standard syntax
+        document.getElementById("cuvette").style.filter = "saturate(100%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("cuvette").style.WebkitFilter = "saturate(100%)";
+    }
+    else if(conc_value == 1){
+        // Standard syntax
+        document.getElementById("flask").style.filter = "saturate(250%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("flask").style.WebkitFilter = "saturate(250%)";
+        // Standard syntax
+        document.getElementById("beaker").style.filter = "saturate(250%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("beaker").style.WebkitFilter = "saturate(250%)";
+        // Standard syntax
+        document.getElementById("cuvette").style.filter = "saturate(250%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("cuvette").style.WebkitFilter = "saturate(250%)";
+    }
+    else if(conc_value == 2){
+        // Standard syntax
+        document.getElementById("flask").style.filter = "saturate(300%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("flask").style.WebkitFilter = "saturate(300%)";
+        // Standard syntax
+        document.getElementById("beaker").style.filter = "saturate(300%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("beaker").style.WebkitFilter = "saturate(300%)";
+        // Standard syntax
+        document.getElementById("cuvette").style.filter = "saturate(300%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("cuvette").style.WebkitFilter = "saturate(300%)";
+    }
+    else if(conc_value == 3){
+        // Standard syntax
+        document.getElementById("flask").style.filter = "saturate(400%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("flask").style.WebkitFilter = "saturate(400%)";
+        // Standard syntax
+        document.getElementById("beaker").style.filter = "saturate(400%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("beaker").style.WebkitFilter = "saturate(400%)";
+        // Standard syntax
+        document.getElementById("cuvette").style.filter = "saturate(400%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("cuvette").style.WebkitFilter = "saturate(400%)";
+    }
+    else if(conc_value == 4){
+        // Standard syntax
+        document.getElementById("flask").style.filter = "saturate(420%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("flask").style.WebkitFilter = "saturate(420%)";
+        // Standard syntax
+        document.getElementById("beaker").style.filter = "saturate(420%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("beaker").style.WebkitFilter = "saturate(420%)";
+        // Standard syntax
+        document.getElementById("cuvette").style.filter = "saturate(420%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("cuvette").style.WebkitFilter = "saturate(420%)";
+    }
+    else if(conc_value == 5){
+        // Standard syntax
+        document.getElementById("flask").style.filter = "saturate(450%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("flask").style.WebkitFilter = "saturate(450%)";
+        // Standard syntax
+        document.getElementById("beaker").style.filter = "saturate(420%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("beaker").style.WebkitFilter = "saturate(420%)";
+        // Standard syntax
+        document.getElementById("cuvette").style.filter = "saturate(420%)";
+        // Code for Safari 6.0 - 9.0
+        document.getElementById("cuvette").style.WebkitFilter = "saturate(420%)";
+    }
+}
+
 /*When user clicks on the Data button it redirects him to the page containing slideshow of the graphs 
 obtained from different sample concentration values.*/
 function popitup(url) {
@@ -139,6 +231,9 @@ function changeImage(){
 /*When the user switches on the spectrophotometer this method is called. Here the spectrophotometer image is 
 changed continuously to give the blinking light effect. The two images that are swapped is stored in images[]*/
 function turnOn() {
+    /* Make the power button hidden, once the button is clicked to ensure that the spectrofluorimeter runs 
+    only for one click. */
+    document.getElementById('power_trans_button').style.visibility = 'hidden';
     // Get the image
     turnon = document.getElementById('table_with_spec');
     // Change the source of the image 
@@ -206,7 +301,7 @@ function spectrophotometer(){
 function scan() {
     if(step_no==11){
         conc_value = document.getElementById('slider').value;
-        if(conc_value==0){
+        if(conc_value==0||1||2||3||4||5){
             document.getElementById('scanimage1').style.visibility = 'visible';
         }
         // else if(conc_value==1){
@@ -237,7 +332,7 @@ function scanGraph(){
         /*After the cuvette are inserted into the spectrophotometer, when the computer is pressed to scan, 
         depending on the value choosen from the slider appropriate graph video is obtained.*/
         conc_value = document.getElementById('slider').value;
-        if(conc_value==0){
+        if(conc_value==0||1||2||3||4||5){
             vid = document.getElementById('graph1');
         }
         // else if(conc_value==1){

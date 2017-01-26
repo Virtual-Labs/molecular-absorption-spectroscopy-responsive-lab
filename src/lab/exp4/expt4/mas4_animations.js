@@ -52,6 +52,8 @@ function beaker() {
         moveImage();
         // Change to next intsruction to be followed.   
         document.getElementById("demo").innerHTML = "Step-No 3: Click on the conical flask to take it to experiment table";
+        $("#solution").prop("disabled", true);
+        document.getElementById("solution").style.opacity = "0.4";
         cursorPointers('beaker', 'flask');
         step_no++;
     }
@@ -80,6 +82,8 @@ function flask() {
     }
     else if(step_no==3 && count == 2){
         document.getElementById("flask").onclick = moveFlask();
+        // Change to next instruction to be followed. 
+        document.getElementById("demo").innerHTML = "Step-No 5: Click on the micropipette to collect appropriate quantity of solution from the beaker";
         step_no++;
     }
 }
