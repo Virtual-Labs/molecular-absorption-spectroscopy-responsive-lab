@@ -18,10 +18,15 @@ h3{
     cursor: default;
 }
 
-#manual_button, #data_button, #scale_image{
+#manual_button, #data_button{
     position:absolute; 
     left: 30px;
     cursor: pointer;
+}
+
+#scale_image{
+    position:absolute; 
+    left: 30px;
 }
 
 .modal {
